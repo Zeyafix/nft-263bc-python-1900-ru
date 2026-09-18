@@ -1,6 +1,7 @@
 ## Next to cover
 
-- In progress.
+- [01 - MyStat. Microsoft Teams. Cisco Networking Academy](lessons/01%20-%20MyStat.%20Microsoft%20Teams.%20Cisco%20Networking%20Academy/)
+- [02 - Overview of PC Components](lessons/02%20-%20Overview%20of%20PC%20Components/)
 
 ## What we've already covered
 

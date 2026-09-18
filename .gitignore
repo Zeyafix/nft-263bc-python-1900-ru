@@ -3,6 +3,7 @@
 /lessons/**/gold-standard
 /lessons/**/tests
 /lessons/**/_grading
+/lessons/**/prompt.md
 checklist.md
 .agents
 AGENTS.md

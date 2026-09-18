@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Как устроен компьютер: CPU, охлаждение, GPU, RAM, SSD, HDD, блок питания и материнская плата. Десять вопросов по комментариям пользователей."
+    />
+    <title>Обзор компонентов ПК</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">Обзор компонентов ПК</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="computer">
+<h2>01 / Что такое компьютер</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/01-computer-devices.png"
+      alt="Настольный ПК, ноутбук, смартфон, планшет, игровая консоль и обычный монитор."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 1. Настольный ПК, ноутбук, смартфон, планшет, игровая консоль и обычный монитор.</figcaption>
+</figure>
+<p>Посмотрите на Рис 1. Какие устройства Вы назовёте компьютерами? Подумайте над тем, почему Вы называете их компьютерами.</p>
+<aside class="special-block special-block--definition" aria-labelledby="computer-definition">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="computer-definition">Компьютер выполняет программы</h3>
+  <div class="special-block__body"><p><strong>Компьютер</strong> представляет собой электронное устройство, которое принимает данные, хранит и обрабатывает их по инструкциям программ и выдаёт результат.</p><p>Например, вы вводите два числа в калькулятор, программа складывает их, а на экране появляется ответ. Данные могут быть числами, текстом, изображением или звуком.</p></div>
+</aside>
+<ul class="content-list">
+  <li><strong>Настольный ПК.</strong> Запускает браузер, игры и редакторы. Основные компоненты находятся в системном блоке. Монитор, клавиатура и мышь помогают получать результат и вводить данные.</li>
+  <li><strong>Ноутбук.</strong> Делает то же самое, но экран, клавиатура, аккумулятор и основные компоненты собраны в одном переносном корпусе.</li>
+  <li><strong>Смартфон.</strong> Выполняет приложения, обрабатывает касания, хранит фотографии и передаёт сообщения. Это тоже компьютер.</li>
+  <li><strong>Планшет.</strong> Выполняет программы и обрабатывает данные, как смартфон. Размер экрана и возможность звонить не определяют, является ли устройство компьютером.</li>
+  <li><strong>Игровая консоль.</strong> Выполняет игры, обрабатывает команды геймпада и строит изображение. Это компьютер, приспособленный прежде всего для игр.</li>
+  <li><strong>Обычный монитор.</strong> Получает видеосигнал от другого устройства и показывает изображение. В этом сравнении это устройство вывода, а не самостоятельный компьютер для запуска пользовательских программ. Внутри есть управляющая электроника, но один экран не заменяет системный блок. Моноблок с компьютером внутри и умный монитор с приложениями относятся к другим случаям.</li>
+</ul>
+<p>У этих компьютеров похожие задачи: вычислять, временно держать рабочие данные, сохранять файлы и выводить результат. Посмотрим, какие детали выполняют эти задачи в настольном ПК. В ноутбуке или смартфоне часть деталей объединена в одной микросхеме или припаяна к плате.</p>
+
+</div>
+</section>
+<section id="cpu">
+<h2>02 / CPU — процессор</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/02-cpu.png"
+      alt="Процессор настольного компьютера."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 2. Процессор настольного компьютера.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/6RBCr" target="_blank" rel="noopener noreferrer">Рассмотреть CPU в 3D</a></p>
+<p><strong>CPU</strong> (Central Processing Unit), или центральный процессор, выполняет инструкции программ: считает, сравнивает значения, выбирает следующий шаг и управляет ходом работы программы. Когда калькулятор складывает числа или программа проверяет пароль, вычисления выполняет процессор.</p>
+<p>Представьте рецепт: «возьми цену, умножь на количество, сравни сумму с лимитом». Программа задаёт шаги, CPU их выполняет. Процессор не придумывает решение сам: ему нужны инструкции и данные.</p>
+<aside class="special-block special-block--definition" aria-labelledby="cpu-cores">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="cpu-cores">Ядра и Тактовая частота</h3>
+  <div class="special-block__body"><p><strong>Ядро</strong> является вычислительной частью CPU, которая может выполнять свой поток инструкций. Несколько ядер позволяют одновременно продвигать разные задачи.</p><p>Это похоже на нескольких поваров. Пока один готовит суп, другой режет салат. Но четыре повара не испекут один пирог в четыре раза быстрее: некоторые шаги зависят от предыдущих. Дополнительные ядра помогают, когда программу можно разделить на независимую работу.</p>
+  <p><strong>Тактовая частота</strong> показывает число тактов в секунду. 1 ГГц означает миллиард тактов в секунду, а 3 ГГц означает три миллиарда. Такт похож на удар метронома, который задаёт ритм работы, но <strong>один такт не равен одной выполненной инструкции</strong>.</p></div>
+</aside>
+<p>У похожих процессоров при одинаковых условиях более высокая частота часто помогает быстрее выполнить задачу. Но разные CPU за такт могут делать разный объём работы. Важны устройство ядер, их количество, доступ к памяти, охлаждение и сама программа. Поэтому по надписи «4 ГГц» нельзя доказать, что CPU быстрее любого процессора с «3 ГГц».</p>
+<p>Например, расчёт с последовательными зависимостями может загрузить одно ядро, пока остальные почти свободны. Для такой задачи полезна скорость отдельного ядра. Обработка множества независимых файлов может задействовать несколько ядер, если программа это поддерживает.</p>
+<p>Во время работы CPU выделяет тепло. При перегреве он снижает частоту, чтобы защититься, и вычисления замедляются. Отводить тепло помогает система охлаждения.</p>
+
+</div>
+</section>
+<section id="cooling">
+<h2>03 / Радиатор</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/03-tower-heatsink.jpg"
+      alt="Башенный радиатор CPU с металлическими рёбрами, тепловыми трубками и вентилятором."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 3. Башенный радиатор CPU с металлическими рёбрами, тепловыми трубками и вентилятором.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/oQV6T" target="_blank" rel="noopener noreferrer">Рассмотреть башенное охлаждение в 3D</a></p>
+<p><strong>Радиатор</strong> принимает тепло от процессора и отдаёт его воздуху. У башенной конструкции много тонких металлических рёбер: большая площадь помогает передавать тепло. Вентилятор прогоняет воздух между рёбрами. Радиатор вместе с вентилятором обычно называют <strong>кулером</strong>.</p>
+<ol class="content-list">
+  <li>Тепло от кристалла CPU поступает к его крышке, а затем через тонкий слой термопасты к основанию системы охлаждения. Паста заполняет мелкие неровности контакта.</li>
+  <li>Основание и тепловые трубки передают тепло рёбрам радиатора.</li>
+  <li>Воздух нагревается у рёбер. Вентиляторы помогают заменить его более прохладным и вывести нагретый воздух из корпуса.</li>
+</ol>
+<p>Горячий чай быстрее остывает в широкой посуде и при обдуве. У радиатора похожая идея: увеличить площадь передачи тепла и обеспечить движение воздуха. Сам вентилятор не делает воздух холоднее комнатного.</p>
+<aside class="special-block special-block--definition" aria-labelledby="cooling-tdp">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="cooling-tdp">TDP помогает оценить требования к охлаждению</h3>
+  <div class="special-block__body"><p><strong>TDP</strong> (Thermal Design Power) указывают в ваттах. Это тепловой ориентир, заданный производителем для определённых условий работы. Он помогает подобрать охлаждение, но не означает постоянное потребление и не всегда равен максимальной мощности CPU.</p><p>Условный процессор с TDP 65 Вт при ускорении может выделять больше тепла. Поэтому надпись «кулер до 65 Вт» ещё не доказывает, что его хватит. У разных производителей кулеров методики оценки тоже различаются.</p></div>
+</aside>
+<p>Для выбора охлаждения проверьте поддерживаемый <strong>сокет</strong> (разъём процессора) и крепление, рекомендации для конкретного CPU и его мощность под длительной нагрузкой. Затем проверьте высоту башни в корпусе, зазор до памяти и результаты испытаний по температуре и шуму.</p>
+<p><strong>Жидкостное охлаждение</strong> переносит тепло от блока на CPU по трубкам к отдельному радиатору. Помпа гоняет жидкость по контуру, а вентиляторы на радиаторе отдают тепло воздуху. Жидкость переносит тепло, а не уничтожает его.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/04-liquid-cooling.jpeg"
+      alt="Замкнутая система жидкостного охлаждения: блок с помпой, трубки и радиатор с вентиляторами."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 4. Замкнутая система жидкостного охлаждения: блок с помпой, трубки и радиатор с вентиляторами.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/oyIKV" target="_blank" rel="noopener noreferrer">Рассмотреть жидкостное охлаждение в 3D</a> · <a href="https://skfb.ly/oyWxU" target="_blank" rel="noopener noreferrer">Посмотреть жидкостное охлаждение внутри компьютера</a></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Башенное и жидкостное охлаждение">
+  <table><caption class="visually-hidden">Башенное и жидкостное охлаждение</caption>
+    <thead><tr><th scope="col">Что сравниваем</th><th scope="col">Башенный кулер</th><th scope="col">Жидкостная система</th></tr></thead><tbody><tr><td>Путь тепла</td><td>От CPU через основание и трубки к рёбрам рядом с CPU</td><td>От CPU через жидкость к радиатору в другой части корпуса</td></tr>
+<tr><td>Что нужно разместить</td><td>Башню над процессором</td><td>Блок на CPU, трубки и радиатор на креплениях корпуса</td></tr>
+<tr><td>Особенности</td><td>Простая конструкция без отдельной помпы; важно проверить высоту</td><td>Есть помпа и контур с жидкостью; важно проверить место под радиатор</td></tr>
+<tr><td>Как выбрать</td><td>По совместимости, температуре и шуму с нужным CPU</td><td>По тем же критериям; наличие жидкости само по себе не гарантирует лучший результат</td></tr></tbody>
+  </table>
+</div>
+<p>Охлаждение нужно и другим мощным компонентам. Поэтому на отдельной видеокарте тоже можно увидеть радиатор и вентиляторы.</p>
+
+</div>
+</section>
+<section id="gpu">
+<h2>04 / GPU — графический процессор</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/05-gpu-chip.jpg"
+      alt="Графический процессор, без скрывающего его радиатора."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 5. Графический процессор, без скрывающего его радиатора.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/oDsGz" target="_blank" rel="noopener noreferrer">Открыть 3D-модель для знакомства с GPU</a></p>
+<p><strong>GPU</strong> (Graphics Processing Unit) выполняет вычисления для графики: помогает рисовать окна интерфейса, кадры игры и трёхмерные сцены. Для изображения нужно обработать много похожих элементов, поэтому GPU рассчитан на большое количество параллельных вычислений.</p>
+<p>Представьте, что нужно одинаково изменить яркость миллиона пикселей. Такие операции можно распределить между многими вычислительными блоками. Поэтому GPU применяют и вне графики, например для расчётов с большими массивами чисел и обучения нейросетей. Программа должна специально поддерживать работу на GPU: обычный код не переносится туда автоматически.</p>
+<p><strong>Почему CPU не заменяет GPU во всех задачах?</strong> CPU технически способен вычислить изображение программным способом, но для тяжёлой графики это часто слишком медленно. CPU удобен для разнообразных инструкций и сложных последовательных шагов, GPU эффективен в подходящих параллельных задачах. Они работают вместе.</p>
+<p>В CPU может находиться <strong>встроенная графика</strong> и обычно использует часть RAM. Для интерфейса, видео и многих учебных задач её достаточно. Не у каждого CPU есть встроенная графика, поэтому видеовыход на материнской плате сам по себе не обещает изображение.</p>
+<p><strong>Отдельная графика</strong> в настольном ПК обычно размещена на видеокарте, которая подключается к материнской плате. Она часто располагает собственным охлаждением и видеопамятью, а мощной модели нужно дополнительное питание.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/12-graphics-card.png"
+      alt="Видеокарта целиком."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 6. Видеокарта целиком.</figcaption>
+</figure>
+<aside class="special-block special-block--definition" aria-labelledby="gpu-card-difference">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="gpu-card-difference">GPU и видеокарта обозначают разные вещи</h3>
+  <div class="special-block__body"><p><strong>GPU</strong> является вычислительной микросхемой. <strong>Видеокарта</strong> является целым устройством: плата с GPU, видеопамятью, цепями питания, разъёмами и системой охлаждения.</p><p><strong>Видеопамять</strong> (VRAM) хранит данные, с которыми работает GPU: текстуры, геометрию сцены и кадры. У отдельной видеокарты это обычно собственные микросхемы памяти. Если данных больше, чем помещается, программе приходится перемещать их или снижать качество; это может вызывать задержки.</p></div>
+</aside>
+<p>Большой объём VRAM сам по себе не делает GPU быстрым. Он показывает, сколько рабочих данных помещается рядом с GPU. У остальных программ тоже есть рабочие данные, и для них служит оперативная память.</p>
+
+</div>
+</section>
+<section id="ram">
+<h2>05 / RAM — оперативная память</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/06-ram.jpg"
+      alt="Модуль оперативной памяти с микросхемами и контактами."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 7. Модуль оперативной памяти с микросхемами и контактами.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/ooNqt" target="_blank" rel="noopener noreferrer">Рассмотреть DDR4 в 3D</a> · <a href="https://skfb.ly/o7yFv" target="_blank" rel="noopener noreferrer">Рассмотреть DDR5 в 3D</a></p>
+<p><strong>RAM</strong> (Random Access Memory), или оперативная память, хранит данные и инструкции, которые нужны работающим программам. CPU получает из неё рабочие данные, а программы размещают в ней открытые документы, промежуточные результаты и другие необходимые сведения.</p>
+<p>Представьте рабочий стол. На нём лежит то, с чем вы сейчас работаете. Браузер занимает часть стола своими страницами, редактор занимает часть открытым проектом, а видеозвонок занимает ещё немного. Несколько открытых программ требуют больше места, чем одна.</p>
+<p>Допустим, в компьютере 8 ГБ RAM. Операционная система и программы уже заняли почти весь доступный объём. При открытии тяжёлого проекта системе может понадобиться переместить часть данных на накопитель, в файл подкачки. Доступ к нему медленнее, поэтому переключение между программами начинает задерживаться. Некоторые программы при нехватке памяти могут завершиться или отказаться открывать файл.</p>
+<p>Дополнительная RAM помогает, если ограничением был её недостаток. Когда все рабочие данные уже помещаются, увеличение объёма само по себе не ускоряет вычисления CPU.</p>
+<aside class="special-block special-block--warning" aria-labelledby="ram-power">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="ram-power">RAM не хранит работу после отключения питания</h3>
+  <div class="special-block__body"><p>Обычная оперативная память энергозависима: без питания её содержимое теряется. Сохранённый документ останется на накопителе, но последние изменения могут пропасть, если программа не успела сохранить их или создать копию для восстановления.</p><p>Кнопка «Сохранить» нужна, чтобы записать изменения в долговременное хранилище.</p></div>
+</aside>
+<p>DDR4 и DDR5 являются разными поколениями RAM. Планка должна соответствовать разъёму и поддержке материнской платы и CPU. Похожая форма не означает взаимозаменяемость.</p>
+
+</div>
+</section>
+<section id="ssd">
+<h2>06 / SSD — твердотельный накопитель</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/07-sata-ssd.png"
+      alt="SATA SSD в корпусе 2,5 дюйма с разъёмами данных и питания."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 8. SATA SSD в корпусе 2,5 дюйма с разъёмами данных и питания.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/6SNzv" target="_blank" rel="noopener noreferrer">Сравнить SSD, HDD и накопитель M.2 в 3D</a></p>
+<p><strong>SSD</strong> (Solid-State Drive) хранит программы и файлы длительное время, в том числе после выключения компьютера. Данные записываются во флеш-память: внутри нет вращающихся дисков и движущейся головки.</p>
+<p>Если RAM похожа на рабочий стол, SSD похож на шкаф для документов. При открытии проекта система читает нужные данные с SSD в RAM. CPU работает с ними, а при сохранении программа записывает изменения обратно на накопитель.</p>
+<p><strong>SATA SSD в корпусе 2,5 дюйма</strong> выглядит как небольшая плоская коробка. В настольном ПК к нему обычно подключают два кабеля: SATA для данных к материнской плате и кабель питания от блока питания.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/08-nvme-ssd.png"
+      alt="NVMe SSD формфактора M.2: узкая плата с контактами и местом крепления."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 9. NVMe SSD формфактора M.2: узкая плата с контактами и местом крепления.</figcaption>
+</figure>
+<p><strong>NVMe SSD</strong> использует протокол NVMe для обмена данными через PCIe. В обычном ПК он часто имеет вид узкой платы M.2, которая устанавливается прямо в совместимый разъём на материнской плате. Через него поступают и данные, и питание; отдельные SATA-кабели такому модулю не нужны.</p>
+<aside class="special-block special-block--warning" aria-labelledby="ssd-form-factor">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="ssd-form-factor">M.2 описывает форму, а не обещает NVMe</h3>
+  <div class="special-block__body"><p><strong>M.2</strong> является формфактором: он задаёт физическое исполнение модуля и разъёма. SSD формата M.2 может использовать SATA или PCIe с NVMe. Поэтому перед покупкой нужно проверить поддержку интерфейса и размера модуля в документации материнской платы.</p><p>Надпись M.2 не доказывает совместимость. А NVMe встречается и в других физических форматах.</p></div>
+</aside>
+<p><strong>Объём</strong> измеряют, например, в ГБ или ТБ: он показывает, сколько данных поместится. <strong>Скорость</strong> описывает, как быстро накопитель читает и записывает данные. SSD на 2 ТБ не обязательно быстрее SSD на 1 ТБ. NVMe обычно позволяет получить более высокую скорость обмена, чем SATA, но эффект зависит от накопителя и задачи.</p>
+<p>Если на накопителе закончились свободные гигабайты, новая программа или файл могут не поместиться. Добавление RAM эту проблему не решит. Файлы можно хранить и на другом типе накопителя, HDD.</p>
+
+</div>
+</section>
+<section id="hdd">
+<h2>07 / HDD — жёсткий диск</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/09-hdd.jpg"
+      alt="Жёсткий диск: корпус и вид магнитных пластин с головкой."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 10. Жёсткий диск: корпус и вид магнитных пластин с головкой.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/6SNzv" target="_blank" rel="noopener noreferrer">Сравнить HDD и SSD в 3D</a> · <a href="https://skfb.ly/o8YFC" target="_blank" rel="noopener noreferrer">Рассмотреть внутреннее устройство HDD</a></p>
+<p><strong>HDD</strong> (Hard Disk Drive) сохраняет данные на магнитных пластинах. Двигатель вращает пластины, а подвижный механизм устанавливает головку чтения и записи над нужной областью. Данные сохраняются после отключения питания.</p>
+<p>Чтобы прочитать небольшой файл, нужно переместить головку и дождаться нужного участка пластины. Когда программа запрашивает много файлов из разных мест, эти ожидания складываются. У SSD такого механического поиска нет.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Сравнение принципа работы HDD и SSD">
+  <table><caption class="visually-hidden">Сравнение принципа работы HDD и SSD</caption>
+    <thead><tr><th scope="col">Характеристика</th><th scope="col">HDD</th><th scope="col">SSD</th></tr></thead><tbody><tr><td>Как хранит данные</td><td>Магнитная запись на вращающихся пластинах</td><td>Электронная запись во флеш-память</td></tr>
+<tr><td>Механические части</td><td>Двигатель, пластины и подвижные головки</td><td>В накопителе нет движущихся частей</td></tr>
+<tr><td>Доступ к данным</td><td>Нужно дождаться перемещения головки и поворота пластины</td><td>Электронный доступ, обычно заметно быстрее при множестве мелких запросов</td></tr>
+<tr><td>Шум</td><td>Слышны вращение и работа механизма</td><td>Сам накопитель работает бесшумно</td></tr>
+<tr><td>Удары</td><td>Особенно чувствителен во время работы из-за механики</td><td>Обычно устойчивее к ударам, но тоже может повредиться</td></tr>
+<tr><td>После выключения</td><td>Сохраняет данные</td><td>Сохраняет данные</td></tr></tbody>
+  </table>
+</div>
+<p>Например, если система долго открывает много мелких файлов на исправном HDD, причиной может быть обычное ограничение механического доступа. Если к задержкам добавились новые повторяющиеся щелчки и ошибки чтения, это уже повод подозревать неисправность накопителя и сохранить важные данные в резервной копии.</p>
+<p>CPU, видеокарте, памяти и накопителям нужна электрическая энергия. За её подачу в настольном ПК отвечает блок питания.</p>
+
+</div>
+</section>
+<section id="psu">
+<h2>08 / Блок питания</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/10-power-supply.jpg"
+      alt="Блок питания настольного ПК с вентилятором, сетевым входом и кабелями."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 11. Блок питания настольного ПК с вентилятором, сетевым входом и кабелями.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/oyO7V" target="_blank" rel="noopener noreferrer">Рассмотреть блок питания в 3D</a></p>
+<p><strong>Блок питания</strong> (PSU, Power Supply Unit) преобразует переменное напряжение электросети в постоянные напряжения, необходимые компонентам компьютера. Он подаёт питание через кабели на материнскую плату, процессор, видеокарту и накопители.</p>
+<p><strong>Мощность в ваттах</strong> показывает, какую электрическую мощность блок способен отдавать компонентам в заявленных условиях. Надпись «750 Вт» не означает, что компьютер постоянно потребляет 750 Вт. Потребление меняется: при чтении страницы оно обычно ниже, чем при тяжёлой игре.</p>
+<aside class="special-block special-block--definition" aria-labelledby="psu-efficiency">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="psu-efficiency">КПД показывает долю полезной мощности</h3>
+  <div class="special-block__body"><p>При преобразовании часть энергии теряется в виде тепла. <strong>КПД</strong> показывает, какая доля мощности из розетки дошла до компонентов. Если им нужно 300 Вт, а КПД в этот момент равен 90%, из розетки потребуется примерно 300 / 0,90 = 333 Вт. Около 33 Вт превратятся в тепло в блоке.</p><p>У блока на 750 Вт с КПД 90% номинальная выходная мощность не превращается в 675 Вт. КПД учитывает потери между розеткой и выходом блока.</p></div>
+</aside>
+<p><strong>80 PLUS</strong> подтверждает достижение определённого КПД в заданных режимах испытания. Ниже минимальные значения для категории <strong>230V EU Internal, Non-Redundant</strong>, применимой к обычным внутренним блокам ПК. Процент нагрузки считают от номинальной выходной мощности. Для других категорий и напряжений таблица отличается.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Минимальный КПД 80 PLUS для 230V EU Internal Non-Redundant">
+  <table><caption class="visually-hidden">Минимальный КПД 80 PLUS для 230V EU Internal Non-Redundant</caption>
+    <thead><tr><th scope="col">Сертификат</th><th scope="col">При 20% нагрузки</th><th scope="col">При 50% нагрузки</th><th scope="col">При 100% нагрузки</th></tr></thead><tbody><tr><td>Standard</td><td>82%</td><td>85%</td><td>82%</td></tr>
+<tr><td>Bronze</td><td>85%</td><td>88%</td><td>85%</td></tr>
+<tr><td>Silver</td><td>87%</td><td>90%</td><td>87%</td></tr>
+<tr><td>Gold</td><td>90%</td><td>92%</td><td>89%</td></tr>
+<tr><td>Platinum</td><td>92%</td><td>94%</td><td>90%</td></tr>
+<tr><td>Titanium</td><td>94%</td><td>96%</td><td>91%</td></tr></tbody>
+  </table>
+</div>
+<p>Для Titanium в этой категории также требуется КПД не ниже 90% при 10% нагрузки. Значения приведены по <a href="https://www.clearesult.com/80plus/taxonomy/term/9" target="_blank" rel="noopener noreferrer">таблице CLEAResult для 230V EU</a>. Уровень Ruby предназначен для резервируемых блоков центров обработки данных и в эту таблицу настольных ПК не входит: <a href="https://www.clearesult.com/80plus/" target="_blank" rel="noopener noreferrer">категории сертификации 80 PLUS</a>.</p>
+<p><strong>Что выбирать для обычного ПК?</strong> Начните с совместимости, достаточной мощности и качественной конкретной модели. Затем сравните КПД: Bronze может быть достаточен для недорогой сборки, Gold стоит рассмотреть при частой и длительной работе. Доплату оцените по потерям энергии и цене, а не только по названию сертификата. Сертификат КПД сам по себе не подтверждает качество всех защит, стабильность напряжений и тишину; для этого нужны испытания модели и её документация.</p>
+<p><strong>Как оценить нужную мощность:</strong></p>
+<ol class="content-list">
+  <li>Узнайте максимальное потребление CPU с учётом ускорения и лимитов мощности, а также потребление видеокарты целиком. Одного TDP CPU для этого недостаточно.</li>
+  <li>Добавьте потребление платы, RAM, накопителей, вентиляторов, помпы и подключённых устройств. Можно воспользоваться калькулятором производителя блока питания, указав точные компоненты.</li>
+  <li>Заложите запас для изменений нагрузки и планируемого обновления. Для предварительной учебной оценки можно взять 20–30%, но это не универсальная гарантия: важны кратковременные пики и требования оборудования.</li>
+  <li>Сверьте результат с рекомендацией производителя видеокарты для всей системы и проверьте выходные линии, нужные разъёмы и размеры блока. Выбирайте модель, которая выполняет все эти условия.</li>
+</ol>
+<p><strong>Условный расчёт:</strong> CPU 120 Вт + видеокарта 220 Вт + остальные компоненты 60 Вт = 400 Вт. С запасом 25% получаем 500 Вт. Если производитель выбранной видеокарты рекомендует для системы 650 Вт, ориентируемся на 650 Вт при проверке остальных условий. Это пример метода, а не рекомендация для любой сборки.</p>
+<p>Недостаток мощности или неисправность блока могут проявляться выключением под нагрузкой, но один такой симптом не доказывает причину. Нужно учитывать температуры и проверять оборудование. Класс 80 PLUS сам по себе не устраняет нехватку ватт.</p>
+
+</div>
+</section>
+<section id="motherboard">
+<h2>09 / Материнская плата</h2>
+<div class="section-content">
+
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/02/11-motherboard.jpg"
+      alt="Материнская плата."
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 12. Материнская плата.</figcaption>
+</figure>
+<p><a href="https://skfb.ly/6RDsX" target="_blank" rel="noopener noreferrer">Рассмотреть материнскую плату в 3D</a> · <a href="https://skfb.ly/puAJT" target="_blank" rel="noopener noreferrer">Открыть 3D-схему материнской платы</a></p>
+<p><strong>Материнская плата</strong> соединяет компоненты компьютера, обеспечивает пути обмена данными и распределяет питание. Часть устройств общается с CPU напрямую через дорожки платы, другая часть использует её дополнительные контроллеры.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Основные разъёмы материнской платы">
+  <table><caption class="visually-hidden">Основные разъёмы материнской платы</caption>
+    <thead><tr><th scope="col">Элемент</th><th scope="col">Для чего нужен</th><th scope="col">Что проверить</th></tr></thead><tbody><tr><td>Сокет CPU</td><td>Место установки и электрического подключения процессора</td><td>Тип сокета, список поддерживаемых CPU и требуемую версию BIOS/UEFI, встроенной программы запуска платы</td></tr>
+<tr><td>Слоты RAM</td><td>Подключение модулей оперативной памяти</td><td>Поколение DDR, допустимые объём и конфигурацию; DDR4 и DDR5 не взаимозаменяемы</td></tr>
+<tr><td>Слоты PCIe</td><td>Установка видеокарты и других плат расширения</td><td>Размер слота, число доступных линий связи и место в корпусе</td></tr>
+<tr><td>Разъёмы SATA</td><td>Передача данных к SATA SSD и HDD</td><td>Наличие свободного порта; питание накопителю обычно идёт отдельным кабелем</td></tr>
+<tr><td>Разъёмы M.2</td><td>Установка совместимых модулей, в том числе SSD</td><td>Размер модуля и поддержку SATA или PCIe/NVMe в конкретном разъёме</td></tr>
+<tr><td>Подключения питания</td><td>Подача энергии на плату и цепи питания CPU</td><td>Основной разъём платы обычно 24-контактный, питание CPU обычно 4/8-контактное; точный набор указан в руководстве</td></tr></tbody>
+  </table>
+</div>
+<p>Отдельная видеокарта получает часть питания через PCIe и при необходимости через собственные кабели от блока питания. Кабели питания CPU и видеокарты имеют разное назначение. При подключении сверяйтесь с маркировкой и руководством.</p>
+<aside class="special-block special-block--warning" aria-labelledby="motherboard-compatibility">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="motherboard-compatibility">Физически похожие детали могут не работать вместе</h3>
+  <div class="special-block__body"><p>Совпадение сокета CPU ещё не гарантирует поддержку: важны модель процессора и версия BIOS/UEFI. Для RAM нужно подходящее поколение. Для M.2 SSD нужен разъём с нужным интерфейсом. На некоторых платах установка M.2 отключает отдельные SATA-порты, потому что они делят ресурсы.</p><p>До покупки составьте список точных моделей и проверьте их совместимость по руководству платы, списку поддержки CPU и характеристикам корпуса и блока питания.</p></div>
+</aside>
+<p>При запуске программы накопитель отдаёт нужные данные в RAM, CPU выполняет инструкции, GPU готовит изображение, а материнская плата обеспечивает соединения. Блок питания снабжает всё энергией, охлаждение отводит тепло. Если одна часть ограничивает работу, более мощная другая часть не всегда решает проблему.</p>
+<p>Найдите на модели CPU с охлаждением, видеокарту, RAM, накопители, блок питания и материнскую плату. Проследите, что куда подключено: <a href="https://skfb.ly/6TVqA" target="_blank" rel="noopener noreferrer">компьютер с компонентами в 3D</a>.</p>
+
+</div>
+</section>
+<section id="user-comments">
+<h2>10 / Комментарии пользователей</h2>
+<div class="section-content">
+
+<p>Прочитайте учебные комментарии и определите, с каким компонентом связана проблема. Это может быть неисправность, нехватка ресурса или несовместимость. В первых пяти вопросах одна основная подсказка; в следующих пяти нужно связать несколько условий или различить две причины.</p>
+<p>Отметьте все подходящие варианты и нажмите «Ответить». Пояснения появятся под каждым вариантом. Для новой попытки нажмите «Сбросить». Порядок вариантов перемешивается; после перезагрузки страницы ответы не сохраняются.</p>
+<p>Опираться нужно на все условия комментария. В реальном компьютере один симптом может иметь несколько причин, поэтому здесь дополнительно приведены наблюдения и результаты проверок.</p>
+<aside class="special-block special-block--question" aria-labelledby="question-1">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 01 / Базовый</span></div>
+  <h3 class="special-block__title" id="question-1">Много открытых программ</h3>
+  <div class="special-block__body"><p>«Открыл браузер с десятками вкладок, редактор и видеозвонок. Со временем переключение окон стало зависать. После закрытия вкладок переключение между окнами снова быстрое».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-1">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q1-option-0">
+    <input class="visually-hidden" type="checkbox" id="q1-option-0" name="answers" value="0" aria-describedby="q1-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В описании нет признаков, что вычисления упираются в скорость ядер.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q1-option-1">
+    <input class="visually-hidden" type="checkbox" id="q1-option-1" name="answers" value="1" aria-describedby="q1-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проблема связана с объёмом рабочих данных нескольких программ, а не с рисованием кадров.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q1-option-2">
+    <input class="visually-hidden" type="checkbox" id="q1-option-2" name="answers" value="2" aria-describedby="q1-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Рабочие данные не помещаются в RAM. Улучшение после закрытия вкладок указывают на нехватку её объёма.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q1-option-3">
+    <input class="visually-hidden" type="checkbox" id="q1-option-3" name="answers" value="3" aria-describedby="q1-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проблема возникает при переключении окон, которые не взаимодействует с SSD.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q1-option-4">
+    <input class="visually-hidden" type="checkbox" id="q1-option-4" name="answers" value="4" aria-describedby="q1-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проблема возникает при переключении окон, которые не взаимодействует с HDD.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q1-option-5">
+    <input class="visually-hidden" type="checkbox" id="q1-option-5" name="answers" value="5" aria-describedby="q1-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Компьютер продолжает работать, а закрытие вкладок освобождает память; признаков проблемы питания нет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q1-option-6">
+    <input class="visually-hidden" type="checkbox" id="q1-option-6" name="answers" value="6" aria-describedby="q1-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q1-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нет сведений о несовместимых устройствах или неисправных разъёмах.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="question-2">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 02 / Базовый</span></div>
+  <h3 class="special-block__title" id="question-2">Один долгий расчёт</h3>
+  <div class="special-block__body"><p>«Программа выполняет расчёт, где каждый шаг ждёт результата предыдущего. Памяти хватает, обращения к накопителю почти нет, температуры нормальные. Сам расчёт всё равно занимает долгое время».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-2">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q2-option-0">
+    <input class="visually-hidden" type="checkbox" id="q2-option-0" name="answers" value="0" aria-describedby="q2-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Расчёт ограничен производительностью одного ядра CPU. Последовательные зависимости мешают распределить его на остальные ядра.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q2-option-1">
+    <input class="visually-hidden" type="checkbox" id="q2-option-1" name="answers" value="1" aria-describedby="q2-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Условие описывает последовательный расчёт, который программа выполняет на CPU; поддержка GPU не заявлена.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q2-option-2">
+    <input class="visually-hidden" type="checkbox" id="q2-option-2" name="answers" value="2" aria-describedby="q2-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По условию рабочей памяти хватает.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q2-option-3">
+    <input class="visually-hidden" type="checkbox" id="q2-option-3" name="answers" value="3" aria-describedby="q2-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Во время расчёта накопитель почти не используется.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q2-option-4">
+    <input class="visually-hidden" type="checkbox" id="q2-option-4" name="answers" value="4" aria-describedby="q2-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Во время расчёта накопитель почти не используется; механический поиск не ограничивает эту работу.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q2-option-5">
+    <input class="visually-hidden" type="checkbox" id="q2-option-5" name="answers" value="5" aria-describedby="q2-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Выключений и проблем подачи питания не описано.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q2-option-6">
+    <input class="visually-hidden" type="checkbox" id="q2-option-6" name="answers" value="6" aria-describedby="q2-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q2-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Все компоненты работают; указано, что каждый шаг ждёт результата предыдущего.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="question-3">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 03 / Базовый</span></div>
+  <h3 class="special-block__title" id="question-3">Красиво, но медленно</h3>
+  <div class="special-block__body"><p>«В игре при высоком разрешении картинка на экране часто зависает на очень короткое время, хотя у меня очень мощный процессор и много памяти. Если уменьшить разрешение, кадров становится заметно больше, зависания пропадают».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-3">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q3-option-0">
+    <input class="visually-hidden" type="checkbox" id="q3-option-0" name="answers" value="0" aria-describedby="q3-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По условию у пользователя мощный CPU, значит нет упора в инструкции.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q3-option-1">
+    <input class="visually-hidden" type="checkbox" id="q3-option-1" name="answers" value="1" aria-describedby="q3-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Уменьшение разрешения разгружает работу GPU, так как GPU нужно отрисовать сравнительно меньше пикселей, что приводит к увеличению количества кадров.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q3-option-2">
+    <input class="visually-hidden" type="checkbox" id="q3-option-2" name="answers" value="2" aria-describedby="q3-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Рабочей памяти по условию достаточно.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q3-option-3">
+    <input class="visually-hidden" type="checkbox" id="q3-option-3" name="answers" value="3" aria-describedby="q3-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Не описаны ни загрузка файлов, ни задержки доступа к SSD.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q3-option-4">
+    <input class="visually-hidden" type="checkbox" id="q3-option-4" name="answers" value="4" aria-describedby="q3-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Механический накопитель не объясняет зависимость частоты кадров от указанной загрузки графики.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q3-option-5">
+    <input class="visually-hidden" type="checkbox" id="q3-option-5" name="answers" value="5" aria-describedby="q3-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Система работает стабильно, а нагрузка ограничивает скорость рисования кадров.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q3-option-6">
+    <input class="visually-hidden" type="checkbox" id="q3-option-6" name="answers" value="6" aria-describedby="q3-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q3-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нет сведений о несовместимости или сбое соединений на плате.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="question-4">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 04 / Базовый</span></div>
+  <h3 class="special-block__title" id="question-4">Фотографиям некуда сохраняться</h3>
+  <div class="special-block__body"><p>«В компьютере единственное хранилище файлов: плоский накопитель 2,5 дюйма, подключённый кабелями данных и питания. При копировании фотографий система сообщает, что свободного места нет. Работающие программы переключаются нормально».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-4">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q4-option-0">
+    <input class="visually-hidden" type="checkbox" id="q4-option-0" name="answers" value="0" aria-describedby="q4-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Скорость выполнения инструкций не добавит места для файлов.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q4-option-1">
+    <input class="visually-hidden" type="checkbox" id="q4-option-1" name="answers" value="1" aria-describedby="q4-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Графический процессор не хранит фотоархив как обычные файлы.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q4-option-2">
+    <input class="visually-hidden" type="checkbox" id="q4-option-2" name="answers" value="2" aria-describedby="q4-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>RAM нужна работающим программам; её увеличение не расширит файловое хранилище.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q4-option-3">
+    <input class="visually-hidden" type="checkbox" id="q4-option-3" name="answers" value="3" aria-describedby="q4-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Описан SATA SSD, и на нём закончился свободный объём. Это нехватка места, а не доказанная поломка.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q4-option-4">
+    <input class="visually-hidden" type="checkbox" id="q4-option-4" name="answers" value="4" aria-describedby="q4-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По условию единственный накопитель это плоский накопитель 2,5 дюйма, поэтому это не HDD.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q4-option-5">
+    <input class="visually-hidden" type="checkbox" id="q4-option-5" name="answers" value="5" aria-describedby="q4-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Питание не определяет, сколько свободных гигабайтов осталось.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q4-option-6">
+    <input class="visually-hidden" type="checkbox" id="q4-option-6" name="answers" value="6" aria-describedby="q4-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q4-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Подключение работает: система видит накопитель и сообщает о заполнении.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="question-5">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 05 / Базовый</span></div>
+  <h3 class="special-block__title" id="question-5">Щелчки при открытии архива</h3>
+  <div class="special-block__body"><p>Раньше компьютер тихо гудел, а теперь при попытке прочитать файлы слышны щелчки, компьютер зависает и выдаёт ошибки чтения».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-5">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q5-option-0">
+    <input class="visually-hidden" type="checkbox" id="q5-option-0" name="answers" value="0" aria-describedby="q5-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У CPU нет механических деталей, которые могут издавать щёлкающие звуки во время работы.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q5-option-1">
+    <input class="visually-hidden" type="checkbox" id="q5-option-1" name="answers" value="1" aria-describedby="q5-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Ошибки чтения файлов не относятся к обработке графики.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q5-option-2">
+    <input class="visually-hidden" type="checkbox" id="q5-option-2" name="answers" value="2" aria-describedby="q5-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У RAM нет механических деталей, которые могут издавать щёлкающие звуки во время работы.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q5-option-3">
+    <input class="visually-hidden" type="checkbox" id="q5-option-3" name="answers" value="3" aria-describedby="q5-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У SSD нет механических деталей, которые могут издавать щёлкающие звуки во время работы.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q5-option-4">
+    <input class="visually-hidden" type="checkbox" id="q5-option-4" name="answers" value="4" aria-describedby="q5-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Описана механика HDD. Новые щелчки вместе с ошибками чтения указывают на возможную неисправность этого накопителя.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q5-option-5">
+    <input class="visually-hidden" type="checkbox" id="q5-option-5" name="answers" value="5" aria-describedby="q5-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Условие не связывает сбой с общей нагрузкой по питанию.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q5-option-6">
+    <input class="visually-hidden" type="checkbox" id="q5-option-6" name="answers" value="6" aria-describedby="q5-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q5-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нет сведений о сбое разъёма.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="question-6">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 06 / Посложнее</span></div>
+  <h3 class="special-block__title" id="question-6">Выключение только под нагрузкой</h3>
+  <div class="special-block__body"><p>«После установки более мощной видеокарты компьютер выключается, когда одновременно сильно нагружены CPU и GPU. Температуры нормальные. В сервисе сказали, что блок питания исправный».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-6">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q6-option-0">
+    <input class="visually-hidden" type="checkbox" id="q6-option-0" name="answers" value="0" aria-describedby="q6-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заявлено, что проблема наблюдается при одновременной сильной нагрузке. Следовательно, обычная работа CPU не выключает компьютер.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q6-option-1">
+    <input class="visually-hidden" type="checkbox" id="q6-option-1" name="answers" value="1" aria-describedby="q6-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заявлено, что проблема наблюдается при одновременной сильной нагрузке. Следовательно, обычная работа GPU не выключает компьютер.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q6-option-2">
+    <input class="visually-hidden" type="checkbox" id="q6-option-2" name="answers" value="2" aria-describedby="q6-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Неисправный RAM не может приводить к полному выключению компьютера.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q6-option-3">
+    <input class="visually-hidden" type="checkbox" id="q6-option-3" name="answers" value="3" aria-describedby="q6-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нет признаков ошибок чтения SSD.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q6-option-4">
+    <input class="visually-hidden" type="checkbox" id="q6-option-4" name="answers" value="4" aria-describedby="q6-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нет признаков механической неисправности или ошибок чтения.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q6-option-5">
+    <input class="visually-hidden" type="checkbox" id="q6-option-5" name="answers" value="5" aria-describedby="q6-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По описанию видно, что проблема возникает при повышенной нагрузке, что требует дополнительной мощности, которая отсутствует у блока питания.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q6-option-6">
+    <input class="visually-hidden" type="checkbox" id="q6-option-6" name="answers" value="6" aria-describedby="q6-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q6-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По описанию можно предположить, что материнская плата работает исправно при средней нагрузке.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="question-7">
+  <div class="special-block__header"><span class="special-block__label">Вопрос 07 / Посложнее</span></div>
+  <h3 class="special-block__title" id="question-7">Рабочие планки</h3>
+  <div class="special-block__body"><p>«Текущий компьютер не видит один модуль памяти из 2, хотя они одинаковые. При подключении только одного модуля памяти замечено, что модуль не работает. При подключении другого модуля памяти в тот же слот было то же самое».</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="question-7">
+  <fieldset><legend>Выберите все подходящие компоненты, в которых проблема.</legend>
+    <div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q7-option-0">
+    <input class="visually-hidden" type="checkbox" id="q7-option-0" name="answers" value="0" aria-describedby="q7-feedback-0" />
+    <span>CPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-0" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Про CPU ничего не сказано, поэтому исключаем этот вариант.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q7-option-1">
+    <input class="visually-hidden" type="checkbox" id="q7-option-1" name="answers" value="1" aria-describedby="q7-feedback-1" />
+    <span>GPU</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Графика в проверке не участвует.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q7-option-2">
+    <input class="visually-hidden" type="checkbox" id="q7-option-2" name="answers" value="2" aria-describedby="q7-feedback-2" />
+    <span>RAM</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По описанию видно, что планки одинаковые, а когда подключены оба, то как минимум работает 1. Следовательно, модули памяти рабочие.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q7-option-3">
+    <input class="visually-hidden" type="checkbox" id="q7-option-3" name="answers" value="3" aria-describedby="q7-feedback-3" />
+    <span>SSD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>SSD в описанной проверке не участвуют.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q7-option-4">
+    <input class="visually-hidden" type="checkbox" id="q7-option-4" name="answers" value="4" aria-describedby="q7-feedback-4" />
+    <span>HDD</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>HDD не участвует в описанной проверке.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="q7-option-5">
+    <input class="visually-hidden" type="checkbox" id="q7-option-5" name="answers" value="5" aria-describedby="q7-feedback-5" />
+    <span>Блок питания</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По описанию при подключении двух модулей памяти компьютер работает, но не видит второй модуль памяти.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="q7-option-6">
+    <input class="visually-hidden" type="checkbox" id="q7-option-6" name="answers" value="6" aria-describedby="q7-feedback-6" />
+    <span>Материнская плата</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="q7-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Слоты RAM находятся на материнской плате. Видно, что при подключении разных модулей памяти в один и тот же слот, модули не работали, что указывает на проблему слотов RAM материнской платы.</p></div></div>
+</div></div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+</div>
+</section>
+    </main>
+    <div
+      id="copy-status"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </body>
+</html>

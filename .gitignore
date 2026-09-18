@@ -1,0 +1,10 @@
+.venv
+/lessons/**/rubric.md
+/lessons/**/gold-standard
+/lessons/**/tests
+/lessons/**/_grading
+checklist.md
+.agents
+AGENTS.md
+students/*
+scripts/*

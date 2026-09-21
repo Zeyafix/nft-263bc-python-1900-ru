@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Практика Windows 11: создание папок и текстовых файлов, скриншоты, ZIP-архивы и отправка домашнего задания в MyStat."
+    />
+    <title>04 - Working with Windows OS</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">04 - Working with Windows OS</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="files-and-folders">
+<h2>01 / Работа с папками и txt-файлами</h2>
+<div class="section-content">
+<p>Теперь соберём результат работы: текстовый файл и скриншот в одной папке, затем архив для отправки. На паре используйте папку <code>Practice04</code>. Для домашнего задания будет отдельная папка <code>HW04</code>.</p><ol class="content-list">
+<li>Нажмите <strong>Win + E</strong>. Откройте «Документы» и папку курса <code>Python Bootcamp</code>. Если её ещё нет, создайте её через <strong>«Создать» → «Папку»</strong>.</li>
+<li>Внутри папки курса нажмите <strong>Ctrl + Shift + N</strong>, введите <code>Practice04</code> и нажмите <strong>Enter</strong>. Откройте новую папку двойным щелчком.</li>
+<li>Включите расширения: <strong>«Просмотреть» → «Показать» → «Расширения имён файлов»</strong>.</li>
+<li>Щёлкните правой кнопкой по свободному месту, выберите <strong>«Создать» → «Текстовый документ»</strong>. Задайте полное имя <code>notes.txt</code>. Если Windows выделила только основу имени, замените её на <code>notes</code>, сохранив конечное <code>.txt</code>.</li>
+<li>Дважды щёлкните по <code>notes.txt</code>. Если открылось другое приложение, используйте <strong>«Открыть с помощью» → «Блокнот»</strong>. Напишите две строки: что Вы создали и где находится файл.</li>
+<li>Нажмите <strong>Ctrl + S</strong>, закройте вкладку с файлом и откройте <code>notes.txt</code> снова из Проводника. Убедитесь, что текст сохранился.</li>
+</ol><aside class="special-block special-block--tip" aria-labelledby="notepad-save">
+  <div class="special-block__header"><span class="special-block__label">Подсказка</span></div>
+  <h3 class="special-block__title" id="notepad-save">Если нет пункта «Текстовый документ»</h3>
+  <div class="special-block__body"><p>Откройте Блокнот через «Пуск», напишите текст и выберите <strong>«Файл» → «Сохранить как»</strong>. В диалоге перейдите в <code>Practice04</code>, укажите имя <code>notes.txt</code>, тип <strong>«Текстовые документы (*.txt)»</strong> и кодировку <strong>UTF-8</strong>. После сохранения проверьте в Проводнике, что имя ровно <code>notes.txt</code>, без второго <code>.txt</code>.</p></div>
+</aside><p>Чтобы изменить файл, снова откройте его, дополните текст и нажмите <strong>Ctrl + S</strong>. Блокнот может восстанавливать несохранённые вкладки после закрытия, поэтому наличие текста в его окне ещё не подтверждает сохранение. Проверяйте сам файл, открывая его по нужному пути.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Частые горячие клавиши для файлов и папок">
+<table><caption class="visually-hidden">Частые горячие клавиши для файлов и папок</caption>
+<thead><tr><th scope="col">Клавиши</th><th scope="col">Где и для чего</th></tr></thead>
+<tbody><tr><td><strong>Win + E</strong></td><td>Открыть Проводник.</td></tr><tr><td><strong>Ctrl + Shift + N</strong></td><td>В Проводнике создать папку.</td></tr><tr><td><strong>F2</strong></td><td>В Проводнике переименовать выделенный файл или папку. Проверяйте расширение файла.</td></tr><tr><td><strong>Ctrl + C</strong></td><td>Скопировать выделенные файлы или выделенный текст.</td></tr><tr><td><strong>Ctrl + X</strong></td><td>Вырезать выделенные файлы для переноса или выделенный текст.</td></tr><tr><td><strong>Ctrl + V</strong></td><td>Вставить скопированное или вырезанное в текущую папку либо в текст.</td></tr><tr><td><strong>Ctrl + A</strong></td><td>Выделить все элементы папки; в редакторе выделить весь текст.</td></tr><tr><td><strong>Ctrl + S</strong></td><td>В редакторе сохранить изменения файла.</td></tr><tr><td><strong>Ctrl + Z</strong></td><td>Отменить последнее действие, если приложение поддерживает отмену.</td></tr><tr><td><strong>Delete</strong></td><td>В Проводнике удалить выделенное. На локальном диске оно обычно попадает в Корзину; для флешек и сетевых расположений это не гарантируется.</td></tr><tr><td><strong>Ctrl + L</strong></td><td>В Проводнике выделить адресную строку.</td></tr><tr><td><strong>Alt + ↑</strong> / <strong>Alt + ←</strong></td><td>В Проводнике перейти в родительскую папку / назад по истории.</td></tr></tbody></table></div><p><strong>Копирование</strong> оставляет исходный файл и создаёт ещё один в месте вставки. <strong>Перемещение</strong> переносит файл: после успешной вставки его больше нет в прежней папке. Чтобы перенести файл предсказуемо, используйте <strong>Ctrl + X</strong>, откройте папку назначения и нажмите <strong>Ctrl + V</strong>.</p>
+</div>
+</section>
+<section id="screenshots">
+<h2>02 / Скриншот как способ показать результат</h2>
+<div class="section-content">
+<p><strong>Скриншот</strong> является изображением того, что было видно на экране. Он помогает показать преподавателю результат, команду или сообщение об ошибке. Скриншот текста не заменяет сам <code>.txt</code>: текстовый файл можно открыть, скопировать и изменить.</p><ol class="content-list">
+<li>Покажите результат на экране. Для тренировки откройте сохранённый <code>notes.txt</code> в Блокноте так, чтобы текст читался.</li>
+<li>Нажмите <strong>Win + Shift + S</strong> и выделите область с нужным окном. Захватите заголовок и результат, оставив текст достаточно крупным.</li>
+<li>Нажмите уведомление о снимке, чтобы открыть его в <strong>«Ножницах»</strong>. Если уведомление пропало, откройте «Ножницы» через «Пуск» и при необходимости сделайте снимок кнопкой «Создать».</li>
+<li>В «Ножницах» нажмите <strong>Ctrl + S</strong> или кнопку сохранения, выберите папку <code>Practice04</code> и имя <code>screenshot.png</code>. Выберите формат PNG и сохраните.</li>
+<li>В Проводнике убедитесь, что в <code>Practice04</code> лежат <code>notes.txt</code> и <code>screenshot.png</code>. Откройте картинку и проверьте читаемость.</li>
+</ol><p>Автоматические снимки обычно находятся в <strong>«Изображения» → «Снимки экрана»</strong>. Папка может быть перенесена в OneDrive, а место и автоматическое сохранение «Ножниц» можно изменить в их настройках. Поэтому при выполнении задания явно выбирайте нужную папку при сохранении.</p><p>Если <code>notes.txt</code> или снимок уже находятся в другой папке, выделите нужный файл, нажмите <strong>Ctrl + X</strong>, откройте <code>Practice04</code> и нажмите <strong>Ctrl + V</strong>. Повторите для второго файла. Не вставляйте изображение в Блокнот: картинка должна лежать рядом отдельным файлом.</p><aside class="special-block special-block--tip" aria-labelledby="copy-terminal">
+  <div class="special-block__header"><span class="special-block__label">На практике</span></div>
+  <h3 class="special-block__title" id="copy-terminal">Как скопировать текст из терминала</h3>
+  <div class="special-block__body"><p>В Windows Terminal откройте PowerShell и выполните команду ниже. Мышью выделите только строку результата, затем нажмите <strong>Ctrl + Shift + C</strong>. В Блокноте нажмите <strong>Ctrl + V</strong> и сохраните файл через <strong>Ctrl + S</strong>. Для вставки команды в Windows Terminal используйте <strong>Ctrl + Shift + V</strong>.</p><div class="code-example"><div class="code-example__header"><span>PowerShell: результат для тренировки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: результат для тренировки">Копировать</button></div>
+<pre tabindex="0"><code>echo &quot;Practice04 completed&quot;</code></pre><div class="code-example__output"><div class="code-example__output-title">Результат</div><pre tabindex="0" aria-label="Результат примера: PowerShell: результат для тренировки">Practice04 completed</pre></div></div><p>Команда выводит строку без изменения файлов. На домашнем задании таким же способом скопируйте свой результат и сделайте скриншот терминала.</p></div>
+</aside>
+</div>
+</section>
+<section id="archives">
+<h2>03 / Архивация и разархивация</h2>
+<div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="archive-definition">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="archive-definition">Архив</h3>
+  <div class="special-block__body"><p><strong>Архив</strong> объединяет файлы и папки в один файл, например <code>Practice04.zip</code>, сохраняя их имена и вложенность. Это удобно для передачи целой работы. При архивации данные также могут сжиматься, но размер не всегда заметно уменьшается: изображения часто уже сжаты.</p></div>
+</aside><p>Для этих заданий используем формат <strong>ZIP</strong>. Windows умеет создавать и распаковывать его встроенными средствами. Архив является отдельным файлом: создание архива не удаляет исходную папку и не превращает её в архив.</p><ol class="content-list">
+<li>Сохраните текст и проверьте, что в <code>Practice04</code> лежат оба готовых файла.</li>
+<li>Поднимитесь в родительскую папку <code>Python Bootcamp</code> и выделите саму папку <code>Practice04</code>.</li>
+<li>Нажмите правой кнопкой и выберите <strong>«Сжать в ZIP-файл»</strong> или <strong>«Сжать в…» → «ZIP-файл»</strong>, если такой пункт есть. Другой путь: <strong>«Показать дополнительные параметры» → «Отправить» → «Сжатая ZIP-папка»</strong>. Названия зависят от версии и языка Windows.</li>
+<li>Рядом появится <code>Practice04.zip</code>. Проверьте расширение <code>.zip</code>. Этот файл можно прикрепить к заданию.</li>
+</ol><p><strong>Разархивировать</strong> означает извлечь файлы и папки из архива в обычную папку, чтобы работать с ними. Двойной щелчок по ZIP показывает содержимое в Проводнике, но сам просмотр ещё не извлекает всю работу.</p><ol class="content-list">
+<li>Нажмите правой кнопкой по <code>Practice04.zip</code> и выберите <strong>«Извлечь всё…»</strong>.</li>
+<li>Выберите отдельную папку для проверки, например <code>Practice04-check</code> рядом с архивом. Нажмите <strong>«Извлечь»</strong>.</li>
+<li>Откройте извлечённую папку <code>Practice04</code> внутри <code>Practice04-check</code>. Найдите <code>notes.txt</code> и <code>screenshot.png</code>, откройте их и сравните с исходными.</li>
+<li>Если в архиве не хватает файла или лежит старая версия, сохраните изменения в исходной папке и создайте новый ZIP. Существующий архив сам по себе не обновляется при редактировании исходников.</li>
+</ol><div class="code-example"><div class="code-example__header"><span>Результат упаковки и проверки (не команда)</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Результат упаковки и проверки (не команда)">Копировать</button></div>
+<pre tabindex="0"><code>Python Bootcamp\
+├── Practice04\
+│   ├── notes.txt
+│   └── screenshot.png
+├── Practice04.zip
+└── Practice04-check\
+    └── Practice04\
+        ├── notes.txt
+        └── screenshot.png</code></pre></div>
+</div>
+</section>
+<section id="homework">
+<h2>04 / Домашние Задания</h2>
+<div class="section-content">
+<figure class="image-block"><div class="image-block__frame"><img src="https://zeyafix.github.io/pbv3-assets/img/lessons/01/06-hw-implement.png" alt="Раздел Домашние задания в MyStat, вкладка К выполнению и область отправки работы" loading="lazy" decoding="async" /></div><figcaption>Рис. 1. Домашние задания — К выполнению</figcaption></figure><p>В MyStat откройте раздел <strong>"Домашние задания"</strong>, перейдите во вкладку <strong>"К выполнению"</strong>. Нажмите на карточку с Домашним Заданием. В правой части указано описание задачи. Если преподаватель прикрепил файл, то через кнопку <strong>"Открыть задачу"</strong> Вы сможете скачать этот файл.</p><p>После того, как Вы выполнили Домашнее Задание, можете перетянуть архив в область <strong>"Отправить на проверку"</strong>, либо нажать на кнопку <strong>"Выберите файл"</strong>, а затем выбрать архив. В будущем Вы будете отправлять ссылки на свои репозитории в текстовую область.</p>
+</div>
+</section>
+    </main>
+    <div
+      id="copy-status"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </body>
+</html>

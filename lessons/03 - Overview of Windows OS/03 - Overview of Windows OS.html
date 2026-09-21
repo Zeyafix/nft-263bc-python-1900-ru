@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Операционная система Windows 11, Проводник, расширения, пути и первые команды PowerShell. Вопросы для повторения и самопроверки."
+    />
+    <title>03 - Overview of Windows OS</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">03 - Overview of Windows OS</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="review">
+<h2>01 / Повторение пройденного</h2>
+<div class="section-content">
+<p>Вспомните компоненты компьютера. Прочитайте назначение и выберите подходящий компонент. Кнопка «Сбросить» позволит попробовать ещё раз.</p><aside class="special-block special-block--question" aria-labelledby="review-1">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-1">Соединяет компоненты компьютера и обеспечивает обмен данными между ними.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-1">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-1-option-1"><input class="visually-hidden" id="review-1-option-1" type="radio" name="review-1-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-2"><input class="visually-hidden" id="review-1-option-2" type="radio" name="review-1-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-3"><input class="visually-hidden" id="review-1-option-3" type="radio" name="review-1-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-4"><input class="visually-hidden" id="review-1-option-4" type="radio" name="review-1-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-5"><input class="visually-hidden" id="review-1-option-5" type="radio" name="review-1-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-6"><input class="visually-hidden" id="review-1-option-6" type="radio" name="review-1-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-7"><input class="visually-hidden" id="review-1-option-7" type="radio" name="review-1-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-1-option-8"><input class="visually-hidden" id="review-1-option-8" type="radio" name="review-1-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-2">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-2">Хранит файлы после выключения питания, используя микросхемы памяти без движущихся частей.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-2">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-1"><input class="visually-hidden" id="review-2-option-1" type="radio" name="review-2-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-2-option-2"><input class="visually-hidden" id="review-2-option-2" type="radio" name="review-2-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-3"><input class="visually-hidden" id="review-2-option-3" type="radio" name="review-2-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-4"><input class="visually-hidden" id="review-2-option-4" type="radio" name="review-2-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-5"><input class="visually-hidden" id="review-2-option-5" type="radio" name="review-2-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-6"><input class="visually-hidden" id="review-2-option-6" type="radio" name="review-2-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-7"><input class="visually-hidden" id="review-2-option-7" type="radio" name="review-2-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-2-option-8"><input class="visually-hidden" id="review-2-option-8" type="radio" name="review-2-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-3">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-3">Отвечает за охлаждение "мозга" компьютера.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-3">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-1"><input class="visually-hidden" id="review-3-option-1" type="radio" name="review-3-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-2"><input class="visually-hidden" id="review-3-option-2" type="radio" name="review-3-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-3-option-3"><input class="visually-hidden" id="review-3-option-3" type="radio" name="review-3-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-4"><input class="visually-hidden" id="review-3-option-4" type="radio" name="review-3-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-5"><input class="visually-hidden" id="review-3-option-5" type="radio" name="review-3-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-6"><input class="visually-hidden" id="review-3-option-6" type="radio" name="review-3-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-7"><input class="visually-hidden" id="review-3-option-7" type="radio" name="review-3-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-3-option-8"><input class="visually-hidden" id="review-3-option-8" type="radio" name="review-3-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-4">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-4">Временно хранит данные работающих программ; при отключении питания её содержимое теряется.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-4">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-1"><input class="visually-hidden" id="review-4-option-1" type="radio" name="review-4-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-2"><input class="visually-hidden" id="review-4-option-2" type="radio" name="review-4-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-3"><input class="visually-hidden" id="review-4-option-3" type="radio" name="review-4-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-4-option-4"><input class="visually-hidden" id="review-4-option-4" type="radio" name="review-4-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-5"><input class="visually-hidden" id="review-4-option-5" type="radio" name="review-4-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-6"><input class="visually-hidden" id="review-4-option-6" type="radio" name="review-4-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-7"><input class="visually-hidden" id="review-4-option-7" type="radio" name="review-4-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-4-option-8"><input class="visually-hidden" id="review-4-option-8" type="radio" name="review-4-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-5">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-5">Выполняет инструкции программ, расчёты и логические операции общего назначения.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-5">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-1"><input class="visually-hidden" id="review-5-option-1" type="radio" name="review-5-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-2"><input class="visually-hidden" id="review-5-option-2" type="radio" name="review-5-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-3"><input class="visually-hidden" id="review-5-option-3" type="radio" name="review-5-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-4"><input class="visually-hidden" id="review-5-option-4" type="radio" name="review-5-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-5-option-5"><input class="visually-hidden" id="review-5-option-5" type="radio" name="review-5-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-6"><input class="visually-hidden" id="review-5-option-6" type="radio" name="review-5-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-7"><input class="visually-hidden" id="review-5-option-7" type="radio" name="review-5-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-5-option-8"><input class="visually-hidden" id="review-5-option-8" type="radio" name="review-5-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-6">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-6">Преобразует электричество из розетки в питание с нужными для компонентов напряжениями.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-6">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-1"><input class="visually-hidden" id="review-6-option-1" type="radio" name="review-6-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-2"><input class="visually-hidden" id="review-6-option-2" type="radio" name="review-6-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-3"><input class="visually-hidden" id="review-6-option-3" type="radio" name="review-6-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-4"><input class="visually-hidden" id="review-6-option-4" type="radio" name="review-6-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-5"><input class="visually-hidden" id="review-6-option-5" type="radio" name="review-6-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-6-option-6"><input class="visually-hidden" id="review-6-option-6" type="radio" name="review-6-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-7"><input class="visually-hidden" id="review-6-option-7" type="radio" name="review-6-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-6-option-8"><input class="visually-hidden" id="review-6-option-8" type="radio" name="review-6-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-7">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-7">Хранит файлы после выключения питания на вращающихся магнитных пластинах.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-7">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-1"><input class="visually-hidden" id="review-7-option-1" type="radio" name="review-7-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-2"><input class="visually-hidden" id="review-7-option-2" type="radio" name="review-7-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-3"><input class="visually-hidden" id="review-7-option-3" type="radio" name="review-7-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-4"><input class="visually-hidden" id="review-7-option-4" type="radio" name="review-7-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-5"><input class="visually-hidden" id="review-7-option-5" type="radio" name="review-7-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-6"><input class="visually-hidden" id="review-7-option-6" type="radio" name="review-7-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-7-option-7"><input class="visually-hidden" id="review-7-option-7" type="radio" name="review-7-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-7-option-8"><input class="visually-hidden" id="review-7-option-8" type="radio" name="review-7-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="review-8">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-8">Обрабатывает графику и выполняет много похожих вычислений параллельно, помогая формировать изображение.</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-8">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-1"><input class="visually-hidden" id="review-8-option-1" type="radio" name="review-8-answers" value="1" /><span>Материнская плата</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-2"><input class="visually-hidden" id="review-8-option-2" type="radio" name="review-8-answers" value="2" /><span>SSD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-3"><input class="visually-hidden" id="review-8-option-3" type="radio" name="review-8-answers" value="3" /><span>Кулер CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-4"><input class="visually-hidden" id="review-8-option-4" type="radio" name="review-8-answers" value="4" /><span>RAM</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-5"><input class="visually-hidden" id="review-8-option-5" type="radio" name="review-8-answers" value="5" /><span>CPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-6"><input class="visually-hidden" id="review-8-option-6" type="radio" name="review-8-answers" value="6" /><span>Блок питания</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-8-option-7"><input class="visually-hidden" id="review-8-option-7" type="radio" name="review-8-answers" value="7" /><span>HDD</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-8-option-8"><input class="visually-hidden" id="review-8-option-8" type="radio" name="review-8-answers" value="8" /><span>GPU</span><span class="quiz-option__state-label visually-hidden"></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside>
+</div>
+</section>
+<section id="operating-system">
+<h2>02 / Зачем нужна операционная система</h2>
+<div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="os-definition">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="os-definition">Операционная система</h3>
+  <div class="special-block__body"><p><strong>Операционная система (ОС)</strong> управляет устройствами и ресурсами компьютера и предоставляет программам общие способы работы с ними. Она помогает запускать программы, получать ввод с клавиатуры и мыши, хранить и открывать файлы. ОС сама по себе тоже считается программой.</p></div>
+</aside><p>Компоненты сами по себе не знают, что Вы хотите написать заметку. Программа «Блокнот» умеет работать с текстом, а ОС помогает ей получить память, прочитать файл и показать результат на экране. Благодаря этому разработчику Блокнота не нужно отдельно управлять каждой моделью SSD или клавиатуры.</p>
+<table><caption class="visually-hidden">Как ОС управляет ресурсами</caption>
+<thead><tr><th scope="col">Ресурс</th><th scope="col">Что делает ОС</th></tr></thead>
+<tbody><tr><td>Время CPU</td><td>Распределяет время выполнения между работающими программами. Поэтому можно слушать музыку и печатать текст одновременно.</td></tr><tr><td>RAM</td><td>Выделяет память программам и освобождает её, когда она больше не нужна. Память компьютера ограничена.</td></tr><tr><td>Накопитель</td><td>Организует чтение и запись файлов, проверяет доступ к ним.</td></tr><tr><td>Устройства</td><td>Через драйверы взаимодействует с графикой, клавиатурой, мышью и другими устройствами. Драйвер помогает ОС работать с конкретным оборудованием.</td></tr></tbody></table>
+<p><strong>Windows 11</strong> является одной из операционных систем. Есть и другие: Linux, macOS, Android, iOS. В этом уроке будем работать в Windows 11, но понятия файла, папки и программы встречаются и в других ОС.</p><p>В графическом интерфейсе Windows программы показывают содержимое в <strong>окнах</strong>. Окно можно переместить, свернуть, развернуть или закрыть. Свёрнутое окно исчезает с рабочего стола, но программа обычно продолжает работать. Папки помогают упорядочить файлы, а Проводник показывает их в своём окне. <strong>Окно и папка не одно и то же:</strong> закрыв окно Проводника, Вы не удалите папку.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Как ОС управляет ресурсами"></div><aside class="special-block special-block--tip" aria-labelledby="open-txt">
+  <div class="special-block__header"><span class="special-block__label">На практике</span></div>
+  <h3 class="special-block__title" id="open-txt">Что происходит при открытии notes.txt?</h3>
+  <div class="special-block__body"><p>Представим, что файл уже сохранён на SSD, а для расширения .txt выбран Блокнот. Это упрощённая последовательность:</p><ol class="content-list">
+<li>Вы дважды щёлкаете по <code>notes.txt</code> в Проводнике. Мышь передаёт действие компьютеру, Windows обрабатывает его.</li>
+<li>Windows определяет программу открытия для <code>.txt</code> и запускает Блокнот или передаёт файл уже работающему Блокноту.</li>
+<li>Блокнот обращается к ОС за содержимым файла. Данные читаются с SSD в RAM; если файл хранится на HDD, чтение идёт с HDD.</li>
+<li>CPU выполняет инструкции ОС и Блокнота. Блокнот подготавливает текст для показа, графическая подсистема с GPU помогает вывести окно на монитор.</li>
+<li>Когда Вы меняете текст, программа держит изменения в памяти. Команда «Сохранить» записывает их в файл на накопителе.</li>
+</ol><p>Материнская плата соединяет компоненты, блок питания снабжает их электричеством, а кулер CPU отводит тепло. Они поддерживают работу компьютера на всех этих шагах.</p></div>
+</aside>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/03/01-os-txt.png"
+      alt="Схема взаимодействия Windows, Блокнота и компонентов компьютера при открытии и сохранении текстового файла"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 1. Открытие и сохранение текстового файла</figcaption>
+</figure>
+<p><a href="https://excalidraw.com/#json=Pg88WwdmOAPRwyoJooxPJ,S11IU3n8aSnSu6Qz-JTbpA" target="_blank" rel="noopener noreferrer">Открыть исходную схему в Excalidraw</a>.</p>
+</div>
+</section>
+<section id="explorer">
+<h2>03 / Файлы, папки и Проводник</h2>
+<div class="section-content">
+<p><strong>Проводник</strong> является программой для просмотра файлов и папок. Откройте его сочетанием <strong>Win + E</strong> или нажмите значок папки на панели задач. Клавиша Win обычно отмечена логотипом Windows.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Основные понятия файловой системы">
+<table><caption class="visually-hidden">Основные понятия файловой системы</caption>
+<thead><tr><th scope="col">Понятие</th><th scope="col">Объяснение и пример</th></tr></thead>
+<tbody><tr><td>Файл</td><td>Данные, сохранённые под именем: текст <code>notes.txt</code>, фотография <code>photo.jpg</code> или программа. У файла есть размер и место хранения.</td></tr><tr><td>Папка</td><td>Место для группировки файлов и других папок. Например, в папке <code>Lesson03</code> лежат материалы одной пары.</td></tr><tr><td>Вложенность</td><td>Папка может находиться внутри другой папки. <code>Lesson03</code> внутри <code>Python Bootcamp</code> является её вложенной папкой, а <code>Python Bootcamp</code> является родительской.</td></tr><tr><td>Корень диска</td><td>Верхний уровень файлов и папок на диске. Например, <code>C:\</code>. Выше корня в пределах этого диска подняться нельзя.</td></tr></tbody></table></div><aside class="special-block special-block--warning" aria-labelledby="drive-letters">
+  <div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+  <h3 class="special-block__title" id="drive-letters">Буква диска не равна отдельному накопителю</h3>
+  <div class="special-block__body"><p>В Проводнике Вы можете увидеть <code>C:</code> и <code>D:</code>. Они могут обозначать два раздела одного физического SSD или разные накопители. Букву также может получить флешка или подключённый сетевой ресурс. По числу букв нельзя определить число физических накопителей.</p></div>
+</aside><p><strong>Адресная строка</strong> сверху показывает текущее расположение. Нажмите <strong>Ctrl + L</strong>, чтобы увидеть и выделить путь к обычной папке, ввести другой путь или скопировать адрес. «Главная» и «Этот компьютер» являются обзорными представлениями Проводника; у них нет обычного пути вида <code>C:\папка</code>.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Навигация в Проводнике">
+</div>
+</div>
+</section>
+<section id="extensions">
+<h2>04 / Имя, расширение и программа открытия</h2>
+<div class="section-content">
+<p>В имени <code>notes.txt</code> часть <code>notes</code> помогает человеку понять назначение файла, а <code>.txt</code> является <strong>расширением</strong>. Расширение обычно записывают после последней точки. Оно подсказывает предполагаемый тип файла и помогает Windows выбрать программу для открытия.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Имя, расширение и программа">
+<table><caption class="visually-hidden">Имя, расширение и программа</caption>
+<thead><tr><th scope="col">Полное имя</th><th scope="col">Расширение</th><th scope="col">Что обычно внутри</th><th scope="col">Чем работать</th></tr></thead>
+<tbody><tr><td><code>notes.txt</code></td><td><code>.txt</code></td><td>Обычный текст</td><td>Блокнот или другой текстовый редактор</td></tr><tr><td><code>photo.jpg</code></td><td><code>.jpg</code></td><td>Изображение в формате JPEG</td><td>Фотографии или другой просмотрщик изображений</td></tr><tr><td><code>main.py</code></td><td><code>.py</code></td><td>Текст программы на Python</td><td>Редактор для изменения кода; интерпретатор Python для выполнения</td></tr><tr><td><code>homework.zip</code></td><td><code>.zip</code></td><td>Архив с файлами и папками</td><td>Проводник или программа для архивов</td></tr></tbody></table></div><p>Один тип файла могут поддерживать разные программы. Двойной щелчок использует назначенную программу, а пункт <strong>«Открыть с помощью»</strong> в контекстном меню позволяет выбрать другую. Для <code>main.py</code> действие зависит от установленного ПО и настроек. Переименование файла в <code>.py</code> само по себе не устанавливает Python.</p><ol class="content-list">
+<li>Откройте Проводник.</li>
+<li>На верхней панели выберите <strong>«Просмотреть» → «Показать» → «Расширения имён файлов»</strong> (в английском интерфейсе <strong>View → Show → File name extensions</strong>).</li>
+<li>Убедитесь, что теперь видно полное имя, например <code>notes.txt</code>. Оставьте расширения включёнными для следующих заданий.</li>
+</ol>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/03/02-extensions.png"
+      alt="Проводник Windows 11: включение расширений имён файлов через меню «Просмотреть» → «Показать»"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 2. Включение расширений имён файлов в Проводнике</figcaption>
+</figure>
+<aside class="special-block special-block--warning" aria-labelledby="rename-format">
+  <div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+  <h3 class="special-block__title" id="rename-format">Новое имя не меняет содержимое</h3>
+  <div class="special-block__body"><p>Если переименовать <code>notes.txt</code> в <code>notes.jpg</code>, внутри останется тот же текст. Просмотрщик изображений может сообщить об ошибке, потому что ожидает данные JPEG. Для смены формата нужна программа, которая действительно преобразует и сохраняет данные в другом формате.</p></div>
+</aside><aside class="special-block special-block--warning" aria-labelledby="double-extension">
+  <div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+  <h3 class="special-block__title" id="double-extension">Почему получилось main.py.txt?</h3>
+  <div class="special-block__body"><p>Если расширения скрыты, файл <code>main.py.txt</code> может отображаться как <code>main.py</code>. Его последнее расширение всё ещё <code>.txt</code>. Такое бывает, когда текстовый редактор добавляет расширение автоматически или при переименовании меняют только видимую часть имени.</p><p>Сначала включите расширения. Если внутри действительно текст программы Python и файл должен называться <code>main.py</code>, нажмите <strong>F2</strong> и удалите конечное <code>.txt</code>. Подтверждайте предупреждение Windows только после проверки имени. Здесь мы исправляем имя текстового файла с кодом; текст в изображение от этого не превратится.</p></div>
+</aside><p>Справка Microsoft: <a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/common-file-name-extensions-in-windows" target="_blank" rel="noopener noreferrer">Расширения имён файлов</a>.</p>
+</div>
+</section>
+<section id="paths">
+<h2>05 / Абсолютные и относительные пути</h2>
+<div class="section-content">
+<p><strong>Путь</strong> описывает, как найти файл или папку. В Windows части обычного пути разделяют обратной косой чертой <code>\</code>. Во всех примерах ниже используем одну структуру папок. <code>Student</code> является учебным именем пользователя; на Вашем компьютере имя и расположение «Документов» могут отличаться, например из-за OneDrive.</p><div class="code-example"><div class="code-example__header"><span>Учебная структура папок (не команда)</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Учебная структура папок (не команда)">Копировать</button></div>
+<pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp\
+├── Lesson03\
+│   ├── notes.txt
+│   └── Drafts\
+├── Images\
+│   └── photo.jpg
+└── Lesson04\</code></pre></div><aside class="special-block special-block--definition" aria-labelledby="absolute-path">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="absolute-path">Абсолютный путь</h3>
+  <div class="special-block__body"><p>Полный адрес начинается от корня, например <code>C:\Users\Student\Documents\Python Bootcamp\Lesson03\notes.txt</code>. Такой путь указывает на этот файл независимо от текущей папки. Здесь <code>C:\</code> является корнем, затем перечислены папки и имя файла.</p></div>
+</aside><aside class="special-block special-block--definition" aria-labelledby="relative-path">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="relative-path">Относительный путь</h3>
+  <div class="special-block__body"><p>Это маршрут <strong>от текущей папки</strong>. Если текущая папка <code>Python Bootcamp</code>, до заметок ведёт <code>Lesson03\notes.txt</code>. Если текущая папка уже <code>Lesson03</code>, достаточно <code>notes.txt</code>. Без начальной папки относительный путь нельзя истолковать однозначно.</p></div>
+</aside><p><code>.</code> означает текущую папку, а <code>..</code> означает родительскую. Поэтому <code>.\notes.txt</code> явно говорит «файл notes.txt здесь», а <code>..\notes.txt</code> говорит «поднимись на один уровень и найди notes.txt». Две точки сами по себе не означают возврат к предыдущей посещённой папке.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Пути к одному notes.txt из разных папок">
+<table><caption class="visually-hidden">Пути к одному notes.txt из разных папок</caption>
+<thead><tr><th scope="col">Текущая папка внутри Python Bootcamp</th><th scope="col">Относительный путь к Lesson03\notes.txt</th><th scope="col">Как пройти</th></tr></thead>
+<tbody><tr><td><code>Python Bootcamp</code></td><td><code>Lesson03\notes.txt</code></td><td>Войти в Lesson03</td></tr><tr><td><code>Lesson03</code></td><td><code>.\notes.txt</code></td><td>Остаться в текущей папке</td></tr><tr><td><code>Lesson03\Drafts</code></td><td><code>..\notes.txt</code></td><td>Подняться в Lesson03</td></tr><tr><td><code>Images</code></td><td><code>..\Lesson03\notes.txt</code></td><td>Подняться в Python Bootcamp и войти в Lesson03</td></tr><tr><td><code>Lesson04</code></td><td><code>..\Lesson03\notes.txt</code></td><td>Подняться в Python Bootcamp и войти в Lesson03</td></tr></tbody></table></div>
+</div>
+</section>
+<section id="terminal">
+<h2>06 / Первое знакомство с терминалом</h2>
+<div class="section-content">
+<p><strong>Терминал</strong> является приложением, в котором Вы вводите команды и видите текстовый результат. Команды позволяют работать с теми же файлами и папками, которые видны в Проводнике. Набор команд обрабатывает <strong>командная оболочка</strong>, например PowerShell или cmd. Windows Terminal показывает вкладки и текст, а оболочка внутри вкладки разбирает и выполняет команды.</p><ol class="content-list">
+<li>Откройте «Пуск», найдите <strong>«Терминал» / Windows Terminal</strong> и запустите обычным способом.</li>
+<li>В меню рядом с кнопкой «+» выберите <strong>Windows PowerShell</strong> или <strong>PowerShell</strong>. В этом уроке все команды выполняем в PowerShell. Если Терминал недоступен, найдите в «Пуск» Windows PowerShell и откройте его напрямую.</li>
+<li>В строке приглашения обычно виден текущий путь, например <code>PS C:\Users\Student&gt;</code>. Вводите только команду, без <code>PS</code>, пути приглашения и знака <code>&gt;</code>. После каждой команды нажимайте <strong>Enter</strong>.</li>
+</ol><div class="table-scroll" tabindex="0" role="region" aria-label="Первые команды PowerShell">
+<table><caption class="visually-hidden">Первые команды PowerShell</caption>
+<thead><tr><th scope="col">Команда</th><th scope="col">Действие</th></tr></thead>
+<tbody><tr><td><code>dir</code></td><td>Показывает список файлов и папок в текущей папке. Среди результатов ищите столбец Name с именами.</td></tr><tr><td><code>cd Lesson03</code></td><td>Переходит в вложенную папку Lesson03.</td></tr><tr><td><code>cd ..</code></td><td>Переходит в родительскую папку.</td></tr><tr><td><code>cd .</code></td><td>Оставляет текущую папку той же.</td></tr><tr><td><code>cd "C:\Users\Student\Documents\Python Bootcamp"</code></td><td>Переходит по абсолютному пути. Кавычки объединяют путь с пробелом в один аргумент.</td></tr></tbody></table></div><p>В PowerShell <code>dir</code> и <code>cd</code> являются короткими именами команд просмотра содержимого и смены расположения. Папка назначения должна уже существовать: <code>cd</code> её не создаёт. Если получили сообщение, что путь не найден, проверьте текущую папку, имя и кавычки.</p><aside class="special-block special-block--tip" aria-labelledby="echo-example">
+  <div class="special-block__header"><span class="special-block__label">На практике</span></div>
+  <h3 class="special-block__title" id="echo-example">Команда может просто вывести текст</h3>
+  <div class="special-block__body"><div class="code-example"><div class="code-example__header"><span>PowerShell: одна строка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: одна строка">Копировать</button></div>
+<pre tabindex="0"><code>echo &quot;Hello Windows&quot;</code></pre><div class="code-example__output"><div class="code-example__output-title">Результат</div><pre tabindex="0" aria-label="Результат примера: PowerShell: одна строка">Hello Windows</pre></div></div><p>Команда <code>echo</code> выводит переданный текст. Кавычки объединяют фразу с пробелом в одну строку; в результате сами кавычки не появляются. Эта команда не создаёт текстовый файл. В следующей паре сохраним результат вручную.</p></div>
+</aside>
+</div>
+</section>
+<section id="summary">
+<h2>07 / Подведение итогов</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="final-os">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-os">Какая задача относится к операционной системе?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="final-os">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-os-option-1"><input class="visually-hidden" id="final-os-option-1" type="radio" name="final-os-answers" value="1" aria-describedby="final-os-option-1-feedback" /><span>Распределять память и время CPU между программами.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-os-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>ОС управляет ресурсами и предоставляет их программам.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-os-option-2"><input class="visually-hidden" id="final-os-option-2" type="radio" name="final-os-answers" value="2" aria-describedby="final-os-option-2-feedback" /><span>Отводить тепло от CPU радиатором.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-os-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это работа системы охлаждения.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-os-option-3"><input class="visually-hidden" id="final-os-option-3" type="radio" name="final-os-answers" value="3" aria-describedby="final-os-option-3-feedback" /><span>Хранить электричество для всех файлов после выключения.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-os-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Файлы хранятся на накопителе; ОС не является источником питания.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-open">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-open">Что верно для открытия notes.txt в Блокноте?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="final-open">
+<fieldset><legend>Выберите все верные варианты. Верных ответов несколько.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-open-option-1"><input class="visually-hidden" id="final-open-option-1" type="checkbox" name="final-open-answers" value="1" aria-describedby="final-open-option-1-feedback" /><span>Сохранённый файл находится на накопителе.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-open-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>При открытии данные читаются с накопителя, если ещё не находятся в памяти.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-open-option-2"><input class="visually-hidden" id="final-open-option-2" type="checkbox" name="final-open-answers" value="2" aria-describedby="final-open-option-2-feedback" /><span>CPU выполняет инструкции, а RAM хранит рабочие данные.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-open-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Эти ресурсы нужны ОС и Блокноту во время работы.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-open-option-3"><input class="visually-hidden" id="final-open-option-3" type="checkbox" name="final-open-answers" value="3" aria-describedby="final-open-option-3-feedback" /><span>Проводник сам является операционной системой.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-open-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проводник является программой, работающей в Windows.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-open-option-4"><input class="visually-hidden" id="final-open-option-4" type="checkbox" name="final-open-answers" value="4" aria-describedby="final-open-option-4-feedback" /><span>Чтобы закрыть окно, нужно удалить файл.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-open-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Закрытие окна не удаляет сохранённый файл.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-up">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-up">В Проводнике открыта Lesson03. Что делает кнопка «Вверх»?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="final-up">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-up-option-1"><input class="visually-hidden" id="final-up-option-1" type="radio" name="final-up-answers" value="1" aria-describedby="final-up-option-1-feedback" /><span>Открывает родительскую папку Python Bootcamp.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-up-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вверх означает переход на один уровень вложенности выше.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-up-option-2"><input class="visually-hidden" id="final-up-option-2" type="radio" name="final-up-answers" value="2" aria-describedby="final-up-option-2-feedback" /><span>Всегда возвращает в ранее посещённую папку.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-up-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>За историю посещений отвечает кнопка «Назад».</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-up-option-3"><input class="visually-hidden" id="final-up-option-3" type="radio" name="final-up-answers" value="3" aria-describedby="final-up-option-3-feedback" /><span>Перемещает notes.txt из Lesson03.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-up-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Переход между папками не перемещает файлы.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-drives">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-drives">Какие утверждения о Проводнике и дисках верны?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="final-drives">
+<fieldset><legend>Выберите все верные варианты. Верных ответов несколько.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-drives-option-1"><input class="visually-hidden" id="final-drives-option-1" type="checkbox" name="final-drives-answers" value="1" aria-describedby="final-drives-option-1-feedback" /><span>C: и D: могут находиться на одном физическом SSD.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-drives-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Буквы могут быть назначены разным разделам одного накопителя.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-drives-option-2"><input class="visually-hidden" id="final-drives-option-2" type="checkbox" name="final-drives-answers" value="2" aria-describedby="final-drives-option-2-feedback" /><span>Корень C:\ является верхним уровнем этого диска.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-drives-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Обычный абсолютный путь на C: начинается от C:\.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-drives-option-3"><input class="visually-hidden" id="final-drives-option-3" type="checkbox" name="final-drives-answers" value="3" aria-describedby="final-drives-option-3-feedback" /><span>Поиск из Lesson03 обязательно ищет по всем накопителям.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-drives-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Область поиска зависит от выбранного расположения.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-drives-option-4"><input class="visually-hidden" id="final-drives-option-4" type="checkbox" name="final-drives-answers" value="4" aria-describedby="final-drives-option-4-feedback" /><span>В папке могут лежать другие папки.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-drives-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Так образуется вложенность.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-extension">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-extension">Какое последнее расширение у main.py.txt?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="final-extension">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-extension-option-1"><input class="visually-hidden" id="final-extension-option-1" type="radio" name="final-extension-answers" value="1" aria-describedby="final-extension-option-1-feedback" /><span><code>.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-extension-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Последняя часть после точки здесь txt; скрытие расширений может запутать.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-extension-option-2"><input class="visually-hidden" id="final-extension-option-2" type="radio" name="final-extension-answers" value="2" aria-describedby="final-extension-option-2-feedback" /><span><code>.py</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-extension-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>py здесь является частью имени перед последним расширением .txt.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-extension-option-3"><input class="visually-hidden" id="final-extension-option-3" type="radio" name="final-extension-answers" value="3" aria-describedby="final-extension-option-3-feedback" /><span><code>.zip</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-extension-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В имени нет такого расширения.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-format">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-format">Какие утверждения об именах и форматах верны?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="final-format">
+<fieldset><legend>Выберите все верные варианты. Верных ответов несколько.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-format-option-1"><input class="visually-hidden" id="final-format-option-1" type="checkbox" name="final-format-answers" value="1" aria-describedby="final-format-option-1-feedback" /><span>Переименование notes.txt в notes.jpg оставляет содержимое прежним.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-format-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Меняется имя; преобразование формата не выполняется.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-format-option-2"><input class="visually-hidden" id="final-format-option-2" type="checkbox" name="final-format-answers" value="2" aria-describedby="final-format-option-2-feedback" /><span>Один формат могут открывать разные программы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-format-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, текст можно открыть в разных текстовых редакторах.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-format-option-3"><input class="visually-hidden" id="final-format-option-3" type="checkbox" name="final-format-answers" value="3" aria-describedby="final-format-option-3-feedback" /><span>Если убрать .txt из main.py.txt, Python автоматически установится.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-format-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Установка интерпретатора не связана с переименованием.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-absolute">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-absolute">Какой путь является абсолютным?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="final-absolute">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-absolute-option-1"><input class="visually-hidden" id="final-absolute-option-1" type="radio" name="final-absolute-answers" value="1" aria-describedby="final-absolute-option-1-feedback" /><span><code>C:\Users\Student\Documents\Python Bootcamp\Lesson03\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-absolute-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Путь начинается от корня диска и не зависит от текущей папки.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-absolute-option-2"><input class="visually-hidden" id="final-absolute-option-2" type="radio" name="final-absolute-answers" value="2" aria-describedby="final-absolute-option-2-feedback" /><span><code>Lesson03\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-absolute-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это путь относительно текущей папки.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-absolute-option-3"><input class="visually-hidden" id="final-absolute-option-3" type="radio" name="final-absolute-answers" value="3" aria-describedby="final-absolute-option-3-feedback" /><span><code>..\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-absolute-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сначала нужно знать текущую папку, чтобы определить родительскую.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-relative">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-relative">Текущая папка Lesson03. Какие пути ведут к её notes.txt?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="final-relative">
+<fieldset><legend>Выберите все верные варианты. Верных ответов несколько.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-relative-option-1"><input class="visually-hidden" id="final-relative-option-1" type="checkbox" name="final-relative-answers" value="1" aria-describedby="final-relative-option-1-feedback" /><span><code>notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-relative-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя без папок ищется в текущем расположении.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-relative-option-2"><input class="visually-hidden" id="final-relative-option-2" type="checkbox" name="final-relative-answers" value="2" aria-describedby="final-relative-option-2-feedback" /><span><code>.\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-relative-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Точка явно указывает текущую папку.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-relative-option-3"><input class="visually-hidden" id="final-relative-option-3" type="checkbox" name="final-relative-answers" value="3" aria-describedby="final-relative-option-3-feedback" /><span><code>..\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-relative-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот путь ищет notes.txt в Python Bootcamp, где по учебной структуре его нет.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-shell">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-shell">Что выполняет команды во вкладке Windows Terminal?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="final-shell">
+<fieldset><legend>Выберите один верный ответ.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-shell-option-1"><input class="visually-hidden" id="final-shell-option-1" type="radio" name="final-shell-answers" value="1" aria-describedby="final-shell-option-1-feedback" /><span>Командная оболочка, например PowerShell.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-shell-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Оболочка разбирает команду и выполняет действие.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-shell-option-2"><input class="visually-hidden" id="final-shell-option-2" type="radio" name="final-shell-answers" value="2" aria-describedby="final-shell-option-2-feedback" /><span>Адресная строка Проводника.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-shell-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В этом примере команды вводят в оболочке терминала.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-shell-option-3"><input class="visually-hidden" id="final-shell-option-3" type="radio" name="final-shell-answers" value="3" aria-describedby="final-shell-option-3-feedback" /><span>Только графический процессор.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-shell-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>GPU не является командной оболочкой.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-commands">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-commands">Какие утверждения о командах верны?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="final-commands">
+<fieldset><legend>Выберите все верные варианты. Верных ответов несколько.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-commands-option-1"><input class="visually-hidden" id="final-commands-option-1" type="checkbox" name="final-commands-answers" value="1" aria-describedby="final-commands-option-1-feedback" /><span>dir показывает содержимое текущей папки.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-commands-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По списку можно сверить файлы и папки с Проводником.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-commands-option-2"><input class="visually-hidden" id="final-commands-option-2" type="checkbox" name="final-commands-answers" value="2" aria-describedby="final-commands-option-2-feedback" /><span>cd .. поднимает в родительскую папку.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-commands-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Две точки означают родительскую папку.</p></div></div></div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="final-commands-option-3"><input class="visually-hidden" id="final-commands-option-3" type="checkbox" name="final-commands-answers" value="3" aria-describedby="final-commands-option-3-feedback" /><span>Путь с пробелами в cd следует заключать в двойные кавычки.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-commands-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кавычки позволяют передать путь целиком.</p></div></div></div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="final-commands-option-4"><input class="visually-hidden" id="final-commands-option-4" type="checkbox" name="final-commands-answers" value="4" aria-describedby="final-commands-option-4-feedback" /><span>cd Images создаёт новую папку Images.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="final-commands-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>cd меняет текущую папку; папка назначения должна существовать.</p></div></div></div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-path-text">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-path-text">Как дойти из Images к заметкам?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="text" data-answer="..\Lesson03\notes.txt" data-success="Верно. Поднимаемся в Python Bootcamp, затем входим в Lesson03 и находим notes.txt." data-hint="Начните с .., затем укажите Lesson03 и notes.txt, разделив части обратными косыми чертами. Проверьте регистр и лишние пробелы." autocomplete="off" aria-labelledby="final-path-text">
+    <div class="code-example"><div class="code-example__header"><span>Учебная структура папок (не команда)</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Учебная структура папок (не команда)">Копировать</button></div>
+<pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp\
+├── Lesson03\
+│   ├── notes.txt
+│   └── Drafts\
+├── Images\
+│   └── photo.jpg
+└── Lesson04\</code></pre></div>
+<label for="final-path-text-answer">Введите относительный путь к notes.txt в Lesson03. Используйте имена как в схеме, обратные косые черты, без кавычек и пробелов по краям.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="final-path-text-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="final-path-text-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="final-path-text-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside><aside class="special-block special-block--question" aria-labelledby="final-command-text">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="final-command-text">Как увидеть содержимое текущей папки?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="text" data-answer="dir" data-success="Верно. Команда dir показывает содержимое текущей папки." data-hint="Нужна команда просмотра списка, а не перехода. Она начинается с d и состоит из трёх букв." autocomplete="off" aria-labelledby="final-command-text">
+<label for="final-command-text-answer">Введите изученную команду из трёх строчных латинских букв, без пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="final-command-text-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="final-command-text-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="final-command-text-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside>
+</div>
+</section>
+    </main>
+    <div
+      id="copy-status"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </body>
+</html>

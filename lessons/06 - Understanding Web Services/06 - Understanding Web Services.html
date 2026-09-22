@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Веб-сервисы для начинающих: HTTP и HTTPS, облачные файлы, Google Диск, Документы и Таблицы, права доступа и отправка ссылки. Пошаговая практика и самопроверка."
+    />
+    <title>06 - Understanding Web Services</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">06 - Understanding Web Services</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="web-services">
+        <h2>01 / От сети к веб-сервису</h2>
+        <div class="section-content">
+<p><strong>Интернет</strong> представляет собой сеть взаимосвязанных сетей. <strong>Веб</strong> использует эту инфраструктуру для работы сайтов и веб-приложений, к которым обращаются по HTTP или HTTPS. Через интернет также работают другие службы, например передача почты между почтовыми серверами. Поэтому интернет шире веба.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Браузер, сайт и веб-приложение">
+  <table>
+    <caption>Браузер, сайт и веб-приложение</caption>
+    <thead><tr><th scope="col">Понятие</th><th scope="col">Что это</th><th scope="col">Пример</th></tr></thead>
+    <tbody>
+<tr><td>Браузер</td><td>Программа, которая обращается к веб-ресурсам и показывает их пользователю</td><td>Google Chrome, Microsoft Edge, Mozilla Firefox</td></tr>
+<tr><td>Сайт</td><td>Связанные страницы и ресурсы по веб-адресам</td><td>Сайт учебного центра с описанием курсов</td></tr>
+<tr><td>Веб-приложение</td><td>Программа, с которой пользователь взаимодействует через браузер</td><td>Google Диск для файлов, Google Документы для текста</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Граница между сайтом и веб-приложением не строгая: сайт может содержать интерактивные функции. Но браузер остаётся отдельной программой, в которой вы открываете эти ресурсы. Закрытие вкладки не удаляет сам сайт.</p>
+<aside class="special-block special-block--definition" aria-labelledby="drive-request-title">
+  <div class="special-block__header"><span class="special-block__label">Пример</span></div>
+  <h3 class="special-block__title" id="drive-request-title">Что происходит при открытии папки</h3>
+  <div class="special-block__body">
+<ol class="content-list">
+<li>Вы открываете Google Диск и выбираете папку.</li>
+<li>Браузер отправляет серверу запрос на её содержимое.</li>
+<li>Сервис проверяет ваш аккаунт и права, затем возвращает данные о файлах или сообщение об отказе.</li>
+<li>Браузер отображает ответ: названия файлов, значки и кнопки действий.</li>
+</ol>
+  </div>
+</aside>
+<p>HTTP задаёт правила обмена запросами и ответами в вебе. HTTPS добавляет защиту соединения: шифрует передаваемые данные, помогает обнаружить их изменение в пути и проверяет сертификат сервера для указанного имени. По обычному HTTP эти данные передаются без такой защиты.</p>
+<aside class="special-block special-block--warning" aria-labelledby="https-trust-title">
+  <div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+  <h3 class="special-block__title" id="https-trust-title">HTTPS не оценивает честность сайта</h3>
+  <div class="special-block__body">
+<p>Мошенник тоже может создать сайт с HTTPS. Защищённое соединение с неверным адресом всё равно ведёт на неверный сайт. Перед входом в аккаунт смотрите на доменное имя, а не только на значок возле адреса.</p>
+  </div>
+</aside>
+<ol class="content-list">
+<li>Откройте <a href="https://badssl.com/" target="_blank" rel="noopener noreferrer">главную страницу badssl.com по HTTPS</a>. Это демонстрационный сайт для проверки поведения браузера при разных настройках соединения.</li>
+<li>В новой вкладке откройте <a href="http://http.badssl.com/" target="_blank" rel="noopener noreferrer">http.badssl.com по HTTP</a>. На этих страницах ничего вводить не нужно.</li>
+<li>Нажмите на адресную строку, чтобы увидеть полный адрес и схему. Посмотрите сведения о соединении через значок слева от адреса. Значки и формулировки зависят от браузера.</li>
+<li>Сравните: у первой ссылки схема https, у второй http. Браузер может предупредить о незащищённом соединении, автоматически перейти на HTTPS или заблокировать HTTP. Если это произошло, достаточно зафиксировать поведение; менять настройки защиты и обходить предупреждения не нужно.</li>
+</ol>
+<aside class="special-block special-block--tip" aria-labelledby="devtools-local-title">
+  <div class="special-block__header"><span class="special-block__label">Интересное</span></div>
+  <h3 class="special-block__title" id="devtools-local-title">DevTools в браузере</h3>
+  <div class="special-block__body">
+<p>Браузеры поддерживают встроенные инструменты разработчика (DevTools), через который можно узнать много интересного — как выглядит структура сайта, какие запросы делает браузер на открытом сайте и многое другое. В частности DevTools позволяют временно изменить текст или оформление уже открытой страницы в своём окне. Такая локальная правка сама по себе не отправляет изменение на сервер и не меняет страницу для остальных пользователей. После перезагрузки браузер снова получает данные сервиса.</p>
+<p>Чтобы открыть DevTools, достаточно нажать комбинацию клавиш <strong>Ctrl + Shift + C</strong>.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="file-locations">
+        <h2>02 / Где находятся мои файлы</h2>
+        <div class="section-content">
+<p>Когда вы сохраняете <code>notes.txt</code> в обычной папке на диске компьютера, файл находится в локальном хранилище. Для открытия этого файла на том же компьютере интернет не требуется. Другой компьютер не получает к нему доступ автоматически.</p>
+<aside class="special-block special-block--definition" aria-labelledby="cloud-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="cloud-definition-title">Облачное хранилище</h3>
+  <div class="special-block__body">
+<p>«Облако» состоит из удалённых компьютеров и работающих на них программ. Облачное хранилище принимает файлы, хранит их и выдаёт пользователям с нужными правами. Google Диск предоставляет доступ к такому хранилищу через браузер и приложения.</p>
+  </div>
+</aside>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Направление передачи файла">
+  <table>
+    <caption>Направление передачи файла</caption>
+    <thead><tr><th scope="col">Действие</th><th scope="col">Откуда → куда</th><th scope="col">Результат</th></tr></thead>
+    <tbody>
+<tr><td>Загрузить на Диск (upload)</td><td>Ваш компьютер → облачный сервис</td><td>Файл появляется в облачном хранилище</td></tr>
+<tr><td>Скачать (download)</td><td>Облачный сервис → ваш компьютер</td><td>Локальная копия появляется, например, в папке «Загрузки»</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Слова «загрузить» и «скачать» иногда путают. Ориентируйтесь на направление: отправляете свой файл в Google Диск или получаете файл из Диска на компьютер.</p>
+<aside class="special-block special-block--warning" aria-labelledby="separate-copy-title">
+  <div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+  <h3 class="special-block__title" id="separate-copy-title">Одна загрузка не создаёт синхронизацию</h3>
+  <div class="special-block__body">
+<p>Вы загрузили notes.txt через браузер, затем изменили его исходную локальную копию в Блокноте. Облачная копия от этого сама не обновится. Чтобы передать новые данные, нужно отдельно загрузить обновлённый файл. При совпадении имени сервис может предложить обновить версию или сохранить оба файла.</p>
+<p>Автоматическая синхронизация выполняется отдельно настроенным приложением, например Google Диском для компьютеров.</p>
+  </div>
+</aside>
+<p>Два устройства с доступом к одному облачному файлу могут работать с общим содержимым. Но без сети нельзя связаться с удалённым хранилищем и получить новые изменения. Заранее скачанная копия доступна локально; специально включённый офлайн-режим некоторых приложений тоже позволяет работать с сохранёнными данными, а синхронизация произойдёт после подключения.</p>
+        </div>
+      </section>
+      <section id="google-drive">
+        <h2>03 / Google Диск</h2>
+        <div class="section-content">
+<p>Для действий ниже нужен аккаунт Google и подключение к интернету. Откройте <a href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">Google Диск</a>, войдите в свой аккаунт и проверьте его по значку профиля справа вверху.</p>
+<aside class="special-block special-block--tip" aria-labelledby="prepare-txt-title">
+  <div class="special-block__header"><span class="special-block__label">Подготовка</span></div>
+  <h3 class="special-block__title" id="prepare-txt-title">Сначала подготовьте txt-файл на компьютере</h3>
+  <div class="special-block__body">
+<ol class="content-list">
+<li>Создайте на компьютере обычную папку для практики урока 06.</li>
+<li>Откройте Блокнот и напишите: <code>Работа с облачными файлами</code>.</li>
+<li>Сохраните текст в подготовленной папке с именем <code>notes.txt</code>.</li>
+<li>В Проводнике включите показ расширений и убедитесь, что имя не превратилось в <code>notes.txt.txt</code>. Откройте файл ещё раз и проверьте текст.</li>
+</ol>
+  </div>
+</aside>
+<ol class="content-list">
+<li>В Google Диске откройте раздел <strong>Мой диск</strong>.</li>
+<li>Нажмите <strong>Правую Кнопку Мыши</strong> на пустой области и выберите <strong>Новая папка</strong>. Назовите её <code>Python Bootcamp</code>.</li>
+<li>Откройте папку двойным щелчком. Проверьте её название в цепочке папок над списком файлов.</li>
+<li>Нажмите <strong>Правую Кнопку Мыши</strong> на пустой области, чтобы открыть <strong>Контекстное Меню</strong>, и выберите <strong>Загрузить файл</strong>, выберите локальный <code>notes.txt</code> и подтвердите выбор. Ещё один способ — просто перетяните <code>notes.txt</code> в окно браузера в область, которая подсвечивается (процесс называется <strong>Drag & Drop</strong> или <strong>DnD</strong>). Дождитесь завершения загрузки.</li>
+<li>Убедитесь, что файл появился в папке. Откройте его двойным щелчком и проверьте содержимое предпросмотра.</li>
+</ol>
+<p>Если Вы привыкли работать с Windows, то некоторые горячие клавиши и действия для Вас будут знакомы.</p>
+        </div>
+      </section>
+      <section id="google-docs">
+        <h2>04 / Google Документы</h2>
+        <div class="section-content">
+<p>Google Документы позволяют создавать и оформлять текст в браузере. Документ хранится в сервисе, и приложение сохраняет ваши изменения при рабочем соединении. Это отличается от ручной загрузки готового txt-файла.</p>
+<ol class="content-list">
+<li>Нажмите <strong>Правую Кнопку Мыши</strong> на пустой области и выберите <strong>Google Документы → Создать документ</strong>.</li>
+<li>Внутри документа нажмите на название <code>Новый документ</code> в левом верхнем углу и введите <code>My Doc</code>. Это имя файла на Диске.</li>
+<li>В области страницы напишите <code>Урок 06</code>. Выделите эту строку и на верхней панели в списке стилей, где обычно показан <strong>Обычный текст</strong>, выберите <strong>Заголовок 1</strong>. Обратите внимание, что в самой левой части появился заголовок.</li>
+<li>На следующей строке обычным текстом напишите два-три предложения о том, что Вы узнали на этом уроке. Если стиль заголовка сохранился, переключите строку на <strong>Обычный текст</strong>.</li>
+<li>Добавьте строку <code>Что осталось непонятным</code>, а под ней создайте маркированный список кнопкой списка на панели инструментов. Введите несколько пунктов, нажимая <strong>Enter</strong> после каждого. Два нажатия <strong>Enter</strong> в конце пустого пункта завершат список.</li>
+</ol>
+<aside class="special-block special-block--tip" aria-labelledby="document-example-title">
+  <div class="special-block__header"><span class="special-block__label">Пример</span></div>
+  <h3 class="special-block__title" id="document-example-title">Пример содержания</h3>
+  <div class="special-block__body">
+<p><strong>Урок 06</strong></p><p>Узнал, что есть private IP и public IP. Узнал про клиент-сервер архитектуру.</p>
+<p>Что осталось непонятным:</p><ul class="content-list">
+<li>Что такое шлюз?</li>
+<li>Я слышал, что ещё есть понятие порт. Что это?</li>
+<li>Иногда видел, что IP скрывают. Почему?</li>
+</ul>
+  </div>
+</aside>
+<p>Название документа сверху помогает найти файл на Диске. Заголовок внутри страницы помогает читателю понять структуру текста.</p>
+<p>Обычно изменения сохраняются автоматически. Но при проблемах с сетью проверьте состояние сохранения, прежде чем закрывать вкладку. Если изменения ещё не отправлены, они могут быть недоступны на другом устройстве. Для проверки снова откройте документ из папки и убедитесь, что текст, заголовок и список сохранились.</p>
+        </div>
+      </section>
+      <section id="google-sheets">
+        <h2>05 / Google Таблицы</h2>
+        <div class="section-content">
+<p>Google Таблицы удобны для списков, чисел и вычислений. <strong>Столбцы</strong> идут сверху вниз и обозначаются буквами <strong>A</strong>, <strong>B</strong>, <strong>C</strong>. <strong>Строки</strong> идут слева направо и обозначаются числами <strong>1</strong>, <strong>2</strong>, <strong>3</strong>. На пересечении находится <strong>ячейка</strong>.</p>
+<p>Адрес ячейки состоит из буквы столбца и номера строки. <code>B3</code> находится во втором столбце и третьей строке. Адрес выделенной ячейки показывается в поле слева над таблицей. В него можно ввести <strong>B3</strong> и нажать <strong>Enter</strong>, чтобы сразу перейти к ячейке.</p>
+<ol class="content-list">
+<li>На Диске откройте папку Python Bootcamp, нажмите <strong>Правую Кнопку Мыши</strong> на пустой области и выберите <strong>Google Таблицы → Создать таблицу</strong>.</li>
+<li>Нажмите на название файла в левом верхнем углу и задайте <code>tasks</code>.</li>
+<li>В <strong>A1</strong> введите <code>Задача</code>, в <strong>B1</strong> <code>Срок</code>, в <strong>C1</strong> <code>Статус</code>. <strong>Enter</strong> завершает ввод и переводит ниже, <strong>Tab</strong> переводит вправо.</li>
+<li>Заполните строки <strong>2–4</strong> по примеру ниже. Сроки можно заменить своими датами.</li>
+<li>Если текст не помещается, расширьте столбец, потянув границу между его буквенным заголовком и соседним.</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Содержимое tasks: столбцы A–C и строки 1–4">
+  <table>
+    <caption>Содержимое tasks: столбцы A–C и строки 1–4</caption>
+    <thead><tr><th scope="col">Строка</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead>
+    <tbody>
+<tr><td>1</td><td>Задача</td><td>Срок</td><td>Статус</td></tr>
+<tr><td>2</td><td>Прочитать урок о сетях</td><td>16.09.2026</td><td>Готово</td></tr>
+<tr><td>3</td><td>Создать документ</td><td>17.09.2026</td><td>В работе</td></tr>
+<tr><td>4</td><td>Отправить домашнее задание</td><td>18.09.2026</td><td>Запланировано</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>В этом примере <strong>A3</strong> содержит <code>Создать документ</code>, а <strong>C3</strong> содержит <code>В работе</code>. Проверьте это, выбрав соответствующие ячейки.</p>
+<aside class="special-block special-block--tip" aria-labelledby="first-formula-title">
+  <div class="special-block__header"><span class="special-block__label">Попробуйте</span></div>
+  <h3 class="special-block__title" id="first-formula-title">Первая формула</h3>
+  <div class="special-block__body">
+<ol class="content-list">
+<li>Щёлкните на пустую ячейку <strong>E2</strong>, чтобы не заменять данные задач.</li>
+<li>Введите <code>=2+3</code> и нажмите <strong>Enter</strong>. В ячейке появится <strong>5</strong>.</li>
+<li>Выберите <strong>E2</strong> снова. В строке формул над таблицей будет видно исходное выражение <strong>=2+3</strong>.</li>
+<li>Замените выражение на <code>=2+4</code>, нажмите <strong>Enter</strong> и проверьте результат: <strong>6</strong>.</li>
+</ol><p>Формула начинается со знака равенства. Не ставьте перед ним апостроф: он может превратить запись в текст. Если вы видите саму формулу вместо результата, проверьте формат ячейки и режим показа формул.</p>
+  </div>
+</aside>
+<p>Формулы могут брать числа из других ячеек. Например, если в <strong>E4</strong> стоит <strong>2</strong>, а в <strong>E5</strong> стоит <strong>3</strong>, то <code>=E4+E5</code> в <strong>E6</strong> даст <strong>5</strong> и пересчитается после изменения этих чисел. Запись <code>B2:B5</code> обозначает диапазон из четырёх ячеек <strong>B2</strong>, <strong>B3</strong>, <strong>B4</strong> и <strong>B5</strong>.</p>
+<p>Для среднего значения пригодится <code>=AVERAGE(B2:B5)</code>, а при русских названиях функций <code>=СРЗНАЧ(B2:B5)</code>.</p>
+        </div>
+      </section>
+      <section id="sharing">
+        <h2>06 / Доступ и отправка ссылки</h2>
+        <div class="section-content">
+<p>Ссылка указывает, какой объект открыть. Разрешения определяют, пустят ли туда получателя и что он сможет сделать. Поэтому перед отправкой нужно ответить на два отдельных вопроса.</p>
+<p><strong>Кому доступен файл или папка?</strong></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Кому доступен файл или папка">
+  <table>
+    <thead><tr><th scope="col">Настройка</th><th scope="col">Кто сможет открыть</th></tr></thead>
+    <tbody>
+<tr><td>Доступ ограничен; добавлены конкретные люди</td><td>Указанные получатели после входа в аккаунт, которому вы дали доступ</td></tr>
+<tr><td>Все, у кого есть ссылка</td><td>Любой получатель ссылки, в том числе тот, кому её перешлют; такая настройка может быть запрещена учебной организацией</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Что разрешено получателю?</strong></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Что разрешено получателю">
+  <table>
+    <thead><tr><th scope="col">Роль</th><th scope="col">Возможности</th></tr></thead>
+    <tbody>
+<tr><td>Читатель</td><td>Просматривает содержимое; скачивание обычно разрешено, если владелец не ограничил его</td></tr>
+<tr><td>Комментатор</td><td>Просматривает и оставляет комментарии в поддерживаемых файлах, не меняя основной текст напрямую</td></tr>
+<tr><td>Редактор</td><td>Изменяет содержимое; для папки может управлять находящимися в ней объектами в пределах выданных прав</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Настроив доступ к папке, вы обычно распространяете его и на содержимое, поэтому проверьте также вложенные файлы.</p>
+<aside class="special-block special-block--tip" aria-labelledby="share-person-title">
+  <div class="special-block__header"><span class="special-block__label">Порядок действий</span></div>
+  <h3 class="special-block__title" id="share-person-title">Доступ конкретному человеку</h3>
+  <div class="special-block__body">
+<ol class="content-list">
+<li>На Диске нажмите правой кнопкой на нужный файл или папку и выберите <strong>Поделиться</strong>. В документе можно использовать кнопку доступа справа вверху.</li>
+<li>Введите адрес Google-аккаунта получателя и выберите роль <strong>Читатель</strong>. Убедитесь, что выбрали правильного человека.</li>
+<li>Подтвердите изменение кнопкой <strong>Отправить</strong>. Если включено уведомление, сервис отправит получателю письмо.</li>
+<li>Нажмите <strong>Копировать ссылку</strong>. Получатель должен открывать её под тем аккаунтом, которому вы выдали доступ.</li>
+</ol>
+  </div>
+</aside>
+<aside class="special-block special-block--tip" aria-labelledby="share-link-title">
+  <div class="special-block__header"><span class="special-block__label">Порядок действий</span></div>
+  <h3 class="special-block__title" id="share-link-title">Доступ по ссылке</h3>
+  <div class="special-block__body">
+<ol class="content-list">
+<li>Откройте настройки доступа к нужной папке или файлу.</li>
+<li>В разделе <strong>Общий доступ</strong> переключите <strong>Доступ ограничен</strong> на <strong>Все, у кого есть ссылка</strong>.</li>
+<li>Выберите роль <strong>Читатель</strong> и сохраните изменение кнопкой <strong>Готово</strong>.</li>
+<li>Скопируйте ссылку на эту папку и откройте её в приватном окне браузера, где нет входа в ваш аккаунт. Убедитесь, что видны нужные файлы.</li>
+</ol><p>Такой способ удобен для сдачи по ссылке, но открыть её сможет любой, кто получит адрес. Делитесь папкой с нужными учебными файлами, а не всем личным хранилищем.</p>
+  </div>
+</aside>
+<aside class="special-block special-block--warning" aria-labelledby="link-is-not-access-title">
+  <div class="special-block__header"><span class="special-block__label">Частая ошибка</span></div>
+  <h3 class="special-block__title" id="link-is-not-access-title">Почему ссылка открывается у вас, но не у преподавателя</h3>
+  <div class="special-block__body">
+<p>Вы владелец и уже вошли в аккаунт. Поэтому ограниченная папка открывается у вас по любой её ссылке. У преподавателя может появиться запрос доступа. Кнопка «Копировать ссылку» сама по себе не выдаёт ему разрешение. Вернитесь в настройки и проверьте круг получателей и роль.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>07 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-web-statements-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-web-statements-title">Какие утверждения о вебе и облачных файлах верны?</h3>
+  <div class="special-block__body">
+<p>Под изменением через DevTools здесь понимается правка отображаемого текста или оформления в панели Elements.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-web-statements-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-web-statements-1" aria-describedby="check-web-statements-1-feedback" />
+    <span>Два разных устройства могут использовать одно и то же облачное хранилище</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-web-statements-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>При наличии сети и нужного доступа можно обращаться к одному хранилищу с разных устройств.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-web-statements-2" aria-describedby="check-web-statements-2-feedback" />
+    <span>Без доступа к сети невозможно связаться с облачным хранилищем</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-web-statements-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для обмена с удалённым сервисом нужна сеть. Скачанная копия или заранее настроенный офлайн-режим позволяют работать с локальными данными, но это не связь с сервером.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-web-statements-3" aria-describedby="check-web-statements-3-feedback" />
+    <span>Если сделать запрос к сайту и через DevTools изменить что-то на сайте, то другие пользователи при обращении к сайту увидят эти изменения</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-web-statements-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Локальное изменение текста или оформления в панели Elements меняет страницу в вашем браузере. Само по себе оно не сохраняется на сервере.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-web-statements-4" aria-describedby="check-web-statements-4-feedback" />
+    <span>Браузер, сайт и веб-приложение — это одно и то же</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-web-statements-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Браузер является программой для работы с веб-ресурсами. Сайт объединяет ресурсы, а веб-приложение предоставляет интерактивные действия.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-web-statements-5" aria-describedby="check-web-statements-5-feedback" />
+    <span>Чтобы поделиться файлом из Google Диск, достаточно скопировать ссылку</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-web-statements-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Ссылка не заменяет разрешения. Нужно убедиться, что у получателя уже есть или ему выдан доступ.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div
+      id="copy-status"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </body>
+</html>

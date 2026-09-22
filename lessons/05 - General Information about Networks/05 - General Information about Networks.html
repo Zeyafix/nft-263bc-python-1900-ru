@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Сети для начинающих: LAN и WAN, Ethernet и Wi-Fi, IP и MAC, DNS, клиент и сервер. Схемы передачи данных и интерактивная самопроверка."
+    />
+    <title>05 - General Information about Networks</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">05 - General Information about Networks</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<p>Начните с заданий по Windows. Они помогут вспомнить терминал, расширения файлов и пути. Каждое задание независимо: считайте текущей ту папку, которая указана в его условии.</p>
+<aside class="special-block special-block--question" aria-labelledby="review-dir-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-dir-title">Как посмотреть содержимое папки?</h3>
+  <div class="special-block__body">
+<p>Какой короткой командой можно вывести файлы и папки текущего каталога? Введите только имя команды без параметров.</p>
+<form class="quiz" data-quiz="text" data-answer="dir"
+  data-success="Верно. dir выводит содержимое текущей папки." data-hint="Вспомните команду из трёх букв для просмотра каталога. Используйте строчные буквы без пробелов."
+  autocomplete="off" aria-labelledby="review-dir-title">
+  <label for="review-dir-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-dir-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-dir-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-dir-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-absolute-child-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-absolute-child-title">Перейдите в Lesson 05, используя абсолютный путь.</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp</code>.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура папок</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура папок">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp
+├── Lesson 05
+│   ├── notes.txt
+│   ├── script.py
+│   ├── launch.bat.txt
+│   └── config.json
+└── Lesson 06
+    └── Python Homework</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;C:\Users\Student\Documents\Python Bootcamp\Lesson 05&quot;"
+  data-success="Верно. Абсолютный путь начинается с диска C: и перечисляет все папки до Lesson 05." data-hint="Абсолютный путь начинается с диска C: и перечисляет все папки до Lesson 05. Проверьте кавычки, регистр названий и пробел после cd."
+  autocomplete="off" aria-labelledby="review-absolute-child-title">
+  <label for="review-absolute-child-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-absolute-child-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-absolute-child-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-absolute-child-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-relative-child-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-relative-child-title">Перейдите в Lesson 05, используя кратчайший относительный путь.</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp</code>.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура папок</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура папок">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp
+├── Lesson 05
+│   ├── notes.txt
+│   ├── script.py
+│   ├── launch.bat.txt
+│   └── config.json
+└── Lesson 06
+    └── Python Homework</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;Lesson 05&quot;"
+  data-success="Верно. Lesson 05 находится прямо внутри текущей папки." data-hint="Lesson 05 находится прямо внутри текущей папки. Проверьте кавычки, регистр названий и пробел после cd."
+  autocomplete="off" aria-labelledby="review-relative-child-title">
+  <label for="review-relative-child-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-relative-child-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-relative-child-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-relative-child-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-absolute-sibling-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-absolute-sibling-title">Перейдите в Lesson 06, используя абсолютный путь.</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp\Lesson 05</code>.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура папок</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура папок">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp
+├── Lesson 05
+│   ├── notes.txt
+│   ├── script.py
+│   ├── launch.bat.txt
+│   └── config.json
+└── Lesson 06
+    └── Python Homework</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;C:\Users\Student\Documents\Python Bootcamp\Lesson 06&quot;"
+  data-success="Верно. При абсолютном пути текущая папка не меняет запись адреса назначения." data-hint="При абсолютном пути текущая папка не меняет запись адреса назначения. Проверьте кавычки, регистр названий и пробел после cd."
+  autocomplete="off" aria-labelledby="review-absolute-sibling-title">
+  <label for="review-absolute-sibling-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-absolute-sibling-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-absolute-sibling-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-absolute-sibling-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-relative-sibling-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-relative-sibling-title">Перейдите в соседнюю Lesson 06, используя кратчайший относительный путь.</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp\Lesson 05</code>.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура папок</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура папок">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp
+├── Lesson 05
+│   ├── notes.txt
+│   ├── script.py
+│   ├── launch.bat.txt
+│   └── config.json
+└── Lesson 06
+    └── Python Homework</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;..\Lesson 06&quot;"
+  data-success="Верно. Две точки поднимают в Python Bootcamp, затем выбирается Lesson 06." data-hint="Две точки поднимают в Python Bootcamp, затем выбирается Lesson 06. Проверьте кавычки, регистр названий и пробел после cd."
+  autocomplete="off" aria-labelledby="review-relative-sibling-title">
+  <label for="review-relative-sibling-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-relative-sibling-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-relative-sibling-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-relative-sibling-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-relative-grandchild-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-relative-grandchild-title">Перейдите в Python Homework внутри Lesson 06, используя кратчайший относительный путь.</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp</code>.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура папок</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура папок">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp
+├── Lesson 05
+│   ├── notes.txt
+│   ├── script.py
+│   ├── launch.bat.txt
+│   └── config.json
+└── Lesson 06
+    └── Python Homework</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;Lesson 06\Python Homework&quot;"
+  data-success="Верно. В относительном пути перечислите сначала Lesson 06, затем Python Homework." data-hint="В относительном пути перечислите сначала Lesson 06, затем Python Homework. Проверьте кавычки, регистр названий и пробел после cd."
+  autocomplete="off" aria-labelledby="review-relative-grandchild-title">
+  <label for="review-relative-grandchild-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-relative-grandchild-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-relative-grandchild-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-relative-grandchild-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-relative-up-twice-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-relative-up-twice-title">Перейдите в Lesson 05, используя кратчайший относительный путь.</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp\Lesson 06\Python Homework</code>.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура папок</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура папок">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents\Python Bootcamp
+├── Lesson 05
+│   ├── notes.txt
+│   ├── script.py
+│   ├── launch.bat.txt
+│   └── config.json
+└── Lesson 06
+    └── Python Homework</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;..\..\Lesson 05&quot;"
+  data-success="Верно. Первое .. поднимает в Lesson 06, второе .. в Python Bootcamp, затем выбирается Lesson 05." data-hint="Первое .. поднимает в Lesson 06, второе .. в Python Bootcamp, затем выбирается Lesson 05. Проверьте кавычки, регистр названий и пробел после cd."
+  autocomplete="off" aria-labelledby="review-relative-up-twice-title">
+  <label for="review-relative-up-twice-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-relative-up-twice-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-relative-up-twice-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-relative-up-twice-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-extensions-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-extensions-title">Какие расширения есть у файлов в этой папке?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Файлы в Lesson 05</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Файлы в Lesson 05">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>Lesson 05
+├── notes.txt
+├── script.py
+├── launch.bat.txt
+└── config.json</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-extensions-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-extensions-1" aria-describedby="review-extensions-1-feedback" />
+    <span><code>.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-extensions-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Файлы notes.txt и launch.bat.txt имеют расширение .txt.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-extensions-2" aria-describedby="review-extensions-2-feedback" />
+    <span><code>.py</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-extensions-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У script.py расширение .py.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-extensions-3" aria-describedby="review-extensions-3-feedback" />
+    <span><code>.json</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-extensions-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У config.json расширение .json.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-extensions-4" aria-describedby="review-extensions-4-feedback" />
+    <span><code>.bat</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-extensions-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В имени launch.bat.txt расширение определяется последней частью после точки: это .txt.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-four-levels-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-four-levels-title">Как вернуться в Python Bootcamp?</h3>
+  <div class="special-block__body">
+<p>Текущая папка: <code>C:\Users\Student\Documents\Python Bootcamp\Archive\Week 01\Drafts</code>. Нужно попасть в саму папку Python Bootcamp.</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Структура для этого вопроса</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Структура для этого вопроса">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>C:\Users\Student\Documents
+└── Python Bootcamp
+    ├── Lesson 05
+    ├── Lesson 06
+    └── Archive
+        └── Week 01
+            └── Drafts</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-four-levels-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-four-levels-1" aria-describedby="review-four-levels-1-feedback" />
+    <span><code>cd &quot;..\..\..\..\Python Bootcamp&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-four-levels-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Четыре перехода вверх приводят в Documents, затем команда входит в Python Bootcamp.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-four-levels-2" aria-describedby="review-four-levels-2-feedback" />
+    <span><code>cd Python Bootcamp\Lesson 05</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-four-levels-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот путь ищет вложенную папку от текущего места, а пробелы в пути PowerShell требуют кавычек.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-four-levels-3" aria-describedby="review-four-levels-3-feedback" />
+    <span><code>cd C:\Users\Student\Documents\Python Bootcamp\Lesson 06</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-four-levels-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это путь к Lesson 06, а не к Python Bootcamp. В PowerShell путь с пробелами также нужно заключить в кавычки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="review-four-levels-4" aria-describedby="review-four-levels-4-feedback" />
+    <span><code>cd ..\..\Python Bootcamp</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-four-levels-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Два перехода вверх приведут в Archive. Внутри Archive папки Python Bootcamp на схеме нет; путь с пробелом также требует кавычек.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-simplify-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-simplify-title">Как упростить путь?</h3>
+  <div class="special-block__body">
+<p>Вы находитесь в <code>C:\Users\Student\Documents\Python Bootcamp\Lesson 05</code>. Запишите кратчайшую равнозначную команду с относительным путём:</p><div class="code-example">
+  <div class="code-example__header">
+    <span>Команда для упрощения</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Команда для упрощения">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>cd &quot;.\..\Lesson 06\.\.\..\.\Lesson 06&quot;</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="cd &quot;..\Lesson 06&quot;"
+  data-success="Верно. Точка оставляет нас в той же папке, а вход в Lesson 06 и следующий выход из неё взаимно сокращаются." data-hint="Уберите переходы в текущую папку через точку. Затем сократите вход в Lesson 06 с немедленным выходом через .. ."
+  autocomplete="off" aria-labelledby="review-simplify-title">
+  <label for="review-simplify-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-simplify-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-simplify-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-simplify-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="why-networks">
+        <h2>02 / Зачем компьютерам сеть</h2>
+        <div class="section-content">
+<p>Представьте, что нужно передать одногруппнику файл. Можно скопировать его на флешку и отнести лично. Сеть позволяет передать данные между устройствами по линии связи: вы отправляете файл, а другое устройство принимает его.</p>
+<aside class="special-block special-block--definition" aria-labelledby="network-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="network-definition-title">Компьютерная сеть</h3>
+  <div class="special-block__body">
+<p>Компьютерная сеть объединяет устройства, которые могут обмениваться данными. Участниками бывают компьютеры, телефоны, принтеры, серверы и другие устройства.</p>
+  </div>
+</aside>
+<ul class="content-list">
+<li><strong>Сообщения.</strong> Вы пишете в учебный чат, и текст поступает другим участникам.</li>
+<li><strong>Файлы.</strong> Вы отправляете архив с домашним заданием в MyStat.</li>
+<li><strong>Общие ресурсы.</strong> Несколько компьютеров пользуются сетевым принтером или общей папкой. Принтеру не обязательно быть подключённым USB-кабелем к каждому ПК.</li>
+</ul>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Масштаб сети">
+  <table>
+    <caption>Масштаб сети</caption>
+    <thead><tr><th scope="col">Название</th><th scope="col">Что объединяет</th><th scope="col">Пример</th></tr></thead>
+    <tbody>
+<tr><td>LAN (Local Area Network)</td><td>Устройства в пределах небольшой территории</td><td>Домашний ноутбук, телефон и принтер; компьютеры учебного класса</td></tr>
+<tr><td>WAN (Wide Area Network)</td><td>Сети на больших расстояниях</td><td>Соединение офисных сетей в разных городах через провайдера</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Интернет</strong> объединяет множество взаимосвязанных сетей по всему миру. Интернет-провайдер, или ISP (Internet Service Provider), подключает вашу сеть к другим сетям. Когда вы открываете зарубежный сайт, данные проходят через несколько сетей.</p>
+<p>Локальная сеть может работать без интернета. Например, два компьютера в классе могут обменяться файлом внутри LAN, даже если связь учебного центра с провайдером прервалась. Для этого обмен файлами должен быть настроен на самих компьютерах.</p>
+        </div>
+      </section>
+      <section id="connections">
+        <h2>03 / Как устройства соединяются</h2>
+        <div class="section-content">
+<p>Для обмена данными нужна среда передачи. В домашней сети это обычно кабель или радиосвязь. По кабелю Ethernet передаются сигналы между сетевыми портами. Wi-Fi передаёт данные по радио, поэтому кабель до ноутбука или телефона не требуется.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Способы подключения и сетевые устройства">
+  <table>
+    <caption>Способы подключения и сетевые устройства</caption>
+    <thead><tr><th scope="col">Элемент</th><th scope="col">Для чего нужен</th><th scope="col">Пример</th></tr></thead>
+    <tbody>
+<tr><td>Ethernet</td><td>Проводное подключение к сети</td><td>Кабель от ПК к LAN-порту домашнего роутера</td></tr>
+<tr><td>Wi-Fi</td><td>Беспроводное подключение к локальной сети</td><td>Телефон подключается к домашней сети по её имени</td></tr>
+<tr><td>Точка доступа</td><td>Подключает Wi-Fi-устройства к локальной сети</td><td>Передаёт данные между телефоном и остальной домашней сетью</td></tr>
+<tr><td>Коммутатор (switch)</td><td>Соединяет устройства внутри локальной сети и передаёт кадры на нужные порты</td><td>Объединяет проводные компьютеры класса</td></tr>
+<tr><td>Маршрутизатор (router, роутер)</td><td>Пересылает IP-пакеты между сетями</td><td>Связывает домашнюю LAN с сетью провайдера</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Один домашний «Wi-Fi-роутер» часто совмещает маршрутизатор, коммутатор для LAN-портов и точку доступа. Поэтому компьютер по кабелю и телефон по Wi-Fi могут оказаться в одной локальной сети. Это разные способы подключения к одной сети.</p>
+<aside class="special-block special-block--warning" aria-labelledby="wifi-without-internet-title">
+  <div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+  <h3 class="special-block__title" id="wifi-without-internet-title">Wi-Fi подключён, а сайт не открывается</h3>
+  <div class="special-block__body">
+<p>Значок Wi-Fi говорит о соединении с точкой доступа. Он не гарантирует, что роутер имеет рабочую связь с провайдером или что нужный сервер доступен. Например, кабель провайдера отключён, а домашняя точка доступа продолжает работать.</p>
+<ol class="content-list">
+<li>Проверьте, подключено ли устройство к нужной сети.</li>
+<li>Откройте другой известный сайт. Если он работает, проблема может относиться только к первому сайту.</li>
+<li>Проверьте доступ в интернет с другого устройства в той же сети. Если не работает нигде, возможна общая проблема роутера или провайдера.</li>
+</ol>
+<p>Эти наблюдения помогают описать проблему: «Wi-Fi подключён, но несколько сайтов не открываются на двух устройствах». Это полезнее, чем просто «интернет сломался». Одного такого наблюдения ещё недостаточно для точного диагноза.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="addresses">
+        <h2>04 / Адреса устройств: IP и MAC</h2>
+        <div class="section-content">
+<p>В сети одновременно общаются разные устройства. Чтобы данные дошли до нужного получателя, используются адреса. У IP и MAC разные задачи: первый помогает доставлять пакеты по сетям, второй участвует в доставке по текущему локальному соединению.</p>
+<aside class="special-block special-block--definition" aria-labelledby="ip-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="ip-definition-title">IP-адрес</h3>
+  <div class="special-block__body">
+<p>IP-адрес назначается сетевому интерфейсу, например Wi-Fi-адаптеру ноутбука. Он используется для обмена IP-пакетами внутри сети и между сетями. У компьютера с несколькими интерфейсами может быть несколько IP-адресов.</p>
+<p>В примерах используем IPv4: четыре числа от 0 до 255, разделённые точками, например <code>192.168.1.10</code>. Существует и IPv6, у которого другая запись, например <code>2001:db8::10</code>. В выводе команд можно встретить оба вида.</p>
+  </div>
+</aside>
+<aside class="special-block special-block--definition" aria-labelledby="mac-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="mac-definition-title">MAC-адрес</h3>
+  <div class="special-block__body">
+<p>В Ethernet и Wi-Fi MAC-адрес используется для доставки кадров по локальному соединению. Кадр можно представить как местную «оболочку» для IP-пакета. Пример MAC-адреса: <code>02:11:22:33:44:10</code>. В Windows разделителем часто служит дефис.</p>
+  </div>
+</aside>
+<p>Когда получатель находится в другой сети, компьютер отправляет кадр своему шлюзу, обычно домашнему роутеру. В этой локальной передаче нужен MAC шлюза. Затем роутер передаёт пакет дальше в новой оболочке. MAC вашего ноутбука не путешествует через весь интернет до сайта. MAC также может меняться, например при использовании случайных адресов Wi-Fi.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Частные и публичные IPv4-адреса">
+  <table>
+    <caption>Частные и публичные IPv4-адреса</caption>
+    <thead><tr><th scope="col">Вид</th><th scope="col">Назначение</th><th scope="col">Что важно помнить</th></tr></thead>
+    <tbody>
+<tr><td>Private IP, частный адрес</td><td>Адрес внутри частной сети, например 192.168.1.10</td><td>Не маршрутизируется напрямую в публичном интернете; может повторяться в разных частных сетях</td></tr>
+<tr><td>Public IP, публичный адрес</td><td>Адрес для маршрутизации в интернете</td><td>Внешняя сторона соединения; сам по себе не означает, что устройство разрешает входящие подключения</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Частные диапазоны IPv4: <code>10.0.0.0–10.255.255.255</code>, <code>172.16.0.0–172.31.255.255</code> и <code>192.168.0.0–192.168.255.255</code>. Например, адрес 172.66.168.111 из схемы ниже не входит в частный диапазон 172.16–172.31.</p>
+<p>У домашнего роутера есть сторона LAN и сторона WAN. В обычной домашней сети с NAT роутер заменяет частный адрес отправителя на внешний адрес и запоминает соединение, включая номера портов. Порт помогает различать сетевые соединения программ. По этой записи роутер понимает, какому устройству передать ответ. Поэтому внешний сервер обычно видит общий публичный IP выхода в интернет.</p>
+<p>Иногда дополнительное преобразование адресов выполняет провайдер (CGNAT), и публичный адрес принадлежит его оборудованию. При VPN видимым адресом может быть адрес VPN-сервера. В дальнейших простых схемах считаем, что public IP находится прямо на домашнем роутере.</p>
+<aside class="special-block special-block--tip" aria-labelledby="ipconfig-practice-title">
+  <div class="special-block__header"><span class="special-block__label">Попробуйте</span></div>
+  <h3 class="special-block__title" id="ipconfig-practice-title">Найдите адрес своего компьютера</h3>
+  <div class="special-block__body">
+    <p>Откройте Windows Terminal с PowerShell и выполните <code>ipconfig</code>. Ниже показан учебный фрагмент вывода для одного Ethernet-адаптера. На вашем компьютере адаптеров может быть несколько, а язык подписей зависит от языка Windows.</p>
+    <div class="code-example">
+  <div class="code-example__header">
+    <span>Консоль</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Просмотр сетевых настроек">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : fe80::a12b:34cd:56ef:7890%12
+   IPv4 Address. . . . . . . . . . . : 192.168.1.10
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.1.1</code></pre>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Поля вывода ipconfig">
+  <table>
+    <caption>Как читать вывод ipconfig</caption>
+    <thead><tr><th scope="col">Поле</th><th scope="col">Что означает</th></tr></thead>
+    <tbody>
+<tr><td>Ethernet adapter Ethernet</td><td>Заголовок настроек адаптера: первое Ethernet обозначает тип подключения, второе является именем адаптера в Windows.</td></tr>
+<tr><td>Connection-specific DNS Suffix</td><td>DNS-суффикс этого подключения. Может дополнять короткое имя компьютера при поиске через DNS. Пустое поле означает, что для подключения суффикс не задан.</td></tr>
+<tr><td>Link-local IPv6 Address</td><td>IPv6-адрес для обмена в пределах текущего локального соединения. Маршрутизаторы не пересылают пакеты с таким адресом в другие сети. Окончание <code>%12</code> указывает номер интерфейса на этом компьютере.</td></tr>
+<tr><td>IPv4 Address</td><td>IPv4-адрес адаптера. В примере <code>192.168.1.10</code> является частным адресом компьютера в домашней сети.</td></tr>
+<tr><td>Subnet Mask</td><td>Маска определяет, какая часть IPv4-адреса обозначает сеть. При <code>255.255.255.0</code> первые три числа относятся к сети: адреса <code>192.168.1.10</code> и <code>192.168.1.1</code> находятся в одной подсети.</td></tr>
+<tr><td>Default Gateway</td><td>Шлюз по умолчанию: маршрутизатор, которому компьютер передаёт пакеты в другие сети, если нет более конкретного маршрута. Здесь это домашний роутер с адресом <code>192.168.1.1</code>.</td></tr>
+    </tbody>
+  </table>
+</div>
+ <p>Выполните <code>ipconfig /all</code>, чтобы увидеть подробные настройки. Ниже показан тот же адаптер. В этом примере роутер также выдаёт компьютеру IPv4-настройки по DHCP и принимает DNS-запросы.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Консоль</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Просмотр сетевых настроек">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Realtek PCIe GbE Family Controller
+   Physical Address. . . . . . . . . : 02-11-22-33-44-10
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::a12b:34cd:56ef:7890%12(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.1.10(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : Tuesday, September 15, 2026 9:00:00 AM
+   Lease Expires . . . . . . . . . . : Wednesday, September 16, 2026 9:00:00 AM
+   Default Gateway . . . . . . . . . : 192.168.1.1
+   DHCP Server . . . . . . . . . . . : 192.168.1.1
+   DHCPv6 IAID . . . . . . . . . . . : 201396770
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-31-00-00-00-02-11-22-33-44-10
+   DNS Servers . . . . . . . . . . . : fe80::1%12
+                                       192.168.1.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled</code></pre>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Поля вывода ipconfig /all">
+  <table>
+    <caption>Как читать вывод ipconfig /all</caption>
+    <thead><tr><th scope="col">Поле</th><th scope="col">Что означает</th></tr></thead>
+    <tbody>
+<tr><td>Ethernet adapter Ethernet</td><td>Начало блока настроек того же Ethernet-адаптера.</td></tr>
+<tr><td>Connection-specific DNS Suffix</td><td>DNS-суффикс подключения. В примере не задан, поэтому строка пустая.</td></tr>
+<tr><td>Description</td><td>Описание сетевого адаптера, которое сообщает его драйвер. Здесь указана сетевая карта Realtek; на вашем компьютере название может быть другим.</td></tr>
+<tr><td>Physical Address</td><td>MAC-адрес адаптера. Запись <code>02-11-22-33-44-10</code> обозначает тот же адрес, что и <code>02:11:22:33:44:10</code>.</td></tr>
+<tr><td>DHCP Enabled</td><td><code>Yes</code> означает, что включено автоматическое получение IPv4-настроек от DHCP-сервера. В домашней сети эту роль часто выполняет роутер.</td></tr>
+<tr><td>Autoconfiguration Enabled</td><td><code>Yes</code> разрешает Windows самостоятельно выбрать локальный IPv4-адрес вида <code>169.254.x.x</code>, если получить настройки по DHCP не удалось. Этот механизм называется APIPA. В примере он разрешён, но адрес <code>192.168.1.10</code> получен по DHCP.</td></tr>
+<tr><td>Link-local IPv6 Address</td><td>Локальный IPv6-адрес адаптера; <code>%12</code> указывает номер интерфейса. Пометка Preferred означает, что адрес находится в предпочтительном состоянии и может использоваться для новых соединений.</td></tr>
+<tr><td>IPv4 Address</td><td>IPv4-адрес компьютера в этой сети: <code>192.168.1.10</code>. Preferred является пометкой состояния, а не частью адреса.</td></tr>
+<tr><td>Subnet Mask</td><td>Маска IPv4-подсети. Вместе с адресом компьютера значение <code>255.255.255.0</code> задаёт сеть <code>192.168.1.0/24</code>. Число 24 означает количество битов сетевой части адреса.</td></tr>
+<tr><td>Lease Obtained</td><td>Дата и время получения текущей аренды IPv4-адреса по DHCP. Здесь компьютер получил её 15 сентября 2026 года в 09:00.</td></tr>
+<tr><td>Lease Expires</td><td>Дата и время окончания аренды: 16 сентября 2026 года в 09:00. Срок в примере составляет сутки. Обычно компьютер заранее пытается продлить аренду, поэтому адрес не обязательно изменится.</td></tr>
+<tr><td>Default Gateway</td><td>Шлюз по умолчанию для выхода в другие сети. В примере это IPv4-адрес роутера <code>192.168.1.1</code>.</td></tr>
+<tr><td>DHCP Server</td><td>Адрес сервера, который выдал IPv4-настройки. Здесь он совпадает со шлюзом, потому что обе задачи выполняет один роутер. В других сетях это могут быть разные устройства.</td></tr>
+<tr><td>DHCPv6 IAID</td><td>Числовой идентификатор набора назначений DHCPv6, связанного с этим интерфейсом. Вместе с DUID помогает серверу различать назначения одному клиенту. Это служебное значение, не IP-адрес.</td></tr>
+<tr><td>DHCPv6 Client DUID</td><td>Идентификатор клиента DHCPv6. Помогает серверу узнавать клиента при запросах IPv6-настроек. Наличие DUID и IAID в выводе само по себе не означает, что адрес уже получен по DHCPv6.</td></tr>
+<tr><td>DNS Servers</td><td>Адреса серверов, к которым система может обращаться за DNS-ответами. Здесь <code>fe80::1%12</code> и <code>192.168.1.1</code> принадлежат одному роутеру: первый адрес используется по IPv6, второй по IPv4.</td></tr>
+<tr><td>NetBIOS over Tcpip</td><td><code>Enabled</code> означает, что включена поддержка NetBIOS поверх TCP/IP для совместимости со старыми способами обмена данными и поиска компьютеров по именам в сетях Windows. Это не показатель доступа в интернет.</td></tr>
+    </tbody>
+  </table>
+</div>
+ <p>Команды показывают настройки, но не меняют их. Ваши значения могут отличаться от учебного примера. При обычном домашнем NAT ipconfig показывает частный адрес компьютера, а не публичный адрес роутера.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="dns">
+        <h2>05 / Доменные имена и DNS</h2>
+        <div class="section-content">
+<p>Запомнить <code>mystat.itstep.org</code> проще, чем набор чисел. Такое имя называется доменным. DNS (Domain Name System) помогает по имени получить адреса, которые программы используют для соединения. Имена также позволяют менять адреса серверов, сохраняя привычный адрес сервиса для людей.</p>
+<ol class="content-list">
+<li>Вы указываете имя mystat.itstep.org.</li>
+<li>Если подходящего ответа ещё нет в кэше, система обращается к DNS. Кэш хранит недавно полученные ответы некоторое время.</li>
+<li>DNS возвращает сведения об адресах. У имени может быть несколько IPv4- и IPv6-адресов.</li>
+<li>Программа использует подходящий адрес для подключения к сервису. DNS не передаёт саму веб-страницу.</li>
+</ol>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Запрос к DNS в терминале</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Запрос к DNS в терминале">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>nslookup mystat.itstep.org</code></pre>
+</div>
+<p>Выполните эту команду в PowerShell. В начале вывода обычно указаны DNS-сервер и его адрес: это тот, кого вы спросили. Ниже находятся имя и адреса запрошенного узла. Они могут отличаться у разных пользователей и меняться со временем.</p>
+<p>В ответе могут быть псевдонимы (Aliases) и пометка Non-authoritative answer, то есть ответ от DNS-сервера, который сам не управляет этим доменом. Такая пометка сама по себе не означает ошибку. Успешный DNS-ответ ещё не доказывает, что веб-сервис работает.</p>
+<p>Поиск в браузере начинается с указания URL, который содержит схему, доменное имя и путь.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Имя и полный адрес страницы">
+  <table>
+    <caption>Имя и полный адрес страницы</caption>
+    <thead><tr><th scope="col">Часть</th><th scope="col">Пример</th><th scope="col">Для чего нужна</th></tr></thead>
+    <tbody>
+<tr><td>Схема</td><td><code>https://</code></td><td>Указывает способ обращения к ресурсу</td></tr>
+<tr><td>Доменное имя</td><td><code>mystat.itstep.org</code></td><td>Имя узла, для которого можно запросить адрес через DNS</td></tr>
+<tr><td>Путь</td><td><code>/</code></td><td>Корневой путь в этом примере</td></tr>
+<tr><td>Полный URL</td><td><code>https://mystat.itstep.org/</code></td><td>Объединяет схему, имя и путь</td></tr>
+    </tbody>
+  </table>
+</div>
+        </div>
+      </section>
+      <section id="client-server">
+        <h2>06 / Клиент, сервер и передача данных</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="client-server-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="client-server-definition-title">Запрос и ответ</h3>
+  <div class="special-block__body">
+<p><strong>Клиент</strong> обращается за данными или действием. <strong>Сервер</strong> принимает запрос, обрабатывает его и отправляет ответ. Например, браузер запрашивает список домашних заданий, а сервер MyStat возвращает данные для его показа.</p>
+  </div>
+</aside>
+<p>Это роли программ. Словом «сервер» также называют компьютер, на котором запущена серверная программа. Однако серверная программа может работать и на обычном ноутбуке. Один компьютер способен одновременно запускать браузер-клиент и сервер для другого приложения.</p>
+<ol class="content-list">
+<li>Клиент: «Покажи список файлов в моей папке».</li>
+<li>Сервер проверяет, кто обратился и есть ли у него доступ, затем получает список файлов.</li>
+<li>Сервер отправляет ответ. Это могут быть данные или сообщение об ошибке, например об отсутствии доступа.</li>
+<li>Клиент обрабатывает ответ и показывает результат пользователю.</li>
+</ol>
+<p>Большой файл не проходит по сети одним неделимым куском. Данные передаются частями в <strong>пакетах</strong>. Пакеты содержат данные и служебную информацию, в том числе IP-адреса. Маршрутизаторы пересылают их к следующему участку пути.</p>
+<p>Пакеты могут задерживаться, теряться или приходить в другом порядке. Для надёжной передачи сетевые протоколы, например TCP, обеспечивают упорядочивание и повторную передачу потерянных данных. Поэтому картинка может появиться с задержкой, хотя часть её данных уже пришла.</p>
+<aside class="special-block special-block--tip" aria-labelledby="packet-analogy-title">
+  <div class="special-block__header"><span class="special-block__label">Подсказка</span></div>
+  <h3 class="special-block__title" id="packet-analogy-title">Представьте отправку книги по частям</h3>
+  <div class="special-block__body">
+<p>Вы разложили главы по пронумерованным конвертам. Каждый конверт содержит адрес, а получатель собирает главы в нужном порядке. Это аналогия: в настоящей сети данные делятся на байты, а правила доставки задают протоколы. Пакет не равен целому сообщению чата или целому файлу.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="message-paths">
+        <h2>07 / Примеры путей сообщения</h2>
+        <div class="section-content">
+<p>На схемах синим показаны домашние устройства, оранжевым промежуточные маршрутизаторы, ISP обозначает провайдера. Линия показывает возможное соединение.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/05/01-client-server-example.png" alt="PC, телефон и ноутбук подключены к домашнему роутеру; через R1–R6 и провайдера сеть соединяется с роутером сервера и сервером 10.20.0.11" loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 1. Клиент обращается к серверу через несколько сетей (адреса условные, структура сервиса упрощена). <a href="https://excalidraw.com/#json=PaL0ePANHCxFOcb2mgKCs,IHLS39T4P63qyZMeQZ0lYw" target="_blank" rel="noopener noreferrer">Открыть схему в Excalidraw</a></figcaption>
+</figure>
+<ol class="content-list">
+<li>PC слева имеет private IP <code>192.168.1.10</code> и MAC <code>02:11:22:33:44:10</code>. Для обращения к внешнему сервису он отправляет пакет через шлюз <code>192.168.1.1</code>, то есть домашний Wi-Fi router.</li>
+<li>Домашний роутер запоминает исходящее соединение и при NAT заменяет адрес отправителя своим WAN-адресом <code>198.51.100.10</code>. Поэтому частный адрес PC не используется для обратной маршрутизации через интернет.</li>
+<li>Один из возможных путей на рисунке: Wi-Fi router → R1 → R2 → ISP → R5 → R6 → server router. Каждый маршрутизатор выбирает следующий участок пути.</li>
+<li>На WAN-стороне server router указан <code>172.66.168.111</code>, а сервер внутри его LAN имеет адрес <code>10.20.0.11</code>. Для этой схемы предполагаем, что роутер сервера настроен принимать обращения к сервису и направлять их на внутренний сервер.</li>
+<li>Серверная программа обрабатывает запрос. Если ей нужны данные с показанных справа хранилищ, она обращается к ним через коммутатор. Браузер клиента не обязан обращаться к этим хранилищам напрямую.</li>
+<li>Ответ проходит через server router и интернет к домашнему роутеру. Домашний роутер находит запись соединения, восстанавливает адрес PC <code>192.168.1.10</code> и передаёт данные ему по локальной сети.</li>
+</ol>
+<p>Для иллюстрации ответ может пройти так: server → server router → R6 → R5 → ISP → R2 → R1 → Wi-Fi router → PC. Совпадение прямого и обратного маршрутов не обязательно. При доставке внутри домашней Ethernet/Wi-Fi-сети используется MAC нужного интерфейса; внешний сервер не получает MAC клиента как адрес доставки через интернет.</p>
+<p>Рассмотрим ещё один пример.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/05/02-p2p-example.png" alt="Две домашние сети с одинаковыми частными адресами PC соединены через маршрутизаторы и ISP; WAN-адреса домашних роутеров различаются" loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 2. Обмен между PC в разных домашних сетях (адреса условные). <a href="https://excalidraw.com/#json=sMN-1rBgNxbsqX7sjMP2r,XcO6Q_-sMEYtvuV24kb5xA" target="_blank" rel="noopener noreferrer">Открыть схему в Excalidraw</a></figcaption>
+</figure>
+<p>Оба PC имеют адрес <code>192.168.1.10</code>. Конфликта нет: это разные локальные сети. Несмотря на это левый PC не может указать на правый PC через публичный интернет, используя private IP. Взаимодействовать они могут через роутеры, у которых есть внешние адреса: слева <code>198.51.100.10</code>, справа <code>174.23.202.10</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="p2p-condition-title">
+  <div class="special-block__header"><span class="special-block__label">Условие примера</span></div>
+  <h3 class="special-block__title" id="p2p-condition-title">Что нужно для связи PC с PC</h3>
+  <div class="special-block__body">
+<p>P2P (peer-to-peer) означает, что программы на устройствах обмениваются данными как равноправные участники. Но линия на рисунке ещё не создаёт доступ к программе. При NAT нужны согласование соединения приложениями или специальная настройка; иногда используется промежуточный сервер. Также должны разрешать соединение межсетевые экраны. Считаем, что приложение уже установило доступный канал между PC.</p>
+  </div>
+</aside>
+<ol class="content-list">
+<li>Программа на левом PC готовит данные для другого участника. В своей LAN компьютер передаёт их домашнему роутеру.</li>
+<li>Один из путей по рисунку: левый Wi-Fi router → R1 → R3 → R2 → R5 → ISP → R11 → R13 → R17 → правый Wi-Fi router.</li>
+<li>Правый роутер использует согласованное соединение или настроенное правило, чтобы направить данные на правый PC с private IP 192.168.1.10. В своей LAN он использует локальный адрес нужного интерфейса для последней доставки.</li>
+<li>Правый PC отвечает через свой роутер. Например, ответ проходит правый Wi-Fi router → R17 → R13 → R11 → ISP → R5 → R2 → R3 → R1 → левый Wi-Fi router → левый PC.</li>
+</ol>
+<p>Для понимания маршрута достаточно различать private IP, внешний IP и локальный MAC.</p>
+<p>В клиент-серверной модели роли запроса и обслуживания обычно разделены. В P2P участник может и запрашивать, и отдавать данные. В обоих случаях интернет передаёт пакеты через сетевое оборудование.</p>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>08 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-ip-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-ip-title">Какой адрес используется для маршрутизации пакетов между сетями?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-ip-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-ip-1" aria-describedby="check-ip-1-feedback" />
+    <span><code>IP</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-ip-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Маршрутизаторы используют IP-адрес назначения, чтобы выбрать следующий участок пути.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-ip-2" aria-describedby="check-ip-2-feedback" />
+    <span><code>MAC</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-ip-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>MAC нужен для доставки в пределах текущего локального соединения.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-ip-3" aria-describedby="check-ip-3-feedback" />
+    <span><code>DNS</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-ip-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>DNS помогает получать адреса по именам.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-ip-4" aria-describedby="check-ip-4-feedback" />
+    <span><code>LAN</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-ip-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>LAN обозначает локальную сеть.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-ip-5" aria-describedby="check-ip-5-feedback" />
+    <span><code>WAN</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-ip-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>WAN обозначает сеть на большой территории.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-mac-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-mac-title">Какой адрес используется для доставки кадра нужному интерфейсу внутри Ethernet/Wi-Fi-сети?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-mac-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-mac-1" aria-describedby="check-mac-1-feedback" />
+    <span><code>IP</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-mac-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>IP относится к пакету и маршрутизации; в вопросе спрашивается об адресе получателя кадра.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-mac-2" aria-describedby="check-mac-2-feedback" />
+    <span><code>MAC</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-mac-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>MAC используется как адрес интерфейса при локальной передаче кадра.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-mac-3" aria-describedby="check-mac-3-feedback" />
+    <span><code>DNS</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-mac-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>DNS работает с доменными именами и записями об адресах.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-mac-4" aria-describedby="check-mac-4-feedback" />
+    <span><code>LAN</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-mac-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это тип сети, а не адрес интерфейса.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-mac-5" aria-describedby="check-mac-5-feedback" />
+    <span><code>WAN</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-mac-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это обозначение глобальной сети, а не адрес интерфейса.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-dns-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-dns-title">Что делает DNS при открытии сайта по имени?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-dns-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-dns-1" aria-describedby="check-dns-1-feedback" />
+    <span>Помогает получить IP-адрес по доменному имени</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-dns-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Полученный адрес программа может использовать для соединения с сервисом.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-dns-2" aria-describedby="check-dns-2-feedback" />
+    <span>Передаёт веб-страницу вместо сервера сайта</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-dns-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Содержимое страницы приходит от веб-сервиса после обращения к нему.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-dns-3" aria-describedby="check-dns-3-feedback" />
+    <span>Заменяет Wi-Fi-адаптер компьютера</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-dns-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>DNS не является оборудованием для подключения к сети.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-dns-4" aria-describedby="check-dns-4-feedback" />
+    <span>Создаёт ZIP-архив перед отправкой файла</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-dns-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Архивация файлов не относится к задачам DNS.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-ipconfig-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-ipconfig-title">Как посмотреть IP-настройки в Windows?</h3>
+  <div class="special-block__body">
+<p>Введите команду без параметров, которая выводит IP-адреса адаптеров, маски подсети и основной шлюз. Используйте строчные латинские буквы без пробелов.</p>
+<form class="quiz" data-quiz="text" data-answer="ipconfig"
+  data-success="Верно. ipconfig показывает основные IP-настройки сетевых адаптеров." data-hint="Это команда просмотра IP-конфигурации. Введите только её имя, без /all и без пробелов."
+  autocomplete="off" aria-labelledby="check-ipconfig-title">
+  <label for="check-ipconfig-answer">Введите команду</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-ipconfig-answer" name="answer" type="text"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-ipconfig-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-ipconfig-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-client-server-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-client-server-title">Что описывает модель «клиент-сервер»?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-client-server-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-client-server-1" aria-describedby="check-client-server-1-feedback" />
+    <span>Клиент отправляет запрос, сервер обрабатывает его и отвечает</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-client-server-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Клиент и сервер обозначают роли взаимодействующих программ.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-client-server-2" aria-describedby="check-client-server-2-feedback" />
+    <span>Сервером может быть только специальный дорогой компьютер</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-client-server-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Серверная программа может работать на обычном компьютере.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-client-server-3" aria-describedby="check-client-server-3-feedback" />
+    <span>Клиент всегда подключается к серверу напрямую одним кабелем</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-client-server-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Между ними могут находиться многие маршрутизаторы и сети.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-client-server-4" aria-describedby="check-client-server-4-feedback" />
+    <span>Каждый файл передаётся по интернету одним неделимым пакетом</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-client-server-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Большие данные передаются частями в нескольких пакетах.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-local-delivery-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-local-delivery-title">Какие адреса участвуют в доставке ответа от домашнего роутера к PC внутри его LAN?</h3>
+  <div class="special-block__body">
+<p>Рассматриваем обычную домашнюю IPv4-сеть с NAT. Ответ уже пришёл на роутер; вопрос касается его последней передачи к PC.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-local-delivery-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-local-delivery-1" aria-describedby="check-local-delivery-1-feedback" />
+    <span>Private IP</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-local-delivery-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По записи соединения NAT роутер восстанавливает частный IP получателя.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-local-delivery-2" aria-describedby="check-local-delivery-2-feedback" />
+    <span>MAC-адрес</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-local-delivery-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>При передаче кадра в локальной Ethernet/Wi-Fi-сети используется MAC интерфейса получателя.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-local-delivery-3" aria-describedby="check-local-delivery-3-feedback" />
+    <span>DNS</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-local-delivery-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>DNS не является адресом PC и не нужен для последней доставки уже полученного ответа.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-local-delivery-4" aria-describedby="check-local-delivery-4-feedback" />
+    <span>Public IP</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-local-delivery-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Он относится к внешней стороне соединения. На внутреннем участке назначения используются private IP и локальный MAC.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-network-statements-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-network-statements-title">Какие утверждения подходят к разобранной домашней сети?</h3>
+  <div class="special-block__body">
+<p>Предполагаем IPv4, NAT на домашнем роутере, отсутствие VPN и других специально настроенных соединений. Слова о «видимости» private IP относятся к адресации и доставке пакетов в этой схеме.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-network-statements-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-1" aria-describedby="check-network-statements-1-feedback" />
+    <span>Обычно внешний сервер видит public IP роутера</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В нашем примере NAT выполняется на домашнем роутере. При CGNAT или VPN видимым может быть другой внешний адрес.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-2" aria-describedby="check-network-statements-2-feedback" />
+    <span>Доменное имя через DNS преобразуется в IP-адрес сервера</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>DNS позволяет получить адрес по имени; адресов может быть несколько.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-3" aria-describedby="check-network-statements-3-feedback" />
+    <span>Private IP виден только в локальной сети</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В рамках схемы это внутренний адрес, который не используется для прямой доставки через публичный интернет. Это не обещание секретности: программа может передать его как текст.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-4" aria-describedby="check-network-statements-4-feedback" />
+    <span>При запросе к серверу, устройство передаёт серверу свой MAC-адрес</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Внешний сервер не получает MAC клиента в качестве адреса доставки: локальные оболочки меняются по пути.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-5" aria-describedby="check-network-statements-5-feedback" />
+    <span>Телефон, подключенный по мобильной сети, может обратиться к компьютеру по его private IP</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Из отдельной мобильной сети нет прямого маршрута к домашнему private IP. Для специального доступа потребовалась бы дополнительная настройка, например VPN.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-6" aria-describedby="check-network-statements-6-feedback" />
+    <span>Подключение к Wi-Fi всегда гарантирует доступ в интернет</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Wi-Fi-соединение может работать, когда связь роутера с провайдером отсутствует.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label">
+    <input class="visually-hidden" type="checkbox" name="answers" value="check-network-statements-7" aria-describedby="check-network-statements-7-feedback" />
+    <span>В разных домашних сетях нельзя использовать одинаковые private IP</span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-network-statements-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Частные адреса могут повторяться в независимых сетях, как у двух PC на второй схеме.</p></div></div>
+</div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div
+      id="copy-status"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </body>
+</html>

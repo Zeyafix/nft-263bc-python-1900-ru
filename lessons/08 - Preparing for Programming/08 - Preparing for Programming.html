@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Подготовка к программированию в Windows: установка Python и VS Code, виртуальное окружение, первый запуск, print, переменные, f-строки, input, горячие клавиши и самопроверка."
+    />
+    <title>08 - Preparing for Programming</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">08 - Preparing for Programming</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="tools">
+        <h2>01 / Инструменты программиста</h2>
+        <div class="section-content">
+<p>В этом уроке вы установите инструменты, создадите папку проекта и запустите первую программу. Затем научитесь показывать сообщения, сохранять значения под именами и получать ответы пользователя. Выполняйте шаги на своём компьютере: результат каждого запуска сравнивайте с примером.</p>
+<p>Инструкции рассчитаны на Windows. Основной способ работы: писать код в VS Code, сохранять его в файл и запускать из отдельного окна терминала. Для терминальных команд можно использовать PowerShell или командную строку cmd; различия при активации окружения показаны отдельно.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Какая роль у каждого инструмента">
+<table>
+<caption>Какая роль у каждого инструмента</caption>
+<thead><tr><th scope="col">Инструмент</th><th scope="col">Для чего нужен</th><th scope="col">Пример</th></tr></thead>
+<tbody>
+<tr><td>Python как язык</td><td>Правила записи программы, которые мы изучаем.</td><td><code>print("Hello World")</code></td></tr>
+<tr><td>Интерпретатор Python</td><td>Установленная программа, которая читает и выполняет код Python.</td><td><code>python.exe</code></td></tr>
+<tr><td>Visual Studio Code, или VS Code</td><td>Редактор: в нём удобно создавать, читать и исправлять код.</td><td>Открываем и сохраняем <code>main.py</code>.</td></tr>
+<tr><td>Расширение Python для VS Code</td><td>Добавляет поддержку Python в редактор: подсказки, выбор интерпретатора и инструменты запуска.</td><td>Расширение Python от Microsoft.</td></tr>
+<tr><td>Терминал</td><td>Окно для команд и текстового взаимодействия. Команды обрабатывает оболочка, например PowerShell.</td><td>Вводим команду запуска, читаем сообщения программы.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Когда говорят «установить Python», обычно имеют в виду установить интерпретатор и сопутствующие инструменты. Расширение редактора не заменяет интерпретатор: нужны оба. Сам файл с кодом также ничего не выполняет, пока мы не запустим его через Python.</p>
+        </div>
+      </section>
+      <section id="installation">
+        <h2>02 / Установка и проверка инструментов</h2>
+        <div class="section-content">
+<p>Устанавливайте программы с официальных сайтов. Для курса нужна обычная стабильная версия Python и VS Code.</p>
+<aside class="special-block special-block--correct" aria-labelledby="python-installation-title">
+  <div class="special-block__header"><span class="special-block__label">Установка</span></div>
+  <h3 class="special-block__title" id="python-installation-title">Ставим Python на компьютер</h3>
+  <div class="special-block__body">
+    <figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/01-python-download.png" alt="Меню Downloads на сайте python.org с кнопкой загрузки Python Install Manager для Windows" loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 1. Загрузка Python Install Manager на официальном сайте Python.</figcaption>
+</figure>
+<p>Откройте <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">официальную страницу загрузки Python</a>. Для Windows доступен Python Install Manager. Скачайте его и запустите установку.</p>
+<p>После установки откройте новое окно терминала и выполните <code>python --version</code>. При первом обращении менеджер может предложить или выполнить установку интерпретатора. Дождитесь завершения.</p>
+<p>Чтобы проверить, стоит ли на компьютере Python, выполните команду <code>python --version</code> — она покажет текущую установленную и выбранную версию Python. Затем выполните команду <code>py --list</code> — она покажет список установленных версий Python.</p>
+  </div>
+</aside>
+<aside class="special-block special-block--correct" aria-labelledby="vs-installation-title">
+  <div class="special-block__header"><span class="special-block__label">Установка</span></div>
+  <h3 class="special-block__title" id="vs-installation-title">Ставим VS Code на компьютер</h3>
+  <div class="special-block__body">
+<p>Откройте <a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener noreferrer">официальную страницу загрузки VS Code</a>. Скачайте установщик для Windows.</p>
+<p>При запуске установщика будет этап, где нужно поставить галочки. Поставьте галочки для следующих пунктов:</p>
+<ol class="content-list">
+<li><strong>Add "Open with Code" action to Windows Explorer file context menu</strong> — будет показывать пункт "Open with Code", если нажать <strong>Правую Кнопку Мыши</strong> по файлу.</li>
+<li><strong>Add "Open with Code" action to Windows Explorer directory context menu</strong> — будет показывать пункт "Open with Code", если нажать <strong>Правую Кнопку Мыши</strong> по папке.</li>
+<li><strong>Register code as an editor for supported file types</strong> — программа VS Code станет приложением по умолчанию для всех файлов, которые она может открывать.</li>
+<li><strong>Add to PATH (requires shell restart)</strong> — позволит вызывать VS Code из терминала независимо от того, какая сейчас текущая папка.</li>
+</ol>
+<p>Откройте новый терминал и впишите в него <code>code</code>. Эта команда запустит VS Code и откроет окно этой программы. В VS Code нажмите комбинацию клавиш <strong>Ctrl + Shift + X</strong>, чтобы открыть <strong>Extensions</strong>. Найдите расширение <strong>Python</strong> с издателем <strong>Microsoft</strong> и нажмите <strong>Install</strong>. Это расширение будет давать подсказки во время написания кода на Python.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="first-project">
+        <h2>03 / Папка проекта и первый запуск</h2>
+        <div class="section-content">
+<p>Для удобства определитесь с местом, где будете хранить все проекты курса. Создайте в этой папке новую папку с именем <code>00-first-program</code> — это название проекта. Перейдите в эту папку. Если терминал ещё не открыт в этой папке, то в <strong>Проводнике</strong> нажмите на адресную строку (там указан путь папки), введите <code>powershell</code> и нажмите <strong>Enter</strong>. Откроется отдельное окно PowerShell в этой папке. На протяжении всей работы не закрывайте этот терминал — он ещё понадобится.</p>
+<p>Убедитесь, что терминал открыт в папке <code>00-first-program</code> (можете выполнить <code>dir</code> и увидеть, что папка пустая). Это место называется <strong>корень проекта</strong>. Следующий этап — настройка окружения.</p>
+<aside class="special-block special-block--definition" aria-labelledby="venv-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="venv-definition-title">Окружение для проекта</h3>
+  <div class="special-block__body">
+<p><strong>Виртуальное окружение</strong> — это изолированная среда Python, в которой хранятся свой интерпретатор Python и установленные для конкретного проекта библиотеки. Это позволяет разным проектам использовать разные версии пакетов без конфликтов.</p>
+  </div>
+</aside>
+<p>Если в папке проекта ещё нет <strong>.venv</strong>, создайте окружение. Находясь в терминале в корне проекта, выполните <code>python -m venv .venv</code>. Можно заметить, что на время создания терминал перестанет реагировать — это нормально, просто ждите возвращения управления. <strong>Окружение нужно создавать только один раз</strong>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Разбор команды">
+<table>
+<caption>Разбор команды <code>python -m venv .venv</code></caption>
+<thead><tr><th scope="col">Часть команды</th><th scope="col">Что означает</th><th scope="col">Что делает</th></tr></thead>
+<tbody>
+<tr><td><code>python</code></td><td>Запуск Python</td><td>Запускает интерпретатор Python</td></tr>
+<tr><td><code>-m</code></td><td>module</td><td>Говорит Python: «запусти указанный модуль как программу»</td></tr>
+<tr><td><code>venv</code></td><td>Модуль для виртуальных окружений</td><td>Создаёт изолированное окружение Python</td></tr>
+<tr><td><code>.venv</code></td><td>Имя папки</td><td>Создаёт виртуальное окружение в папке <code>.venv</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Если установлено несколько версий, можно явно выбрать одну из списка <code>py --list</code>. Например, для установленного Python 3.14 вместо предыдущей команды выполните <code>py -3.14 -m venv .venv</code>. Общий шаблон: <code>py -&lt;version&gt; -m venv .venv</code>. Замените <code>&lt;version&gt;</code> реальным номером без угловых скобок. <strong>Используйте только один из способов создания окружения</strong>.</p>
+<p>После того, как настроили окружение, находясь в терминале в корне проекта, выполните <code>code .</code> — откроется VS Code в текущей папке. Создайте файл <code>main.py</code> — это будет точкой входа в программу.</p>
+<p>Скопируйте код, указанный ниже, вставьте его в <strong>main.py</strong> и сохраните (клавиши <strong>Ctrl + S</strong>). Чтобы запустить этот код, нам нужно вызвать интерпретатор и передать ему файл <strong>main.py</strong>. Для этого выполните в терминале <code>.venv\Scripts\python.exe main.py</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Терминал: запуск Python из окружения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Терминал: запуск Python из окружения">Копировать</button></div>
+  <pre tabindex="0"><code>.venv\Scripts\python.exe main.py</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Терминал: запуск Python из окружения">Hello World</pre>
+  </div>
+</div>
+<aside class="special-block special-block--tip" aria-labelledby="terminal-clear">
+  <div class="special-block__header"><span class="special-block__label">Подсказка</span></div>
+  <h3 class="special-block__title" id="terminal-clear">Если в терминале много текста</h3>
+  <div class="special-block__body">
+<p>Если в терминале слишком много текста, можно вписать команду <code>cls</code>, которая полностью очистит терминал.</p>
+  </div>
+</aside>
+<p>Есть несколько способов запустить код на Python.</p>
+<ol class="content-list">
+<li><code>.venv\Scripts\python.exe main.py</code> — вызов интерпретатора из папки <strong>.venv</strong> и передача ему файла.</li>
+<li><code>python main.py</code> — вызов глобального интерпретатора, который установлен на компьютере, и передача ему файла.</li>
+<li><code>.venv\Scripts\Activate.ps1</code> затем <code>python main.py</code> — первая команда "подменит" слово <strong>python</strong> на <strong>.venv\Scripts\python.exe</strong>. Это приведёт к тому, что теперь команда <code>python</code> будет означать локальный интерпретатор из папки <strong>.venv</strong>. Этот процесс называется <strong>активация</strong>. Для деактивации достаточно написать <code>deactivate</code>.</li>
+</ol>
+<aside class="special-block special-block--tip" aria-labelledby="activation-policy-title">
+  <div class="special-block__header"><span class="special-block__label">Подсказка</span></div>
+  <h3 class="special-block__title" id="activation-policy-title">Если PowerShell запрещает запуск Activate.ps1</h3>
+  <div class="special-block__body">
+<p>Попробуйте выполнить <code>Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process</code>. Эта команда позволит запускать <strong>.ps1</strong> скрипты в текущем терминале. Если открыть новый терминал, то эту команду придётся повторить.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="output">
+        <h2>04 / Вывод и последовательность действий</h2>
+        <div class="section-content">
+<p>Функция выполняет определённую работу, когда мы её вызываем. Встроенная функция <code>print</code> выводит переданные значения. Запись <code>print("Hello World")</code> является вызовом: имя функции, открывающая скобка, значение для вывода и закрывающая скобка.</p>
+<p>Текст внутри прямых кавычек является <strong>строкой</strong>. Кавычки помогают Python отличить текст от имён и команд. В консоль они не попадают. Для простой строки подходят двойные <code>"Hello"</code> или одинарные <code>'Hello'</code> кавычки; открывающая и закрывающая должны совпадать.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: сообщения по порядку</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: сообщения по порядку">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;Начало&quot;)
+print(&quot;Hello World&quot;)
+print(&quot;Конец&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: сообщения по порядку">Начало
+Hello World
+Конец</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/PrintFlow.gif" alt="Вызовы print выполняются сверху вниз и выводят сообщения в консоль." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 2. Вызовы print выполняются сверху вниз и выводят сообщения в консоль.</figcaption>
+</figure>
+<p>В таком простом файле вызовы выполняются сверху вниз. Каждый <code>print()</code> по умолчанию заканчивает вывод переходом на новую строку. Если поменять первую и последнюю строки кода местами, сообщения тоже поменяются местами.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: пустая строка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: пустая строка">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;Визитка&quot;)
+print()
+print(&quot;Python student&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: пустая строка">Визитка
+
+Python student</pre>
+  </div>
+</div>
+<p>Вызов <code>print()</code> без значений выводит только переход на новую строку. Скобки всё равно нужны, потому что мы вызываем функцию. Одно слово <code>print</code> в файле не выведет сообщение.</p>
+        </div>
+      </section>
+      <section id="variables">
+        <h2>05 / Переменная и вывод значения</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="variable-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="variable-definition-title">Переменная</h3>
+  <div class="special-block__body">
+<p><strong>Переменная</strong> позволяет обращаться к значению по имени. Присваивание <code>name = "Teston"</code> связывает имя <code>name</code> со строкой <code>"Teston"</code>. Сначала Python получает значение справа от <code>=</code>, затем связывает с ним имя слева.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: значение и его имя</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: значение и его имя">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">name = &quot;Teston&quot;
+print(name)
+print(&quot;name&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: значение и его имя">Teston
+name</pre>
+  </div>
+</div>
+<p>Вызов <code>print(name)</code> обращается к переменной и выводит её значение. Вызов <code>print("name")</code> (с кавычками) выводит буквально четыре буквы внутри кавычек. Само присваивание ничего в консоль не печатает. Сначала создайте связь имени со значением, затем используйте имя.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/VariableMemory01.gif" alt="Значение Teston занимает свободную ячейку, а имя name связывается с ним." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 3. Значение Teston занимает свободную ячейку, а имя name связывается с ним.</figcaption>
+</figure>
+<p>Представьте схему: имя <code>name</code> указывает на объект со значением <code>"Teston"</code> в памяти. На рисунке адрес <code>0x1A20</code> служит условной шестнадцатеричной меткой. Записывать такой адрес в программу не нужно. Переменная Python связана с объектом; при новом присваивании имя может указывать на другой объект. Рисунок не означает, что за именем навсегда закреплена одна ячейка памяти.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: новое присваивание</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: новое присваивание">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">name = &quot;Teston&quot;
+print(name)
+name = &quot;Kate&quot;
+print(name)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: новое присваивание">Teston
+Kate</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/VariableMemory02.gif" alt="Новое присваивание связывает имя name со значением Kate." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 4. Новое присваивание связывает имя name со значением Kate.</figcaption>
+</figure>
+<p>Имена чувствительны к регистру: <code>name</code> и <code>Name</code> являются разными именами. Для первых программ используйте понятные английские слова строчными буквами. Слова внутри имени разделяйте подчёркиванием: <code>student_name</code>. Пробелы и дефисы для этого не подходят, а начинать имя с цифры нельзя.</p>
+<p>Чтобы вставить значение в сообщение, удобно использовать <strong>f-строку</strong>. Поставьте латинскую букву <code>f</code> прямо перед открывающей кавычкой, а имя переменной поместите в фигурные скобки внутри строки.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: значение внутри сообщения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: значение внутри сообщения">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">name = &quot;Teston&quot;
+print(f&quot;Hello, {name}!&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: значение внутри сообщения">Hello, Teston!</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/FStringFlow.gif" alt="Значение name подставляется в f-строку, затем сообщение попадает в консоль." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 5. Значение name подставляется в f-строку, затем сообщение попадает в консоль.</figcaption>
+</figure>
+<p>Сначала Python получает значение <code>name</code> и строит строку <code>"Hello, Teston!"</code>. Затем <code>print</code> показывает эту строку. Буква <code>f</code> и фигурные скобки в результат не входят. Если забыть <code>f</code>, запись <code>print("Hello, {name}!")</code> выведет <code>Hello, {name}!</code> буквально.</p>
+<p>В анимациях выражения в панели файла заменяются их значениями, чтобы показать ход вычисления. При обычном запуске Python не переписывает исходный файл.</p>
+        </div>
+      </section>
+      <section id="input">
+        <h2>06 / Ввод и сохранение ответа</h2>
+        <div class="section-content">
+<p>До сих пор все сообщения были заранее записаны в коде. Чтобы спросить что-то у пользователя во время работы программы, нужна функция <code>input</code>. Она показывает подсказку, ждёт ввод с клавиатуры и после нажатия Enter возвращает введённую строку.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: запрос без сохранения ответа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: запрос без сохранения ответа">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">input(&quot;Enter your name: &quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: запрос без сохранения ответа">Enter your name: Teston</pre>
+  </div>
+</div>
+<p>В примере «Enter your name: » печатает программа, а «Teston» вводит человек. Пробел перед закрывающей кавычкой отделяет подсказку от ответа. Пока пользователь не нажмёт Enter, программа ждёт. Здесь возвращённый ответ не присвоен имени, поэтому следующая инструкция не сможет обратиться к нему.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/InputPrompt.gif" alt="Подсказка выводится в консоль, а input возвращает введённую строку." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 6. Подсказка выводится в консоль, а input возвращает введённую строку.</figcaption>
+</figure>
+<p>Если требуется использовать введённое значение дальше в программе, то результат работы функции <code>input</code> нужно поместить в переменную.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: сохранить ответ</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: сохранить ответ">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">name = input(&quot;Enter your name: &quot;)
+print(f&quot;Hello, {name}!&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: сохранить ответ">Enter your name: Teston
+Hello, Teston!</pre>
+  </div>
+</div>
+<p>Python начинает с правой части присваивания: вызывает <code>input</code>. Пользователь видит подсказку, вводит имя и нажимает Enter. <code>input</code> возвращает введённую строку, а присваивание связывает её с именем <code>name</code>. Следующая строка строит приветствие и выводит его через <code>print</code>.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/08/InputVariable.gif" alt="Ответ сохраняется в name и используется в приветствии." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис 7. Ответ сохраняется в name и используется в приветствии.</figcaption>
+</figure>
+
+<aside class="special-block special-block--warning" aria-labelledby="input-string-title">
+  <div class="special-block__header"><span class="special-block__label">Предупреждение</span></div>
+  <h3 class="special-block__title" id="input-string-title">input возвращает текст</h3>
+  <div class="special-block__body">
+<p>Функция <code>input</code> возвращает текст (а точнее тип данных <code>str</code>), даже если пользователь ввёл цифры. Если потребуется применить математические вычисления, то потребуется преобразование в число. Само имя <code>age</code> не превращает введённое в число.</p>
+  </div>
+</aside>
+<p>Теперь соберём программу-визитку. Она спрашивает имя, город и занятие, сохраняет ответы, затем выводит их в оформленном сообщении.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: программа-визитка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: программа-визитка">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">name = input(&quot;Your name: &quot;)
+city = input(&quot;Your city: &quot;)
+hobby = input(&quot;Your hobby: &quot;)
+
+print()
+print(&quot;My business card&quot;)
+print(f&quot;Name: {name}&quot;)
+print(f&quot;City: {city}&quot;)
+print(f&quot;Hobby: {hobby}&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: main.py: программа-визитка">Your name: Teston
+Your city: Baku
+Your hobby: creating games
+
+My business card
+Name: Teston
+City: Baku
+Hobby: creating games</pre>
+  </div>
+</div>
+<p>Пустая строка между командами в исходном файле нужна для удобства чтения кода и сама ничего не выводит. Пустую строку в консоли создаёт <code>print()</code>. Для каждого нового запуска ответы запрашиваются заново.</p>
+<aside class="special-block special-block--tip" aria-labelledby="clear-terminal-title">
+  <div class="special-block__header"><span class="special-block__label">Подсказка</span></div>
+  <h3 class="special-block__title" id="clear-terminal-title">Как очистить экран терминала</h3>
+  <div class="special-block__body">
+<p>Чтобы при запуске визитки убрать прежний вывод с экрана, добавьте перед первым вопросом:</p>
+<div class="code-example">
+  <div class="code-example__header"><span>main.py: очистка экрана</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: main.py: очистка экрана">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print("\033[2J\033[H", end=" ")</code></pre>
+</div>
+<p>В строке записаны управляющие последовательности ANSI. Терминал с их поддержкой воспринимает их как команды оформления. <code>\033</code> обозначает специальный символ Escape, а не видимые цифры. Последовательность <code>\033[2J</code> очищает видимую область экрана, а <code>\033[H</code> перемещает курсор в левый верхний угол. История прокрутки при этом может сохраниться.</p>
+<p>Параметр <code>end</code> задаёт, что <code>print</code> добавит в конце вывода. Обычно это переход на новую строку. Здесь <code>end=" "</code> заменяет его одним пробелом, поэтому следующий вывод начнётся в первой строке после этого пробела. Если пробел не нужен, используйте <code>end=""</code>.</p>
+<p>Проверяйте эту команду в терминале с поддержкой ANSI, например Windows Terminal. Панель Output и некоторые консоли редакторов могут не обрабатывать такие последовательности.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="shortcuts">
+        <h2>07 / Горячие клавиши VS Code</h2>
+        <div class="section-content">
+<p>Не нужно учить все сочетания сразу. Начните с сохранения, поиска, отмены и палитры команд, затем добавляйте те, которые часто нужны. Ниже стандартные сочетания VS Code для Windows. Пользовательские настройки, раскладка клавиатуры и расширения могут менять их; проверить назначение можно в Keyboard Shortcuts.</p>
+<p>Знак «+» означает одновременное нажатие. Клавиша обратной кавычки <strong>`</strong> обычно находится рядом с цифрой 1 на английской раскладке.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Полезные горячие клавиши VS Code в Windows">
+<table>
+<caption>Полезные горячие клавиши VS Code в Windows</caption>
+<thead><tr><th scope="col">Задача</th><th scope="col">Сочетание</th><th scope="col">Действие</th></tr></thead>
+<tbody>
+<tr><td>Файлы и окна</td><td><strong>Ctrl + N</strong></td><td>Создать новый файл.</td></tr>
+<tr><td>Файлы и окна</td><td><strong>Ctrl + O</strong></td><td>Открыть файл.</td></tr>
+<tr><td>Файлы и окна</td><td><strong>Ctrl + S</strong></td><td>Сохранить текущий файл.</td></tr>
+<tr><td>Файлы и окна</td><td><strong>Ctrl + Shift + S</strong></td><td>Сохранить как: выбрать другое имя или место.</td></tr>
+<tr><td>Файлы и окна</td><td><strong>Ctrl + W</strong></td><td>Закрыть вкладку редактора.</td></tr>
+<tr><td>Файлы и окна</td><td><strong>Ctrl + Shift + T</strong></td><td>Открыть последнюю закрытую вкладку.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + Z / Ctrl + Y</strong></td><td>Отменить действие / повторить отменённое.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + C / Ctrl + X / Ctrl + V</strong></td><td>Копировать / вырезать / вставить. В редакторе без выделения копируется или вырезается текущая строка.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + A</strong></td><td>Выделить весь текст.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + ← / Ctrl + →</strong></td><td>Перемещаться по словам.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + Shift + ← / Ctrl + Shift + →</strong></td><td>Выделять текст по словам.</td></tr>
+<tr><td>Редактирование</td><td><strong>Home / End</strong></td><td>Перейти к началу / концу строки.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + Home / Ctrl + End</strong></td><td>Перейти к началу / концу файла.</td></tr>
+<tr><td>Редактирование</td><td><strong>Alt + ↑ / Alt + ↓</strong></td><td>Переместить строку вверх / вниз.</td></tr>
+<tr><td>Редактирование</td><td><strong>Shift + Alt + ↑ / Shift + Alt + ↓</strong></td><td>Скопировать строку выше / ниже.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + Shift + K</strong></td><td>Удалить текущую строку.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + Enter / Ctrl + Shift + Enter</strong></td><td>Вставить строку ниже / выше.</td></tr>
+<tr><td>Редактирование</td><td><strong>Tab / Shift + Tab</strong></td><td>Увеличить / уменьшить отступ выделенных строк.</td></tr>
+<tr><td>Редактирование</td><td><strong>Ctrl + /</strong></td><td>Добавить или убрать комментарий для строки или выделения.</td></tr>
+<tr><td>Поиск</td><td><strong>Ctrl + F / Ctrl + H</strong></td><td>Найти текст / заменить текст в текущем файле.</td></tr>
+<tr><td>Поиск</td><td><strong>F3 / Shift + F3</strong></td><td>Следующее / предыдущее совпадение.</td></tr>
+<tr><td>Поиск</td><td><strong>Ctrl + Shift + F / Ctrl + Shift + H</strong></td><td>Найти / заменить текст в файлах проекта.</td></tr>
+<tr><td>Навигация</td><td><strong>Ctrl + P</strong></td><td>Быстро открыть файл по имени.</td></tr>
+<tr><td>Навигация</td><td><strong>Ctrl + G</strong></td><td>Перейти к строке по номеру из сообщения об ошибке.</td></tr>
+<tr><td>Навигация</td><td><strong>Ctrl + Shift + O</strong></td><td>Перейти к символу в файле, например к функции.</td></tr>
+<tr><td>Навигация</td><td><strong>Ctrl + Tab</strong></td><td>Переключиться между открытыми файлами.</td></tr>
+<tr><td>Навигация</td><td><strong>F12 / Alt + F12</strong></td><td>Перейти к определению / посмотреть определение рядом с кодом.</td></tr>
+<tr><td>Навигация</td><td><strong>Shift + F12</strong></td><td>Найти ссылки на символ в коде.</td></tr>
+<tr><td>Навигация</td><td><strong>Alt + ← / Alt + →</strong></td><td>Вернуться к предыдущему / следующему месту навигации.</td></tr>
+<tr><td>Помощь в коде</td><td><strong>Ctrl + Space</strong></td><td>Вызвать подсказки редактора.</td></tr>
+<tr><td>Помощь в коде</td><td><strong>Ctrl + Shift + Space</strong></td><td>Показать подсказку о параметрах вызова.</td></tr>
+<tr><td>Помощь в коде</td><td><strong>Ctrl + .</strong></td><td>Открыть доступные исправления и действия.</td></tr>
+<tr><td>Помощь в коде</td><td><strong>F2</strong></td><td>Переименовать символ с помощью языкового расширения.</td></tr>
+<tr><td>Выделение</td><td><strong>Shift + Alt + →</strong></td><td>Расширить выделение до следующей части выражения или блока кода.</td></tr>
+<tr><td>Выделение</td><td><strong>Shift + Alt + ←</strong></td><td>Сузить выделение обратно.</td></tr>
+<tr><td>Выделение</td><td><strong>Ctrl + L</strong></td><td>Выделить текущую строку; повторное нажатие добавит следующую.</td></tr>
+<tr><td>Выделение</td><td><strong>Ctrl + D</strong></td><td>Выделить слово, затем добавить следующее совпадение к выделению.</td></tr>
+<tr><td>Выделение</td><td><strong>Ctrl + Shift + L</strong></td><td>Выделить все совпадения текущего выделения для одновременного редактирования.</td></tr>
+<tr><td>Выделение</td><td><strong>Alt + щелчок мышью</strong></td><td>Добавить ещё один курсор.</td></tr>
+<tr><td>Выделение</td><td><strong>Esc</strong></td><td>Закрыть подсказку или выйти из режима нескольких курсоров.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + Shift + P / F1</strong></td><td>Открыть палитру команд.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + Shift + E</strong></td><td>Открыть панель файлов Explorer.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + Shift + X</strong></td><td>Открыть расширения Extensions.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + B</strong></td><td>Показать или скрыть боковую панель.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + J</strong></td><td>Показать или скрыть нижнюю панель.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + `</strong></td><td>Показать встроенный терминал VS Code. В этом уроке запускаем команды в отдельном окне.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + Shift + `</strong></td><td>Создать новый встроенный терминал.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + \</strong></td><td>Разделить область редактора.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Alt + Z</strong></td><td>Включить или выключить перенос длинных строк на экране.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + = / Ctrl + -</strong></td><td>Увеличить / уменьшить масштаб интерфейса.</td></tr>
+<tr><td>Интерфейс</td><td><strong>Ctrl + ,</strong></td><td>Открыть настройки.</td></tr>
+</tbody>
+</table>
+</div>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>08 / Самопроверка</h2>
+        <div class="section-content">
+<p>Введите ответы самостоятельно. Проверка посимвольная: учитываются регистр, пробелы, кавычки и обратные слеши. Для кода используйте прямые двойные кавычки, латинские имена и никаких пробелов вне кавычек, кроме явно указанных в команде. В Python встречаются и другие правильные записи; здесь тренируем конкретный формат из урока.</p>
+<aside class="special-block special-block--question" aria-labelledby="check-venv-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-venv-title">1. Создайте окружение</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="python -m venv .venv" data-hint="Требуется попросить python вызвать модуль venv, чтобы тот создал папку .venv." data-success="Верно. Модуль venv создаёт окружение в папке .venv." autocomplete="off" aria-labelledby="check-venv-title">
+  <label for="check-venv-answer">В текущей папке ещё нет <strong>.venv</strong>. Напишите команду создания через <strong>python</strong>. Между частями команды поставьте по одному пробелу.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-venv-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-venv-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-venv-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-run-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-run-title">2. Запустите main.py из окружения</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer=".venv\Scripts\python.exe main.py" data-hint="Нужно вызвать python.exe из Scripts, который находится в папке .venv, и передать ему main.py." data-success="Верно. Явный путь выбирает Python этого проекта без активации." autocomplete="off" aria-labelledby="check-run-title">
+  <label for="check-run-answer">Вы находитесь в папке проекта. Запустите <strong>main.py</strong> через виртуальное окружение, которое находится по соседству с <strong>main.py></strong>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-run-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-run-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-run-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-editor-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-editor-title">3. Откройте текущую папку в VS Code</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="code ." data-hint="Команда редактора: code. Текущую папку обозначает точка." data-success="Верно. code . открывает текущую папку в редакторе." autocomplete="off" aria-labelledby="check-editor-title">
+  <label for="check-editor-answer">Введите команду, один пробел и обозначение текущей папки.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-editor-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-editor-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-editor-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-print-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-print-title">4. Какая функция выводит значения?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="print" data-hint="Подсказка: существует специальный инструмент, который умеет печатать бумаги." data-success="Верно. Для вызова print в программе после имени ставят скобки." autocomplete="off" aria-labelledby="check-print-title">
+  <label for="check-print-answer">Введите только имя встроенной функции, строчными буквами и без скобок.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-print-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-print-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-print-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-goodbye-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-goodbye-title">5. Выведите Goodbye!</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="print(&quot;Goodbye!&quot;)" data-hint="Поместите &quot;Goodbye!&quot; в круглые скобки вызова print. Не забудьте восклицательный знак." data-success="Верно. На экране появится Goodbye! без кавычек." autocomplete="off" aria-labelledby="check-goodbye-title">
+  <label for="check-goodbye-answer">Напишите полный вызов с текстом <strong>Goodbye!</strong> в двойных кавычках. Пробелы не нужны.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-goodbye-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-goodbye-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-goodbye-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-input-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-input-title">6. Какая функция получает ответ пользователя?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="input" data-hint="Требуемая команда буквально означает ввод." data-success="Верно. input ждёт ответ и возвращает введённую строку." autocomplete="off" aria-labelledby="check-input-title">
+  <label for="check-input-answer">Введите только имя встроенной функции, строчными буквами и без скобок.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-input-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-input-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-input-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-prompt-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-prompt-title">7. Спросите возраст</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="input(&quot;Enter your age: &quot;)" data-hint="Используйте input и строку &quot;Enter your age: &quot;. После двоеточия внутри кавычек нужен пробел." data-success="Верно. Подсказка отделена от ответа пробелом; input вернёт введённый текст." autocomplete="off" aria-labelledby="check-prompt-title">
+  <label for="check-prompt-answer">Напишите вызов, который покажет пользователю <strong>"Enter your age: "</strong> (без кавычек) и попросит ввод.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-prompt-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-prompt-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-prompt-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-fstring-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-fstring-title">8. Выведите значение age</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="print(f&quot;Your age is {age}&quot;)" data-hint="Перед кавычкой нужна f, внутри строки имя age заключите в фигурные скобки: {age}." data-success="Верно. Значение age подставляется в f-строку, затем print выводит сообщение." autocomplete="off" aria-labelledby="check-fstring-title">
+  <label for="check-fstring-answer">Переменная <strong>age</strong> уже существует. Напишите программу, которая выведет в консоль строку <strong>"Your age is &lt;значение_переменной_age&gt;"</strong> (без кавычек), используя <strong>f-строку</strong>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-fstring-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-fstring-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-fstring-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

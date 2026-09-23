@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Введение в программирование: задача и результат, ввод и обработка данных, алгоритмы, псевдокод и декомпозиция на примере кассы. Повторение и самопроверка."
+    />
+    <title>07 - Introduction to Programming</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">07 - Introduction to Programming</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-file-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-file-title">1. Что такое файл?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-file-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-file-1">
+          <input class="visually-hidden" id="review-file-1" type="radio" name="review-file-answer" value="1" aria-describedby="review-file-feedback-1" />
+          <span>Именованный набор данных, сохранённый на носителе.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-file-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Файл хранит данные: например, текст, фотографию или код программы.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-file-2">
+          <input class="visually-hidden" id="review-file-2" type="radio" name="review-file-answer" value="2" aria-describedby="review-file-feedback-2" />
+          <span>Окно для ввода команд.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-file-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Команды вводят в терминале. Файл может содержать команды, но сам не является окном.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-file-3">
+          <input class="visually-hidden" id="review-file-3" type="radio" name="review-file-answer" value="3" aria-describedby="review-file-feedback-3" />
+          <span>Только документ, который можно распечатать.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-file-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Музыка, программа и архив тоже могут быть файлами.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-folder-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-folder-title">2. Для чего нужна папка?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-folder-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-folder-1">
+          <input class="visually-hidden" id="review-folder-1" type="radio" name="review-folder-answer" value="1" aria-describedby="review-folder-feedback-1" />
+          <span>Для организации файлов и вложенных папок.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-folder-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В папке проекта удобно держать связанные файлы вместе.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-folder-2">
+          <input class="visually-hidden" id="review-folder-2" type="radio" name="review-folder-answer" value="2" aria-describedby="review-folder-feedback-2" />
+          <span>Чтобы автоматически выполнять любой текст внутри.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-folder-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Хранение файла в папке не запускает его.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-folder-3">
+          <input class="visually-hidden" id="review-folder-3" type="radio" name="review-folder-answer" value="3" aria-describedby="review-folder-feedback-3" />
+          <span>Чтобы менять расширения всех файлов на .txt.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-folder-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Папка не меняет расширения находящихся в ней файлов.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-absolute-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-absolute-title">3. Какой путь является абсолютным в Windows?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-absolute-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-absolute-1">
+          <input class="visually-hidden" id="review-absolute-1" type="radio" name="review-absolute-answer" value="1" aria-describedby="review-absolute-feedback-1" />
+          <span><code>C:\Bootcamp\hello\main.py</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-absolute-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Путь начинается с диска и его корня. Текущая папка терминала на этот адрес не влияет.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-absolute-2">
+          <input class="visually-hidden" id="review-absolute-2" type="radio" name="review-absolute-answer" value="2" aria-describedby="review-absolute-feedback-2" />
+          <span><code>hello\main.py</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-absolute-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот путь отсчитывается от текущей папки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-absolute-3">
+          <input class="visually-hidden" id="review-absolute-3" type="radio" name="review-absolute-answer" value="3" aria-describedby="review-absolute-feedback-3" />
+          <span><code>..\main.py</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-absolute-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Две точки означают родительскую папку относительно текущей.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-relative-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-relative-title">4. Куда ведёт путь data\notes.txt из папки C:\Bootcamp?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="review-relative-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-relative-1">
+          <input class="visually-hidden" id="review-relative-1" type="radio" name="review-relative-answer" value="1" aria-describedby="review-relative-feedback-1" />
+          <span><code>C:\Bootcamp\data\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-relative-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Относительный путь добавляется к текущей папке C:\Bootcamp.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-relative-2">
+          <input class="visually-hidden" id="review-relative-2" type="radio" name="review-relative-answer" value="2" aria-describedby="review-relative-feedback-2" />
+          <span><code>C:\data\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-relative-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В относительном пути нет указания перейти к корню диска.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-relative-3">
+          <input class="visually-hidden" id="review-relative-3" type="radio" name="review-relative-answer" value="3" aria-describedby="review-relative-feedback-3" />
+          <span><code>C:\Bootcamp\notes.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-relative-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В пути явно указана промежуточная папка data.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-extensions-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-extensions-title">5. Какие записи обозначают расширения файлов?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-extensions-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-extensions-1">
+          <input class="visually-hidden" id="review-extensions-1" type="checkbox" name="review-extensions-answer" value="1" aria-describedby="review-extensions-feedback-1" />
+          <span><code>.txt</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-extensions-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Расширение .txt обычно обозначает текстовый файл.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-extensions-2">
+          <input class="visually-hidden" id="review-extensions-2" type="checkbox" name="review-extensions-answer" value="2" aria-describedby="review-extensions-feedback-2" />
+          <span><code>.json</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-extensions-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Расширение .json обычно используют для данных в формате JSON.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-extensions-3">
+          <input class="visually-hidden" id="review-extensions-3" type="checkbox" name="review-extensions-answer" value="3" aria-describedby="review-extensions-feedback-3" />
+          <span><code>.bat</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-extensions-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Расширение .bat обычно обозначает командный файл Windows.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-extensions-4">
+          <input class="visually-hidden" id="review-extensions-4" type="checkbox" name="review-extensions-answer" value="4" aria-describedby="review-extensions-feedback-4" />
+          <span><code>.py</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-extensions-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Расширение .py обычно обозначает исходный код Python.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-extensions-5">
+          <input class="visually-hidden" id="review-extensions-5" type="checkbox" name="review-extensions-answer" value="5" aria-describedby="review-extensions-feedback-5" />
+          <span><code>main</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-extensions-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В имени main.py часть main является именем до расширения.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-extensions-6">
+          <input class="visually-hidden" id="review-extensions-6" type="checkbox" name="review-extensions-answer" value="6" aria-describedby="review-extensions-feedback-6" />
+          <span><code>C:\Bootcamp</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-extensions-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это путь к папке, а не расширение.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-paths-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-paths-title">6. Какие утверждения о путях верны?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-paths-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-paths-1">
+          <input class="visually-hidden" id="review-paths-1" type="checkbox" name="review-paths-answer" value="1" aria-describedby="review-paths-feedback-1" />
+          <span>Относительный путь зависит от текущей папки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-paths-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>main.py в двух разных текущих папках может означать два разных файла.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-paths-2">
+          <input class="visually-hidden" id="review-paths-2" type="checkbox" name="review-paths-answer" value="2" aria-describedby="review-paths-feedback-2" />
+          <span>Абсолютный путь C:\Bootcamp\main.py указывает место от корня диска.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-paths-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Начало пути задаёт диск и корневую папку.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-paths-3">
+          <input class="visually-hidden" id="review-paths-3" type="checkbox" name="review-paths-answer" value="3" aria-describedby="review-paths-feedback-3" />
+          <span>Две точки в пути обозначают родительскую папку.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-paths-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>.. позволяет обратиться к папке уровнем выше.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-paths-4">
+          <input class="visually-hidden" id="review-paths-4" type="checkbox" name="review-paths-answer" value="4" aria-describedby="review-paths-feedback-4" />
+          <span>Имя main.py всегда указывает на один файл во всём компьютере.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-paths-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Одинаковые имена файлов могут встречаться в разных папках.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-terminal-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-terminal-title">7. Какие утверждения о командах терминала верны?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-terminal-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-terminal-1">
+          <input class="visually-hidden" id="review-terminal-1" type="checkbox" name="review-terminal-answer" value="1" aria-describedby="review-terminal-feedback-1" />
+          <span><code>dir</code> показывает содержимое текущей папки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-terminal-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По списку можно проверить, есть ли рядом main.py.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-terminal-2">
+          <input class="visually-hidden" id="review-terminal-2" type="checkbox" name="review-terminal-answer" value="2" aria-describedby="review-terminal-feedback-2" />
+          <span><code>cd hello</code> переходит в вложенную папку hello, если она существует.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-terminal-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>cd меняет текущую папку, относительно которой работают последующие команды.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-terminal-3">
+          <input class="visually-hidden" id="review-terminal-3" type="checkbox" name="review-terminal-answer" value="3" aria-describedby="review-terminal-feedback-3" />
+          <span><code>cd ..</code> переходит в родительскую папку.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-terminal-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сочетание cd и двух точек поднимает на один уровень.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-terminal-4">
+          <input class="visually-hidden" id="review-terminal-4" type="checkbox" name="review-terminal-answer" value="4" aria-describedby="review-terminal-feedback-4" />
+          <span><code>dir</code> удаляет файлы из папки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-terminal-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>dir выводит список и не удаляет файлы.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-dir-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-dir-title">8. Как посмотреть содержимое текущей папки?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="dir" data-hint="Нужна команда из трёх букв: dir." data-success="Верно. dir показывает файлы и папки текущего каталога." autocomplete="off" aria-labelledby="review-dir-title">
+  <label for="review-dir-answer">Введите только команду, без параметров.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-dir-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-dir-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-dir-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-cd-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-cd-title">9. Как перейти в родительскую папку?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="cd .." data-hint="Используйте cd, один пробел и две точки: cd .." data-success="Верно. cd .. переводит терминал на один уровень вверх." autocomplete="off" aria-labelledby="review-cd-title">
+  <label for="review-cd-answer">Введите команду, один пробел и обозначение родительской папки.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-cd-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-cd-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-cd-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-py-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-py-title">10. Какое расширение у файла main.py?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer=".py" data-hint="Введите точку и две латинские буквы: .py" data-success="Верно. У файла main.py расширение .py." autocomplete="off" aria-labelledby="review-py-title">
+  <label for="review-py-answer">Введите расширение вместе с точкой.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-py-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-py-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-py-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="programming">
+        <h2>02 / Что такое программирование</h2>
+        <div class="section-content">
+<p>Вы кладёте покупки на кассу. Кассир сканирует товары, а на экране появляются названия, цены и общая сумма. Эти действия обеспечивает программа. Она получает данные о товарах и выполняет записанные инструкции: находит цены, считает стоимость и показывает результат.</p>
+<aside class="special-block special-block--definition" aria-labelledby="program-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="program-definition-title">Программа и программирование</h3>
+  <div class="special-block__body">
+<p><strong>Программа</strong> состоит из инструкций, которые компьютер может выполнить. <strong>Программирование</strong> включает выяснение задачи, подготовку решения, запись инструкций на языке программирования и проверку результата.</p>
+  </div>
+</aside>
+<p>Компьютер не догадается, что покупателю положена скидка, если в программе нет соответствующего правила и нужных данных. Если инструкция говорит сложить две цены, программа сложит их, даже когда разработчик хотел умножить цену на количество. Поэтому написать работающий текст программы и решить задачу правильно не всегда одно и то же.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Работа программиста на примере кассы">
+<table>
+<caption>Работа программиста на примере кассы</caption>
+<thead><tr><th scope="col">Этап</th><th scope="col">Что нужно сделать</th></tr></thead>
+<tbody>
+<tr><td>Выяснить задачу</td><td>Узнать, что кассир вводит, откуда берутся цены, какие скидки действуют и что должно быть в чеке.</td></tr>
+<tr><td>Составить решение</td><td>Продумать, как получить стоимость каждой позиции, общую сумму и сдачу.</td></tr>
+<tr><td>Записать инструкции</td><td>Перевести решение на язык программирования, например Python.</td></tr>
+<tr><td>Проверить результат</td><td>Заранее посчитать небольшой пример вручную, запустить программу с теми же данными и сравнить ответы.</td></tr>
+</tbody>
+</table>
+</div>
+        </div>
+      </section>
+      <section id="task-and-result">
+        <h2>03 / Задача и ожидаемый результат</h2>
+        <div class="section-content">
+<p>Фраза «сделайте расчёт покупки» оставляет много вопросов. Нужно посчитать только стоимость товаров или ещё скидку и сдачу? Цена указана за штуку или за килограмм? Может ли покупатель дать меньше нужной суммы? Пока ответы неизвестны, разные люди будут представлять разные программы.</p>
+<ol class="content-list">
+<li>Что известно до начала расчёта: цены, количество, внесённые деньги?</li>
+<li>Что требуется получить: общую стоимость, сдачу, текст чека?</li>
+<li>В каких единицах записаны значения?</li>
+<li>Какие случаи входят в задачу и что делать в остальных?</li>
+<li>На каком примере можно проверить ответ?</li>
+</ol>
+<aside class="special-block special-block--correct" aria-labelledby="purchase-contract-title">
+  <div class="special-block__header"><span class="special-block__label">Верный подход</span></div>
+  <h3 class="special-block__title" id="purchase-contract-title">Конкретное описание нашей кассы</h3>
+  <div class="special-block__body">
+    <p>Для первых примеров упростим кассу: покупатель берёт два вида товара, платит наличными, скидок нет. Все суммы указаны в манатах. Хлеб стоит 2 маната, купили 3 штуки. Молоко стоит 4 маната, купили 2 упаковки. Стоимость хлеба 6, молока 8, всего 14.</p>
+<p>Известны цена и количество хлеба, цена и количество молока, сумма наличных. Цены положительные, количество задано целыми положительными числами. Скидок нет. Нужно показать стоимость каждой позиции и сумму покупки. Если денег хватает, показать сдачу; иначе сообщить, сколько не хватает.</p>
+<table>
+<caption>Данные и ожидаемый результат</caption>
+<thead><tr><th scope="col">Что проверяем</th><th scope="col">Входные данные</th><th scope="col">Ожидаемый результат</th></tr></thead>
+<tbody>
+<tr><td>Обычная оплата</td><td>Хлеб: 2 × 3; молоко: 4 × 2; внесено 20</td><td>Позиции: 6 и 8; итог: 14; сдача: 6</td></tr>
+<tr><td>Точная сумма</td><td>Те же товары; внесено 14</td><td>Итог: 14; сдача: 0</td></tr>
+<tr><td>Денег недостаточно</td><td>Те же товары; внесено 10</td><td>Итог: 14; сообщение «Не хватает 4»</td></tr>
+</tbody>
+</table>
+  </div>
+</aside>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Данные и ожидаемый результат">
+</div>
+<p>Ожидаемый результат вычисляют заранее, независимо от программы. Если принять любой показанный ею ответ за правильный, проверка теряет смысл. Для начала достаточно простых чисел, с которыми вы уверенно считаете вручную.</p>
+<p>Отрицательная цена или неизвестный товар требуют отдельных правил. В нашем учебном примере считаем, что цены и количество уже корректны. Для настоящей кассы такие ограничения придётся обсудить с заказчиком и добавить проверки. Так мы явно обозначаем границы задачи.</p>
+        </div>
+      </section>
+      <section id="input-process-output">
+        <h2>04 / Ввод → Обработка → Результат</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="ipo-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="ipo-definition-title">Ввод → Обработка → Результат</h3>
+  <div class="special-block__body">
+<p><strong>Ввод</strong> даёт программе исходные данные. <strong>Обработка</strong> преобразует их по заданным правилам. <strong>Результат</strong> программа показывает человеку, сохраняет или передаёт дальше.</p>
+  </div>
+</aside>
+<p>Ввод не обязательно набирают на клавиатуре. Человек может указать количество и сумму оплаты, сканер передать штрихкод, файл содержать список цен, а другая программа прислать сведения о скидке. Важно понимать, какие именно данные получила программа, независимо от их источника.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Путь данных через учебную кассу">
+<table>
+<caption>Путь данных через учебную кассу</caption>
+<thead><tr><th scope="col">Ввод</th><th scope="col">Обработка</th><th scope="col">Результат</th></tr></thead>
+<tbody>
+<tr><td>Цена хлеба 2, количество 3</td><td>Умножить 2 на 3</td><td>Стоимость хлеба 6</td></tr>
+<tr><td>Цена молока 4, количество 2</td><td>Умножить 4 на 2</td><td>Стоимость молока 8</td></tr>
+<tr><td>Стоимость позиций 6 и 8</td><td>Сложить 6 и 8</td><td>Сумма покупки 14</td></tr>
+<tr><td>Сумма покупки 14, оплата 20</td><td>Сравнить оплату с итогом; вычесть 14 из 20</td><td>Сдача 6</td></tr>
+</tbody>
+</table>
+</div>
+<p>В реальном супермаркете штрихкод обычно помогает найти товар в базе. Сам по себе он не сообщает нашей учебной программе цену: для этого нужен источник цен. Экран, бумажный чек и сохранённая запись о продаже могут быть разными способами выдать результат одного расчёта.</p>
+<p>Выход одного шага часто становится входом следующего. Число 6 сначала получается при расчёте хлеба, а затем участвует в подсчёте общего итога. Это помогает проследить ошибку.</p>
+        </div>
+      </section>
+      <section id="algorithm">
+        <h2>05 / Алгоритм и точность инструкций</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="algorithm-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="algorithm-definition-title">Алгоритм</h3>
+  <div class="special-block__body">
+<p><strong>Алгоритм</strong> представляет собой понятную исполнителю последовательность шагов решения задачи. У шага должно быть ясное действие: получить количество, умножить цену на количество, показать сумму.</p>
+  </div>
+</aside>
+<p>Фраза «посчитай как надо» не объясняет действие. Фраза «умножь цену хлеба на количество хлеба» уже позволяет выполнить шаг. Алгоритм описывают с той подробностью, которая нужна исполнителю: кассир понимает просьбу принять оплату, а программе нужны конкретные данные и правила.</p>
+<p><strong>Псевдокод</strong> записывает алгоритм обычными словами и условными обозначениями. У него нет единого обязательного синтаксиса, и Python не обязан понимать такую запись. Сейчас она помогает проверить мысль без отвлечения на правила языка.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Псевдокод учебной кассы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод учебной кассы">Копировать</button></div>
+  <pre tabindex="0"><code>ПОЛУЧИТЬ цену хлеба и количество хлеба
+ПОЛУЧИТЬ цену молока и количество молока
+стоимость хлеба = цена хлеба * количество хлеба
+стоимость молока = цена молока * количество молока
+итог = стоимость хлеба + стоимость молока
+ПОКАЗАТЬ стоимость хлеба, стоимость молока и итог
+ПОЛУЧИТЬ внесённые деньги
+ЕСЛИ внесённые деньги >= итог:
+    сдача = внесённые деньги - итог
+    ПОКАЗАТЬ сдачу
+ИНАЧЕ:
+    нехватка = итог - внесённые деньги
+    ПОКАЗАТЬ сообщение о нехватке
+ЗАВЕРШИТЬ</code></pre>
+</div>
+<p>Условие «если» выбирает дальнейшие действия. При оплате 20 и итоге 14 выполняется ветка со сдачей. При оплате 10 выполняется ветка с нехваткой. Обе ветки подряд не выполняются. Отступы показывают, какие шаги относятся к каждой ветке; синтаксис условий Python будем изучать позже.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Ручное выполнение алгоритма">
+<table>
+<caption>Ручное выполнение алгоритма</caption>
+<thead><tr><th scope="col">Шаг</th><th scope="col">Что стало известно</th></tr></thead>
+<tbody>
+<tr><td>Получили цены и количество</td><td>Хлеб: цена 2, количество 3. Молоко: цена 4, количество 2.</td></tr>
+<tr><td>Рассчитали позиции</td><td>Стоимость хлеба 6. Стоимость молока 8.</td></tr>
+<tr><td>Сложили стоимости</td><td>Итог 14.</td></tr>
+<tr><td>Получили оплату и сравнили</td><td>Внесено 20. Денег хватает, потому что 20 ≥ 14.</td></tr>
+<tr><td>Вычислили сдачу</td><td>20 − 14 = 6. Показываем 6.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Порядок важен. Нельзя вычислить сдачу до того, как известны итог и внесённая сумма. Если сначала показать итог, а потом применить скидку, человек увидит старое число. При чтении алгоритма ведите небольшой черновик: после каждого шага записывайте значения и то, что уже было показано.</p>
+        </div>
+      </section>
+      <section id="decomposition">
+        <h2>06 / Декомпозиция задачи</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="decomposition-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="decomposition-definition-title">Декомпозиция</h3>
+  <div class="special-block__body">
+<p><strong>Декомпозиция</strong> делит большую задачу на небольшие понятные части. Для каждой части можно назвать её входные данные, действия и результат.</p>
+  </div>
+</aside>
+<p>Просьба «сделать кассовую программу» выглядит большой. Разобьём её на просьбы поменьше — получить товары, рассчитать позиции, подвести итог, обработать оплату и выдать чек.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Из каких частей состоит касса">
+<table>
+<caption>Из каких частей состоит касса</caption>
+<thead><tr><th scope="col">Часть</th><th scope="col">Что получает</th><th scope="col">Что передаёт дальше</th></tr></thead>
+<tbody>
+<tr><td>Получение товаров</td><td>Коды товаров, цены, количество</td><td>Подготовленные позиции покупки</td></tr>
+<tr><td>Расчёт позиций</td><td>Цену и количество каждой позиции</td><td>Стоимости 6 и 8</td></tr>
+<tr><td>Подсчёт итога</td><td>Стоимости позиций</td><td>Общую сумму 14</td></tr>
+<tr><td>Обработка оплаты</td><td>Итог и внесённые деньги</td><td>Сдачу 6 или сумму нехватки</td></tr>
+<tr><td>Подготовка чека</td><td>Товары, стоимости, итог, результат оплаты</td><td>Понятное сообщение покупателю</td></tr>
+</tbody>
+</table>
+</div>
+<p>Декомпозиция показывает, <strong>из каких частей</strong> состоит решение. Алгоритм объясняет, <strong>как и в каком порядке</strong> выполнять действия. Эти приёмы работают вместе.</p>
+<p>Часть можно проверить отдельно. Для расчёта позиции достаточно цены 2 и количества 3: ждём 6, сканер и печать чека пока не нужны. Затем проверяем соединение частей: расчёт позиций передал 6 и 8, подсчёт итога вернул 14. Так проще понять, где появилась ошибка.</p>
+<aside class="special-block special-block--question" aria-labelledby="discount-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="discount-title">После какой части применять скидку?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="discount-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="discount-1">
+          <input class="visually-hidden" id="discount-1" type="checkbox" name="discount-answer" value="1" aria-describedby="discount-feedback-1" />
+          <span>Расчёт позиций</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="discount-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После расчёта стоимости позиции можно применить скидку к этой позиции. Подсчёт итога затем использует уже уменьшенную стоимость.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="discount-2">
+          <input class="visually-hidden" id="discount-2" type="checkbox" name="discount-answer" value="2" aria-describedby="discount-feedback-2" />
+          <span>Подсчёт итога</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="discount-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После подсчёта итога можно применить скидку ко всей покупке. Обработка оплаты должна получить итог с учётом скидки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="discount-3">
+          <input class="visually-hidden" id="discount-3" type="checkbox" name="discount-answer" value="3" aria-describedby="discount-feedback-3" />
+          <span>Получение товаров</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="discount-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>На этом этапе ещё нет рассчитанной стоимости позиции или всей покупки, к которой можно применить скидку.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="discount-4">
+          <input class="visually-hidden" id="discount-4" type="checkbox" name="discount-answer" value="4" aria-describedby="discount-feedback-4" />
+          <span>Обработка оплаты</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="discount-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>К моменту оплаты сумма со скидкой уже должна быть известна, иначе касса сравнит внесённые деньги с неверным итогом.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="discount-5">
+          <input class="visually-hidden" id="discount-5" type="checkbox" name="discount-answer" value="5" aria-describedby="discount-feedback-5" />
+          <span>Подготовка чека</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="discount-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Чек показывает результат покупки. Менять сумму после оплаты и подготовки чека уже поздно.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>07 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="quiz-cost-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="quiz-cost-title">1. Что покажет расчёт стоимости?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Псевдокод для самопроверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод для самопроверки">Копировать</button></div>
+  <pre tabindex="0"><code>цена = 4
+количество = 3
+стоимость = цена * количество
+ПОКАЗАТЬ стоимость</code></pre>
+</div>
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="quiz-cost-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="quiz-cost-1">
+          <input class="visually-hidden" id="quiz-cost-1" type="radio" name="quiz-cost-answer" value="1" aria-describedby="quiz-cost-feedback-1" />
+          <span>12</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-cost-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>4 * 3 = 12.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-cost-2">
+          <input class="visually-hidden" id="quiz-cost-2" type="radio" name="quiz-cost-answer" value="2" aria-describedby="quiz-cost-feedback-2" />
+          <span>7</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-cost-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>7 получается при сложении. Здесь нужно умножение.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-cost-3">
+          <input class="visually-hidden" id="quiz-cost-3" type="radio" name="quiz-cost-answer" value="3" aria-describedby="quiz-cost-feedback-3" />
+          <span>4</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-cost-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Показывается стоимость всей позиции, а не цена единицы.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="quiz-change-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="quiz-change-title">2. Какую сдачу покажет касса?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Псевдокод для самопроверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод для самопроверки">Копировать</button></div>
+  <pre tabindex="0"><code>хлеб = 6
+молоко = 8
+итог = хлеб + молоко
+внесено = 20
+сдача = внесено - итог
+ПОКАЗАТЬ сдача</code></pre>
+</div>
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="quiz-change-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="quiz-change-1">
+          <input class="visually-hidden" id="quiz-change-1" type="radio" name="quiz-change-answer" value="1" aria-describedby="quiz-change-feedback-1" />
+          <span>6</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-change-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Итог 14, сдача 20 - 14 = 6.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-change-2">
+          <input class="visually-hidden" id="quiz-change-2" type="radio" name="quiz-change-answer" value="2" aria-describedby="quiz-change-feedback-2" />
+          <span>14</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-change-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>14 является итогом покупки, а не сдачей.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-change-3">
+          <input class="visually-hidden" id="quiz-change-3" type="radio" name="quiz-change-answer" value="3" aria-describedby="quiz-change-feedback-3" />
+          <span>20</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-change-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>20 является внесённой суммой.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="quiz-order-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="quiz-order-title">3. Какие числа появятся по порядку?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Псевдокод для самопроверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод для самопроверки">Копировать</button></div>
+  <pre tabindex="0"><code>итог = 14
+ПОКАЗАТЬ итог
+итог = итог - 2
+ПОКАЗАТЬ итог</code></pre>
+</div>
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="quiz-order-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="quiz-order-1">
+          <input class="visually-hidden" id="quiz-order-1" type="radio" name="quiz-order-answer" value="1" aria-describedby="quiz-order-feedback-1" />
+          <span>Сначала 14, затем 12.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-order-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первый вывод происходит до изменения, второй после.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-order-2">
+          <input class="visually-hidden" id="quiz-order-2" type="radio" name="quiz-order-answer" value="2" aria-describedby="quiz-order-feedback-2" />
+          <span>Сначала 12, затем 12.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-order-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первый вывод уже выполнен с числом 14; изменение его не переписывает.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-order-3">
+          <input class="visually-hidden" id="quiz-order-3" type="radio" name="quiz-order-answer" value="3" aria-describedby="quiz-order-feedback-3" />
+          <span>Только 12.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-order-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь два шага ПОКАЗАТЬ, выполняются оба.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="quiz-shortage-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="quiz-shortage-title">4. Какое сообщение появится?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Псевдокод для самопроверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод для самопроверки">Копировать</button></div>
+  <pre tabindex="0"><code>итог = 14
+внесено = 10
+ЕСЛИ внесено >= итог:
+    ПОКАЗАТЬ &quot;Оплачено&quot;
+ИНАЧЕ:
+    ПОКАЗАТЬ &quot;Не хватает денег&quot;</code></pre>
+</div>
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="quiz-shortage-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="quiz-shortage-1">
+          <input class="visually-hidden" id="quiz-shortage-1" type="radio" name="quiz-shortage-answer" value="1" aria-describedby="quiz-shortage-feedback-1" />
+          <span>Не хватает денег</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-shortage-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>10 меньше 14, поэтому выполняется ветка ИНАЧЕ.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-shortage-2">
+          <input class="visually-hidden" id="quiz-shortage-2" type="radio" name="quiz-shortage-answer" value="2" aria-describedby="quiz-shortage-feedback-2" />
+          <span>Оплачено</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-shortage-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Условие достаточной оплаты не выполнено.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-shortage-3">
+          <input class="visually-hidden" id="quiz-shortage-3" type="radio" name="quiz-shortage-answer" value="3" aria-describedby="quiz-shortage-feedback-3" />
+          <span>Оба сообщения по очереди.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-shortage-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Условие выбирает только одну ветку.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="quiz-discount-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="quiz-discount-title">5. Сколько останется заплатить?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Псевдокод для самопроверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод для самопроверки">Копировать</button></div>
+  <pre tabindex="0"><code>стоимость хлеба = 2 * 3
+стоимость молока = 4 * 2
+итог = стоимость хлеба + стоимость молока
+скидка = 2
+к оплате = итог - скидка
+ПОКАЗАТЬ к оплате</code></pre>
+</div>
+<form class="quiz" data-quiz="single" autocomplete="off" aria-labelledby="quiz-discount-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="quiz-discount-1">
+          <input class="visually-hidden" id="quiz-discount-1" type="radio" name="quiz-discount-answer" value="1" aria-describedby="quiz-discount-feedback-1" />
+          <span>12</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-discount-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>6 + 8 = 14. Скидка вычитается один раз: 14 - 2 = 12.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-discount-2">
+          <input class="visually-hidden" id="quiz-discount-2" type="radio" name="quiz-discount-answer" value="2" aria-describedby="quiz-discount-feedback-2" />
+          <span>10</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-discount-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Так получилось бы при двукратном вычитании скидки. В алгоритме она вычитается один раз.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="quiz-discount-3">
+          <input class="visually-hidden" id="quiz-discount-3" type="radio" name="quiz-discount-answer" value="3" aria-describedby="quiz-discount-feedback-3" />
+          <span>16</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="quiz-discount-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Скидка уменьшает сумму, а не увеличивает её.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

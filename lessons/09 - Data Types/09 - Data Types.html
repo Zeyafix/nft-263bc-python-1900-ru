@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Типы данных Python для самостоятельного изучения: значения и литералы, int, float, str, bool, None, type, преобразования и вопросы с пояснениями."
+    />
+    <title>09 - Data Types</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">09 - Data Types</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-print-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-print-title">Какая функция выводит сообщение в консоль?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="print"
+  data-hint="Введите только имя функции маленькими английскими буквами, без скобок" data-success="Верно. print выводит переданные значения в консоль." autocomplete="off" aria-labelledby="review-print-title">
+  <label for="review-print-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-print-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-print-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-print-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-input-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-input-title">Какая функция читает ответ пользователя?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="input"
+  data-hint="Нужно имя функции, которая ожидает ввод и нажатие Enter, без скобок." data-success="Верно. input читает строку, введённую пользователем." autocomplete="off" aria-labelledby="review-input-title">
+  <label for="review-input-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-input-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-input-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-input-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-welcome-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-welcome-title">Выведите приветствие</h3>
+  <div class="special-block__body">
+<p>Напишите одну команду, которая выводит <code>Welcome to my program</code>. Текст заключите в двойные кавычки.</p>
+<form class="quiz" data-quiz="text" data-answer="print(&quot;Welcome to my program&quot;)"
+  data-hint="Используйте функцию вывода. Текст Welcome to my program должен быть внутри двойных кавычек, а они внутри скобок." data-success="Верно. Строка в кавычках передаётся функции print." autocomplete="off" aria-labelledby="review-welcome-title">
+  <label for="review-welcome-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-welcome-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-welcome-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-welcome-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-message-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-message-title">Выведите значение переменной</h3>
+  <div class="special-block__body">
+<p>Переменная <code>message</code> уже существует. Напишите команду вывода её значения.</p>
+<form class="quiz" data-quiz="text" data-answer="print(message)"
+  data-hint="Передайте message функции вывода без кавычек: нужно значение переменной, а не её имя как текст." data-success="Верно. print(message) выводит значение, связанное с именем message." autocomplete="off" aria-labelledby="review-message-title">
+  <label for="review-message-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-message-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-message-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-message-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-age-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-age-title">Запросите возраст</h3>
+  <div class="special-block__body">
+<p>Сохраните ответ пользователя в <code>age</code>. Подсказка должна быть <code>Enter your age: </code>, с одним пробелом после двоеточия внутри кавычек. Преобразование в число пока не нужно.</p>
+<form class="quiz" data-quiz="text" data-answer="age = input(&quot;Enter your age: &quot;)"
+  data-hint="Слева age, справа вызов input с двойными кавычками. Проверьте пробелы вокруг = и пробел после двоеточия внутри строки." data-success="Верно. Возраст прочитан и сохранён в age. input возвращает строку." autocomplete="off" aria-labelledby="review-age-title">
+  <label for="review-age-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-age-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-age-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-age-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-fstring-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-fstring-title">Покажите готовую сумму в f-строке</h3>
+  <div class="special-block__body">
+<p>Переменные <code>num_1</code>, <code>num_2</code> и <code>num_sum</code> уже содержат числа. Выведите их так, чтобы для значений 2, 3 и 5 получилось <code>2 + 3 = 5</code>. Используйте <strong>f-строку</strong> и все три имени в фигурных скобках. Вокруг <strong>+</strong> и <strong>=</strong> внутри строки нужен один пробел.</p>
+<form class="quiz" data-quiz="text" data-answer="print(f&quot;{num_1} + {num_2} = {num_sum}&quot;)"
+  data-hint="Перед двойной кавычкой нужна буква f. Каждое из трёх имён заключите в фигурные скобки; готовую сумму не вычисляйте повторно." data-success="Верно. f-строка подставляет значения переменных и передаётся в print." autocomplete="off" aria-labelledby="review-fstring-title">
+  <label for="review-fstring-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-fstring-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-fstring-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-fstring-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="values">
+        <h2>02 / Значения и Типы</h2>
+        <div class="section-content">
+<p>Программа работает с данными: количеством покупок, температурой, именем человека. Конкретные данные, с которыми мы работаем, называются <strong>значениями</strong>. Например, количество покупок может иметь значение <code>3</code>.</p>
+<aside class="special-block special-block--definition" aria-labelledby="value-literal-type-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="value-literal-type-title">Значение, литерал и тип</h3>
+  <div class="special-block__body">
+<ul class="content-list">
+<li><strong>Значение</strong> отвечает на вопрос «какие именно данные?»: число 5869 или текст из четырёх цифр.</li>
+<li><strong>Литерал</strong> позволяет записать значение прямо в коде: <code>5869</code>, <code>58.69</code>, <code>&quot;5869&quot;</code>. Кавычки обозначают границы строкового литерала, в сам текст они не входят.</li>
+<li><strong>Тип</strong> определяет, что это за данные и какие операции с ними возможны. Например, целое число, число с плавающей точкой или строка.</li>
+</ul>
+  </div>
+</aside>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Похожие записи, разные типы">
+  <table>
+    <caption>Похожие записи, разные типы</caption>
+    <thead><tr><th scope="col">Литерал</th><th scope="col">Тип</th><th scope="col">Как прочитать</th></tr></thead>
+    <tbody>
+      <tr><td><code>5869</code></td><td><code>int</code></td><td>Целое число: можно прибавить 1 и получить 5870.</td></tr>
+      <tr><td><code>58.69</code></td><td><code>float</code></td><td>Число с плавающей точкой: в коде дробная часть отделяется точкой.</td></tr>
+      <tr><td><code>&quot;5869&quot;</code></td><td><code>str</code></td><td>Строка из четырёх символов: цифры используются как текст.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Имя переменной само по себе не является литералом. В записи <code>code = &quot;5869&quot;</code> слева находится имя, справа строковый литерал. В дальнейшем имя <code>code</code> позволяет обратиться к этому значению.</p>
+        </div>
+      </section>
+      <section id="numbers-and-strings">
+        <h2>03 / Числа и Строки</h2>
+        <div class="section-content">
+<p>Выбирайте тип по смыслу данных. Количество студентов удобно хранить как целое число, длину маршрута как число с дробной частью, а имя или номер телефона как текст. Номер телефона не складывают с другим номером; кроме цифр, в нём могут быть + и ведущие нули.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Когда нужны int, float и str">
+  <table>
+    <caption>Когда нужны int, float и str</caption>
+    <thead><tr><th scope="col">Тип данных</th><th scope="col">Для чего</th><th scope="col">Примеры</th></tr></thead>
+    <tbody>
+      <tr><td><code>int</code></td><td>Целые количества, годы, счётчики; возможны ноль и отрицательные значения.</td><td><code>26</code>, <code>0</code>, <code>-5</code></td></tr>
+      <tr><td><code>float</code></td><td>Измерения, коэффициенты и результаты обычного деления. Возможна небольшая погрешность представления.</td><td><code>58.69</code>, <code>0.25</code>, <code>50.0</code></td></tr>
+      <tr><td><code>str</code></td><td>Текст, в том числе цифры, пробелы и пустая строка.</td><td><code>&quot;Alex&quot;</code>, <code>&quot;0058&quot;</code>, <code>&quot;&quot;</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Даже у <code>50.0</code> тип <code>float</code>: наличие целого математического значения не превращает объект в <code>int</code>. Для строк подходят одинарные и двойные кавычки; начало и конец записи должны совпадать по виду кавычек.</p>
+<aside class="special-block special-block--warning" aria-labelledby="input-string-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="input-string-title">input всегда возвращает строку</h3>
+  <div class="special-block__body">
+<p>Когда пользователь вводит 2000 и нажимает Enter, <code>input()</code> возвращает <code>&quot;2000&quot;</code>. Кавычки пользователь не вводит: так мы показываем строковое значение в коде. Чтобы вычитать год из другого числа, сначала вызываем <code>int()</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Возраст в 2026 году</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Возраст в 2026 году">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">year = int(input(&quot;Enter your birth year: &quot;))
+age = 2026 - year
+print(f&quot;Your age is {age}&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Возраст в 2026 году">Enter your birth year: 2000
+Your age is 26</pre>
+  </div>
+</div>
+<ol class="content-list">
+<li><code>input(&quot;Enter your birth year: &quot;)</code> выводит подсказку и ждёт ответа. Вводим <code>2000</code> и нажимаем Enter.</li>
+<li><code>input()</code> возвращает строку <code>&quot;2000&quot;</code>. Внешний вызов <code>int(&quot;2000&quot;)</code> создаёт целое число <code>2000</code>, которое присваивается <code>year</code>.</li>
+<li>В выражение <code>2026 - year</code> подставляется число <code>2000</code>. Результат <code>26</code> присваивается <code>age</code>.</li>
+<li>f-строка подставляет <code>26</code> вместо <code>{age}</code>. Функция <code>print()</code> выводит готовую строку <code>Your age is 26</code>.</li>
+</ol>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/09/BirthYear.gif"
+      alt="Ввод года рождения 2000, преобразование строки в int, вычисление возраста 26 и вывод результата"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис. 1. Анимация работы программы BirthYear.</figcaption>
+</figure>
+  </div>
+</aside>
+
+
+<p>Ниже указан ещё один пример. Программа запрашивает процент и число, затем применяет процент к введённому числу и выводит ответ.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Процент от числа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Процент от числа">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = int(input(&quot;Enter num: &quot;))
+percent = int(input(&quot;Enter percent (%): &quot;))
+coef = percent / 100
+result = num * coef
+print(f&quot;{percent}% of {num} is {result}.&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Процент от числа">Enter num: 200
+Enter percent (%): 25
+25% of 200 is 50.0.</pre>
+  </div>
+</div>
+<ol class="content-list">
+<li>Два вызова <code>input()</code> возвращают <code>&quot;200&quot;</code> и <code>&quot;25&quot;</code>. Два вызова <code>int()</code> превращают их в целые числа.</li>
+<li><code>25 / 100</code> даёт <code>0.25</code>. У <code>coef</code> теперь значение типа <code>float</code>: обычное деление целых чисел тоже возвращает этот тип.</li>
+<li><code>200 * 0.25</code> даёт <code>50.0</code>. При умножении <code>int</code> на <code>float</code> в этом примере получаем <code>float</code>.</li>
+<li>f-строка подставляет <code>25</code>, <code>200</code> и <code>50.0</code>. Знак % внутри текста выводится как обычный символ.</li>
+</ol>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/09/PercentFlow.gif"
+      alt="Ввод числа 200 и процента 25, преобразование строк в int, вычисление коэффициента 0.25 и результата 50.0"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис. 2. Анимация работы программы PercentFlow.</figcaption>
+</figure>
+<p>В этом примере вводятся целые числа, а <code>float</code> появляется в результате деления. Если нужны дробное число или дробный процент при вводе, замените соответствующий <code>int(input(...))</code> на <code>float(input(...))</code> и вводите дробную часть через точку. Например, <code>float(&quot;12.5&quot;)</code> даёт <code>12.5</code>.</p>
+        </div>
+      </section>
+      <section id="logical-values">
+        <h2>04 / Логические значения и Отсутствие значения</h2>
+        <div class="section-content">
+<p>Иногда нужно хранить ответ на вопрос «да или нет»: активна ли подписка, успешно ли завершено действие. Для этого есть тип <code>bool</code> с двумя значениями: <code>True</code> и <code>False</code>. Они пишутся с заглавной буквы и без кавычек.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Признаки состояния</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Признаки состояния">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">has_subscription = True
+is_success = False
+print(has_subscription)
+print(is_success)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Признаки состояния">True
+False</pre>
+  </div>
+</div>
+<p><code>&quot;False&quot;</code> в кавычках уже строка, а не логическое значение. Ноль и единица тоже не являются литералами типа <code>bool</code>, хотя при некоторых сравнениях ведут себя похоже на <code>False</code> и <code>True</code>.</p>
+<aside class="special-block special-block--definition" aria-labelledby="none-value-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="none-value-title">None обозначает отсутствие значения</h3>
+  <div class="special-block__body">
+<p>Если ответ ещё неизвестен или значение не задано, можно сохранить <code>None</code>. Это отдельное значение со своим типом <code>NoneType</code>. Оно не равно по смыслу нулю, пустому тексту или отрицательному ответу.</p>
+  </div>
+</aside>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Разные состояния анкеты">
+  <table>
+    <caption>Разные состояния анкеты</caption>
+    <thead><tr><th scope="col">Запись</th><th scope="col">Что известно</th></tr></thead>
+    <tbody>
+      <tr><td><code>children_count = None</code></td><td>Количество детей ещё не указано. Мы не знаем ответ.</td></tr>
+      <tr><td><code>children_count = 0</code></td><td>Ответ известен: детей нет. Ноль является числом.</td></tr>
+      <tr><td><code>comment = &quot;&quot;</code></td><td>Текст комментария пустой: в строке нет символов.</td></tr>
+      <tr><td><code>has_subscription = False</code></td><td>Известно, что подписка не активна. Это ответ «нет».</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Значение ещё не задано</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Значение ещё не задано">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">delivery_date = None
+print(delivery_date)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Значение ещё не задано">None</pre>
+  </div>
+</div>
+<p>Название <code>NoneType</code> понадобится, чтобы читать результат определения типа. Для отсутствующего значения пишите <code>None</code>. Не путайте <code>None</code> со строкой <code>&quot;None&quot;</code>, состоящей из четырёх букв.</p>
+        </div>
+      </section>
+      <section id="type-inspection">
+        <h2>05 / Определение типа</h2>
+        <div class="section-content">
+<p>Функция <code>type()</code> показывает тип переданного объекта. Чтобы увидеть результат при запуске файла, передайте его в <code>print()</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Узнаём типы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Узнаём типы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(type(5869))
+print(type(58.69))
+print(type(&quot;5869&quot;))
+print(type(False))
+print(type(None))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Узнаём типы">&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;float&#x27;&gt;
+&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;bool&#x27;&gt;
+&lt;class &#x27;NoneType&#x27;&gt;</pre>
+  </div>
+</div>
+<p>В выводе <code>&lt;class &#x27;int&#x27;&gt;</code> сейчас важно имя <code>int</code>: объект является целым числом. Слово <code>class</code> относится к устройству типов; сами классы подробно изучим позже.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Одно имя, разные значения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одно имя, разные значения">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">value = 20
+print(type(value))
+value = &quot;twenty&quot;
+print(type(value))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Одно имя, разные значения">&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;str&#x27;&gt;</pre>
+  </div>
+</div>
+<p><strong>Тип принадлежит объекту.</strong> Сначала <code>value</code> связано с числом, затем со строкой. Мы присвоили имени другое значение. Число 20 при этом не превратилось в строку "twenty". Не меняйте смысл переменной без необходимости: понятные имена помогают читать программу.</p>
+<aside class="special-block special-block--question" aria-labelledby="type-sum-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="type-sum-title">Какой тип у значения num?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = 20 + 30</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="type-sum-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="type-sum-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-sum-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сумма двух целых чисел равна 50 и имеет тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="type-sum-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-sum-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Сумма двух целых чисел равна 50 и имеет тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="type-sum-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-sum-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Сумма двух целых чисел равна 50 и имеет тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="type-sum-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-sum-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Сумма двух целых чисел равна 50 и имеет тип int.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="type-float-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="type-float-title">Какой тип у значения num после сложения?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = 2.5 + 2.5</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="type-float-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="type-float-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-float-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Результат равен 5.0. Сложение этих float даёт float, даже если дробная часть нулевая.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="type-float-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-float-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Результат равен 5.0. Сложение этих float даёт float, даже если дробная часть нулевая.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="type-float-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-float-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Результат равен 5.0. Сложение этих float даёт float, даже если дробная часть нулевая.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="type-float-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-float-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Результат равен 5.0. Сложение этих float даёт float, даже если дробная часть нулевая.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="type-empty-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="type-empty-title">Какой тип у значения my_str?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">my_str = &quot;&quot;</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="type-empty-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="type-empty-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-empty-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Кавычки задают строку. Отсутствие символов внутри них не меняет тип str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="type-empty-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-empty-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Кавычки задают строку. Отсутствие символов внутри них не меняет тип str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="type-empty-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-empty-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кавычки задают строку. Отсутствие символов внутри них не меняет тип str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="type-empty-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-empty-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Кавычки задают строку. Отсутствие символов внутри них не меняет тип str.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="type-false-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="type-false-title">Какой тип у значения is_success?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">is_success = False</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="type-false-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="type-false-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-false-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. False без кавычек является значением типа bool.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="type-false-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-false-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. False без кавычек является значением типа bool.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="type-false-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-false-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. False без кавычек является значением типа bool.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="type-false-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-false-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>False без кавычек является значением типа bool.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="type-input-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="type-input-title">Какой тип данных возвращает вызов функции input, если ввести 5869?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="type-input-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="type-input-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-input-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. input возвращает строку &quot;5869&quot;. Для числового значения нужен отдельный вызов int или float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="type-input-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-input-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. input возвращает строку &quot;5869&quot;. Для числового значения нужен отдельный вызов int или float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="type-input-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-input-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>input возвращает строку &quot;5869&quot;. Для числового значения нужен отдельный вызов int или float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="type-input-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="type-input-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. input возвращает строку &quot;5869&quot;. Для числового значения нужен отдельный вызов int или float.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="type-conversion">
+        <h2>06 / Преобразование типов</h2>
+        <div class="section-content">
+<p>Преобразование позволяет получить значение подходящего типа. Например, сначала прочитать текст из консоли, затем получить из него число для расчёта. Функции <code>int()</code>, <code>float()</code> и <code>str()</code> возвращают результат: его нужно использовать или присвоить переменной.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Основные преобразования">
+  <table>
+    <caption>Основные преобразования</caption>
+    <thead><tr><th scope="col">Выражение</th><th scope="col">Результат</th><th scope="col">Тип результата</th></tr></thead>
+    <tbody>
+      <tr><td><code>int(&quot;25&quot;)</code></td><td><code>25</code></td><td><code>int</code></td></tr>
+      <tr><td><code>float(&quot;25.5&quot;)</code></td><td><code>25.5</code></td><td><code>float</code></td></tr>
+      <tr><td><code>float(25)</code></td><td><code>25.0</code></td><td><code>float</code></td></tr>
+      <tr><td><code>str(25)</code></td><td><code>&quot;25&quot;</code></td><td><code>str</code></td></tr>
+      <tr><td><code>str(25.5)</code></td><td><code>&quot;25.5&quot;</code></td><td><code>str</code></td></tr>
+      <tr><td><code>int(25.9)</code></td><td><code>25</code></td><td><code>int</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Исходная строка и полученное число</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Исходная строка и полученное число">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">raw_age = &quot;26&quot;
+age = int(raw_age)
+print(type(raw_age))
+print(type(age))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Исходная строка и полученное число">&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;int&#x27;&gt;</pre>
+  </div>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="integer-truncation-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="integer-truncation-title">int не округляет к ближайшему целому</h3>
+  <div class="special-block__body">
+<p><code>int(25.9)</code> даёт <code>25</code>, а <code>int(-25.9)</code> даёт <code>-25</code>. Дробная часть отбрасывается, движение идёт к нулю. Это отличается от округления вниз для отрицательных чисел.</p>
+  </div>
+</aside>
+<p><code>bool()</code> отвечает на вопрос, считается ли значение истинным в логическом контексте. Среди изученных значений нули, пустая строка и <code>None</code> дают <code>False</code>. Ненулевые числа и непустые строки дают <code>True</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Преобразуем в bool</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Преобразуем в bool">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(bool(5869), 5869)
+print(bool(0), 0)
+print(bool(25.5), 25.5)
+print(bool(0.0), 0.0)
+print(bool(0.000001), 0.000001)
+print(bool(&quot;abc&quot;), &quot;abc&quot;)
+print(bool(&quot;&quot;), &quot;&quot;)
+print(bool(&quot;0&quot;), &quot;0&quot;)
+print(bool(&quot;0.0&quot;), &quot;0.0&quot;)
+print(bool(None), None)
+print(bool(&quot;None&quot;), &quot;None&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Преобразуем в bool">True 5869
+False 0
+True 25.5
+False 0.0
+True 0.000001
+True abc
+False 
+True 0
+True 0.0
+False None
+True None</pre>
+  </div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Правила bool для изучаемых значений">
+  <table>
+    <caption>Правила bool для изучаемых значений</caption>
+    <thead><tr><th scope="col">Что передали</th><th scope="col">Когда True</th><th scope="col">Когда False</th></tr></thead>
+    <tbody>
+      <tr><td>Целое число, <code>bool(integer_value)</code></td><td>Число не равно 0, в том числе отрицательное.</td><td>Число равно 0.</td></tr>
+      <tr><td>Число с точкой, <code>bool(float_value)</code></td><td>Число не равно 0.0, даже очень маленькое.</td><td>Число равно 0.0, включая -0.0.</td></tr>
+      <tr><td>Строка или коллекция, <code>bool(collection)</code></td><td>Есть хотя бы один элемент или символ.</td><td>Нет элементов или символов.</td></tr>
+      <tr><td><code>bool(None)</code></td><td>Никогда.</td><td>Всегда.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>В таблице <code>integer_value</code>, <code>float_value</code> и <code>collection</code> обозначают переменные со значениями, которые проверяем. Коллекции хранят элементы; их изучим позже. Для строки элементами в этой проверке служат символы.</p>
+<aside class="special-block special-block--warning" aria-labelledby="nonempty-text-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="nonempty-text-title">bool не читает смысл текста</h3>
+  <div class="special-block__body">
+<p><code>&quot;0&quot;</code>, <code>&quot;0.0&quot;</code>, <code>&quot;None&quot;</code> и даже <code>&quot;False&quot;</code> являются непустыми строками, поэтому дают <code>True</code>. Строка <code>&quot; &quot;</code> с пробелом тоже не пустая. Только <code>&quot;&quot;</code> не содержит ни одного символа.</p>
+  </div>
+</aside>
+<p>Преобразование возможно не для любого значения. Если текст не подходит для нужного числового формата, Python сообщает об ошибке. В обычном запуске без обработки ошибки выполнение программы на этом месте прекращается. Примеры ниже запускайте по одному.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Когда преобразование не получается">
+  <table>
+    <caption>Когда преобразование не получается</caption>
+    <thead><tr><th scope="col">Выражение</th><th scope="col">Что произойдёт</th><th scope="col">Почему и что проверить</th></tr></thead>
+    <tbody>
+      <tr><td><code>int(&quot;25.9&quot;)</code></td><td><code>ValueError</code></td><td>int ожидает строковую запись целого. Для дробного числа используйте float; если затем вызвать int, дробная часть потеряется.</td></tr>
+      <tr><td><code>float(&quot;25,9&quot;)</code></td><td><code>ValueError</code></td><td>В числовом вводе нужна точка: <code>float(&quot;25.9&quot;)</code>.</td></tr>
+      <tr><td><code>int(&quot;hello&quot;)</code></td><td><code>ValueError</code></td><td>Слово не является записью числа. Попросите ввести цифры.</td></tr>
+      <tr><td><code>int(&quot;&quot;)</code></td><td><code>ValueError</code></td><td>Пустой ввод не содержит числа.</td></tr>
+      <tr><td><code>int(None)</code></td><td><code>TypeError</code></td><td>Отсутствие значения нельзя преобразовать в целое таким вызовом. Сначала нужно получить значение.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Даже успешное преобразование может потерять важную информацию: <code>int(&quot;0058&quot;)</code> даёт <code>58</code>, а <code>int(25.9)</code> теряет дробную часть. Поэтому коды с ведущими нулями хранят строками. Преобразование выбирают по задаче, а не только по отсутствию ошибки.</p>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>07 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-types-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-types-title">Какие варианты являются названиями типов данных?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-types-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-types-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>int</code> является названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-types-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>float</code> является названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-types-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>str</code> является названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-types-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>bool</code> является названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="5" aria-describedby="check-types-feedback-5" />
+          <span><code>NoneType</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>NoneType</code> является названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="6" aria-describedby="check-types-feedback-6" />
+          <span><code>None</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>None</code> является значением, а не названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="7" aria-describedby="check-types-feedback-7" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-7" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code> является значением, а не названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="8" aria-describedby="check-types-feedback-8" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-8" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code> является значением, а не названием типа.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="9" aria-describedby="check-types-feedback-9" />
+          <span><code>num</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-9" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>num</code> является возможным именем переменной, а не встроенным типом.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="10" aria-describedby="check-types-feedback-10" />
+          <span><code>my_str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-10" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>my_str</code> является возможным именем переменной, а не встроенным типом.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-bool-values-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-bool-values-title">Какие записи являются значениями типа bool?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-bool-values-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-bool-values-feedback-1" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-bool-values-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это логическое значение типа bool.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-bool-values-feedback-2" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-bool-values-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это логическое значение типа bool.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-bool-values-feedback-3" />
+          <span><code>None</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-bool-values-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это значение типа NoneType.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-bool-values-feedback-4" />
+          <span><code>0</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-bool-values-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это целочисленный литерал типа int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="5" aria-describedby="check-bool-values-feedback-5" />
+          <span><code>1</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-bool-values-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это целочисленный литерал типа int.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-division-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-division-title">Какой тип у значения num?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = 5 / 2</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-division-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-division-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-division-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Обычное деление даёт 2.5, это float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-division-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-division-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Обычное деление даёт 2.5, это float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-division-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-division-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Обычное деление даёт 2.5, это float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-division-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-division-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Обычное деление даёт 2.5, это float.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-age-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-age-title">Какой тип у значения age после ввода 26?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = input(&quot;Enter your age: &quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-age-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-age-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-age-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Без преобразования результат input остаётся строкой "26".</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-age-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-age-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Без преобразования результат input остаётся строкой "26".</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-age-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-age-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Без преобразования результат input остаётся строкой "26".</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-age-feedback-4" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-age-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Без преобразования результат input остаётся строкой "26".</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-none-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-none-title">Какой результат вернёт выражение?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Выражение к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выражение к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">bool(None)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-none-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-none-feedback-1" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-none-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>None обозначает отсутствие значения и при преобразовании даёт False.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-none-feedback-2" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-none-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>None обозначает отсутствие значения и при преобразовании даёт False.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-empty-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-empty-title">Какой результат вернёт выражение?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Выражение к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выражение к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">bool(&quot;&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-empty-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-empty-feedback-1" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-empty-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пустая строка не содержит символов и даёт False.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-empty-feedback-2" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-empty-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пустая строка не содержит символов и даёт False.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-space-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-space-title">Какой результат вернёт выражение?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Выражение к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выражение к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">bool(&quot; &quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-space-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-space-feedback-1" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-space-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пробел является символом. Строка не пустая, поэтому результат True.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-space-feedback-2" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-space-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пробел является символом. Строка не пустая, поэтому результат True.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

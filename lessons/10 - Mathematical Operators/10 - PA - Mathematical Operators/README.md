@@ -1,0 +1,16 @@
+Задачи, которые нужно выполнить:
+
+- [01-fix-number-input](01/task/README.md)
+- [02-fix-message-concatenation](02/task/README.md)
+- [03-fix-formula](03/task/README.md)
+- [04-celsius-to-fahrenheit](04/task/README.md)
+- [05-bytes-to-kilobytes](05/task/README.md)
+- [06-average-grade](06/task/README.md)
+- [07-sleep-percentage](07/task/README.md)
+- [08-fix-division-operators](08/task/README.md)
+- [09-fixed-discount](09/task/README.md)
+- [10-banknote-breakdown](10/task/README.md)
+- [11-fuel-needed](11/task/README.md)
+- [12-department-budget](12/task/README.md)
+- [13-pizza-sharing](13/task/README.md)
+- [14-reading-days](14/task/README.md)

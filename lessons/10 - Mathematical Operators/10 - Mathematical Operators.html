@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Математические операторы Python для самостоятельного изучения: арифметика, деление и остаток, порядок действий, сокращённое присваивание, ошибки и самопроверка."
+    />
+    <title>10 - Mathematical Operators</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">10 - Mathematical Operators</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="arithmetic">
+        <h2>01 / Арифметические выражения</h2>
+        <div class="section-content">
+<p>Вы уже знаете, что числа и строки ведут себя по-разному. Теперь научимся читать числовые выражения, выбирать нужное деление и изменять значения переменных. Запускайте примеры по отдельности и сначала предсказывайте результат.</p>
+<aside class="special-block special-block--definition" aria-labelledby="operator-operand-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="operator-operand-title">Из чего состоит выражение</h3>
+  <div class="special-block__body">
+<p>В выражении <code>5 + 3</code> знак <code>+</code> является <strong>оператором</strong>: он обозначает действие. Числа <strong>5</strong> и <strong>3</strong> являются его <strong>операндами</strong>: данными для действия. Результат выражения равен <strong>8</strong>. Операндом может быть и переменная, и целое вложенное выражение.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Составное выражение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Составное выражение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num_1 = 10
+num_2 = 3
+num_2_count = 4
+total_sum = num_1 + num_2 * num_2_count
+print(total_sum)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Составное выражение">22</pre>
+  </div>
+</div>
+<ul class="content-list">
+<li>Для <code>*</code> операндами служат <code>num_2</code> и <code>num_2_count</code>. Их произведение равно <strong>12</strong>.</li>
+<li>Для <code>+</code> операндами служат <code>num_1</code> и результат выражения <code>num_2 * num_2_count</code>. Получаем <strong>10 + 12</strong>, то есть <strong>22</strong>.</li>
+<li><code>=</code> обозначает присваивание. Справа находится вычисляемое выражение, слева <code>total_sum</code>, имя для результата.</li>
+</ul>
+<p>При чтении сначала разбирайте правую часть, затем присваивание результата.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/10/OperatorsOperands.gif"
+      alt="Выделение операторов и операндов в выражении total_sum = num_1 + num_2 * num_2_count"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис. 1. Операторы и Операнды.</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Основные арифметические операторы">
+  <table>
+    <caption>Основные арифметические операторы</caption>
+    <thead><tr><th scope="col">Оператор</th><th scope="col">Действие</th><th scope="col">Пример</th><th scope="col">Результат</th></tr></thead>
+    <tbody>
+      <tr><td><code>+</code></td><td>Сложение</td><td><code>8 + 3</code></td><td><code>11</code></td></tr>
+      <tr><td><code>-</code></td><td>Вычитание</td><td><code>8 - 3</code></td><td><code>5</code></td></tr>
+      <tr><td><code>*</code></td><td>Умножение</td><td><code>8 * 3</code></td><td><code>24</code></td></tr>
+      <tr><td><code>/</code></td><td>Обычное деление</td><td><code>8 / 2</code></td><td><code>4.0</code></td></tr>
+      <tr><td><code>**</code></td><td>Возведение в степень</td><td><code>2 ** 3</code></td><td><code>8</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<p><code>2 ** 3</code> означает <strong>2 × 2 × 2</strong>. Для степени в Python нужны две звёздочки.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Отрицательные числа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отрицательные числа">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">temperature = -5
+print(temperature + 2)
+print(3 - 8)
+print(-temperature)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Отрицательные числа">-3
+-5
+5</pre>
+  </div>
+</div>
+<p>Минус может находиться между двумя операндами, как в <code>3 - 8</code>, или перед одним значением, как в <code>-temperature</code>. Во втором случае он меняет знак значения; переменная <code>temperature</code> при таком выводе остаётся равной <strong>-5</strong>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="division-float-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="division-float-title">Обычное деление возвращает float</h3>
+  <div class="special-block__body">
+<p>Для обычных чисел <code>int</code> и <code>float</code> операция <code>/</code> возвращает <code>float</code>. Даже когда деление происходит нацело: <code>8 / 2</code> даёт <code>4.0</code>, а не <code>4</code>.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="division-and-remainder">
+        <h2>02 / Деление с округлением вниз и Остаток</h2>
+        <div class="section-content">
+<p>Представьте <strong>23</strong> предмета и коробки вместимостью <strong>9</strong> предметов. Сколько полных коробок получится и сколько предметов останется? Обычное деление <code>23 / 9</code> даёт дробное число. Для этой задачи удобны две отдельные операции.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Коробки и оставшиеся предметы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Коробки и оставшиеся предметы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">item_count = 23
+box_capacity = 9
+full_boxes = item_count // box_capacity
+remaining_items = item_count % box_capacity
+print(full_boxes)
+print(remaining_items)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Коробки и оставшиеся предметы">2
+5</pre>
+  </div>
+</div>
+<ul class="content-list">
+<li><code>23 // 9</code> даёт <strong>2</strong>. Две полные коробки вмещают <strong>18</strong> предметов, а на третью не хватает.</li>
+<li><code>23 % 9</code> даёт <strong>5</strong>. Это остаток после заполнения полных коробок: <code>23 - 2 * 9</code>.</li>
+</ul>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/10/BoxesAndRemainder.gif"
+      alt="Распределение 23 предметов по коробкам вместимостью 9: две полные коробки и остаток 5"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис. 2. Визуализация целочисленного деления и остатка.</figcaption>
+</figure>
+<aside class="special-block special-block--warning" aria-labelledby="floor-division-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="floor-division-title">// округляет результат вниз</h3>
+  <div class="special-block__body">
+<p>Операция <code>//</code> берёт частное и округляет его к меньшему целому. Для положительных чисел это похоже на отбрасывание дробной части. Для отрицательных нужно помнить направление: вниз по числовой прямой.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Отрицательное частное</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отрицательное частное">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(-23 / 9)
+print(-23 // 9)
+print(int(-23 / 9))
+print(-23 % 9)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Отрицательное частное">-2.5555555555555554
+-3
+-2
+4</pre>
+  </div>
+</div>
+<p>Число <strong>-3</strong> меньше <strong>-2.555…</strong>, поэтому <code>-23 // 9</code> равно <strong>-3</strong>. А <code>int()</code> отбрасывает дробную часть к нулю и даёт <strong>-2</strong>. Остаток согласован с делением: <code>-23 = (-3) * 9 + 4</code>. Для целых чисел и ненулевого делителя работает связь <code>a == (a // b) * b + a % b</code>.</p>
+<p>Ненулевой остаток в Python имеет знак делителя. Например, <code>23 % -9</code> равно <strong>-4</strong>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Тип результата //</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Тип результата //">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(23 // 9)
+print(23.0 // 9)
+print(type(23.0 // 9))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Тип результата //">2
+2.0
+&lt;class &#x27;float&#x27;&gt;</pre>
+  </div>
+</div>
+<p>Если хотя бы один из этих числовых операндов имеет тип <code>float</code>, результат <code>//</code> тоже будет <code>float</code>, хотя значение целое. Поэтому название «целочисленное деление» <strong>не означает, что тип результата всегда</strong> <code>int</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Получаем цифру числа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Получаем цифру числа">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = 5869
+print(num % 10)
+print(num // 100 % 10)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Получаем цифру числа">9
+8</pre>
+  </div>
+</div>
+<p>Остаток от деления положительного целого на <strong>10</strong> даёт последнюю цифру. Чтобы получить цифру сотен, сначала <code>5869 // 100</code> убирает две последние цифры и даёт <strong>58</strong>, затем <code>58 % 10</code> оставляет <strong>8</strong>.</p>
+        </div>
+      </section>
+      <section id="evaluation-order">
+        <h2>03 / Порядок действий</h2>
+        <div class="section-content">
+<p>Python использует приоритеты, чтобы понять, какие операнды относятся к каждому оператору. Например, <code>2 + 3 * 4</code> означает <code>2 + (3 * 4)</code> и даёт <strong>14</strong>. Скобки позволяют изменить группировку: <code>(2 + 3) * 4</code> даёт <strong>20</strong>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Выражение для разбора</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выражение для разбора">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">result = 30 - 5 + 4 * 11 ** (1 + 1) // 10 % 10 / 2
+print(result)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Выражение для разбора">29.0</pre>
+  </div>
+</div>
+<p>Разделим выражение по последнему сложению: слева <code>30 - 5</code>, справа <code>4 * 11 ** (1 + 1) // 10 % 10 / 2</code>. Python вычисляет левый операнд сложения, затем правый. Внутри каждого операнда действуют приоритеты.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Последовательное вычисление">
+  <table>
+    <caption>Последовательное вычисление</caption>
+    <thead><tr><th scope="col">Шаг</th><th scope="col">Что вычисляем</th><th scope="col">Что остаётся</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><code>30 - 5 → 25</code></td><td><code>25 + 4 * 11 ** (1 + 1) // 10 % 10 / 2</code></td></tr>
+      <tr><td>2</td><td><code>(1 + 1) → 2</code></td><td><code>25 + 4 * 11 ** 2 // 10 % 10 / 2</code></td></tr>
+      <tr><td>3</td><td><code>11 ** 2 → 121</code></td><td><code>25 + 4 * 121 // 10 % 10 / 2</code></td></tr>
+      <tr><td>4</td><td><code>4 * 121 → 484</code></td><td><code>25 + 484 // 10 % 10 / 2</code></td></tr>
+      <tr><td>5</td><td><code>484 // 10 → 48</code></td><td><code>25 + 48 % 10 / 2</code></td></tr>
+      <tr><td>6</td><td><code>48 % 10 → 8</code></td><td><code>25 + 8 / 2</code></td></tr>
+      <tr><td>7</td><td><code>8 / 2 → 4.0</code></td><td><code>25 + 4.0</code></td></tr>
+      <tr><td>8</td><td><code>25 + 4.0 → 29.0</code></td><td><code>29.0</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/10/EvaluationOrder.gif"
+      alt="Пошаговое вычисление арифметического выражения с учётом скобок и приоритетов операторов до результата 29.0"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис. 3. Визуализация вычисления по приоритетам.</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Приоритеты от высокого к низкому">
+  <table>
+    <caption>Приоритеты от высокого к низкому</caption>
+    <thead><tr><th scope="col">Запись</th><th scope="col">Как группируется</th></tr></thead>
+    <tbody>
+      <tr><td><code>(…)</code></td><td>Скобки явно задают вложенное выражение.</td></tr>
+      <tr><td><code>**</code></td><td>Степень; цепочка степеней группируется справа налево.</td></tr>
+      <tr><td><code>+x</code>, <code>-x</code></td><td>Знак одного числа; особенность рядом со степенью показана ниже.</td></tr>
+      <tr><td><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code></td><td>Один уровень приоритета; цепочка группируется слева направо.</td></tr>
+      <tr><td><code>+</code>, <code>-</code></td><td>Сложение и вычитание; цепочка группируется слева направо.</td></tr>
+    </tbody>
+  </table>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="priority-vs-order-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="priority-vs-order-title">Приоритет и порядок вычисления связаны, но различаются</h3>
+  <div class="special-block__body">
+<p>Правило «сначала скобки» удобно для ручного счёта, но не означает, что Python ищет все скобки во всей строке и начинает с них. В нашем выражении он может вычислить <code>30 - 5</code> до скобок внутри правого операнда. Приоритет при этом не нарушен: финальное сложение ждёт результата всей правой части.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Одинаковый приоритет и степени</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одинаковый приоритет и степени">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(20 / 2 * 5)
+print(2 ** 3 ** 2)
+print((2 ** 3) ** 2)
+print(-2 ** 2)
+print((-2) ** 2)
+print(2 ** -2)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Одинаковый приоритет и степени">50.0
+512
+64
+-4
+4
+0.25</pre>
+  </div>
+</div>
+<p>Первый пример читается как <code>(20 / 2) * 5</code>, а не <code>20 / (2 * 5)</code>. Цепочка степеней <code>2 ** 3 ** 2</code> означает <code>2 ** (3 ** 2)</code>. Минус слева от степени применяется после неё: <code>-2 ** 2</code> означает <code>-(2 ** 2)</code>. Чтобы возвести отрицательное число в степень, пишите скобки. Справа от <code>**</code> допустим отрицательный показатель: <code>2 ** -2</code> равно <code>1 / (2 ** 2)</code>.</p>
+        </div>
+      </section>
+      <section id="updating-values">
+        <h2>04 / Изменение числовых значений</h2>
+        <div class="section-content">
+<p>В играх, счётчиках и расчётах часто нужно обновить уже существующее число. Например, добавить к текущим очкам ещё <strong>10</strong>. Это не математическое уравнение: Python сначала получает новое значение справа, затем связывает с ним имя слева.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Полная запись</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Полная запись">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">score = 5
+score = score + 10
+print(score)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Полная запись">15</pre>
+  </div>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Сокращённая запись</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сокращённая запись">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">score = 5
+score += 10
+print(score)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Сокращённая запись">15</pre>
+  </div>
+</div>
+<p>Для рассматриваемых чисел и простого имени переменной эти варианты дают один результат. Перед <code>score += 10</code> переменная уже должна существовать. Если ещё не присвоили ей значение, Python сообщит <code>NameError</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Сокращённые присваивания для чисел">
+  <table>
+    <caption>Сокращённые присваивания для чисел</caption>
+    <thead><tr><th scope="col">Короткая запись</th><th scope="col">Полная запись</th><th scope="col">При начальном score = 20</th></tr></thead>
+    <tbody>
+      <tr><td><code>score += 10</code></td><td><code>score = score + 10</code></td><td><code>30</code></td></tr>
+      <tr><td><code>score -= 10</code></td><td><code>score = score - 10</code></td><td><code>10</code></td></tr>
+      <tr><td><code>score *= 10</code></td><td><code>score = score * 10</code></td><td><code>200</code></td></tr>
+      <tr><td><code>score /= 10</code></td><td><code>score = score / 10</code></td><td><code>2.0</code></td></tr>
+      <tr><td><code>score %= 6</code></td><td><code>score = score % 6</code></td><td><code>2</code></td></tr>
+      <tr><td><code>score //= 6</code></td><td><code>score = score // 6</code></td><td><code>3</code></td></tr>
+      <tr><td><code>score **= 2</code></td><td><code>score = score ** 2</code></td><td><code>400</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Каждая строка таблицы начинается с нового <code>score = 20</code>, строки не выполняются одна за другой. Обратите внимание: <code>/=</code> сохраняет результат обычного деления, поэтому значение становится <code>float</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="right-side-first-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="right-side-first-title">Сначала вычислите всю правую часть</h3>
+  <div class="special-block__body">
+<p>В записи <code>score *= score + 10</code> сперва выполняется правая часть выражения от знака присваивания: <code>score + 10</code>. Затем старое значение <code>score</code> умножается на этот результат. Для простого числового имени это соответствует <code>score = score * (score + 10)</code>. Скобки при раскрытии сокращённой записи обязательны.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Умножение на вычисленное значение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Умножение на вычисленное значение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">score = 5
+score *= score + 10
+print(score)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Умножение на вычисленное значение">75</pre>
+  </div>
+</div>
+<ol class="content-list">
+<li>Старое значение score равно <strong>5</strong>.</li>
+<li>Справа вычисляем <code>5 + 10</code> и получаем <strong>15</strong>.</li>
+<li>Умножаем старые <strong>5</strong> на <strong>15</strong> и получаем <strong>75</strong>.</li>
+<li>Присваиваем <strong>75</strong> переменной <code>score</code>.</li>
+</ol>
+<p>Запись <code>score = score * score + 10</code> дала бы <strong>35</strong> при начальном значении <strong>5</strong>. Это другое выражение, потому что сложение осталось за пределами множителя.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="common-errors">
+        <h2>05 / Частые ошибки</h2>
+        <div class="section-content">
+<p>Сообщение об ошибке помогает понять, какая операция не удалась. Читайте последнюю строку сообщения и строку кода, на которую указал Python. Примеры с ошибками ниже нужно запускать отдельно: необработанная ошибка прерывает текущий запуск.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Деление на ноль</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Деление на ноль">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(5869 / 0)</code></pre>
+</div>
+<p>Получим <code>ZeroDivisionError</code>. На ноль нельзя делить ни через <code>/</code>, ни через <code>//</code>; вычисление <code>% 0</code> тоже вызовет эту ошибку. Проверьте значение делителя, особенно если оно пришло из ввода пользователя.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Строки и числа при сложении">
+  <table>
+    <caption>Строки и числа при сложении</caption>
+    <thead><tr><th scope="col">Выражение</th><th scope="col">Результат</th><th scope="col">Объяснение</th></tr></thead>
+    <tbody>
+      <tr><td><code>&quot;2&quot; + &quot;3&quot;</code></td><td><code>&quot;23&quot;</code>, тип <code>str</code></td><td>Соединение двух строк.</td></tr>
+      <tr><td><code>2 + 3</code></td><td><code>5</code>, тип <code>int</code></td><td>Сложение двух целых чисел.</td></tr>
+      <tr><td><code>&quot;2&quot; + 3</code></td><td><code>TypeError</code></td><td>Складывать строку и число таким способом нельзя.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Если нужен расчёт, преобразуйте числовой текст в число. Если нужно собрать сообщение, преобразуйте число в строку или используйте f-строку. Внешне вывод <code>23</code> не показывает тип, поэтому при сомнении проверяйте его через <code>type()</code>.</p>
+<p>Рассмотрим особенность с <code>float</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Погрешность float</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Погрешность float">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">result = 123.45 % 10
+print(result)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Погрешность float">3.450000000000003</pre>
+  </div>
+</div>
+<p>Почему не ровно <strong>3.45</strong>? Компьютер хранит <code>float</code> с ограниченной точностью в двоичной системе. Многие десятичные дроби, в том числе <code>123.45</code>, нельзя представить в ней точно. Похоже на попытку записать <strong>1/3</strong> конечным количеством десятичных цифр: запись приходится обрывать.</p>
+<p>Если в задачах требуется высокая точность, то обычно используют специальный тип данных, либо специальные математические подходы при вычислениях. Для наших же задач достаточно будет использовать округление при выводе.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Вывод с двумя знаками после точки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Вывод с двумя знаками после точки">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">result = 123.45 % 10
+print(f&quot;{result:.2f}&quot;)
+print(result)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Вывод с двумя знаками после точки">3.45
+3.450000000000003</pre>
+  </div>
+</div>
+<p>Формат <code>:.2f</code> внутри f-строки показывает число с двумя знаками после точки. Он округляет отображение, но не меняет сохранённое значение <code>result</code>. Это удобно для читаемого вывода.</p>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>06 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="math-distance-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-distance-title">Какой тип у result перед выводом?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">distance = float(input(&quot;Enter distance: &quot;))
+result = distance / 2
+print(result)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-distance-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-distance-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-distance-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. float создаёт число 10.0, а обычное деление возвращает 5.0 типа float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-distance-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-distance-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>float создаёт число 10.0, а обычное деление возвращает 5.0 типа float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-distance-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-distance-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. float создаёт число 10.0, а обычное деление возвращает 5.0 типа float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-distance-feedback-4" />
+          <span>Возникнет ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-distance-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. float создаёт число 10.0, а обычное деление возвращает 5.0 типа float.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-year-string-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-year-string-title">Какой тип значения будет передан в print?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">year = input(&quot;Enter year: &quot;)
+age = 2026 - year
+msg = &quot;Your age is&quot; + &quot; &quot; + age
+print(msg)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-year-string-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-year-string-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-year-string-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Ошибка возникает уже в 2026 - year: year содержит строку &quot;2000&quot;. До создания msg программа не дойдёт.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-year-string-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-year-string-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Ошибка возникает уже в 2026 - year: year содержит строку &quot;2000&quot;. До создания msg программа не дойдёт.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-year-string-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-year-string-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Ошибка возникает уже в 2026 - year: year содержит строку &quot;2000&quot;. До создания msg программа не дойдёт.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-year-string-feedback-4" />
+          <span>Возникнет ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-year-string-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Ошибка возникает уже в 2026 - year: year содержит строку &quot;2000&quot;. До создания msg программа не дойдёт.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-age-string-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-age-string-title">Какой тип значения будет передан в print?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">year = int(input(&quot;Enter year: &quot;))
+age = 2026 - year
+msg = &quot;Your age is&quot; + &quot; &quot; + age
+print(msg)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-age-string-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-age-string-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-age-string-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Вычитание успешно даёт число 26. Ошибка возникает при соединении строки с age, потому что age имеет тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-age-string-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-age-string-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Вычитание успешно даёт число 26. Ошибка возникает при соединении строки с age, потому что age имеет тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-age-string-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-age-string-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. Вычитание успешно даёт число 26. Ошибка возникает при соединении строки с age, потому что age имеет тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-age-string-feedback-4" />
+          <span>Возникнет ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-age-string-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вычитание успешно даёт число 26. Ошибка возникает при соединении строки с age, потому что age имеет тип int.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-message-string-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-message-string-title">Какой тип значения будет передан в print?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">year = int(input(&quot;Enter year: &quot;))
+age = 2026 - year
+msg = &quot;Your age is&quot; + &quot; &quot; + str(age)
+print(msg)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-message-string-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-message-string-feedback-1" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-message-string-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. str(age) даёт строку &quot;26&quot;. Строки соединяются в сообщение &quot;Your age is 26&quot;, тип msg равен str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-message-string-feedback-2" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-message-string-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. str(age) даёт строку &quot;26&quot;. Строки соединяются в сообщение &quot;Your age is 26&quot;, тип msg равен str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-message-string-feedback-3" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-message-string-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>str(age) даёт строку &quot;26&quot;. Строки соединяются в сообщение &quot;Your age is 26&quot;, тип msg равен str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-message-string-feedback-4" />
+          <span>Возникнет ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-message-string-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот вариант не подходит. str(age) даёт строку &quot;26&quot;. Строки соединяются в сообщение &quot;Your age is 26&quot;, тип msg равен str.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-increment-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-increment-title">Какая запись так же увеличит текущее число num на 1?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num += 1</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-increment-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-increment-feedback-1" />
+          <span><code>num = num + 1</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-increment-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Используется старое значение num, к нему прибавляется 1.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-increment-feedback-2" />
+          <span><code>num = 0 + 1</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-increment-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Всегда присваивается 1. Старое значение num не используется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-increment-feedback-3" />
+          <span><code>num = 1</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-increment-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Всегда присваивается 1, а увеличить нужно текущее значение.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-increment-feedback-4" />
+          <span><code>num = 2</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-increment-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Совпадёт только при старом num = 1, а нужна запись для любого исходного числа.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-multiply-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-multiply-title">Какая полная запись соответствует сокращённой?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num *= 2 + 3</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-multiply-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-multiply-feedback-1" />
+          <span><code>num = num * (2 + 3)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-multiply-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сначала вычисляется правая часть 2 + 3, затем старое num умножается на 5.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-multiply-feedback-2" />
+          <span><code>num = num * 2 + 3</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-multiply-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь num умножается только на 2, затем прибавляется 3.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-multiply-feedback-3" />
+          <span><code>num = num * 2 + 2 * 3</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-multiply-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь получается num * 2 + 6. Это не умножение num на 5.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-multiply-feedback-4" />
+          <span><code>num = num + 2 + 3</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-multiply-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь к num прибавляется 5 вместо умножения на 5.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-order-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-order-title">В каком порядке Python вычислит пронумерованные операции?</h3>
+  <div class="special-block__body">
+<p>Запишите номера операторов подряд без пробелов и разделителей. Формат ответа: <code>123456789</code>. Каждую цифру используйте один раз. Скобки отдельно не нумеруются.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/10/01-question07.png" alt="Выражение 5 ** (4 + 6 - 5869 // 100 % 10) + (25 - 15) + 5 ** 2. Операторы слева направо пронумерованы от 1 до 9; тот же список приведён под рисунком." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 4. Номера операторов для определения порядка вычисления.</figcaption>
+</figure>
+<form class="quiz" data-quiz="text" data-answer="245317698"
+  data-hint="Внутри первых скобок сначала вычисляется левый операнд вычитания 4 + 6. Затем // и %, вычитание и первая степень. Дальше вычисляйте операнды внешних сложений слева направо." data-success="Верно: 2, 4, 5, 3, 1, 7, 6, 9, 8. Получаем 10, 58, 8, 2, 25, 10, 35, 25 и итог 60. Приоритет задаёт группировку, а операнды вычисляются слева направо." autocomplete="off" aria-labelledby="math-order-title">
+  <label for="math-order-answer">Ваш ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="math-order-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="math-order-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="math-order-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="math-same-results-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="math-same-results-title">Какие варианты дадут одинаковые ответы?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="math-same-results-title">
+  <fieldset>
+    <legend>Отметьте подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="math-same-results-feedback-1" />
+          <span><code>5869 // 100 % 10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-same-results-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>5869 // 100 даёт 58, затем 58 % 10 даёт 8.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="math-same-results-feedback-2" />
+          <span><code>5869 % 1000 // 100</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-same-results-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>5869 % 1000 даёт 869, затем 869 // 100 даёт 8.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="math-same-results-feedback-3" />
+          <span><code>5869 // 1000</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-same-results-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Получится 5: оставили цифру тысяч.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="math-same-results-feedback-4" />
+          <span><code>5869 % 100 // 10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-same-results-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сначала получается 69, затем 6: это цифра десятков.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="5" aria-describedby="math-same-results-feedback-5" />
+          <span><code>5869 // 1 % 10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="math-same-results-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Деление на 1 сохраняет 5869, затем остаток от деления на 10 равен 9.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

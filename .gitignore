@@ -4,6 +4,9 @@
 /lessons/**/tests
 /lessons/**/_grading
 /lessons/**/prompt.md
+/lessons/**/hw-prompt.md
+/lessons/**/pa-prompt.md
+/lessons/**/gif-prompt.md
 checklist.md
 .agents
 AGENTS.md

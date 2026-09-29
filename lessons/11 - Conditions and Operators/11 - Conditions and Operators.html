@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Условия в Python для самостоятельного изучения: bool, сравнения, and, or, not, порядок вычисления, короткое замыкание, диапазоны и интерактивная самопроверка."
+    />
+    <title>11 - Conditions and Operators</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">11 - Conditions and Operators</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-remainder-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-remainder-title">Какой оператор позволяет разделить и получить остаток от деления?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="%" data-hint="Вспомните, каким знаком находили последнюю цифру числа. Нужен один символ." data-success="Верно. Например, 23 % 9 даёт остаток 5." autocomplete="off" aria-labelledby="review-remainder-title">
+  <label for="review-remainder-answer">Введите только знак оператора</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-remainder-answer" name="answer" type="text" placeholder="Ответ без лишних пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-remainder-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-remainder-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-floor-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-floor-title">Какой оператор позволяет разделить и получить целую часть, округлённую в меньшую сторону?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="//" data-hint="Нужен знак деления, записанный дважды подряд." data-success="Верно. 23 // 9 даёт 2, а -23 // 9 даёт -3: округление направлено вниз." autocomplete="off" aria-labelledby="review-floor-title">
+  <label for="review-floor-answer">Введите только знак оператора</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-floor-answer" name="answer" type="text" placeholder="Ответ без лишних пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-floor-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-floor-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-increment-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-increment-title">Какой оператор сокращённого присваивания заменит эту запись?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Увеличение на единицу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Увеличение на единицу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = num + 1</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="+=" data-hint="Соедините знак сложения и знак присваивания, без пробела между ними." data-success="Верно. Для числа запись num += 1 увеличивает num на единицу." autocomplete="off" aria-labelledby="review-increment-title">
+  <label for="review-increment-answer">Введите ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-increment-answer" name="answer" type="text" placeholder="Ответ без лишних пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-increment-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-increment-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-power-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-power-title">Как записать произведение через возведение в степень?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Повторяющееся умножение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Повторяющееся умножение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">2 * 2 * 2 * 2</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="2 ** 4" data-hint="Основание равно 2, а количество одинаковых множителей определяет показатель степени. Используйте две звёздочки. До и после оператора должен быть 1 пробел." data-success="Верно. 2 ** 4 и 2 * 2 * 2 * 2 дают 16." autocomplete="off" aria-labelledby="review-power-title">
+  <label for="review-power-answer">Введите ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-power-answer" name="answer" type="text" placeholder="Ответ без лишних пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-power-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-power-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-format-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-format-title">Как вывести num с пятью знаками после десятичной точки?</h3>
+  <div class="special-block__body">
+<p>Напишите вызов <code>print()</code> с f-строкой. Используйте двойные кавычки, имя <code>num</code> и формат фиксированной точности. Пробелы не нужны.</p>
+<form class="quiz" data-quiz="text" data-answer="print(f&quot;{num:.5f}&quot;)" data-hint="Внутри фигурных скобок после num нужны двоеточие, точка, число знаков и буква f." data-success="Верно. Формат .5f выводит пять знаков после точки, при необходимости округляя число или добавляя нули." autocomplete="off" aria-labelledby="review-format-title">
+  <label for="review-format-answer">Введите ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-format-answer" name="answer" type="text" placeholder="Ответ без лишних пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-format-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-format-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="boolean-values">
+        <h2>02 / Условия и логические значения</h2>
+        <div class="section-content">
+<p>На вопрос «Сколько вам лет?» нужен числовой ответ. На вопрос «Вам уже исполнилось 18 лет?» можно ответить «да» или «нет». Второй вопрос превращается в условие: утверждение, истинность которого программа может проверить.</p>
+<aside class="special-block special-block--definition" aria-labelledby="bool-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="bool-title">Два значения типа bool</h3>
+  <div class="special-block__body">
+<p>Тип <code>bool</code> содержит два логических значения: <code>True</code> означает «истина», а <code>False</code> означает «ложь». Для условия это ответы «да, выполняется» и «нет, не выполняется».</p><p>Пишите их с заглавной буквы и без кавычек. <code>True</code> является логическим значением, а <code>"True"</code> является строкой. Запись <code>true</code> Python воспримет как имя переменной; если такого имени нет, возникнет <code>NameError</code>.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Логические значения и их тип</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Логические значения и их тип">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">is_open = True
+is_closed = False
+print(is_open)
+print(is_closed)
+print(type(is_open))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Логические значения и их тип">True
+False
+&lt;class &#x27;bool&#x27;&gt;</pre>
+  </div>
+</div>
+<p>Представьте заслонку в трубе. Наш вопрос: «Проход открыт?» Открытая заслонка соответствует <code>True</code>, закрытая соответствует <code>False</code>. Значение описывает ответ на выбранный вопрос. Если спросить «Проход закрыт?», ответы для тех же состояний поменяются местами.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/01-BooleanPipe.gif" alt="Открытая заслонка пропускает воду и обозначена True; закрытая перекрывает поток и обозначена False." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 1. Логическое значение как состояние прохода для воды.</figcaption>
+</figure>
+<div class="code-example">
+  <div class="code-example__header"><span>Сохраняем результат проверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сохраняем результат проверки">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 20
+is_adult = age &gt;= 18
+print(is_adult)
+print(type(is_adult))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Сохраняем результат проверки">True
+&lt;class &#x27;bool&#x27;&gt;</pre>
+  </div>
+</div>
+<p>Знак <code>&gt;=</code> читается «больше или равно». Сначала Python проверяет <code>age &gt;= 18</code>, получает <code>True</code>, затем сохраняет это значение в <code>is_adult</code>. В переменной находится уже полученный ответ, а не постоянно работающая проверка.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>При изменении возраста проверку нужно повторить</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: При изменении возраста проверку нужно повторить">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 17
+is_adult = age &gt;= 18
+age = 18
+print(is_adult)
+is_adult = age &gt;= 18
+print(is_adult)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: При изменении возраста проверку нужно повторить">False
+True</pre>
+  </div>
+</div>
+<aside class="special-block special-block--tip" aria-labelledby="boolean-names-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="boolean-names-title">Называйте переменную как понятное утверждение</h3>
+  <div class="special-block__body">
+<p>Используйте английские имена в <code>snake_case</code>: <code>is_adult</code> («совершеннолетний»), <code>has_ticket</code> («есть билет»), <code>can_enter</code> («может войти»). Начала <code>is_</code>, <code>has_</code> и <code>can_</code> помогают читать код. Это соглашение об именах, а не обязательный синтаксис Python.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="comparisons">
+        <h2>03 / Операторы сравнения</h2>
+        <div class="section-content">
+<p>Сравнение отвечает на вопрос об отношениях между значениями. Для чисел и строк, которые мы используем в уроке, результат сравнения имеет тип <code>bool</code>. Операнды стоят слева и справа от оператора.</p>
+<ul class="content-list">
+<li><code>==</code>: равно ли одно значение другому?</li>
+<li><code>!=</code>: различаются ли значения?</li>
+<li><code>&gt;</code> и <code>&lt;</code>: строго больше и строго меньше.</li>
+<li><code>&gt;=</code> и <code>&lt;=</code>: больше или равно и меньше или равно. Знак равенства включает граничное значение.</li>
+</ul>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Примеры истинных и ложных сравнений">
+  <table>
+    <caption>Примеры истинных и ложных сравнений</caption>
+    <thead><tr><th scope="col">Выражение</th><th scope="col">Результат</th></tr></thead>
+    <tbody>
+      <tr><td><code>10 == 10</code></td><td><code>True</code></td></tr>
+      <tr><td><code>10 == 12</code></td><td><code>False</code></td></tr>
+      <tr><td><code>10 != 12</code></td><td><code>True</code></td></tr>
+      <tr><td><code>10 != 10</code></td><td><code>False</code></td></tr>
+      <tr><td><code>12 &gt; 10</code></td><td><code>True</code></td></tr>
+      <tr><td><code>10 &gt; 10</code></td><td><code>False</code></td></tr>
+      <tr><td><code>8 &lt; 10</code></td><td><code>True</code></td></tr>
+      <tr><td><code>10 &lt; 10</code></td><td><code>False</code></td></tr>
+      <tr><td><code>10 &gt;= 10</code></td><td><code>True</code></td></tr>
+      <tr><td><code>8 &gt;= 10</code></td><td><code>False</code></td></tr>
+      <tr><td><code>10 &lt;= 10</code></td><td><code>True</code></td></tr>
+      <tr><td><code>12 &lt;= 10</code></td><td><code>False</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>В анимации ниже проверяется, опустился ли уровень воды ниже отметки <strong>80</strong>. Условие <code>water_level &lt; 80</code> разрешает подачу воды. При достижении отметки <strong>80</strong> ответ уже <code>False</code>: строгое сравнение не включает равенство. Движение воды показано с задержкой, но логическая проверка имеет только два результата.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/02-ReservoirControl.gif" alt="Уровень воды сравнивается с отметкой 80: ниже неё условие True открывает заслонку, при достижении порога условие False закрывает её." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 2. Управление подачей воды по результату сравнения.</figcaption>
+</figure>
+<div class="code-example">
+  <div class="code-example__header"><span>Порог наполнения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Порог наполнения">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">water_level = 75
+needs_water = water_level &lt; 80
+print(needs_water)
+print(80 &lt; 80)
+print(80 &lt;= 80)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Порог наполнения">True
+False
+True</pre>
+  </div>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="assignment-equality-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="assignment-equality-title">Не путайте = и ==</h3>
+  <div class="special-block__body">
+<p><code>=</code> выполняет присваивание: сохраняет значение под именем. <code>==</code> сравнивает значения и даёт логический ответ. Сравнение само по себе не изменяет переменную.</p><div class="code-example">
+  <div class="code-example__header"><span>Присваивание и сравнение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Присваивание и сравнение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 18
+print(age == 20)
+print(age)
+is_eighteen = age == 18
+print(is_eighteen)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Присваивание и сравнение">False
+18
+True</pre>
+  </div>
+</div><p>В последней проверке сначала вычисляется <code>age == 18</code>, затем знак <code>=</code> связывает имя <code>is_eighteen</code> с ответом. Чтобы проверить равенство, нужны именно два знака.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="types-and-comparisons">
+        <h2>04 / Что именно мы сравниваем</h2>
+        <div class="section-content">
+<p>Одинаковый внешний вид ещё не делает данные одинаковыми. Число <code>10</code> участвует в вычислениях как число. Строка <code>"10"</code> содержит два символа. Python не превращает эту строку в число автоматически при сравнении.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Значения и типы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Значения и типы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;10&quot; == 10)
+print(&quot;10&quot; != 10)
+print(10 == 10.0)
+print(int(&quot;10&quot;) == 10)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Значения и типы">False
+True
+True
+True</pre>
+  </div>
+</div>
+<p><code>"10" == 10</code> даёт <code>False</code>, потому что сравниваются строка и число. При этом правило «разные типы всегда не равны» неверно: целое <code>10</code> и дробное <code>10.0</code> равны по числовому значению. Явное преобразование <code>int("10")</code> позволяет сравнить именно числа.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Сравниваем текст и сравниваем числа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сравниваем текст и сравниваем числа">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;10&quot; &lt; &quot;2&quot;)
+print(10 &lt; 2)
+print(&quot;Python&quot; == &quot;python&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Сравниваем текст и сравниваем числа">True
+False
+False</pre>
+  </div>
+</div>
+<p>Две строки сравниваются посимвольно слева направо. В <code>"10" &lt; "2"</code> уже первые символы определяют результат: символ <code>"1"</code> идёт раньше <code>"2"</code> по коду Unicode. До длины строк дело не доходит. Регистр тоже важен, поэтому <code>"Python"</code> и <code>"python"</code> не равны.</p>
+<aside class="special-block special-block--warning" aria-labelledby="mixed-order-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="mixed-order-title">Равенство и порядок ведут себя по-разному</h3>
+  <div class="special-block__body">
+<p>Сравнение <code>"10" == 10</code> допустимо и возвращает <code>False</code>. А попытка вычислить <code>"10" &lt; 10</code> вызывает <code>TypeError</code>: Python не задаёт порядок между строкой и числом. Сначала решите, нужны вам символы или числовое значение, и при необходимости преобразуйте данные.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="logical-and">
+        <h2>05 / Несколько требований: and</h2>
+        <div class="section-content">
+<p>Предположим, что на мероприятие можно войти, только если человеку уже исполнилось <strong>18</strong> лет и у него есть билет. Одного выполненного требования мало. Оператор <code>and</code> объединяет проверки словом «и».</p>
+<aside class="special-block special-block--definition" aria-labelledby="and-rule-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="and-rule-title">Как работает оператор and?</h3>
+  <div class="special-block__body">
+<p>Если операнды имеют тип <code>bool</code>, выражение <code>left and right</code> даёт <code>True</code>, только когда оба значения равны <code>True</code>. Любое <code>False</code> делает результат ложным.</p>
+  </div>
+</aside>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/03-LogicalAnd.gif" alt="Две заслонки стоят последовательно: вода проходит через обе только при True and True." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 3. Последовательные заслонки показывают работу and.</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Таблица истинности and">
+  <table>
+    <caption>Таблица истинности and</caption>
+    <thead><tr><th scope="col">Первое условие</th><th scope="col">Второе условие</th><th scope="col">Результат and</th></tr></thead>
+    <tbody>
+      <tr><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr>
+      <tr><td><code>False</code></td><td><code>True</code></td><td><code>False</code></td></tr>
+      <tr><td><code>True</code></td><td><code>False</code></td><td><code>False</code></td></tr>
+      <tr><td><code>True</code></td><td><code>True</code></td><td><code>True</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Возраст и билет</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Возраст и билет">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 20
+has_ticket = True
+is_adult = age &gt;= 18
+can_enter = is_adult and has_ticket
+print(can_enter)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Возраст и билет">True</pre>
+  </div>
+</div>
+<p>Здесь <code>is_adult</code> равно <code>True</code> и <code>has_ticket</code> равно <code>True</code>, поэтому вход разрешён. При <code>age = 17</code> результат станет <code>False</code>, даже если билет есть. При <code>has_ticket = False</code> возраст тоже не поможет.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Объединяем больше двух требований</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Объединяем больше двух требований">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 20
+has_ticket = True
+is_banned = False
+can_enter = age &gt;= 18 and has_ticket and not is_banned
+print(can_enter)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Объединяем больше двух требований">True</pre>
+  </div>
+</div>
+<p>Здесь добавлено требование «человек не заблокирован». Оператор <code>not</code> означает отрицание; подробно разберём его ниже. Цепочка из нескольких <code>and</code> требует выполнения каждого условия.</p>
+        </div>
+      </section>
+      <section id="logical-or">
+        <h2>06 / Альтернативы: or</h2>
+        <div class="section-content">
+<p>Теперь другое правило: в учебном примере для подтверждения личности принимают паспорт или водительские права. Достаточно любого из этих документов. Оператор <code>or</code> объединяет допустимые альтернативы.</p>
+<aside class="special-block special-block--definition" aria-labelledby="or-rule-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="or-rule-title">Как работает оператор or?</h3>
+  <div class="special-block__body">
+<p>Для логических операндов <code>left or right</code> даёт <code>True</code>, если хотя бы один операнд равен <code>True</code>. Результат будет <code>False</code>, только если оба значения равны <code>False</code>. Если верны оба условия, ответ тоже <code>True</code>.</p>
+  </div>
+</aside>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/04-LogicalOr.gif" alt="Вода может пройти по любой из двух параллельных ветвей; поток перекрыт только при False or False." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 4. Параллельные пути показывают работу or.</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Таблица истинности or">
+  <table>
+    <caption>Таблица истинности or</caption>
+    <thead><tr><th scope="col">Первое условие</th><th scope="col">Второе условие</th><th scope="col">Результат or</th></tr></thead>
+    <tbody>
+      <tr><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr>
+      <tr><td><code>False</code></td><td><code>True</code></td><td><code>True</code></td></tr>
+      <tr><td><code>True</code></td><td><code>False</code></td><td><code>True</code></td></tr>
+      <tr><td><code>True</code></td><td><code>True</code></td><td><code>True</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Паспорт или водительские права</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Паспорт или водительские права">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">has_passport = False
+has_driver_license = True
+can_identify = has_passport or has_driver_license
+print(can_identify)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Паспорт или водительские права">True</pre>
+  </div>
+</div>
+<p>Паспорта нет, но права есть, поэтому условие выполнено. Если оба документа отсутствуют, ответ будет <code>False</code>. Наличие обоих документов условию не мешает: Python использует «или» в смысле «хотя бы одно», а не «ровно одно».</p>
+<aside class="special-block special-block--tip" aria-labelledby="and-or-choice-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="and-or-choice-title">Сначала сформулируйте правило словами</h3>
+  <div class="special-block__body">
+<p>«Есть возраст <strong>и</strong> билет» требует <code>and</code>. «Есть паспорт <strong>или</strong> права» требует <code>or</code>. Замена оператора меняет правило допуска, даже если на некоторых входных данных результат случайно совпадёт.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="logical-not">
+        <h2>07 / Отрицание: not</h2>
+        <div class="section-content">
+<p>Иногда нужен ответ на противоположный вопрос. Есть переменная <code>is_banned</code>, а нам важно, что человек <strong>не</strong> заблокирован. Оператор <code>not</code> ставится перед одним операндом и отрицает его логическое значение.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Таблица истинности not">
+  <table>
+    <caption>Таблица истинности not</caption>
+    <thead><tr><th scope="col">Условие</th><th scope="col">Результат not</th></tr></thead>
+    <tbody>
+      <tr><td><code>True</code></td><td><code>False</code></td></tr>
+      <tr><td><code>False</code></td><td><code>True</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Отрицаем условие</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отрицаем условие">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">is_banned = False
+can_continue = not is_banned
+print(can_continue)
+print(is_banned)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Отрицаем условие">True
+False</pre>
+  </div>
+</div>
+<p><code>not is_banned</code> читается «не заблокирован». Результат равен <code>True</code>, но сама переменная <code>is_banned</code> остаётся равной <code>False</code>. Отрицание создаёт результат выражения, а не меняет исходную переменную.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Отрицание сравнения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отрицание сравнения">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 16
+is_minor = not (age &gt;= 18)
+print(is_minor)
+print(age &lt; 18)
+print(not (age &lt;= 65))
+print(age &gt; 65)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Отрицание сравнения">True
+True
+False
+False</pre>
+  </div>
+</div>
+<p>Для обычных числовых значений из урока «не больше или равно 18» означает «меньше 18». А «не меньше или равно 65» означает «больше 65». При отрицании не теряйте равенство: противоположность <code>&lt;=</code> это <code>&gt;</code>, а не <code>&gt;=</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="not-spelling-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="not-spelling-title">Отрицание пишется словом not</h3>
+  <div class="special-block__body">
+<p>В Python отдельный знак <code>!</code> не заменяет <code>not</code>. При этом <code>!=</code> является самостоятельным оператором «не равно». Скобки в <code>not (age &gt;= 18)</code> помогают увидеть, какую именно проверку мы отрицаем.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="complex-conditions">
+        <h2>08 / Сложные условия и порядок вычисления</h2>
+        <div class="section-content">
+<p>Одно правило может содержать несколько групп требований. Чтобы не потерять смысл, сначала сформулируйте его словами, затем расставьте скобки и дайте промежуточным результатам понятные имена.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Приоритет среди операций этого урока, от высокого к низкому">
+  <table>
+    <caption>Приоритет среди операций этого урока, от высокого к низкому</caption>
+    <thead><tr><th scope="col">Операции</th><th scope="col">Как читать</th></tr></thead>
+    <tbody>
+      <tr><td><code>(...)</code></td><td>Скобки явно группируют часть выражения.</td></tr>
+      <tr><td>Арифметические операторы</td><td>Сначала находим значения для сравнения, сохраняя знакомый порядок арифметики.</td></tr>
+      <tr><td><code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td><td>Сравниваем полученные значения.</td></tr>
+      <tr><td><code>not</code></td><td>Отрицаем результат проверки.</td></tr>
+      <tr><td><code>and</code></td><td>Объединяем обязательные требования.</td></tr>
+      <tr><td><code>or</code></td><td>Объединяем альтернативы.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Например, <code>True or False and False</code> группируется как <code>True or (False and False)</code> и даёт <code>True</code>. А <code>(True or False) and False</code> даёт <code>False</code>: скобки изменили смысл.</p>
+<aside class="special-block special-block--warning" aria-labelledby="priority-vs-evaluation-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="priority-vs-evaluation-title">Приоритет задаёт группировку, а не обязательный расчёт всех частей</h3>
+  <div class="special-block__body">
+<p>Python читает логическое выражение слева направо и может остановиться, если ответ уже известен. Поэтому скобки справа от <code>or</code> не заставляют вычислить правую часть раньше левой. Это видно в следующей анимации; само правило остановки разберём в разделе 09.</p>
+  </div>
+</aside>
+<p>Разберём правило входа: «В 2026-м году человек уже совершеннолетний и у него есть билет, или в 2026-м году человек несовершеннолетний и есть родитель или опекун, а также есть билет». Уточняем группировку: для несовершеннолетнего требуется <strong>билет и хотя бы один сопровождающий</strong>.</p>
+<p>Для примера возьмём год рождения <code>2000</code>, наличие билета, родителя и опекуна обозначим значениями <code>True</code>. Считаем, что день рождения в 2026 году уже прошёл.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Правило в одном выражении</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Правило в одном выражении">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print((2026 - 2000) &gt;= 18 and True or not ((2026 - 2000) &gt;= 18) and (True or True) and True)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Правило в одном выражении">True</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/05-BooleanShortCircuit.gif" alt="В левой части 2026 минус 2000 становится 26, сравнение даёт True, True and True даёт True; после этого всё выражение с or даёт True без вычисления правой части." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 5. Вычисление условия о возрасте, билете и сопровождающих.</figcaption>
+</figure>
+<ol class="content-list">
+<li>Вычисляем левое <code>2026 - 2000</code> и получаем <code>26</code>.</li>
+<li>Проверяем <code>26 &gt;= 18</code> и получаем <code>True</code>.</li>
+<li>Левая группа теперь <code>True and True</code>. Билет есть, поэтому вся группа равна <code>True</code>.</li>
+<li>Осталось <code>True or not ((2026 - 2000) &gt;= 18) and (True or True) and True</code>. Левая альтернатива уже истинна, поэтому Python возвращает <code>True</code>. Часть о несовершеннолетнем и сопровождающих не вычисляется.</li>
+</ol>
+<div class="code-example">
+  <div class="code-example__header"><span>То же правило с понятными именами</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: То же правило с понятными именами">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">current_year = 2026
+birth_year = 2000
+has_ticket = True
+has_parent = True
+has_guardian = True
+
+is_adult = current_year - birth_year &gt;= 18
+can_enter = (is_adult and has_ticket) or (
+    not is_adult and (has_parent or has_guardian) and has_ticket
+)
+print(can_enter)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: То же правило с понятными именами">True</pre>
+  </div>
+</div>
+<p>Слева от внешнего <code>or</code> находится путь для совершеннолетнего, справа путь для несовершеннолетнего. В каждой группе нужен билет. Скобки вокруг <code>has_parent or has_guardian</code> сохраняют смысл «хотя бы один сопровождающий». Переносы строк внутри общей пары скобок разрешены в Python.</p>
+<p>Проверьте правило мысленно: человеку 16 лет, билет есть, родителя нет, опекун есть. Левая группа ложна, правая истинна, вход разрешён. Если убрать билет, обе группы станут ложными.</p>
+        </div>
+      </section>
+      <section id="short-circuit">
+        <h2>09 / Short-circuit evaluation</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="short-circuit-rule-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="short-circuit-rule-title">Вычисление останавливается, когда ответ уже известен</h3>
+  <div class="special-block__body">
+<p><strong>Short-circuit evaluation</strong> называют коротким замыканием или сокращённым вычислением. Для <code>and</code> ложная левая часть уже делает всё условие ложным. Для <code>or</code> истинная левая часть уже делает всё условие истинным. Правую часть в этих случаях Python не вычисляет.</p>
+  </div>
+</aside>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Когда нужна правая часть">
+  <table>
+    <caption>Когда нужна правая часть</caption>
+    <thead><tr><th scope="col">Выражение</th><th scope="col">Вычисляется ли правая часть?</th></tr></thead>
+    <tbody>
+      <tr><td><code>False and ...</code></td><td>Нет: ложного условия достаточно.</td></tr>
+      <tr><td><code>True and ...</code></td><td>Да: нужно проверить оставшееся требование.</td></tr>
+      <tr><td><code>True or ...</code></td><td>Нет: истинной альтернативы достаточно.</td></tr>
+      <tr><td><code>False or ...</code></td><td>Да: правая альтернатива ещё может оказаться истинной.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверяем делитель до деления</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем делитель до деления">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">total = 30
+divisor = 0
+is_large_share = divisor != 0 and total / divisor &gt; 5
+print(is_large_share)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Проверяем делитель до деления">False</pre>
+  </div>
+</div>
+<p>Сначала выполняется <code>divisor != 0</code>. При нулевом делителе это <code>False</code>, поэтому <code>total / divisor &gt; 5</code> пропускается. Деления на ноль не происходит. При <code>divisor = 3</code> первая проверка истинна, Python делит <code>30 / 3</code>, сравнивает <code>10.0 &gt; 5</code> и получает <code>True</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="guard-order-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="guard-order-title">Защитная проверка должна стоять слева</h3>
+  <div class="special-block__body">
+<p>В записи <code>total / divisor &gt; 5 and divisor != 0</code> Python сначала попробует выполнить деление. При <code>divisor = 0</code> возникнет <code>ZeroDivisionError</code>. Правая проверка не сможет предотвратить уже начатое деление.</p>
+  </div>
+</aside>
+<p>Вернёмся к правилу входа. После вычисления левой группы выражение имеет следующий вид:</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Левая альтернатива уже истинна</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Левая альтернатива уже истинна">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">True or not ((2026 - 2000) &gt;= 18) and (True or True) and True</code></pre>
+</div>
+<p>Оператор <code>or</code> получает <code>True</code> слева. Ни повторное вычисление возраста, ни <code>not</code>, ни проверка сопровождающих справа теперь не нужны. Это объясняет, почему анимация сразу переходит к итоговому <code>True</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="operand-results-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="operand-results-title">and и or возвращают один из операндов</h3>
+  <div class="special-block__body">
+<p>До этого мы объединяли значения <code>bool</code>, поэтому и результат был <code>bool</code>. Но <code>and</code> и <code>or</code> не обязаны возвращать именно <code>True</code> или <code>False</code>. Они проверяют истинность значения и возвращают выбранный операнд без преобразования.</p><ul class="content-list">
+<li><code>left and right</code>: если слева ложное значение, возвращается оно; иначе вычисляется и возвращается правое.</li>
+<li><code>left or right</code>: если слева истинное значение, возвращается оно; иначе вычисляется и возвращается правое.</li>
+<li>У чисел ноль считается ложным, любое ненулевое число истинным. Пустая строка считается ложной, непустая истинной, даже если это <code>"False"</code> или <code>"0"</code>.</li>
+<li><code>bool(value)</code> явно получает логическое значение. Оператор <code>not</code> тоже всегда возвращает <code>bool</code>.</li>
+</ul><div class="code-example">
+  <div class="code-example__header"><span>Логическая проверка и возвращаемое значение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Логическая проверка и возвращаемое значение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(7 and 12)
+print(0 and 12)
+print(7 or 12)
+print(0 or 12)
+print(bool(7 and 12))
+print(not 7)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Логическая проверка и возвращаемое значение">12
+0
+7
+12
+True
+False</pre>
+  </div>
+</div>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="ranges">
+        <h2>10 / Диапазоны и границы</h2>
+        <div class="section-content">
+<p>Пусть возраст должен находиться от <strong>18</strong> до <strong>65</strong> лет включительно. Требуются сразу две проверки: возраст не меньше нижней границы <strong>и</strong> не больше верхней.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Два способа проверить диапазон</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Два способа проверить диапазон">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 18
+print(age &gt;= 18 and age &lt;= 65)
+print(18 &lt;= age &lt;= 65)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Два способа проверить диапазон">True
+True</pre>
+  </div>
+</div>
+<p>Запись <code>18 &lt;= age &lt;= 65</code> называется цепочкой сравнений. Читаем её слева направо: «18 меньше или равно возрасту, а возраст меньше или равен 65». Для этой переменной смысл совпадает с <code>18 &lt;= age and age &lt;= 65</code>. Среднее выражение в цепочке вычисляется один раз; если первая проверка ложна, дальше проверять не нужно.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/06-InclusiveRange.gif" alt="Возраст перемещается по числовой прямой: значения от 18 до 65 включительно дают True, значения за пределами дают False." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 6. Диапазон с включёнными границами.</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как знаки сравнения меняют границы">
+  <table>
+    <caption>Как знаки сравнения меняют границы</caption>
+    <thead><tr><th scope="col">Условие</th><th scope="col">Нижняя граница 18</th><th scope="col">Верхняя граница 65</th></tr></thead>
+    <tbody>
+      <tr><td><code>18 &lt;= age &lt;= 65</code></td><td>Входит</td><td>Входит</td></tr>
+      <tr><td><code>18 &lt; age &lt; 65</code></td><td>Не входит</td><td>Не входит</td></tr>
+      <tr><td><code>18 &lt;= age &lt; 65</code></td><td>Входит</td><td>Не входит</td></tr>
+      <tr><td><code>18 &lt; age &lt;= 65</code></td><td>Не входит</td><td>Входит</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверяем выход за диапазон</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем выход за диапазон">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 70
+is_outside = age &lt; 18 or age &gt; 65
+print(is_outside)
+print(not (18 &lt;= age &lt;= 65))</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Проверяем выход за диапазон">True
+True</pre>
+  </div>
+</div>
+<p>Чтобы оказаться снаружи, достаточно быть меньше <strong>18</strong> <strong>или</strong> больше <strong>65</strong>. Поэтому нужен <code>or</code>. Выражение <code>age &lt; 18 and age &gt; 65</code> для обычного возраста всегда ложно: число не может одновременно находиться с обеих сторон диапазона.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Проверяем значения возле границ">
+  <table>
+    <caption>Проверяем значения возле границ</caption>
+    <thead><tr><th scope="col">age</th><th scope="col"><code>18 &lt;= age &lt;= 65</code></th><th scope="col"><code>age &lt; 18 or age &gt; 65</code></th></tr></thead>
+    <tbody>
+      <tr><td>17</td><td><code>False</code></td><td><code>True</code></td></tr>
+      <tr><td>18</td><td><code>True</code></td><td><code>False</code></td></tr>
+      <tr><td>19</td><td><code>True</code></td><td><code>False</code></td></tr>
+      <tr><td>64</td><td><code>True</code></td><td><code>False</code></td></tr>
+      <tr><td>65</td><td><code>True</code></td><td><code>False</code></td></tr>
+      <tr><td>66</td><td><code>False</code></td><td><code>True</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<aside class="special-block special-block--tip" aria-labelledby="boundary-checks-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="boundary-checks-title">Проверяйте обе границы и соседние значения</h3>
+  <div class="special-block__body">
+<p>Для целочисленного возраста удобно брать <code>17</code>, <code>18</code>, <code>19</code> и <code>64</code>, <code>65</code>, <code>66</code>. Такие проверки помогают заметить случайно потерянный знак <code>=</code>. В записи с <code>and</code> каждая часть должна быть полным условием: <code>age &gt;= 18 and age &lt;= 65</code>.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>11 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-operators-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-operators-title">Какие операторы дают ответ в виде типа данных bool?</h3>
+  <div class="special-block__body">
+<p>Рассматривайте сравнения обычных чисел, логические операции над значениями <code>bool</code> и арифметику чисел. Уточнение про логические операнды важно: с другими данными результат <code>and</code> и <code>or</code> может иметь другой тип.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-operators-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operators-option-1">
+          <input class="visually-hidden" id="check-operators-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-operators-feedback-1" />
+          <span><code>not</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>not</code> всегда возвращает логическое значение.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operators-option-2">
+          <input class="visually-hidden" id="check-operators-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-operators-feedback-2" />
+          <span><code>and</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>При операндах типа <code>bool</code> выбранный операнд тоже имеет тип <code>bool</code>. С числами результат может быть числом.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operators-option-3">
+          <input class="visually-hidden" id="check-operators-option-3" type="checkbox" name="answers" value="option-3" aria-describedby="check-operators-feedback-3" />
+          <span><code>or</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>При операндах типа <code>bool</code> результат имеет тип <code>bool</code>. Вообще <code>or</code> возвращает один из операндов.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operators-option-4">
+          <input class="visually-hidden" id="check-operators-option-4" type="checkbox" name="answers" value="option-4" aria-describedby="check-operators-feedback-4" />
+          <span><code>==</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сравнение изученных значений на равенство даёт <code>True</code> или <code>False</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operators-option-5">
+          <input class="visually-hidden" id="check-operators-option-5" type="checkbox" name="answers" value="option-5" aria-describedby="check-operators-feedback-5" />
+          <span><code>&gt;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверка «больше» для чисел даёт логический ответ.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operators-option-6">
+          <input class="visually-hidden" id="check-operators-option-6" type="checkbox" name="answers" value="option-6" aria-describedby="check-operators-feedback-6" />
+          <span><code>&lt;=</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-6" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверка «меньше или равно» для чисел даёт логический ответ.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operators-option-7">
+          <input class="visually-hidden" id="check-operators-option-7" type="checkbox" name="answers" value="option-7" aria-describedby="check-operators-feedback-7" />
+          <span><code>+</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-7" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сложение чисел даёт число. Даже <code>True + True</code> даёт целое число <code>2</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operators-option-8">
+          <input class="visually-hidden" id="check-operators-option-8" type="checkbox" name="answers" value="option-8" aria-describedby="check-operators-feedback-8" />
+          <span><code>*</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-8" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Умножение чисел даёт число. Даже <code>True * True</code> даёт целое число <code>1</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operators-option-9">
+          <input class="visually-hidden" id="check-operators-option-9" type="checkbox" name="answers" value="option-9" aria-describedby="check-operators-feedback-9" />
+          <span><code>=</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operators-feedback-9" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание связывает имя со значением. Это не проверка, возвращающая логический ответ.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-and-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-and-title">Какой оператор даёт True, если оба операнда обязательно должны быть True?</h3>
+  <div class="special-block__body">
+<p>Оба операнда имеют тип <code>bool</code>. Требование должно выполняться для всех сочетаний значений.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-and-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-and-option-1">
+          <input class="visually-hidden" id="check-and-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-and-feedback-1" />
+          <span><code>and</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-and-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>and</code> даёт <code>True</code> только для сочетания <code>True and True</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-and-option-2">
+          <input class="visually-hidden" id="check-and-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-and-feedback-2" />
+          <span><code>==</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-and-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Равенство даёт <code>True</code> также для <code>False == False</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-and-option-3">
+          <input class="visually-hidden" id="check-and-option-3" type="checkbox" name="answers" value="option-3" aria-describedby="check-and-feedback-3" />
+          <span><code>or</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-and-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для <code>or</code> достаточно одного истинного операнда.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-and-option-4">
+          <input class="visually-hidden" id="check-and-option-4" type="checkbox" name="answers" value="option-4" aria-describedby="check-and-feedback-4" />
+          <span><code>not</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-and-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>not</code> отрицает один операнд, а не объединяет два требования.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-or-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-or-title">Какой оператор даёт True, если хотя бы один операнд True?</h3>
+  <div class="special-block__body">
+<p>Оба операнда имеют тип <code>bool</code>. При двух ложных операндах результат должен быть <code>False</code>.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-or-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-or-option-1">
+          <input class="visually-hidden" id="check-or-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-or-feedback-1" />
+          <span><code>or</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-or-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>or</code> ложен только при двух ложных операндах.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-or-option-2">
+          <input class="visually-hidden" id="check-or-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-or-feedback-2" />
+          <span><code>==</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-or-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True == False</code> ложно, хотя один из операндов истинен.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-or-option-3">
+          <input class="visually-hidden" id="check-or-option-3" type="checkbox" name="answers" value="option-3" aria-describedby="check-or-feedback-3" />
+          <span><code>and</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-or-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>and</code> требует истинности обоих операндов.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-or-option-4">
+          <input class="visually-hidden" id="check-or-option-4" type="checkbox" name="answers" value="option-4" aria-describedby="check-or-feedback-4" />
+          <span><code>not</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-or-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>not</code> меняет логическое значение одного операнда на противоположное.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-not-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-not-title">Какой оператор превратит результат работы оператора &lt;= в результат работы оператора &gt;?</h3>
+  <div class="special-block__body">
+<p>Сравниваем обычные целые числа. Нужный оператор применяется ко всему результату сравнения.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-not-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-not-option-1">
+          <input class="visually-hidden" id="check-not-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-not-feedback-1" />
+          <span><code>not</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-not-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для целых чисел <code>not (a &lt;= b)</code> равнозначно <code>a &gt; b</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-not-option-2">
+          <input class="visually-hidden" id="check-not-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-not-feedback-2" />
+          <span><code>!</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-not-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Самостоятельного оператора <code>!</code> в Python нет.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-not-option-3">
+          <input class="visually-hidden" id="check-not-option-3" type="checkbox" name="answers" value="option-3" aria-describedby="check-not-feedback-3" />
+          <span><code>and</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-not-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>and</code> объединяет требования и не отрицает сравнение.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-not-option-4">
+          <input class="visually-hidden" id="check-not-option-4" type="checkbox" name="answers" value="option-4" aria-describedby="check-not-feedback-4" />
+          <span><code>or</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-not-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>or</code> объединяет альтернативы и не отрицает сравнение.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-title">Упростите выражение height &gt;= 0 and height &lt;= 100 без and, используя только оператор &lt;=.</h3>
+  <div class="special-block__body">
+<p>Напишите цепочку сравнений с именем <code>height</code>. Поставьте по одному пробелу с каждой стороны каждого оператора.</p>
+<form class="quiz" data-quiz="text" data-answer="0 &lt;= height &lt;= 100" data-hint="Начните с нижней границы 0, затем запишите height и верхнюю границу 100. Каждая граница включена." data-success="Верно. Цепочка 0 &lt;= height &lt;= 100 включает обе границы и объединяет обе проверки." autocomplete="off" aria-labelledby="check-range-title">
+  <label for="check-range-answer">Введите ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-range-answer" name="answer" type="text" placeholder="Ответ без лишних пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-range-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-range-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-right-side-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-right-side-title">Будет ли вычисляться правая часть от оператора and в следующем выражении?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Нужна ли правая проверка?</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нужна ли правая проверка?">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">True and (5869 // 10 % 10 == 1 or 5869 // 100 % 10 == 2)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-right-side-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-right-side-option-1">
+          <input class="visually-hidden" id="check-right-side-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-right-side-feedback-1" />
+          <span>Да</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-right-side-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Слева от <code>and</code> стоит <code>True</code>, поэтому нужен результат справа. Там <code>6 == 1</code> ложно, затем <code>8 == 2</code> тоже ложно; итог <code>False</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-right-side-option-2">
+          <input class="visually-hidden" id="check-right-side-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-right-side-feedback-2" />
+          <span>Нет</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-right-side-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>and</code> пропускает правую часть при ложном левом операнде. Здесь левый операнд истинен.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-safe-division-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-safe-division-title">Приведёт ли к ошибке следующий код?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Проверка цифры перед делением</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка цифры перед делением">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">num = 5869
+second_digit = num // 100 % 10
+is_second_digit_zero = num // 100 % 10 == 0
+result = not is_second_digit_zero and num / second_digit % 2 == 0</code></pre>
+</div><p>Здесь <code>second_digit</code> обозначает вторую цифру слева в данном четырёхзначном числе, то есть цифру сотен.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-safe-division-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-safe-division-option-1">
+          <input class="visually-hidden" id="check-safe-division-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-safe-division-feedback-1" />
+          <span>Нет</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-safe-division-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>second_digit</code> равно <code>8</code>, поэтому деление допустимо. Выражение справа вычисляется, итоговый <code>result</code> равен <code>False</code>. При нулевой цифре левая проверка остановила бы вычисление до деления.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-safe-division-option-2">
+          <input class="visually-hidden" id="check-safe-division-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-safe-division-feedback-2" />
+          <span>Да</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-safe-division-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делитель равен <code>8</code>, а не нулю. Дробный результат деления допустим для оператора <code>%</code>; ошибки здесь нет.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-order-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-order-title">Укажите порядок выполнения операторов в формате 123456789, без пробелов.</h3>
+  <div class="special-block__body">
+<p>Номера на рисунке обозначают операторы. Запишите порядок пошагового свёртывания выражения к результату: сначала определите левую группу <code>and</code>, затем нужную правую группу и в конце итог внешнего <code>or</code>. Учтите короткое замыкание.</p><figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/11/07-question08.png" alt="Выражение 2 * 10 == 10 and True or not (9 + 1 != 10) and 5869 % 2. Номера: 1 у *, 2 у ==, 3 у первого and, 4 у or, 5 у not, 6 у +, 7 у !=, 8 у второго and, 9 у %." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 7. Номера операторов для определения порядка вычисления.</figcaption>
+</figure><p>Текст выражения для чтения и копирования: <code>2 * 10 == 10 and True or not (9 + 1 != 10) and 5869 % 2</code>. Для логического оператора записывайте момент, когда определён результат его группы, а не момент начала проверки левого операнда.</p>
+<form class="quiz" data-quiz="text" data-answer="123675984" data-hint="Сначала идут умножение и сравнение слева, затем определяется первый and. После ложной левой группы or нужна правая: сложение в скобках, сравнение, отрицание, остаток, второй and и итог or." data-success="Верно: 1, 2, 3, 6, 7, 5, 9, 8, 4. Слева 20 == 10 даёт False; первый and пропускает True. Справа not (10 != 10) даёт True, остаток равен 1; второй and возвращает 1, затем or тоже возвращает 1." autocomplete="off" aria-labelledby="check-order-title">
+  <label for="check-order-answer">Введите ответ</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-order-answer" name="answer" type="text" placeholder="Номера без пробелов" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-order-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-order-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-operand-value-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-operand-value-title">Что мы увидим в терминале при запуске следующего кода?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Числовые операнды and</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Числовые операнды and">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(5869 % 10 and 5869 // 10)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-operand-value-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-operand-value-option-1">
+          <input class="visually-hidden" id="check-operand-value-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-operand-value-feedback-1" />
+          <span><code>586</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operand-value-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>5869 % 10</code> даёт <code>9</code>. Это истинное значение, поэтому <code>and</code> возвращает правый операнд: <code>5869 // 10</code>, то есть число <code>586</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operand-value-option-2">
+          <input class="visually-hidden" id="check-operand-value-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-operand-value-feedback-2" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operand-value-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>and</code> возвращает операнд, а не преобразует его в <code>bool</code>. Значение <code>True</code> получилось бы при явном <code>bool(5869 % 10 and 5869 // 10)</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operand-value-option-3">
+          <input class="visually-hidden" id="check-operand-value-option-3" type="checkbox" name="answers" value="option-3" aria-describedby="check-operand-value-feedback-3" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operand-value-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Оба числа ненулевые, а результат здесь является числом из правой части, а не <code>False</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operand-value-option-4">
+          <input class="visually-hidden" id="check-operand-value-option-4" type="checkbox" name="answers" value="option-4" aria-describedby="check-operand-value-feedback-4" />
+          <span>Ошибка <code>TypeError</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operand-value-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>and</code> может работать с числами: Python проверяет их истинность.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-operand-value-option-5">
+          <input class="visually-hidden" id="check-operand-value-option-5" type="checkbox" name="answers" value="option-5" aria-describedby="check-operand-value-feedback-5" />
+          <span>Ошибка <code>SyntaxError</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-operand-value-feedback-5" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Синтаксис выражения корректен, оба операнда записаны полностью.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-incomplete-comparison-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-incomplete-comparison-title">Что мы увидим в терминале при запуске следующего кода?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Полнота условий</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Полнота условий">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">age = 20
+print(age &gt;= 18 and &lt;= 65)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-incomplete-comparison-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-incomplete-comparison-option-1">
+          <input class="visually-hidden" id="check-incomplete-comparison-option-1" type="checkbox" name="answers" value="option-1" aria-describedby="check-incomplete-comparison-feedback-1" />
+          <span>Ошибка <code>SyntaxError</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-incomplete-comparison-feedback-1" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После <code>and</code> нет левого операнда для <code>&lt;=</code>. Правильно: <code>age &gt;= 18 and age &lt;= 65</code> или <code>18 &lt;= age &lt;= 65</code>. Ошибка синтаксиса обнаруживается до выполнения программы.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-incomplete-comparison-option-2">
+          <input class="visually-hidden" id="check-incomplete-comparison-option-2" type="checkbox" name="answers" value="option-2" aria-describedby="check-incomplete-comparison-feedback-2" />
+          <span><code>False</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-incomplete-comparison-feedback-2" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Программа не доходит до вычисления логического результата: правая проверка записана не полностью.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-incomplete-comparison-option-3">
+          <input class="visually-hidden" id="check-incomplete-comparison-option-3" type="checkbox" name="answers" value="option-3" aria-describedby="check-incomplete-comparison-feedback-3" />
+          <span>Ошибка <code>TypeError</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-incomplete-comparison-feedback-3" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проблема в синтаксисе, а не в совместимости типов.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-incomplete-comparison-option-4">
+          <input class="visually-hidden" id="check-incomplete-comparison-option-4" type="checkbox" name="answers" value="option-4" aria-describedby="check-incomplete-comparison-feedback-4" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-incomplete-comparison-feedback-4" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 20 вошёл бы в диапазон при правильной записи, но Python не подставляет age после and автоматически.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 ## Next to cover
 
-- [07 - Introduction to Programming](lessons/07%20-%20Introduction%20to%20Programming/)
-- [08 - Preparing for Programming](lessons/08%20-%20Preparing%20for%20Programming/)
+- [09 - Data Types](lessons/09%20-%20Data%20Types/)
+- [10 - Mathematical Operators](lessons/10%20-%20Mathematical%20Operators/)
 
 ## What we've already covered
 
@@ -11,6 +11,8 @@
 - [04 - Working with Windows OS](lessons/04%20-%20Working%20with%20Windows%20OS/)
 - [05 - General Information about Networks](lessons/05%20-%20General%20Information%20about%20Networks/)
 - [06 - Understanding Web Services](lessons/06%20-%20Understanding%20Web%20Services/)
+- [07 - Introduction to Programming](lessons/07%20-%20Introduction%20to%20Programming/)
+- [08 - Preparing for Programming](lessons/08%20-%20Preparing%20for%20Programming/)
 
 ## License
 

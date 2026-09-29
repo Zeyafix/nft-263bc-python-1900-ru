@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Условные конструкции Python для самостоятельного изучения: if, else, elif, порядок проверок, границы, вложенность, пошаговые примеры и интерактивная самопроверка."
+    />
+    <title>12 - Conditional Statements</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">12 - Conditional Statements</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="choosing-actions">
+        <h2>01 / Как программа выбирает действия</h2>
+        <div class="section-content">
+<p>До этого мы записывали команды, которые выполнялись одна за другой: получить данные, посчитать результат, вывести его. Теперь научимся менять действия программы в зависимости от данных. Например, касса может добавить подарок к большой покупке и применить скидку к дорогой.</p>
+<aside class="special-block special-block--definition" aria-labelledby="branching-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="branching-title">Последовательность и ветвление</h3>
+  <div class="special-block__body">
+<p><strong>Последовательное выполнение</strong> означает, что программа выполняет команды сверху вниз, одну за другой. <strong>Ветвление</strong> позволяет выполнить или пропустить блок команд в зависимости от условия.</p>
+<p>В предыдущем уроке сравнения и логические операторы помогали получить <code>True</code> или <code>False</code>. Теперь этот результат будет определять, какие команды запустятся.</p>
+  </div>
+</aside>
+<p>Представим простую кассу: покупатель указывает цену одной единицы товара и количество, касса умножает их и сообщает сумму. Сначала опишем алгоритм на <strong>псевдокоде</strong>. Это запись шагов без строгого синтаксиса Python; запускать её в Python не нужно. В этой записи <code>READ</code> означает «получить ввод», <code>SET</code> означает «задать значение», а <code>PRINT</code> означает «показать».</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Псевдокод: обычная покупка</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод: обычная покупка">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>READ price
+READ quantity
+SET total_price TO price * quantity
+PRINT total_price
+PRINT quantity</code></pre>
+</div>
+<p>При цене <code>400</code> и количестве <code>20</code> получится <code>8000</code> к оплате и <code>20</code> единиц товара. При других числах изменится результат вычисления, но набор выполняемых шагов останется тем же.</p>
+<p>Добавим два независимых правила: при покупке от <code>10</code> единиц включительно выдаём ещё <code>3</code> бесплатно; при сумме от <code>200</code> включительно уменьшаем оплату на <code>5%</code>. Запись <code>IF</code> означает «если», а <code>END IF</code> отмечает конец условного блока в этом псевдокоде.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Псевдокод: подарок и скидка</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Псевдокод: подарок и скидка">Копировать</button>
+  </div>
+  <pre tabindex="0"><code>READ price
+READ quantity
+SET total_price TO price * quantity
+SET quantity_obtained TO quantity
+
+IF quantity &gt;= 10
+    SET quantity_obtained TO quantity_obtained + 3
+END IF
+
+IF total_price &gt;= 200
+    SET total_price TO total_price * 0.95
+END IF
+
+PRINT total_price
+PRINT quantity_obtained</code></pre>
+</div>
+<p>Здесь уже есть шаги, которые выполнятся только при подходящих данных. Умножение на <code>0.95</code> оставляет <code>95%</code> исходной суммы, то есть уменьшает её на <code>5%</code>. Для цены <code>400</code> и количества <code>20</code> покупатель получит <code>23</code> единицы и заплатит <code>7600</code>.</p>
+        </div>
+      </section>
+      <section id="if-statement">
+        <h2>02 / Конструкция if</h2>
+        <div class="section-content">
+<p>В Python условный блок начинается со слова <code>if</code>, после которого записывают условие и двоеточие. Если условие истинно, Python выполняет команды с отступом под ним. Если условие ложно, весь этот блок пропускается, а выполнение продолжается после него.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Касса: ввод 400 и 20</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Касса: ввод 400 и 20">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">price = int(input(&quot;Enter price: &quot;))
+quantity = int(input(&quot;Enter quantity: &quot;))
+
+total_price = price * quantity
+quantity_obtained = quantity
+has_obtained_additional = False
+
+
+if quantity &gt;= 10:
+    quantity_obtained += 3
+    has_obtained_additional = True
+
+if total_price &gt;= 200:
+    total_price *= 0.95
+
+
+print(f&quot;\nPayment required: {total_price}&quot;)
+
+if has_obtained_additional:
+    print(&quot;You have received an extra item as a gift!&quot;)
+
+print(f&quot;Quantity: {quantity_obtained}&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Касса: ввод 400 и 20">Enter price: 400
+Enter quantity: 20
+
+Payment required: 7600.0
+You have received an extra item as a gift!
+Quantity: 23</pre>
+  </div>
+</div>
+<ol class="content-list">
+  <li>Сначала <code>total_price</code> получает <code>400 * 20</code>, то есть <code>8000</code>, а <code>quantity_obtained</code> получает <code>20</code>. Переменная <code>has_obtained_additional</code> начинается с <code>False</code>: подарок пока не добавлен.</li>
+  <li>Проверка <code>quantity &gt;= 10</code> даёт <code>True</code>. Внутри первого блока выполняются <strong>обе</strong> команды: количество к выдаче увеличивается до <code>23</code>, а признак подарка становится <code>True</code>.</li>
+  <li>Затем независимо проверяется <code>total_price &gt;= 200</code>. Условие истинно, поэтому <code>total_price *= 0.95</code> заменяет сумму результатом умножения: <code>7600.0</code>. После умножения на число типа <code>float</code> результат тоже имеет тип <code>float</code>.</li>
+  <li>Программа выводит сумму. Последовательность <code>\n</code> в начале f-строки создаёт пустую строку перед сообщением.</li>
+  <li>Условие <code>if has_obtained_additional:</code> проверяет сохранённое логическое значение. Оно равно <code>True</code>, поэтому появляется сообщение о подарке. Последняя команда выводит количество к выдаче: <code>23</code>.</li>
+</ol>
+<p>Переменную, которая хранит ответ «да» или «нет» о состоянии программы, часто называют <strong>флагом</strong>. Здесь флаг нужен, чтобы после расчётов вспомнить, был ли добавлен подарок. Для логического значения достаточно <code>if has_obtained_additional:</code>; дописывать <code>== True</code> не требуется.</p>
+<aside class="special-block special-block--definition" aria-labelledby="indentation-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="indentation-title">Двоеточие и отступ задают блок</h3>
+  <div class="special-block__body">
+<ul class="content-list">
+  <li><strong>Двоеточие</strong> завершает строку с условием и показывает, что дальше идёт блок команд.</li>
+  <li><strong>Четыре пробела</strong> в начале строки являются принятым отступом для одного уровня вложенности в Python. Все команды одного блока должны иметь одинаковый отступ. Настройте редактор на пробелы и не смешивайте их с табуляцией.</li>
+  <li><strong>Возврат к прежнему отступу</strong> заканчивает блок. В Python нет команды <code>END IF</code>: границы определяются отступами.</li>
+  <li><strong>Пустая строка</strong> делает файл удобнее для чтения, но сама по себе не заканчивает блок в Python-файле. В примере границу показывает именно отступ следующей команды.</li>
+</ul>
+  </div>
+</aside>
+<p>В этой программе вывод суммы и последняя команда <code>print()</code> стоят без отступа. Они выполняются независимо от результата условий, если выполнение дошло до них без ошибки. А сообщение о подарке стоит внутри <code>if</code> и зависит от флага. Отступы влияют на логику, а не только на внешний вид кода.</p>
+<p>Если ввести цену <code>10</code> и количество <code>2</code>, первые два условия будут ложными. Количество останется равным <code>2</code>, сумма останется целым числом <code>20</code>, флаг сохранит <code>False</code>, и сообщение о подарке не появится. Ложное условие само по себе не является ошибкой.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/12/01-CheckoutWithGift.gif" alt="Выполнение кассы при цене 400 и количестве 20: срабатывают подарок и скидка, к оплате 7600.0, к выдаче 23." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 1. При истинном условии Python заходит в блок с отступом и выполняет его команды.</figcaption>
+</figure>
+        </div>
+      </section>
+      <section id="if-else">
+        <h2>03 / Два варианта: if и else</h2>
+        <div class="section-content">
+<p>Иногда при ложном условии нужно выполнить другое действие. Для этого после блока <code>if</code> добавляют <code>else:</code> с собственным блоком. Слово <code>else</code> читается как «иначе»: если условие <code>if</code> истинно, выполняется первый блок, иначе выполняется второй. При обычном выполнении выбирается ровно один из них.</p>
+<p>У <code>else</code> нет собственного условия, потому что оно уже означает «условие связанного <code>if</code> не выполнилось». После него пишут только двоеточие. Слова <code>if</code> и <code>else</code> стоят на одном уровне отступа, а команды каждой ветки сдвинуты на четыре пробела.</p>
+<p>Изменим кассу: теперь флаг подарка будет получать значение в одной из двух веток.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Касса с else: ввод 400 и 5</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Касса с else: ввод 400 и 5">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">price = int(input(&quot;Enter price: &quot;))
+quantity = int(input(&quot;Enter quantity: &quot;))
+
+total_price = price * quantity
+quantity_obtained = quantity
+
+
+if quantity &gt;= 10:
+    quantity_obtained += 3
+    has_obtained_additional = True
+else:
+    has_obtained_additional = False
+
+if total_price &gt;= 200:
+    total_price *= 0.95
+
+
+print(f&quot;\nPayment required: {total_price}&quot;)
+
+if has_obtained_additional:
+    print(&quot;You have received an extra item as a gift!&quot;)
+
+print(f&quot;Quantity: {quantity_obtained}&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Касса с else: ввод 400 и 5">Enter price: 400
+Enter quantity: 5
+
+Payment required: 1900.0
+Quantity: 5</pre>
+  </div>
+</div>
+<ol class="content-list">
+  <li>Начальная сумма равна <code>2000</code>, количество к выдаче равно <code>5</code>.</li>
+  <li>Условие <code>5 &gt;= 10</code> ложно. Команды внутри первого <code>if</code> пропускаются, а внутри <code>else</code> флаг получает <code>False</code>.</li>
+  <li>После конструкции <code>if/else</code> выполнение продолжается со следующей независимой проверки. <code>2000 &gt;= 200</code> истинно, поэтому сумма уменьшается до <code>1900.0</code>.</li>
+  <li>Выводится сумма. Проверка флага ложна, сообщение о подарке пропускается. Количество к выдаче остаётся равным <code>5</code>.</li>
+</ol>
+<p>В первом варианте кассы мы заранее задавали <code>False</code> и меняли его на <code>True</code> при выдаче подарка. Здесь значение задаётся внутри <code>if</code> или внутри <code>else</code>. Оба способа подходят: к моменту проверки флаг получает значение при любом из двух исходов.</p>
+<aside class="special-block special-block--warning" aria-labelledby="else-pair-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="else-pair-title">К какой проверке относится else</h3>
+  <div class="special-block__body">
+<p><code>else</code> продолжает связанную с ним конструкцию <code>if</code> на том же уровне отступа. В приведённой кассе оно относится к проверке количества, поэтому отсутствие подарка не отменяет отдельную проверку скидки.</p>
+<p>Между концом блока <code>if</code> и его <code>else</code> нельзя вставить постороннюю команду на уровне самого <code>if</code>. Иначе конструкция уже закончится и у <code>else</code> не будет пары.</p>
+  </div>
+</aside>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/12/02-CheckoutWithoutGift.gif" alt="Касса при цене 400 и количестве 5: ветка else задаёт False, скидка применяется, сообщение о подарке пропускается." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 2. Ветка else выбирается при ложном условии if; следующая независимая проверка всё равно выполняется.</figcaption>
+</figure>
+        </div>
+      </section>
+      <section id="elif-chain">
+        <h2>04 / Несколько вариантов: elif</h2>
+        <div class="section-content">
+<p>Для выбора из нескольких вариантов используют <code>elif</code>, сокращение от «else if», то есть «иначе, если». Python проверяет условия сверху вниз. Как только одно из них оказывается истинным, выполняется его блок, а остальные условия и блоки <strong>этой цепочки</strong> пропускаются.</p>
+<p>Цепочка начинается с одного <code>if</code>, затем может содержать несколько <code>elif</code> и завершаться одним <code>else</code>. У каждого <code>elif</code> есть условие и двоеточие. Последний <code>else</code> необязателен: без него, если все условия ложны, программа просто продолжит выполнение после цепочки.</p>
+<p>Определим категорию температуры. Это условные названия для учебного примера.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Температура: одна цепочка elif</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Температура: одна цепочка elif">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">temperature = float(input(&quot;Enter temperature: &quot;))
+
+if temperature &gt; 40:
+    msg = &quot;extreme heat&quot;
+elif temperature &gt; 30:
+    msg = &quot;hot&quot;
+elif temperature &gt; 20:
+    msg = &quot;warm&quot;
+elif temperature &gt; 10:
+    msg = &quot;moderate&quot;
+elif temperature &gt; 0:
+    msg = &quot;cool&quot;
+elif temperature &gt; -20:
+    msg = &quot;cold&quot;
+else:
+    msg = &quot;extreme cold&quot;
+
+print(msg)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Температура: одна цепочка elif">Enter temperature: 15
+moderate</pre>
+  </div>
+</div>
+<p>Проверки <code>15 &gt; 40</code>, <code>15 &gt; 30</code> и <code>15 &gt; 20</code> ложны. Проверка <code>15 &gt; 10</code> истинна, поэтому <code>msg</code> получает строку <code>"moderate"</code>. До проверок <code>temperature &gt; 0</code> и <code>temperature &gt; -20</code> выполнение уже не дойдёт, хотя для числа <code>15</code> они тоже были бы истинными. После цепочки команда <code>print(msg)</code> выводит выбранную категорию.</p>
+<p>А что изменится, если заменить все <code>elif</code> на отдельные <code>if</code>?</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Температура: независимые if</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Температура: независимые if">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">temperature = float(input(&quot;Enter temperature: &quot;))
+
+if temperature &gt; 40:
+    msg = &quot;extreme heat&quot;
+if temperature &gt; 30:
+    msg = &quot;hot&quot;
+if temperature &gt; 20:
+    msg = &quot;warm&quot;
+if temperature &gt; 10:
+    msg = &quot;moderate&quot;
+if temperature &gt; 0:
+    msg = &quot;cool&quot;
+if temperature &gt; -20:
+    msg = &quot;cold&quot;
+else:
+    msg = &quot;extreme cold&quot;
+
+print(msg)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Температура: независимые if">Enter temperature: 15
+cold</pre>
+  </div>
+</div>
+<p>Теперь каждый <code>if</code> начинает новую проверку. При <code>15 &gt; 10</code> переменная <code>msg</code> получает <code>"moderate"</code>, затем при <code>15 &gt; 0</code> получает <code>"cool"</code>, а при <code>15 &gt; -20</code> получает <code>"cold"</code>. Каждое присваивание заменяет предыдущее значение. Печать стоит в самом конце, поэтому в терминале появляется только последняя строка: <code>cold</code>.</p>
+<p>Завершающий <code>else</code> во втором примере относится только к последнему <code>if temperature &gt; -20:</code>. Он не означает «ни одна из всех предыдущих проверок не сработала». При температуре <code>15</code> последний <code>if</code> истинный, поэтому этот <code>else</code> пропускается.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/12/03-TemperatureBranches.gif" alt="Сравнение цепочки elif и отдельных if для температуры 15: одна цепочка сохраняет moderate, независимые проверки перезаписывают msg до cold." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 3. Цепочка выбирает первую подходящую ветку, а отдельные if продолжают проверять условия.</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Какую конструкцию выбрать">
+  <table>
+    <caption>Какую конструкцию выбрать</caption>
+    <thead><tr><th scope="col">Задача</th><th scope="col">Подход</th><th scope="col">Причина</th></tr></thead>
+    <tbody>
+      <tr><td>Добавить подарок и отдельно проверить скидку</td><td>Несколько <code>if</code></td><td>Оба действия могут понадобиться одновременно.</td></tr>
+      <tr><td>Сообщить об успехе или отказе</td><td><code>if/else</code></td><td>Один из двух взаимоисключающих исходов.</td></tr>
+      <tr><td>Назначить одну категорию температуры</td><td><code>if/elif/else</code></td><td>Нужна одна подходящая категория, без последующей перезаписи.</td></tr>
+    </tbody>
+  </table>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="skipped-errors-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="skipped-errors-title">Успешный запуск не проверяет все ветки</h3>
+  <div class="special-block__body">
+<p>В непроверяемом условии или невыполненном блоке может скрываться <strong>ошибка выполнения</strong>. Например, деление на ноль вызовет <code>ZeroDivisionError</code> только тогда, когда Python действительно попытается выполнить деление.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ошибка в пропущенном условии</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка в пропущенном условии">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 1
+
+if num == 1:
+    print(&quot;one&quot;)
+elif num / 0 == 2:
+    print(&quot;two&quot;)
+else:
+    print(&quot;other&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Ошибка в пропущенном условии">one</pre>
+  </div>
+</div>
+<p>Здесь первая ветка сработала, поэтому выражение <code>num / 0</code> не вычисляется. Если заменить начальное значение на <code>2</code>, первое условие станет ложным, Python начнёт проверять <code>elif</code> и остановится с <code>ZeroDivisionError</code>. Аналогично может скрываться ошибка в теле пропущенной ветки, например обращение к неопределённому имени.</p>
+<p><strong>Синтаксические ошибки не скрываются таким способом.</strong> Перед запуском файла Python разбирает весь его синтаксис, включая пропускаемые ветки. Пропущенное двоеточие или неправильная структура отступов помешают запуску, даже если соответствующее условие должно быть ложным. Проверяйте программу на данных для разных веток.</p>
+  </div>
+</aside>
+<aside class="special-block special-block--tip" aria-labelledby="optional-else-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="optional-else-title">Если else отсутствует</h3>
+  <div class="special-block__body">
+<p>Если переменная создаётся только в условной ветке, при ложном условии она может остаться неопределённой. Например, после <code>if temperature &gt; 40:</code> с присваиванием <code>msg = "extreme heat"</code> вызов <code>print(msg)</code> при температуре <code>15</code> вызовет <code>NameError</code> в отдельно запущенном файле. Заранее задайте подходящее значение по умолчанию или добавьте ветку для оставшихся случаев.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="order-and-boundaries">
+        <h2>05 / Порядок проверок и границы</h2>
+        <div class="section-content">
+<p>Поскольку цепочка останавливается на первой подходящей ветке, порядок условий влияет на результат. Особенно легко ошибиться с условиями, которые охватывают друг друга. Например, любое число, подходящее под <code>temperature &lt;= 10</code>, подходит и под <code>temperature &lt;= 40</code>.</p>
+<p>Посмотрите на ошибочный порядок проверок. Введите <code>15</code>. Программа запустится и выведет результат, но выберет не ту категорию, которую мы ожидаем.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ошибка в логике: широкое условие первым</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка в логике: широкое условие первым">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">temperature = float(input(&quot;Enter temperature: &quot;))
+
+if temperature &lt;= 40:
+    msg = &quot;hot&quot;
+elif temperature &lt;= 30:
+    msg = &quot;warm&quot;
+elif temperature &lt;= 20:
+    msg = &quot;moderate&quot;
+elif temperature &lt;= 10:
+    msg = &quot;cool&quot;
+elif temperature &lt;= 0:
+    msg = &quot;cold&quot;
+elif temperature &lt;= -20:
+    msg = &quot;extreme cold&quot;
+
+print(msg)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Ошибка в логике: широкое условие первым">Enter temperature: 15
+hot</pre>
+  </div>
+</div>
+<p>Уже первое сравнение <code>15 &lt;= 40</code> истинно, поэтому <code>msg</code> получает <code>"hot"</code>. До <code>temperature &lt;= 20</code>, где мы хотели выбрать <code>"moderate"</code>, выполнение не доходит. Более широкое условие перекрыло более узкие.</p>
+<p>В этой цепочке ни один блок <code>elif</code> не может быть выбран. Если температура не больше <code>40</code>, сработает первый блок. Если температура больше <code>40</code>, все перечисленные сравнения будут ложными. Во втором случае в отдельно запущенном файле переменная <code>msg</code> не получит значения и команда <code>print(msg)</code> вызовет <code>NameError</code>.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img src="https://zeyafix.github.io/pbv3-assets/img/lessons/12/04-TemperatureFirstMatch.gif" alt="При температуре 15 первое условие temperature &lt;= 40 истинно, выбирается hot, остальные ветки пропускаются." loading="lazy" decoding="async" />
+  </div>
+  <figcaption>Рис. 4. Программа выбирает первую подходящую ветку, даже если ниже есть более точное условие.</figcaption>
+</figure>
+<p>Для этой задачи можно сохранить проверки с <code>&gt;</code> и двигаться от высоких температур к низким, как в разделе 04. Другой вариант: использовать <code>&lt;=</code> и двигаться от низких границ к высоким. Тогда каждое следующее условие охватывает оставшуюся часть диапазона.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Исправление: проверяем границы снизу вверх</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Исправление: проверяем границы снизу вверх">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">temperature = float(input(&quot;Enter temperature: &quot;))
+
+if temperature &lt;= -20:
+    msg = &quot;extreme cold&quot;
+elif temperature &lt;= 0:
+    msg = &quot;cold&quot;
+elif temperature &lt;= 10:
+    msg = &quot;cool&quot;
+elif temperature &lt;= 20:
+    msg = &quot;moderate&quot;
+elif temperature &lt;= 30:
+    msg = &quot;warm&quot;
+elif temperature &lt;= 40:
+    msg = &quot;hot&quot;
+else:
+    msg = &quot;extreme heat&quot;
+
+print(msg)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Исправление: проверяем границы снизу вверх">Enter temperature: 15
+moderate</pre>
+  </div>
+</div>
+<p>При температуре <code>15</code> первые три сравнения ложны, а <code>15 &lt;= 20</code> истинно. Выбирается <code>"moderate"</code>. Дублировать нижнюю границу в этом <code>elif</code> не требуется: предыдущая ложная проверка уже означает, что температура больше <code>10</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Границы категорий в исправленной программе">
+  <table>
+    <caption>Границы категорий в исправленной программе</caption>
+    <thead><tr><th scope="col">Температура</th><th scope="col">Результат</th></tr></thead>
+    <tbody>
+      <tr><td><code>temperature &lt;= -20</code></td><td><code>extreme cold</code></td></tr>
+      <tr><td><code>-20 &lt; temperature &lt;= 0</code></td><td><code>cold</code></td></tr>
+      <tr><td><code>0 &lt; temperature &lt;= 10</code></td><td><code>cool</code></td></tr>
+      <tr><td><code>10 &lt; temperature &lt;= 20</code></td><td><code>moderate</code></td></tr>
+      <tr><td><code>20 &lt; temperature &lt;= 30</code></td><td><code>warm</code></td></tr>
+      <tr><td><code>30 &lt; temperature &lt;= 40</code></td><td><code>hot</code></td></tr>
+      <tr><td><code>temperature &gt; 40</code></td><td><code>extreme heat</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<aside class="special-block special-block--tip" aria-labelledby="boundary-tests-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="boundary-tests-title">Проверяйте саму границу и значения рядом</h3>
+  <div class="special-block__body">
+<p>Знаки <code>&gt;</code> и <code>&gt;=</code> отличаются ровно на границе. Температура <code>20</code> здесь относится к <code>moderate</code>, а <code>20.1</code> уже к <code>warm</code>. Для каждой границы запустите программу с числом чуть меньше, ровно на границе и чуть больше.</p>
+<p>Например, для границы <code>-20</code> подойдут <code>-20.1</code>, <code>-20</code> и <code>-19.9</code>. Ожидаемые результаты: <code>extreme cold</code>, <code>extreme cold</code>, <code>cold</code>. Для кассы отдельно проверьте количество <code>9</code>, <code>10</code>, <code>11</code> и суммы <code>199</code>, <code>200</code>, <code>201</code>: слово «от» в правиле включает сам порог.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="nested-statements">
+        <h2>06 / Вложенные условные конструкции</h2>
+        <div class="section-content">
+<p>Внутри выбранной ветки можно разместить ещё один <code>if</code>. Он будет проверяться только после входа во внешнюю ветку. Это называется <strong>вложенной условной конструкцией</strong>. Такой порядок полезен, когда следующий вопрос имеет смысл только после положительного ответа на предыдущий.</p>
+<p>Представим сервис аренды устройств. Сначала нужен аккаунт, затем активная подписка, затем свободное устройство, а у выбранного устройства должно быть хотя бы <code>20%</code> заряда. Запрашивать заряд до проверки наличия устройства не нужно.</p>
+<p>В этом примере отвечайте на вопросы ровно <code>yes</code> или <code>no</code> маленькими буквами, без дополнительных пробелов. Программа сравнивает ответ со строкой <code>"yes"</code>; любой другой ответ попадёт в соответствующий <code>else</code>. Заряд вводите целым числом от <code>0</code> до <code>100</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Вложенные запросы: следующий вопрос зависит от ответа</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Вложенные запросы: следующий вопрос зависит от ответа">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">has_account = input(&quot;Do you have an account? (yes/no): &quot;)
+
+if has_account == &quot;yes&quot;:
+    has_subscription = input(&quot;Is your subscription active? (yes/no): &quot;)
+    if has_subscription == &quot;yes&quot;:
+        has_device = input(&quot;Is a device available? (yes/no): &quot;)
+        if has_device == &quot;yes&quot;:
+            battery_level = int(input(&quot;Enter battery level: &quot;))
+            if battery_level &gt;= 20:
+                print(&quot;Device rental approved&quot;)
+            else:
+                print(&quot;Charge the device first&quot;)
+        else:
+            print(&quot;No device available&quot;)
+    else:
+        print(&quot;Activate your subscription&quot;)
+else:
+    print(&quot;Create an account first&quot;)
+
+print(&quot;Request processed&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Вложенные запросы: следующий вопрос зависит от ответа">Do you have an account? (yes/no): yes
+Is your subscription active? (yes/no): yes
+Is a device available? (yes/no): yes
+Enter battery level: 15
+Charge the device first
+Request processed</pre>
+  </div>
+</div>
+<ol class="content-list">
+  <li>Если аккаунта нет, выполняется внешний <code>else</code>. Вопросы о подписке, устройстве и заряде вообще не задаются.</li>
+  <li>Если аккаунт есть, программа заходит в первый блок и спрашивает о подписке. При неактивной подписке выдаёт сообщение и пропускает более глубокие запросы.</li>
+  <li>При активной подписке задаётся вопрос о доступном устройстве. Только при ответе <code>yes</code> запрашивается заряд.</li>
+  <li>Последняя проверка выбирает разрешение на аренду или просьбу зарядить устройство. При вводе <code>15</code> условие <code>battery_level &gt;= 20</code> ложно.</li>
+  <li>В конце при любом из этих исходов выводится <code>Request processed</code>. Команда стоит без отступа после всей конструкции и не повторяется в каждой ветке.</li>
+</ol>
+<p>Каждый новый уровень добавляет ещё четыре пробела. Четвёртый <code>if</code> начинается с двенадцати пробелов, а команда в его теле с шестнадцати. Чтобы понять, к какому <code>if</code> относится <code>else</code>, сравните их отступы. Они должны начинаться в одной колонке.</p>
+<p>Теперь изменим ситуацию: все данные уже получены заранее. Зададим четыре переменные и сначала оставим вложенную структуру. Во всех отказах пока будет одинаковое сообщение.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Готовые данные: четыре вложенных if/else</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Готовые данные: четыре вложенных if/else">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">has_account = True
+has_subscription = True
+has_device = True
+battery_level = 15
+
+if has_account:
+    if has_subscription:
+        if has_device:
+            if battery_level &gt;= 20:
+                print(&quot;Device rental approved&quot;)
+            else:
+                print(&quot;Device rental denied&quot;)
+        else:
+            print(&quot;Device rental denied&quot;)
+    else:
+        print(&quot;Device rental denied&quot;)
+else:
+    print(&quot;Device rental denied&quot;)
+
+print(&quot;Request processed&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Готовые данные: четыре вложенных if/else">Device rental denied
+Request processed</pre>
+  </div>
+</div>
+<p>При заданных значениях первые три условия истинны, а заряда не хватает. Выполняется самый глубокий <code>else</code>. Но если отказ одинаково обрабатывается при любой причине, эту структуру можно сократить: для разрешения должны одновременно выполняться все четыре условия.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Те же данные: одно условие с and</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Те же данные: одно условие с and">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">has_account = True
+has_subscription = True
+has_device = True
+battery_level = 15
+
+if has_account and has_subscription and has_device and battery_level &gt;= 20:
+    print(&quot;Device rental approved&quot;)
+else:
+    print(&quot;Device rental denied&quot;)
+
+print(&quot;Request processed&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Те же данные: одно условие с and">Device rental denied
+Request processed</pre>
+  </div>
+</div>
+<p><code>and</code> требует истинности каждого условия. Как только встречается ложное, оставшаяся часть выражения не вычисляется. Для готовых значений и одинакового сообщения об отказе эта запись сохраняет поведение вложенного варианта. Общая команда <code>print("Request processed")</code> снова находится после ветвления.</p>
+<p>Если пользователю нужно объяснить конкретную причину отказа, проверим проблемы по очереди. Здесь <code>not has_account</code> означает «аккаунта нет», а <code>battery_level &lt; 20</code> означает «заряда недостаточно». При успешном прохождении всех проверок сработает завершающий <code>else</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Те же данные: первая конкретная причина отказа</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Те же данные: первая конкретная причина отказа">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">has_account = True
+has_subscription = True
+has_device = True
+battery_level = 15
+
+if not has_account:
+    print(&quot;Create an account first&quot;)
+elif not has_subscription:
+    print(&quot;Activate your subscription&quot;)
+elif not has_device:
+    print(&quot;No device available&quot;)
+elif battery_level &lt; 20:
+    print(&quot;Charge the device first&quot;)
+else:
+    print(&quot;Device rental approved&quot;)
+
+print(&quot;Request processed&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Те же данные: первая конкретная причина отказа">Charge the device first
+Request processed</pre>
+  </div>
+</div>
+<p>При исходных значениях первые три проверки проблем ложны, четвёртая истинна. Поэтому вместо общего отказа выводится просьба зарядить устройство. Если одновременно нет аккаунта и устройства, программа сообщит только об аккаунте: цепочка показывает первую найденную проблему в выбранном порядке.</p>
+<aside class="special-block special-block--tip" aria-labelledby="nesting-choice-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="nesting-choice-title">Выбирайте запись по задаче</h3>
+  <div class="special-block__body">
+<ul class="content-list">
+  <li>Сохраняйте вложенность, если внутри ветки нужно получить новые данные или выполнить действия перед следующей проверкой. Перенос всех <code>input()</code> наверх изменит диалог: программа начнёт спрашивать даже то, что ей ещё не нужно.</li>
+  <li>Объединяйте условия через <code>and</code>, если значения уже есть, нужны все условия сразу и у отказов одинаковая обработка.</li>
+  <li>Используйте <code>if/elif/else</code> с проверками проблем, если нужно назвать первую причину отказа. Порядок задаёт, о какой проблеме сообщить раньше.</li>
+  <li>Выносите общие действия после ветвления, если они нужны при любом исходе. Если общее действие использует переменную из веток, убедитесь, что она получает значение на каждом возможном пути.</li>
+</ul>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>07 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-types-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-types-title">Что покажется в терминале?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Число и строка</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Число и строка">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 1
+
+if num == &quot;1&quot;:
+    print(&quot;one&quot;)
+else:
+    print(&quot;not one&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-types-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-types-feedback-1" />
+          <span><code>not one</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-1" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span><code>1</code> и <code>"1"</code> имеют разные типы и не равны. Условие ложно, выполняется else.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-types-feedback-2" />
+          <span><code>one</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-2" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Сравнение не превращает строку в число: <code>1 == "1"</code> даёт False.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-types-feedback-3" />
+          <span>Ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-3" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Проверка равенства int и str допустима. В этом случае она возвращает False.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-types-feedback-4" />
+          <span>Ошибка SyntaxError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-types-feedback-4" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Двоеточия, отступы и расположение else корректны.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-independent-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-independent-title">Что покажется в терминале?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Отдельные if</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отдельные if">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 1
+
+if num == 1:
+    print(&quot;one&quot;)
+if num == 2:
+    print(&quot;two&quot;)
+else:
+    print(&quot;not one and not two&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-independent-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-independent-feedback-1" />
+          <span><code>one</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-independent-feedback-1" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Первый if истинный, поэтому сначала выводится <code>one</code>.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-independent-feedback-2" />
+          <span><code>not one and not two</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-independent-feedback-2" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Второй if ложный. Его else выводит эту строку после <code>one</code>. Текст сообщения не меняет логику: здесь он неточно описывает значение num.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-independent-feedback-3" />
+          <span>Ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-independent-feedback-3" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Сравнения целых чисел допустимы, строки можно выводить через print.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-independent-feedback-4" />
+          <span>Ошибка SyntaxError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-independent-feedback-4" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Два отдельных if допустимы. else относится ко второму if на том же уровне отступа.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-skipped-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-skipped-title">Что покажется в терминале?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Пропущенный elif</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пропущенный elif">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 1
+
+if num == 1:
+    print(&quot;one&quot;)
+elif num / 0 == 2:
+    print(&quot;two&quot;)
+else:
+    print(&quot;not one and not two&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-skipped-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-skipped-feedback-1" />
+          <span><code>one</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-skipped-feedback-1" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Первое условие истинно. Выполняется его блок, затем вся цепочка заканчивается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-skipped-feedback-2" />
+          <span><code>two</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-skipped-feedback-2" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>До проверки elif выполнение не доходит, потому что первая ветка уже выбрана.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-skipped-feedback-3" />
+          <span><code>not one and not two</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-skipped-feedback-3" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>else выбирается, когда ни одно условие цепочки не оказалось истинным. Здесь первый if истинен.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-skipped-feedback-4" />
+          <span>Ошибка TypeError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-skipped-feedback-4" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Выполняемые сравнение целых чисел и вывод строки допустимы.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="5" aria-describedby="check-skipped-feedback-5" />
+          <span>Ошибка SyntaxError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-skipped-feedback-5" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Деление на ноль записано синтаксически правильно. Проблема возникла бы при его вычислении.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="6" aria-describedby="check-skipped-feedback-6" />
+          <span>Ошибка ZeroDivisionError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-skipped-feedback-6" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Операция <code>num / 0</code> не вычисляется: Python пропускает оставшиеся условия цепочки.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-forms-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-forms-title">Какие формы условной конструкции допустимы?</h3>
+  <div class="special-block__body">
+<p>Каждый вариант обозначает <strong>одну цепочку на одном уровне отступа</strong>. Многоточие условно заменяет нужные условия, двоеточия и блоки команд. Это схемы, а не готовые строки Python; вложенные и отдельные конструкции здесь не рассматриваются.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-forms-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-forms-feedback-1" />
+          <span><code>if...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-1" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Самостоятельный if допустим: при ложном условии его блок пропускается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-forms-feedback-2" />
+          <span><code>if...else...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-2" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Один if и завершающий else задают два исхода.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-forms-feedback-3" />
+          <span><code>if...elif...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-3" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Дополнительная проверка elif допустима и без else.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-forms-feedback-4" />
+          <span><code>if...elif...else...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-4" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>После дополнительной проверки можно обработать все оставшиеся случаи через else.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="5" aria-describedby="check-forms-feedback-5" />
+          <span><code>if...elif...elif...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-5" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Блоков elif может быть несколько; else необязателен.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="6" aria-describedby="check-forms-feedback-6" />
+          <span><code>if...elif...elif...else...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-6" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>После нескольких elif можно поставить один завершающий else.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="7" aria-describedby="check-forms-feedback-7" />
+          <span><code>else...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-7" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Самостоятельный else без предшествующего if недопустим.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="8" aria-describedby="check-forms-feedback-8" />
+          <span><code>else...if...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-8" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Одна цепочка начинается с if, а не с else.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="9" aria-describedby="check-forms-feedback-9" />
+          <span><code>elif...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-9" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Самостоятельный elif без начального if недопустим.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="10" aria-describedby="check-forms-feedback-10" />
+          <span><code>elif...if...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-10" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Первым в цепочке должен быть if; elif не может начинать её.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="11" aria-describedby="check-forms-feedback-11" />
+          <span><code>elif...else...</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-11" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>В начале этой записи отсутствует обязательный if.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="12" aria-describedby="check-forms-feedback-12" />
+          <span><code>if...else...elif</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-forms-feedback-12" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>else завершает цепочку; после него нельзя продолжить её через elif.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-flag-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-flag-title">Что покажется в терминале?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Логический флаг</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Логический флаг">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">grade = 9
+is_success = grade &gt;= 7
+
+if is_success:
+    print(&quot;The student completed the homework&quot;)
+else:
+    print(&quot;The student failed to complete the homework&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-flag-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-flag-feedback-1" />
+          <span><code>The student completed the homework</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-flag-feedback-1" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span><code>9 &gt;= 7</code> даёт True. Флаг is_success истинен, выбирается первый блок.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-flag-feedback-2" />
+          <span><code>The student failed to complete the homework</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-flag-feedback-2" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Для выполнения else флаг должен быть ложным, но здесь он равен True.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-flag-feedback-3" />
+          <span>Ошибка SyntaxError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-flag-feedback-3" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Использовать логическую переменную непосредственно после if допустимо.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-first-match-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-first-match-title">Что покажется в терминале?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Первое совпадение</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Первое совпадение">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">grade = 35
+
+if grade &gt; 10:
+    print(&quot;Greater than 10&quot;)
+elif grade &gt; 20:
+    print(&quot;Greater than 20&quot;)
+elif grade &gt; 30:
+    print(&quot;Greater than 30&quot;)
+else:
+    print(&quot;Less or equal 10&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-first-match-title">
+  <fieldset>
+    <legend>Отметьте верные варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="1" aria-describedby="check-first-match-feedback-1" />
+          <span><code>Greater than 10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-first-match-feedback-1" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span><code>35 &gt; 10</code> истинно. Выбирается первая ветка, оставшиеся условия пропускаются.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="2" aria-describedby="check-first-match-feedback-2" />
+          <span><code>Greater than 20</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-first-match-feedback-2" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Хотя <code>35 &gt; 20</code> тоже истинно, Python уже выбрал предыдущую ветку и не проверяет этот elif.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="3" aria-describedby="check-first-match-feedback-3" />
+          <span><code>Greater than 30</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-first-match-feedback-3" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Python не ищет самую узкую или последнюю подходящую ветку. Он выбирает первую.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="4" aria-describedby="check-first-match-feedback-4" />
+          <span><code>Less or equal 10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-first-match-feedback-4" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>else не выполняется, потому что первое условие цепочки истинно.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label">
+          <input class="visually-hidden" type="checkbox" name="answers" value="5" aria-describedby="check-first-match-feedback-5" />
+          <span>Ошибка SyntaxError</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-first-match-feedback-5" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Запись допустима. Порядок проверок может не соответствовать замыслу, но синтаксис корректен.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

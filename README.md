@@ -1,7 +1,7 @@
 ## Next to cover
 
-- [09 - Data Types](lessons/09%20-%20Data%20Types/)
-- [10 - Mathematical Operators](lessons/10%20-%20Mathematical%20Operators/)
+- [11 - Conditions and Operators](lessons/11%20-%20Conditions%20and%20Operators/)
+- [12 - Conditional Statements](lessons/12%20-%20Conditional%20Statements/)
 
 ## What we've already covered
 
@@ -13,6 +13,8 @@
 - [06 - Understanding Web Services](lessons/06%20-%20Understanding%20Web%20Services/)
 - [07 - Introduction to Programming](lessons/07%20-%20Introduction%20to%20Programming/)
 - [08 - Preparing for Programming](lessons/08%20-%20Preparing%20for%20Programming/)
+- [09 - Data Types](lessons/09%20-%20Data%20Types/)
+- [10 - Mathematical Operators](lessons/10%20-%20Mathematical%20Operators/)
 
 ## License
 

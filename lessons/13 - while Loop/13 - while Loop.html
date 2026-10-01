@@ -1,0 +1,1913 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Циклы while в Python для самостоятельного изучения: счётчики, накопление результата, повторный ввод, break, continue, вложенные циклы, программа с меню и интерактивная самопроверка."
+    />
+    <title>13 - while Loop</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">13 - while Loop</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-bool-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-bool-title">Тип логических значений</h3>
+  <div class="special-block__body">
+<p>Как называется тип данных, которому принадлежат <code>True</code> и <code>False</code>?</p>
+<form class="quiz" data-quiz="text" data-answer="bool"
+  data-success="Верно. bool хранит логические значения True и False." data-hint="Вспомните английское имя логического типа: четыре строчные буквы."
+  autocomplete="off" aria-labelledby="review-bool-title">
+  <label for="review-bool-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-bool-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-bool-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-bool-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-conversion-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-conversion-title">Преобразование в логическое значение</h3>
+  <div class="special-block__body">
+<p>В переменной <code>name</code> находится строка. Запишите вызов встроенной функции, который преобразует её в логическое значение. Используйте только имя функции, скобки и имя переменной.</p>
+<form class="quiz" data-quiz="text" data-answer="bool(name)"
+  data-success="Верно. bool(name) даёт False для пустой строки и True для непустой, в том числе строки из пробелов." data-hint="Нужен вызов функции логического типа с переменной name внутри скобок."
+  autocomplete="off" aria-labelledby="review-conversion-title">
+  <label for="review-conversion-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-conversion-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-conversion-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-conversion-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-not-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-not-title">Обратное логическое значение</h3>
+  <div class="special-block__body">
+<p>Какой логический оператор превращает истинное значение в ложное, а ложное в истинное?</p>
+<form class="quiz" data-quiz="text" data-answer="not"
+  data-success="Верно. not меняет логическое значение на противоположное." data-hint="Вспомните английское слово «не»."
+  autocomplete="off" aria-labelledby="review-not-title">
+  <label for="review-not-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-not-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-not-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-not-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-and-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-and-title">Оба условия выполнены</h3>
+  <div class="special-block__body">
+<p>Каким оператором соединить два условия, если одновременно должны выполняться оба?</p>
+<form class="quiz" data-quiz="text" data-answer="and"
+  data-success="Верно. and требует истинности обоих условий." data-hint="Нужно логическое «и», записанное по-английски."
+  autocomplete="off" aria-labelledby="review-and-title">
+  <label for="review-and-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-and-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-and-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-and-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-or-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-or-title">Достаточно любого условия</h3>
+  <div class="special-block__body">
+<p>Какой оператор нужен, если достаточно истинности хотя бы одного из двух условий?</p>
+<form class="quiz" data-quiz="text" data-answer="or"
+  data-success="Верно. or подходит и когда истинно одно условие, и когда истинны оба." data-hint="Нужно логическое «или», записанное по-английски."
+  autocomplete="off" aria-labelledby="review-or-title">
+  <label for="review-or-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-or-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-or-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-or-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-if-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-if-title">Начало условной конструкции</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово начинает условную конструкцию?</p>
+<form class="quiz" data-quiz="text" data-answer="if"
+  data-success="Верно. if начинает конструкцию и задаёт первое условие." data-hint="Вспомните английское слово «если». Двоеточие вводить не нужно."
+  autocomplete="off" aria-labelledby="review-if-title">
+  <label for="review-if-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-if-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-if-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-if-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-else-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-else-title">Действие по умолчанию</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово начинает ветку, выполняемую, если предыдущие условия одной цепочки оказались ложными?</p>
+<form class="quiz" data-quiz="text" data-answer="else"
+  data-success="Верно. else записывается без собственного условия." data-hint="Нужна завершающая ветка «иначе», без дополнительной проверки."
+  autocomplete="off" aria-labelledby="review-else-title">
+  <label for="review-else-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-else-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-else-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-else-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-elif-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-elif-title">Дополнительная проверка</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово добавляет следующее условие в ту же цепочку после if?</p>
+<form class="quiz" data-quiz="text" data-answer="elif"
+  data-success="Верно. elif проверяется, только если предыдущие условия цепочки ложны." data-hint="В Python «иначе если» записывается одним ключевым словом из четырёх букв."
+  autocomplete="off" aria-labelledby="review-elif-title">
+  <label for="review-elif-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-elif-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-elif-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-elif-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-statements-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-statements-title">Условие и условная конструкция</h3>
+  <div class="special-block__body">
+<p>Здесь говорим об изученной конструкции <code>if / elif / else</code> и условиях из сравнений и логических операторов.</p>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-statements-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-statements-1">
+          <input class="visually-hidden" id="review-statements-1" type="checkbox" name="answers" value="1" aria-describedby="review-statements-1-feedback" />
+          <span>Условие можно поместить в переменную</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, <code>is_adult = age &gt;= 18</code> сохраняет результат проверки. При изменении age сохранённый результат сам не пересчитывается.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-statements-2">
+          <input class="visually-hidden" id="review-statements-2" type="checkbox" name="answers" value="2" aria-describedby="review-statements-2-feedback" />
+          <span>Для создания условий можно использовать операторы сравнения и логические операторы</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, <code>age &gt;= 18 and has_ticket</code> объединяет проверки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-statements-3">
+          <input class="visually-hidden" id="review-statements-3" type="checkbox" name="answers" value="3" aria-describedby="review-statements-3-feedback" />
+          <span>Условная конструкция всегда начинается с if</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В изученной форме первая ветка начинается с <code>if</code>. Ветки <code>elif</code> и <code>else</code> дополняют её.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-statements-4">
+          <input class="visually-hidden" id="review-statements-4" type="checkbox" name="answers" value="4" aria-describedby="review-statements-4-feedback" />
+          <span>Условная конструкция содержит условие</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После <code>if</code> записывается проверяемое выражение.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-statements-5">
+          <input class="visually-hidden" id="review-statements-5" type="checkbox" name="answers" value="5" aria-describedby="review-statements-5-feedback" />
+          <span>Условная конструкция содержит блок кода</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Команды с отступом выполняются при выборе соответствующей ветки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-statements-6">
+          <input class="visually-hidden" id="review-statements-6" type="checkbox" name="answers" value="6" aria-describedby="review-statements-6-feedback" />
+          <span>Условную конструкцию можно поместить в переменную</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В переменную можно сохранить результат выражения. Целую конструкцию с ветками и блоками команд присвоить нельзя.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-statements-7">
+          <input class="visually-hidden" id="review-statements-7" type="checkbox" name="answers" value="7" aria-describedby="review-statements-7-feedback" />
+          <span>Условная конструкция может начинаться с elif</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>elif</code> продолжает уже начатую цепочку с <code>if</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-statements-8">
+          <input class="visually-hidden" id="review-statements-8" type="checkbox" name="answers" value="8" aria-describedby="review-statements-8-feedback" />
+          <span>Условие нельзя хранить в переменной</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Логический результат проверки можно сохранить и затем использовать в условии.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-statements-9">
+          <input class="visually-hidden" id="review-statements-9" type="checkbox" name="answers" value="9" aria-describedby="review-statements-9-feedback" />
+          <span>Условие может содержать операторы if, elif и else</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-statements-9-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В изученной записи это ключевые слова ветвления, а не логические операторы внутри условия. Условие идёт после if или elif.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-syntax-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-syntax-title">Нужно ли исправить этот код?</h3>
+  <div class="special-block__body">
+<p>Оцените синтаксис условной конструкции.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Проверяем синтаксис</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем синтаксис">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = int(input(&quot;Enter num: &quot;))
+
+if num == 1:
+    print(&quot;one&quot;)
+elif num == 2:
+    print(&quot;two&quot;)
+else:
+    print(&quot;any&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-syntax-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-syntax-1">
+          <input class="visually-hidden" id="review-syntax-1" type="checkbox" name="answers" value="1" aria-describedby="review-syntax-1-feedback" />
+          <span>Всё верно</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-syntax-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Есть начальная ветка if, дополнительная elif и завершающая else. Двоеточия и отступы расставлены правильно.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-syntax-2">
+          <input class="visually-hidden" id="review-syntax-2" type="checkbox" name="answers" value="2" aria-describedby="review-syntax-2-feedback" />
+          <span>Отступы должны быть в 1 пробел</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-syntax-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В примере используются стандартные отступы в четыре пробела. Менять их на один не требуется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-syntax-3">
+          <input class="visually-hidden" id="review-syntax-3" type="checkbox" name="answers" value="3" aria-describedby="review-syntax-3-feedback" />
+          <span>После условий не должно быть двоеточий</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-syntax-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Двоеточие обязательно: оно отделяет заголовок ветки от её блока.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-syntax-4">
+          <input class="visually-hidden" id="review-syntax-4" type="checkbox" name="answers" value="4" aria-describedby="review-syntax-4-feedback" />
+          <span>elif должен идти после else</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-syntax-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Ветка else завершает цепочку. Дополнительные условия elif располагаются до неё.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-syntax-5">
+          <input class="visually-hidden" id="review-syntax-5" type="checkbox" name="answers" value="5" aria-describedby="review-syntax-5-feedback" />
+          <span>В else должно быть условие</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-syntax-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Собственного условия у else нет. Эта ветка выбирается, когда предыдущие условия ложны.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-age-independent-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-age-independent-title">Что выведут независимые if?</h3>
+  <div class="special-block__body">
+<p>Пользователь вводит <code>25</code>. Отметьте строки результата, не считая приглашения ко вводу. Названия возрастных групп здесь условные и нужны для разбора кода.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Возраст: отдельные проверки</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Возраст: отдельные проверки">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">age = int(input(&quot;Enter your age: &quot;))
+
+if 0 &lt; age &lt;= 12:
+    print(&quot;Childhood&quot;)
+if 12 &lt; age &lt;= 17:
+    print(&quot;Adolescence&quot;)
+if 17 &lt; age &lt;= 44:
+    print(&quot;Youth&quot;)
+if 44 &lt; age &lt;= 59:
+    print(&quot;Middle age&quot;)
+if 59 &lt; age &lt;= 74:
+    print(&quot;Elderly age&quot;)
+if 74 &lt; age &lt;= 89:
+    print(&quot;Old age&quot;)
+else:
+    print(&quot;Centenarians&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-age-independent-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-independent-1">
+          <input class="visually-hidden" id="review-age-independent-1" type="checkbox" name="answers" value="1" aria-describedby="review-age-independent-1-feedback" />
+          <span><code>Childhood</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 не входит в интервал этой проверки, поэтому её print не выполняется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-independent-2">
+          <input class="visually-hidden" id="review-age-independent-2" type="checkbox" name="answers" value="2" aria-describedby="review-age-independent-2-feedback" />
+          <span><code>Adolescence</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 не входит в интервал этой проверки, поэтому её print не выполняется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-age-independent-3">
+          <input class="visually-hidden" id="review-age-independent-3" type="checkbox" name="answers" value="3" aria-describedby="review-age-independent-3-feedback" />
+          <span><code>Youth</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 попадает в интервал 17 &lt; age &lt;= 44.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-independent-4">
+          <input class="visually-hidden" id="review-age-independent-4" type="checkbox" name="answers" value="4" aria-describedby="review-age-independent-4-feedback" />
+          <span><code>Middle age</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 не входит в интервал этой проверки, поэтому её print не выполняется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-independent-5">
+          <input class="visually-hidden" id="review-age-independent-5" type="checkbox" name="answers" value="5" aria-describedby="review-age-independent-5-feedback" />
+          <span><code>Elderly age</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 не входит в интервал этой проверки, поэтому её print не выполняется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-independent-6">
+          <input class="visually-hidden" id="review-age-independent-6" type="checkbox" name="answers" value="6" aria-describedby="review-age-independent-6-feedback" />
+          <span><code>Old age</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 не входит в интервал этой проверки, поэтому её print не выполняется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-age-independent-7">
+          <input class="visually-hidden" id="review-age-independent-7" type="checkbox" name="answers" value="7" aria-describedby="review-age-independent-7-feedback" />
+          <span><code>Centenarians</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-independent-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>else относится только к последнему if. Его условие для 25 ложно, поэтому этот else выполняется.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-age-chain-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-age-chain-title">Что выведет цепочка if / elif / else?</h3>
+  <div class="special-block__body">
+<p>Пользователь вводит <code>25</code>. Отметьте строки результата, не считая приглашения ко вводу. Названия возрастных групп здесь условные и нужны для разбора кода.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Возраст: одна цепочка</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Возраст: одна цепочка">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">age = int(input(&quot;Enter your age: &quot;))
+
+if 0 &lt; age &lt;= 12:
+    print(&quot;Childhood&quot;)
+elif 12 &lt; age &lt;= 17:
+    print(&quot;Adolescence&quot;)
+elif 17 &lt; age &lt;= 44:
+    print(&quot;Youth&quot;)
+elif 44 &lt; age &lt;= 59:
+    print(&quot;Middle age&quot;)
+elif 59 &lt; age &lt;= 74:
+    print(&quot;Elderly age&quot;)
+elif 74 &lt; age &lt;= 89:
+    print(&quot;Old age&quot;)
+else:
+    print(&quot;Centenarians&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-age-chain-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-chain-1">
+          <input class="visually-hidden" id="review-age-chain-1" type="checkbox" name="answers" value="1" aria-describedby="review-age-chain-1-feedback" />
+          <span><code>Childhood</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В цепочке уже выбрана ветка Youth. Остальные ветки, включая else, пропускаются.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-chain-2">
+          <input class="visually-hidden" id="review-age-chain-2" type="checkbox" name="answers" value="2" aria-describedby="review-age-chain-2-feedback" />
+          <span><code>Adolescence</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В цепочке уже выбрана ветка Youth. Остальные ветки, включая else, пропускаются.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-age-chain-3">
+          <input class="visually-hidden" id="review-age-chain-3" type="checkbox" name="answers" value="3" aria-describedby="review-age-chain-3-feedback" />
+          <span><code>Youth</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возраст 25 попадает в интервал 17 &lt; age &lt;= 44.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-chain-4">
+          <input class="visually-hidden" id="review-age-chain-4" type="checkbox" name="answers" value="4" aria-describedby="review-age-chain-4-feedback" />
+          <span><code>Middle age</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В цепочке уже выбрана ветка Youth. Остальные ветки, включая else, пропускаются.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-chain-5">
+          <input class="visually-hidden" id="review-age-chain-5" type="checkbox" name="answers" value="5" aria-describedby="review-age-chain-5-feedback" />
+          <span><code>Elderly age</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В цепочке уже выбрана ветка Youth. Остальные ветки, включая else, пропускаются.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-chain-6">
+          <input class="visually-hidden" id="review-age-chain-6" type="checkbox" name="answers" value="6" aria-describedby="review-age-chain-6-feedback" />
+          <span><code>Old age</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В цепочке уже выбрана ветка Youth. Остальные ветки, включая else, пропускаются.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-age-chain-7">
+          <input class="visually-hidden" id="review-age-chain-7" type="checkbox" name="answers" value="7" aria-describedby="review-age-chain-7-feedback" />
+          <span><code>Centenarians</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-age-chain-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В цепочке уже выбрана ветка Youth. Остальные ветки, включая else, пропускаются.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-readings-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-readings-title">Какие сообщения появятся в терминале?</h3>
+  <div class="special-block__body">
+<p>У учебного макета теплицы четыре датчика. Их условные рабочие диапазоны заданы в коде. Ввод: <code>30</code>, <code>50</code>, <code>200</code>, <code>40</code> именно в таком порядке. При преобразовании <code>True</code> в int получается 1, а <code>False</code> в int даёт 0. Отметьте сообщения после ввода.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Четыре показателя</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Четыре показателя">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">temperature = int(input(&quot;Temperature: &quot;))
+humidity = int(input(&quot;Humidity: &quot;))
+light = int(input(&quot;Light: &quot;))
+water = int(input(&quot;Water: &quot;))
+
+temperature_ok = 18 &lt;= temperature &lt;= 26
+humidity_ok = 40 &lt;= humidity &lt;= 60
+light_ok = 300 &lt;= light &lt;= 800
+water_ok = 30 &lt;= water &lt;= 70
+
+if not temperature_ok:
+    print(&quot;Temperature out of range&quot;)
+if not humidity_ok:
+    print(&quot;Humidity out of range&quot;)
+if not light_ok:
+    print(&quot;Light out of range&quot;)
+if not water_ok:
+    print(&quot;Water out of range&quot;)
+
+normal_count = int(temperature_ok) + int(humidity_ok)
+normal_count += int(light_ok) + int(water_ok)
+
+if normal_count == 4:
+    print(&quot;All readings OK&quot;)
+elif normal_count &gt;= 2:
+    print(&quot;Some readings OK&quot;)
+else:
+    print(&quot;Most readings out of range&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-readings-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-readings-1">
+          <input class="visually-hidden" id="review-readings-1" type="checkbox" name="answers" value="1" aria-describedby="review-readings-1-feedback" />
+          <span><code>Temperature out of range</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>30 больше верхней границы 26.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-readings-2">
+          <input class="visually-hidden" id="review-readings-2" type="checkbox" name="answers" value="2" aria-describedby="review-readings-2-feedback" />
+          <span><code>Humidity out of range</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>50 находится между 40 и 60 включительно.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-readings-3">
+          <input class="visually-hidden" id="review-readings-3" type="checkbox" name="answers" value="3" aria-describedby="review-readings-3-feedback" />
+          <span><code>Light out of range</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>200 меньше нижней границы 300.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-readings-4">
+          <input class="visually-hidden" id="review-readings-4" type="checkbox" name="answers" value="4" aria-describedby="review-readings-4-feedback" />
+          <span><code>Water out of range</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>40 находится между 30 и 70 включительно.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-readings-5">
+          <input class="visually-hidden" id="review-readings-5" type="checkbox" name="answers" value="5" aria-describedby="review-readings-5-feedback" />
+          <span><code>All readings OK</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В пределах диапазонов только два показателя, а не четыре.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-readings-6">
+          <input class="visually-hidden" id="review-readings-6" type="checkbox" name="answers" value="6" aria-describedby="review-readings-6-feedback" />
+          <span><code>Some readings OK</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>normal_count равен 2. Первая ветка ложна, вторая истинна.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-readings-7">
+          <input class="visually-hidden" id="review-readings-7" type="checkbox" name="answers" value="7" aria-describedby="review-readings-7-feedback" />
+          <span><code>Most readings out of range</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-readings-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Выполняется ветка elif, поэтому else пропускается.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-short-circuit-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-short-circuit-title">В каких проверках возникнет ошибка?</h3>
+  <div class="special-block__body">
+<p>Рассматривайте каждый пронумерованный фрагмент <strong>отдельно</strong>, каждый раз при <code>count = 0</code>. Иначе первая ошибка остановит общую программу. Определите, где Python попытается разделить на ноль.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Независимые проверки при count = 0</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Независимые проверки при count = 0">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">count = 0
+
+# Check 1
+if count != 0 and 10 / count &gt; 2:
+    print(&quot;A&quot;)
+
+# Check 2
+if 10 / count &gt; 2 and count != 0:
+    print(&quot;B&quot;)
+
+# Check 3
+if count == 0 or 10 / count &gt; 2:
+    print(&quot;C&quot;)
+
+# Check 4
+if count != 0 or 10 / count &gt; 2:
+    print(&quot;D&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-short-circuit-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-short-circuit-1">
+          <input class="visually-hidden" id="review-short-circuit-1" type="checkbox" name="answers" value="1" aria-describedby="review-short-circuit-1-feedback" />
+          <span>Проверка 1</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-short-circuit-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Слева от and получается False. Правая часть с делением не вычисляется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-short-circuit-2">
+          <input class="visually-hidden" id="review-short-circuit-2" type="checkbox" name="answers" value="2" aria-describedby="review-short-circuit-2-feedback" />
+          <span>Проверка 2</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-short-circuit-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сначала выполняется деление 10 / count. До проверки count != 0 выполнение не дойдёт.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-short-circuit-3">
+          <input class="visually-hidden" id="review-short-circuit-3" type="checkbox" name="answers" value="3" aria-describedby="review-short-circuit-3-feedback" />
+          <span>Проверка 3</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-short-circuit-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Слева от or получается True. Этого достаточно, деление пропускается.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-short-circuit-4">
+          <input class="visually-hidden" id="review-short-circuit-4" type="checkbox" name="answers" value="4" aria-describedby="review-short-circuit-4-feedback" />
+          <span>Проверка 4</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-short-circuit-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Слева от or получается False. Python проверяет правую часть и делит на ноль.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="why-loops">
+        <h2>02 / Зачем нужны циклы</h2>
+        <div class="section-content">
+<p>Представьте обратный отсчёт перед стартом. Для трёх чисел можно написать несколько print подряд. Но если нужно начать с тысячи, список команд станет огромным. При изменении правила вывода придётся исправлять много одинаковых строк, и одну легко пропустить.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Отсчёт без цикла</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отсчёт без цикла">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">print(3)
+print(2)
+print(1)
+print(&quot;Start!&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Отсчёт без цикла">3
+2
+1
+Start!</pre>
+  </div>
+</div>
+<p>Вместо копирования команд опишем одно действие и условие, при котором его нужно повторять. Переменная <code>count</code> хранит текущее число. Пока оно больше нуля, выводим его и уменьшаем на единицу.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Тот же отсчёт с циклом</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Тот же отсчёт с циклом">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1
+
+print(&quot;Start!&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Тот же отсчёт с циклом">3
+2
+1
+Start!</pre>
+  </div>
+</div>
+<p>Теперь для отсчёта от тысячи достаточно изменить начальное значение count. Строка <code>count -= 1</code> означает <code>count = count - 1</code>. Она приближает значение к моменту, когда условие станет ложным.</p>
+<aside class="special-block special-block--definition" aria-labelledby="loop-purpose-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="loop-purpose-title">Повторение по условию</h3>
+  <div class="special-block__body">
+<p><strong>Цикл</strong> позволяет выполнять один блок команд повторно. Цикл <code>while</code> читается как «пока»: пока условие истинно, выполняй тело цикла.</p>
+  </div>
+</aside>
+<p>Вторая частая задача: пользователь вводит ответ с нескольких попыток. Заранее неизвестно, сколько их понадобится. Копирование трёх input ограничит нас тремя запросами, а цикл сможет запрашивать данные до подходящего ответа. Эту задачу разберём после счётчиков.</p>
+        </div>
+      </section>
+      <section id="while-structure">
+        <h2>03 / Как устроен while</h2>
+        <div class="section-content">
+<p>После <code>while</code> записывается условие и двоеточие. Ниже с отступом в четыре пробела идут команды <strong>тела цикла</strong>. В этом примере тело состоит из print и увеличения num. Строка без этого отступа уже находится после цикла.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Три повторения</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Три повторения">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 3:
+    print(num)
+    num += 1
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Три повторения">0
+1
+2
+Program end</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/01-WhileBasics.gif"
+      alt="Проверки num &lt; 3, вывод чисел 0, 1, 2 и переход к Program end"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 1. Три повторения цикла while</figcaption>
+</figure>
+<ol class="content-list">
+<li>Присваиваем <code>num = 0</code>. Эта строка находится перед циклом и выполняется один раз.</li>
+<li>Проверяем <code>num &lt; 3</code>. При <code>num = 0</code> условие истинно, поэтому входим в тело.</li>
+<li>Выводим текущее значение и увеличиваем его на единицу. После первой пары команд <code>num</code> равен 1.</li>
+<li>Возвращаемся к строке <code>while</code> и заново вычисляем условие с новым значением <code>num</code>.</li>
+<li>При <code>num = 1</code> и <code>num = 2</code> повторяем тело. После вывода 2 переменная становится равной 3.</li>
+<li>Проверка <code>3 &lt; 3</code> ложна. Пропускаем тело и выполняем <code>print("Program end")</code>.</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Трассировка цикла">
+<table>
+<caption>Трассировка цикла</caption>
+<thead><tr><th scope="col">num перед проверкой</th><th scope="col">num &lt; 3</th><th scope="col">Вывод тела</th><th scope="col">num после тела</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>True</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>True</td><td>1</td><td>2</td></tr>
+<tr><td>2</td><td>True</td><td>2</td><td>3</td></tr>
+<tr><td>3</td><td>False</td><td>Тело пропущено</td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="special-block special-block--definition" aria-labelledby="iteration-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="iteration-title">Что такое итерация</h3>
+  <div class="special-block__body">
+<p><strong>Итерация</strong> означает один проход тела цикла. В примере тело прошло три раза, поэтому было три итерации. Проверок условия было четыре: последняя остановила повторение и не запустила новую итерацию.</p>
+  </div>
+</aside>
+<p>Условие проверяется перед каждым новым проходом, а не непрерывно после каждой команды. Если в середине тела значение изменилось, оставшиеся команды тела всё ещё выполняются. Затем Python возвращается к условию. Позже увидим, как <strong>break</strong> и <strong>continue</strong> меняют этот порядок.</p>
+<p>Сравним <code>if</code> и <code>while</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Те же команды внутри if</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Те же команды внутри if">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+if num &lt; 3:
+    print(num)
+    num += 1
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Те же команды внутри if">0
+Program end</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/02-WhileVsIf.gif"
+      alt="if выполняет тело один раз, while возвращается к условию и повторяет тело"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 2. Сравнение if и while</figcaption>
+</figure>
+<p><code>if</code> проверяет условие и при истинном результате выполняет блок один раз за этот проход программы. Он не возвращается к своей проверке. <code>while</code> после тела возвращается и проверяет снова. Поэтому одинаковые команды здесь дают разный вывод.</p>
+<p>При работе с циклами <code>while</code> могут возникать ситуации, когда нет ни одной итерации.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ни одной итерации</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ни одной итерации">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 3
+while num &lt; 3:
+    print(num)
+    num += 1
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Ни одной итерации">Program end</pre>
+  </div>
+</div>
+<p>Уже первая проверка ложна, поэтому ни <code>print</code> внутри тела, ни увеличение <code>num</code> не выполнятся. Цикл <code>while</code> не обещает выполнить тело хотя бы один раз. Это удобно: если повторять нечего, программа сразу идёт дальше.</p>
+        </div>
+      </section>
+      <section id="counter-step">
+        <h2>04 / Счётчик и шаг</h2>
+        <div class="section-content">
+<p><strong>Счётчик</strong> хранит текущее число или количество сделанных шагов. До цикла ему задают начальное значение. Внутри цикла его меняют на <strong>шаг</strong>: например, прибавляют 1, прибавляют 5 или вычитают 3. Условие определяет, какие значения ещё допустимы.</p>
+<p>Чтобы пройти диапазон по возрастанию, начнём с <code>start</code> и будем прибавлять положительный <code>step</code>. Включим правую границу через <code>&lt;=</code>. До входа в цикл проверим и направление диапазона, и шаг.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>По возрастанию: ввод 5, 20, 5</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: По возрастанию: ввод 5, 20, 5">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">start = int(input(&quot;Start: &quot;))
+end = int(input(&quot;End: &quot;))
+step = int(input(&quot;Step: &quot;))
+
+if step &gt; 0 and start &lt;= end:
+    current = start
+    while current &lt;= end:
+        print(current)
+        current += step
+else:
+    print(&quot;Invalid range or step&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: По возрастанию: ввод 5, 20, 5">Start: 5
+End: 20
+Step: 5
+5
+10
+15
+20</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/03-RangeAscending.gif"
+      alt="current принимает значения 5, 10, 15, 20; при 25 цикл завершается"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 3. Диапазон по возрастанию</figcaption>
+</figure>
+<p>Сначала <code>if</code> разрешает запуск. Затем <code>current</code> принимает 5, 10, 15 и 20, каждый раз выводится и увеличивается на 5. После 20 получаем 25: оно уже больше <code>end</code>, поэтому новая итерация не начинается. Здесь выполняется четыре итерации.</p>
+<p>Для движения вниз шаг по-прежнему вводим положительным, но <strong>вычитаем</strong> его. Условия меняем на <code>start &gt;= end</code> и <code>current &gt;= end</code>. Вложенное тело <code>while</code> имеет восемь пробелов, потому что сам цикл находится внутри <code>if</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>По убыванию: ввод 19, 10, 3</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: По убыванию: ввод 19, 10, 3">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">start = int(input(&quot;Start: &quot;))
+end = int(input(&quot;End: &quot;))
+step = int(input(&quot;Step: &quot;))
+
+if step &gt; 0 and start &gt;= end:
+    current = start
+    while current &gt;= end:
+        print(current)
+        current -= step
+else:
+    print(&quot;Invalid range or step&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: По убыванию: ввод 19, 10, 3">Start: 19
+End: 10
+Step: 3
+19
+16
+13
+10</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/04-RangeDescending.gif"
+      alt="current принимает значения 19, 16, 13, 10; при 7 цикл завершается"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 4. Диапазон по убыванию</figcaption>
+</figure>
+        </div>
+      </section>
+      <section id="accumulation">
+        <h2>05 / Накопление результата</h2>
+        <div class="section-content">
+<p>Иногда нужно не просто повторить вывод, а собрать общий результат из многих вводов. Для этого заводят отдельные переменные: одна считает все обработанные значения, другая считает только подходящие, третья хранит их сумму. У этих переменных разные задачи.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Сумма и количество положительных чисел</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сумма и количество положительных чисел">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">request_count = int(input(&quot;How many numbers: &quot;))
+
+if request_count &gt; 0:
+    processed_count = 0
+    positive_count = 0
+    positive_sum = 0
+
+    while processed_count &lt; request_count:
+        number = int(input(&quot;Number: &quot;))
+        if number &gt; 0:
+            positive_sum += number
+            positive_count += 1
+        processed_count += 1
+
+    print(f&quot;Positive count: {positive_count}&quot;)
+    print(f&quot;Positive sum: {positive_sum}&quot;)
+else:
+    print(&quot;Count must be positive&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Сумма и количество положительных чисел">How many numbers: 10
+Number: 5
+Number: -2
+Number: 7
+Number: -4
+Number: 3
+Number: 8
+Number: -1
+Number: 2
+Number: -6
+Number: 10
+Positive count: 6
+Positive sum: 35</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/05-PositiveNumbers.gif"
+      alt="Обработка десяти чисел: шесть положительных чисел дают сумму 35"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 5. Подсчёт и сумма положительных чисел</figcaption>
+</figure>
+<ol class="content-list">
+<li><strong>Перед циклом:</strong> обнуляем <code>processed_count</code>, <code>positive_count</code> и <code>positive_sum</code>. Пока не введено ни одного числа, считать и суммировать нечего.</li>
+<li><strong>На каждой итерации:</strong> запрашиваем одно число. При <code>number &gt; 0</code> прибавляем его к сумме и увеличиваем количество положительных.</li>
+<li><strong>При любом числе:</strong> увеличиваем <code>processed_count</code>. Эта строка находится вне внутреннего <code>if</code>, иначе отрицательные числа не засчитывались бы как обработанные вводы.</li>
+<li><strong>После цикла:</strong> выводим общие результаты. Эти <code>print</code> остаются внутри внешнего <code>if</code>, но уже находятся вне <code>while</code>.</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как накапливается результат">
+<table>
+<caption>Как накапливается результат</caption>
+<thead><tr><th scope="col">Введённое число</th><th scope="col">Обработано</th><th scope="col">Положительных</th><th scope="col">Сумма</th></tr></thead>
+<tbody>
+<tr><td>5</td><td>1</td><td>1</td><td>5</td></tr>
+<tr><td>-2</td><td>2</td><td>1</td><td>5</td></tr>
+<tr><td>7</td><td>3</td><td>2</td><td>12</td></tr>
+<tr><td>-4</td><td>4</td><td>2</td><td>12</td></tr>
+<tr><td>3</td><td>5</td><td>3</td><td>15</td></tr>
+<tr><td>8</td><td>6</td><td>4</td><td>23</td></tr>
+<tr><td>-1</td><td>7</td><td>4</td><td>23</td></tr>
+<tr><td>2</td><td>8</td><td>5</td><td>25</td></tr>
+<tr><td>-6</td><td>9</td><td>5</td><td>25</td></tr>
+<tr><td>10</td><td>10</td><td>6</td><td>35</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="accumulator-reset-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="accumulator-reset-title">Не обнуляйте результат внутри цикла</h3>
+  <div class="special-block__body">
+<p>Если присваивать <code>positive_sum = 0</code> на каждом проходе, <strong>предыдущая сумма потеряется</strong>. Начальное значение задаём перед <code>while</code>, а внутри только прибавляем.</p>
+  </div>
+</aside>
+<p>Количество запросов здесь известно заранее, но сами числа заранее неизвестны. Попробуйте вводить только отрицательные числа: количество положительных и их сумма останутся равными нулю. Если количество запросов неположительное, программа не запросит числа и сообщит об ошибке.</p>
+        </div>
+      </section>
+      <section id="repeated-input">
+        <h2>06 / Повторный ввод данных</h2>
+        <div class="section-content">
+<p>Теперь количество повторений заранее неизвестно. Пользователь вводит команды, пока не напишет <code>stop</code>. Сначала получим команду перед циклом: переменная должна существовать к моменту первой проверки. В конце тела запросим следующую.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Команды до stop: остановка на пятом запросе</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Команды до stop: остановка на пятом запросе">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">command = input(&quot;Command: &quot;)
+
+while command != &quot;stop&quot;:
+    print(f&quot;Received: {command}&quot;)
+    command = input(&quot;Command: &quot;)
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Команды до stop: остановка на пятом запросе">Command: help
+Received: help
+Command: status
+Received: status
+Command: open
+Received: open
+Command: back
+Received: back
+Command: stop
+Program end</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/06-CommandWhile.gif"
+      alt="Первый запрос перед циклом, четыре итерации и завершение после ввода stop"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 6. Повторный ввод до команды stop</figcaption>
+</figure>
+<p>Первый запрос происходит ещё до <code>while</code>. Команда <strong>help</strong> проходит проверку, выводится и сменяется результатом следующего <code>input</code>. Так обрабатываются четыре команды. На пятом запросе получаем <strong>stop</strong>. Текущая итерация заканчивается, условие становится ложным, и новая итерация не начинается. Само слово <strong>stop</strong> как <strong>Received</strong> не выводится.</p>
+        </div>
+      </section>
+      <section id="infinite-break">
+        <h2>07 / Бесконечный цикл и break</h2>
+        <div class="section-content">
+<p>Цикл завершается через условие только тогда, когда оно становится ложным. Если данные не меняются или меняются в неверную сторону, повторение может продолжаться бесконечно. Два следующих фрагмента намеренно ошибочны.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="unchanged-counter-title">
+  <div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+  <h3 class="special-block__title" id="unchanged-counter-title">Счётчик не изменяется</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ошибка: нет изменения num</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: нет изменения num">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 3:
+    print(num)</code></pre>
+</div>
+<p><code>num</code> остаётся равным 0, поэтому проверка каждый раз истинна. Терминал непрерывно заполняется нулями.</p>
+  </div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="wrong-direction-title">
+  <div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+  <h3 class="special-block__title" id="wrong-direction-title">Шаг уводит от остановки</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ошибка: движение вниз вместо движения вверх</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: движение вниз вместо движения вверх">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 3:
+    print(num)
+    num -= 1</code></pre>
+</div>
+<p>Значения 0, -1, -2 и следующие всё ещё меньше 3. Самого изменения переменной недостаточно: оно должно приближать к ложному условию.</p>
+  </div>
+</aside>
+<p>Если запустили такой пример, переключитесь в терминал программы и нажмите <strong>Ctrl + C</strong>. Обычно Python остановит выполнение и покажет <code>KeyboardInterrupt</code>. Это ручное прерывание программы; после него исправьте причину и запустите файл заново.</p>
+<p>Иногда требуется специально сделать условие цикла неизменяемым. Но чтобы была возможность прервать такой цикл изнутри, используют оператор <code>break</code>.</p>
+<aside class="special-block special-block--definition" aria-labelledby="break-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="break-definition-title">Оператор break</h3>
+  <div class="special-block__body">
+<p><code>break</code> немедленно завершает ближайший содержащий его цикл. Оставшиеся команды тела пропускаются, выполнение продолжается после цикла. Условие <code>while</code> при таком выходе не обязано стать ложным.</p>
+  </div>
+</aside>
+<p>Запись <code>while True:</code> всегда проходит проверку. Это полезно, если решение о выходе принимается после ввода внутри тела. Для наших команд поместим <code>input</code> в начало и выйдем через <code>break</code> сразу после <strong>stop</strong>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Те же команды с break</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Те же команды с break">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">while True:
+    command = input(&quot;Command: &quot;)
+    if command == &quot;stop&quot;:
+        break
+    print(f&quot;Received: {command}&quot;)
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Те же команды с break">Command: help
+Received: help
+Command: status
+Received: status
+Command: open
+Received: open
+Command: back
+Received: back
+Command: stop
+Program end</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/07-CommandBreak.gif"
+      alt="На пятой итерации команда stop вызывает break и переход к Program end"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 7. Завершение цикла через break</figcaption>
+</figure>
+<p>После ввода <strong>stop</strong> выполняется <code>break</code>. Строка <code>print(f"Received: {command}")</code> в этой итерации уже не запускается, а <code>print("Program end")</code> запускается. В отличие от предыдущей версии, здесь пять итераций: пятый ввод находится внутри тела. Видимый результат у программ одинаковый.</p>
+<p>Если <strong>stop</strong> введён первым, будет одна итерация с немедленным выходом. В версии из предыдущего раздела при таком вводе было ноль итераций. Считайте проходы тела, а не количество напечатанных сообщений.</p>
+        </div>
+      </section>
+      <section id="continue">
+        <h2>08 / Пропуск итерации: continue</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="continue-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="continue-definition-title">Переход к следующей проверке</h3>
+  <div class="special-block__body">
+<p><code>continue</code> пропускает оставшуюся часть текущего тела и сразу возвращает выполнение к условию <code>while</code>. Цикл целиком при этом не завершается. Если условие снова истинно, начинается следующая итерация.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Пропускаем вывод числа 3</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пропускаем вывод числа 3">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 5:
+    num += 1
+    if num == 3:
+        continue
+    print(num)
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Пропускаем вывод числа 3">1
+2
+4
+5
+Program end</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/08-ContinueSkip.gif"
+      alt="Счётчик увеличивается до проверки; continue пропускает число 3, выводятся 1, 2, 4, 5"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 8. Пропуск вывода через continue</figcaption>
+</figure>
+<p>На третьей итерации <code>num</code> становится равным 3 и срабатывает <code>continue</code>. Только <code>print</code> этой итерации пропущен. Новая проверка <code>3 &lt; 5</code> истинна, поэтому продолжаем с увеличения до 4. Когда <code>num</code> увеличится с 4 до 5, <code>print</code> всё ещё выполнится: условие проверялось до этого увеличения.</p>
+<p>Тот же пример, но вместо <code>continue</code> подставим <code>break</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>В том же месте стоит break</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: В том же месте стоит break">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 5:
+    num += 1
+    if num == 3:
+        break
+    print(num)
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: В том же месте стоит break">1
+2
+Program end</pre>
+  </div>
+</div>
+<p>Теперь при <code>num = 3</code> повторение прекращается полностью. Значения 4 и 5 уже не обрабатываются. Оба оператора пропускают остаток текущего тела, но <code>continue</code> возвращает к условию, а <code>break</code> выходит за цикл.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="continue-trap-title">
+  <div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+  <h3 class="special-block__title" id="continue-trap-title">Обновление оказалось после continue</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ошибка: num застревает на 3</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: num застревает на 3">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 5:
+    if num == 3:
+        continue
+    print(num)
+    num += 1</code></pre>
+</div>
+<p>Программа выведет 0, 1, 2, затем <code>num</code> станет равным 3. Каждый следующий проход попадёт в <code>continue</code> до увеличения. Условие останется истинным, а вывода больше не будет. Бесконечный цикл может выглядеть как зависание без сообщений. Остановите его через <strong>Ctrl + C</strong>.</p>
+  </div>
+</aside>
+<p><code>continue</code> особенно полезен, когда после проверки идут ещё несколько действий. Представим учебное подтверждение заявки. Нужно последовательно ввести код приглашения, группу и согласие. Любая неудачная проверка начинает всю цепочку заново с первого запроса.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Проверяем три ответа подряд</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем три ответа подряд">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">while True:
+    invite_code = input(&quot;Invite code: &quot;)
+    if invite_code != &quot;PY13&quot;:
+        print(&quot;Invalid invite code&quot;)
+        continue
+
+    group = input(&quot;Group: &quot;)
+    if group != &quot;A&quot;:
+        print(&quot;Invalid group&quot;)
+        continue
+
+    confirmation = input(&quot;Confirm (yes): &quot;)
+    if confirmation != &quot;yes&quot;:
+        print(&quot;Not confirmed&quot;)
+        continue
+
+    print(&quot;Request accepted&quot;)
+    break
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Проверяем три ответа подряд">Invite code: BAD
+Invalid invite code
+Invite code: PY13
+Group: B
+Invalid group
+Invite code: PY13
+Group: A
+Confirm (yes): no
+Not confirmed
+Invite code: PY13
+Group: A
+Confirm (yes): yes
+Request accepted
+Program end</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/09-InviteValidation.gif"
+      alt="Ошибки кода, группы и согласия возвращают к началу ввода; успешная заявка завершает цикл"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 9. Проверка заявки с continue</figcaption>
+</figure>
+<ol class="content-list">
+<li><strong>Попытка 1</strong>: <strong>BAD</strong> не подходит. Запросы группы и согласия пропускаются.</li>
+<li><strong>Попытка 2</strong>: <strong>PY13</strong> подходит, <strong>B</strong> не подходит. Согласие не запрашивается, следующий запрос снова <strong>Invite code</strong>.</li>
+<li><strong>Попытка 3</strong>: <strong>PY13</strong> и <strong>A</strong> подходят, <strong>no</strong> не подходит. Возвращаемся к началу тела.</li>
+<li><strong>Попытка 4</strong>: <strong>PY13</strong>, <strong>A</strong> и <strong>yes</strong> проходят проверки. Заявка принята, <code>break</code> завершает цикл.</li>
+</ol>
+        </div>
+      </section>
+      <section id="termination-conditions">
+        <h2>09 / Несколько условий завершения</h2>
+        <div class="section-content">
+<p>Пусть на ответ на вопрос «сколько будет 2 + 2?» разрешено три попытки. Есть две причины остановки: ответ оказался верным или закончились попытки. Чтобы <strong>продолжать</strong>, одновременно нужны оставшиеся попытки и отсутствие успеха. Поэтому в условии продолжения используется <code>and</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Составное условие и флаг</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Составное условие и флаг">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">attempts_left = 3
+is_correct = False
+
+while attempts_left &gt; 0 and not is_correct:
+    answer = input(&quot;2 + 2 = &quot;)
+    attempts_left -= 1
+    is_correct = answer == &quot;4&quot;
+    if not is_correct:
+        print(f&quot;Wrong answer. Attempts left: {attempts_left}&quot;)
+
+if is_correct:
+    print(&quot;Correct!&quot;)
+else:
+    print(&quot;No attempts left&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Составное условие и флаг">2 + 2 = 5
+Wrong answer. Attempts left: 2
+2 + 2 = 4
+Correct!</pre>
+  </div>
+</div>
+<p>Флаг <code>is_correct</code> начинается с <code>False</code>: правильного ответа ещё нет. После каждого ввода сравнение обновляет его. Число попыток уменьшается при любом ответе. Условие <code>while</code> вычисляется заново, поэтому цикл видит оба изменившихся значения.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Когда продолжаем задавать вопрос">
+<table>
+<caption>Когда продолжаем задавать вопрос</caption>
+<thead><tr><th scope="col">Есть попытки</th><th scope="col">Ответ верный</th><th scope="col">Продолжаем</th></tr></thead>
+<tbody>
+<tr><td>Да</td><td>Нет</td><td>Да</td></tr>
+<tr><td>Да</td><td>Да</td><td>Нет: успех</td></tr>
+<tr><td>Нет</td><td>Нет</td><td>Нет: попытки закончились</td></tr>
+<tr><td>Нет</td><td>Да</td><td>Нет: успех на последней попытке</td></tr>
+</tbody>
+</table>
+</div>
+<p>Последний случай важен: если правильный ответ дан с третьей попытки, <code>attempts_left</code> уже равен 0, но результат всё равно успешный. После цикла проверяем именно <strong>флаг</strong>, а не только количество оставшихся попыток.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>То же правило с досрочным выходом</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: То же правило с досрочным выходом">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">attempts_left = 3
+is_correct = False
+
+while attempts_left &gt; 0:
+    answer = input(&quot;2 + 2 = &quot;)
+    attempts_left -= 1
+    if answer == &quot;4&quot;:
+        is_correct = True
+        break
+    print(f&quot;Wrong answer. Attempts left: {attempts_left}&quot;)
+
+if is_correct:
+    print(&quot;Correct!&quot;)
+else:
+    print(&quot;No attempts left&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: То же правило с досрочным выходом">2 + 2 = 5
+Wrong answer. Attempts left: 2
+2 + 2 = 4
+Correct!</pre>
+  </div>
+</div>
+<p>В первой версии обе причины остановки видны в строке <code>while</code>. В этой же версии программы условие отвечает за лимит, а <code>break</code> останавливает цикл в момент успеха. Флаг остаётся полезен для сообщения после цикла. Выбирайте запись, в которой проще проследить, что меняется и почему произойдёт выход.</p>
+<aside class="special-block special-block--warning" aria-labelledby="attempts-or-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="attempts-or-title">Не заменяйте and на or</h3>
+  <div class="special-block__body">
+<p>При <code>attempts_left &gt; 0 or not is_correct</code> цикл может продолжиться даже после исчерпания попыток, если ответа всё ещё нет. Для продолжения нужны оба условия, а для остановки достаточно нарушения любого из них.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="nested-loops">
+        <h2>10 / Вложенные циклы while</h2>
+        <div class="section-content">
+<p>Одно повторение может содержать другое. Нарисуем прямоугольник из звёздочек шириной 5 и высотой 3. Внешний цикл отвечает за строки, внутренний за символы в текущей строке. Для каждого направления нужен свой счётчик.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Прямоугольник 5 × 3</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Прямоугольник 5 × 3">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">width = 5
+height = 3
+row = 0
+
+while row &lt; height:
+    column = 0
+    while column &lt; width:
+        print(&quot;*&quot;, end=&quot;&quot;)
+        column += 1
+    print()
+    row += 1</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Прямоугольник 5 × 3">*****
+*****
+*****</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/13/10-NestedRectangle.gif"
+      alt="Внешний цикл создаёт три строки, внутренний печатает пять звёздочек в каждой строке"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 10. Прямоугольник из звёздочек</figcaption>
+</figure>
+<p>Обычно <code>print</code> завершает вывод переводом строки. Аргумент <code>end=""</code> заменяет это окончание пустой строкой, поэтому звёздочки появляются рядом. Отдельный <code>print()</code> без аргументов переводит вывод на следующую строку после пяти звёздочек.</p>
+<ol class="content-list">
+<li><code>row</code> равен 0. Внешняя проверка истинна; задаём <code>column = 0</code>.</li>
+<li>Внутренний <code>while</code> проходит пять раз. Значения <code>column</code> перед печатью: 0, 1, 2, 3, 4.</li>
+<li>При <code>column = 5</code> внутренняя проверка ложна. Выполняем <code>print()</code> и увеличиваем <code>row</code> до 1.</li>
+<li>Внешняя проверка снова истинна. Заново задаём <code>column = 0</code>, иначе печатать новую строку было бы нечем.</li>
+<li>После строки с <code>row = 2</code> увеличиваем <code>row</code> до 3. Внешняя проверка ложна, оба цикла закончены.</li>
+</ol>
+<p>Всего три итерации внешнего цикла и по пять внутренних на каждую: звёздочка печатается <code>3 * 5</code>, то есть 15 раз. Внутренний цикл каждый раз завершается прежде, чем внешний перейдёт к следующей строке.</p>
+<aside class="special-block special-block--warning" aria-labelledby="inner-reset-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="inner-reset-title">Где обнулять внутренний счётчик</h3>
+  <div class="special-block__body">
+<p><code>column = 0</code> должен находиться внутри внешнего цикла перед внутренним. Если перенести его перед обоими циклами, после первой строки <code>column</code> останется равным 5. В следующих строках внутренний цикл не выполнится ни разу.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="nested-control">
+        <h2>11 / break и continue во вложенных циклах</h2>
+        <div class="section-content">
+<p>Когда цикл находится внутри другого, <code>break</code> и <code>continue</code> относятся к <strong>ближайшему циклу, внутри тела которого записаны</strong>. Условная конструкция <code>if</code> не является циклом и не меняет это правило. Внутренний <code>break</code> не останавливает внешний <code>while</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>break во внутреннем цикле</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: break во внутреннем цикле">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">row = 1
+while row &lt;= 2:
+    column = 1
+    while column &lt;= 3:
+        if column == 2:
+            break
+        print(f&quot;Cell: {row}, {column}&quot;)
+        column += 1
+    print(f&quot;Row {row} done&quot;)
+    row += 1
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: break во внутреннем цикле">Cell: 1, 1
+Row 1 done
+Cell: 2, 1
+Row 2 done
+Program end</pre>
+  </div>
+</div>
+<ol class="content-list">
+<li>При <code>row = 1</code> и <code>column = 1</code> выводим ячейку и увеличиваем <code>column</code> до 2.</li>
+<li>В следующем проходе внутреннего цикла срабатывает <code>break</code>. Печать ячейки и увеличение <code>column</code> пропускаются.</li>
+<li>Продолжаем внутри внешнего тела: печатаем <strong>Row 1 done</strong> и увеличиваем row.</li>
+<li>Для <code>row = 2</code> обнуляем ход внутреннего счётчика присваиванием <code>column = 1</code>. Всё повторяется. Внешний цикл завершится только при <code>row = 3</code>.</li>
+</ol>
+<p>Возьмём тот же пример и заменим <code>break</code> на <code>continue</code>, и для наглядности переместим <code>column += 1</code> до условной конструкции.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>continue во внутреннем цикле</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: continue во внутреннем цикле">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">row = 1
+while row &lt;= 2:
+    column = 0
+    while column &lt; 3:
+        column += 1
+        if column == 2:
+            continue
+        print(f&quot;Cell: {row}, {column}&quot;)
+    print(f&quot;Row {row} done&quot;)
+    row += 1
+
+print(&quot;Program end&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: continue во внутреннем цикле">Cell: 1, 1
+Cell: 1, 3
+Row 1 done
+Cell: 2, 1
+Cell: 2, 3
+Row 2 done
+Program end</pre>
+  </div>
+</div>
+<p><code>continue</code> при <code>column = 2</code> возвращает к <code>while column &lt; 3</code>. При этом <code>row</code> остаётся прежним, до сообщения <strong>Row done</strong> выполнение ещё не дошло. Затем <code>column</code> увеличивается до 3 и ячейка печатается. Только после завершения внутреннего цикла выполняются сообщение о строке и изменение <code>row</code>.</p>
+<p>Внешний цикл не получает скрытой команды выхода. Если нужно остановить оба уровня, можно сохранить флаг завершения и проверить его во внешнем цикле, как мы делали с <code>is_correct</code>.</p>
+        </div>
+      </section>
+      <section id="menu-program">
+        <h2>12 / Собираем программу с меню</h2>
+        <div class="section-content">
+<p>Соберём учебную программу с двумя меню. В меню входа пользователь может войти в аккаунт или завершить программу. После верного логина и пароля появляется меню действий: посмотреть баланс, пополнить его, снять средства или выйти из аккаунта обратно в меню входа. Баланс храним целым числом условных единиц; начальное значение равно 1000.</p>
+<p>Здесь два вложенных цикла: внешний повторяет меню входа, внутренний повторяет меню действий. До внутреннего цикла выполнение доходит только после проверки логина и пароля. Используем учебные данные <code>student</code> и <code>python13</code>. Это демонстрация управления выполнением: пароль виден при вводе и хранится прямо в файле, поэтому реальные пароли сюда не вводим.</p>
+<p>Выбор пункта оставляем строкой. Так любой текст, пустой ввод или число вне списка попадут в <code>else</code>, а не вызовут ошибку преобразования <code>int</code>. Сумму пока вводим целым числом; проверим, что она положительная и что при снятии хватает баланса.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Полная программа с меню</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Полная программа с меню">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">expected_login = &quot;student&quot;
+expected_password = &quot;python13&quot;
+balance = 1000
+
+while True:
+    print(&quot;1. Log in&quot;)
+    print(&quot;0. Exit program&quot;)
+    login_choice = input(&quot;Choose an option: &quot;)
+    print(&quot;\033[2J\033[H&quot;, end=&quot;&quot;)
+
+    if login_choice == &quot;0&quot;:
+        print(&quot;Goodbye!&quot;)
+        break
+    elif login_choice != &quot;1&quot;:
+        print(&quot;Unknown option&quot;)
+        continue
+
+    login = input(&quot;Login: &quot;)
+    password = input(&quot;Password: &quot;)
+    if not (login == expected_login and password == expected_password):
+        print(&quot;Invalid login or password&quot;)
+        continue
+
+    print(&quot;Login successful&quot;)
+    while True:
+        print(&quot;1. Personal account&quot;)
+        print(&quot;2. Deposit&quot;)
+        print(&quot;3. Withdraw&quot;)
+        print(&quot;0. Log out&quot;)
+        choice = input(&quot;Choose an action: &quot;)
+        print(&quot;\033[2J\033[H&quot;, end=&quot;&quot;)
+
+        if choice == &quot;1&quot;:
+            print(f&quot;User: {login}&quot;)
+            print(f&quot;Balance: {balance}&quot;)
+        elif choice == &quot;2&quot;:
+            amount = int(input(&quot;Deposit amount: &quot;))
+            if amount &gt; 0:
+                balance += amount
+                print(f&quot;Balance: {balance}&quot;)
+            else:
+                print(&quot;Amount must be positive&quot;)
+        elif choice == &quot;3&quot;:
+            amount = int(input(&quot;Withdraw amount: &quot;))
+            if amount &lt;= 0:
+                print(&quot;Amount must be positive&quot;)
+            elif amount &gt; balance:
+                print(&quot;Not enough funds&quot;)
+            else:
+                balance -= amount
+                print(f&quot;Balance: {balance}&quot;)
+        elif choice == &quot;0&quot;:
+            print(&quot;Logged out&quot;)
+            break
+        else:
+            print(&quot;Unknown action&quot;)</code></pre>
+</div>
+<p>Строка <code>print("\033[2J\033[H", end="")</code> выполняется сразу после каждого выбора в обоих меню, поэтому очищение происходит для всех пунктов, включая выход и неизвестную команду. В терминале с поддержкой ANSI первая последовательность очищает экран, вторая переносит курсор в начало. <code>end=""</code> не добавляет перевод строки.</p>
+<ol class="content-list">
+<li>Внешний <code>while</code> показывает меню входа. Пункт 0 выполняет <code>break</code> этого цикла и завершает программу. Неизвестный пункт выполняет <code>continue</code> и возвращает к меню входа без запроса логина и пароля.</li>
+<li>Пункт 1 запрашивает логин и пароль. <code>and</code> требует совпадения обоих значений. Если хотя бы одно неверно, <code>not</code> делает условие истинным: выводим ошибку и через <code>continue</code> возвращаемся к меню входа. Внутренний цикл при этом не запускается.</li>
+<li>После успешного входа запускается внутренний <code>while</code>. Каждый его проход показывает меню действий и получает новый <code>choice</code>. После очистки экрана <code>if / elif</code> выбирает подходящий пункт.</li>
+<li><code>balance</code> задаётся перед внешним циклом один раз. Поэтому баланс сохраняется и при повторном показе меню действий, и после выхода из аккаунта и нового входа.</li>
+<li>Пункт 1 показывает кабинет: логин и текущее значение баланса. Пункт 2 прибавляет допустимую сумму. Пункт 3 сначала отклоняет неположительную сумму, затем проверяет доступные средства.</li>
+<li>В ветке неизвестного пункта выводится <strong>Unknown action</strong>. После неё, как и после пунктов 1, 2, 3, тело заканчивается и меню появляется снова.</li>
+<li>Пункт 0 в меню действий выполняет <code>break</code> только внутреннего цикла. После него тело внешнего цикла заканчивается, начинается его следующая итерация и снова появляется меню входа. Чтобы открыть действия ещё раз, нужно заново ввести верные логин и пароль.</li>
+</ol>
+<p>Поскольку экран очищается, предыдущий диалог не остаётся целиком видимым. Ниже показано, что должно произойти в последовательном пробном запуске. Нажимайте Enter после каждого значения.</p>
+<p>Если в поле суммы написать текст вместо целого числа, int завершит программу с ValueError. Этот пример пока проверяет числовые ограничения суммы и любые неправильные пункты меню. Обработку ошибок преобразования изучим отдельно. Не добавляйте неразобранные конструкции только ради большого примера: сначала уверенно проследите оба цикла и каждую ветку.</p>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>13 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-iteration-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-iteration-title">Что такое итерация?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-iteration-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-iteration-1">
+          <input class="visually-hidden" id="check-iteration-1" type="checkbox" name="answers" value="1" aria-describedby="check-iteration-1-feedback" />
+          <span>Один проход тела цикла</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-iteration-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Каждое новое выполнение тела считается очередной итерацией.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-iteration-2">
+          <input class="visually-hidden" id="check-iteration-2" type="checkbox" name="answers" value="2" aria-describedby="check-iteration-2-feedback" />
+          <span>Полное выполнение программы от начала до конца</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-iteration-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В программе может быть много циклов и много итераций каждого.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-iteration-3">
+          <input class="visually-hidden" id="check-iteration-3" type="checkbox" name="answers" value="3" aria-describedby="check-iteration-3-feedback" />
+          <span>Любая проверка условия, даже если тело не выполняется</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-iteration-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Ложная проверка while не запускает итерацию. Проверок может быть больше, чем проходов тела.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-iteration-4">
+          <input class="visually-hidden" id="check-iteration-4" type="checkbox" name="answers" value="4" aria-describedby="check-iteration-4-feedback" />
+          <span>Только увеличение счётчика на единицу</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-iteration-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Тело может содержать любые изученные команды, а счётчика может вообще не быть.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-ten-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-ten-title">Сколько итераций выполнится?</h3>
+  <div class="special-block__body">
+<p>Введите количество проходов тела, а не итоговое значение num.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Считаем проходы</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Считаем проходы">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 10:
+    num += 1</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="10"
+  data-success="Верно. Тело выполняется для num от 0 до 9 включительно: десять раз. При num = 10 проверка ложна." data-hint="Посчитайте, сколько раз идёт проход сверху вниз."
+  autocomplete="off" aria-labelledby="check-ten-title">
+  <label for="check-ten-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-ten-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-ten-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-ten-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-zero-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-zero-title">Сколько итераций будет здесь?</h3>
+  <div class="special-block__body">
+<p>Проверьте условие с начальным значением до выполнения тела.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Проверяем вход в цикл</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем вход в цикл">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 10
+while num &lt; 10:
+    num -= 1</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="0"
+  data-success="Верно. При num = 10 условие num &lt; 10 сразу ложно. Уменьшение внутри не выполняется." data-hint="Не выполняйте num -= 1 до проверки: эта строка находится внутри тела."
+  autocomplete="off" aria-labelledby="check-zero-title">
+  <label for="check-zero-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-zero-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-zero-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-zero-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-break-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-break-title">Как немедленно выйти из цикла?</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово завершает ближайший цикл прямо из его тела?</p>
+<form class="quiz" data-quiz="text" data-answer="break"
+  data-success="Верно. break переносит выполнение за ближайший цикл." data-hint="Нужно ключевое слово досрочного выхода, а не перехода к новой итерации."
+  autocomplete="off" aria-labelledby="check-break-title">
+  <label for="check-break-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-break-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-break-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-break-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-continue-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-continue-title">Как пропустить остаток текущего тела?</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово возвращает выполнение к проверке <code>while</code>, пропуская оставшиеся команды текущей итерации?</p>
+<form class="quiz" data-quiz="text" data-answer="continue"
+  data-success="Верно. continue возвращает к условию ближайшего цикла." data-hint="Нужно ключевое слово продолжения цикла, а не его полного завершения."
+  autocomplete="off" aria-labelledby="check-continue-title">
+  <label for="check-continue-answer">Введите ответ без пробелов, кавычек и точки в конце. Сохраняйте регистр Python.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-continue-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-continue-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-continue-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-infinite-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-infinite-title">Почему цикл не останавливается?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Найдите пропущенное обновление</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Найдите пропущенное обновление">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">num = 0
+while num &lt; 5:
+    if num == 2:
+        continue
+    print(num)
+    num += 1</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-infinite-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-infinite-1">
+          <input class="visually-hidden" id="check-infinite-1" type="checkbox" name="answers" value="1" aria-describedby="check-infinite-1-feedback" />
+          <span>При <code>num = 2</code> оператор <code>continue</code> пропускает увеличение num</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-infinite-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После значения 1 счётчик становится равным 2. Теперь каждый проход уходит в <code>continue</code> до изменения счётчика.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-infinite-2">
+          <input class="visually-hidden" id="check-infinite-2" type="checkbox" name="answers" value="2" aria-describedby="check-infinite-2-feedback" />
+          <span><code>while</code> не умеет проверять условие с оператором &lt;</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-infinite-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сравнение с &lt; допустимо. Проблема в том, что значение больше не меняется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-infinite-3">
+          <input class="visually-hidden" id="check-infinite-3" type="checkbox" name="answers" value="3" aria-describedby="check-infinite-3-feedback" />
+          <span><code>print</code> автоматически начинает новую итерацию</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-infinite-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>print</code> только выводит значение. Переход здесь происходит из-за <code>continue</code>.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-infinite-4">
+          <input class="visually-hidden" id="check-infinite-4" type="checkbox" name="answers" value="4" aria-describedby="check-infinite-4-feedback" />
+          <span>Любой цикл с <code>continue</code> бесконечный</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-infinite-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>continue</code> не мешает завершению, если нужные переменные меняются и условие может стать ложным.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-nested-break-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-nested-break-title">Какой цикл прервёт break?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Выход из вложенного цикла</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выход из вложенного цикла">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">row = 0
+while row &lt; 3:
+    column = 0
+    while column &lt; 5:
+        if column == 2:
+            break
+        print(row, column)
+        column += 1
+    row += 1
+
+print(&quot;Done&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-nested-break-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-nested-break-1">
+          <input class="visually-hidden" id="check-nested-break-1" type="checkbox" name="answers" value="1" aria-describedby="check-nested-break-1-feedback" />
+          <span>Только внутренний цикл по column</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-nested-break-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это ближайший содержащий break цикл. После него выполнится row += 1.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-nested-break-2">
+          <input class="visually-hidden" id="check-nested-break-2" type="checkbox" name="answers" value="2" aria-describedby="check-nested-break-2-feedback" />
+          <span>Только внешний цикл по row</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-nested-break-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>break расположен внутри тела внутреннего while, поэтому до внешнего не распространяется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-nested-break-3">
+          <input class="visually-hidden" id="check-nested-break-3" type="checkbox" name="answers" value="3" aria-describedby="check-nested-break-3-feedback" />
+          <span>Оба цикла одновременно</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-nested-break-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Один break завершает один ближайший цикл. Внешний продолжает работу.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-nested-break-4">
+          <input class="visually-hidden" id="check-nested-break-4" type="checkbox" name="answers" value="4" aria-describedby="check-nested-break-4-feedback" />
+          <span>Всю программу</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-nested-break-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После завершённого цикла выполнение продолжается. Здесь позже будет выведено Done.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+Задачи, которые нужно выполнить:
+
+- [01-sequence-with-step](01/task/README.md)
+- [02-filtered-range](02/task/README.md)
+- [03-range-sum](03/task/README.md)
+- [04-number-sign-counts](04/task/README.md)
+- [05-average-grade](05/task/README.md)
+- [06-number-in-range](06/task/README.md)
+- [07-longest-word](07/task/README.md)
+- [08-sum-with-skips](08/task/README.md)
+- [09-filled-rectangle](09/task/README.md)
+- [10-length-converter](10/task/README.md)
+- [11-score-categories](11/task/README.md)
+- [12-pin-atm](12/task/README.md)
+- [13-purchase-discount](13/task/README.md)
+- [14-three-account-bank](14/task/README.md)
+- [15-transaction-digits](15/task/README.md)

@@ -1,0 +1,1 @@
+.venv\Scripts\python.exe scripts\folder_names.py students

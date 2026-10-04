@@ -1,0 +1,2339 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Цикл for в Python для самостоятельного изучения: range, границы и шаг, пустые диапазоны, break, continue, вложенные циклы, выбор между for и while и интерактивная самопроверка." />
+    <title>15 - for Loop</title>
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">15 - for Loop</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-iteration-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-iteration-title">Что такое итерация?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-iteration-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-iteration-option-1">
+          <input class="visually-hidden" id="review-iteration-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-iteration-option-1-feedback" />
+          <span>Одно выполнение тела цикла.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-iteration-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Итерация означает один проход по телу цикла. За время работы цикла таких проходов может быть много.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-iteration-option-2">
+          <input class="visually-hidden" id="review-iteration-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-iteration-option-2-feedback" />
+          <span>Полное выполнение всей программы.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-iteration-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Программа может содержать несколько циклов и много отдельных итераций.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-iteration-option-3">
+          <input class="visually-hidden" id="review-iteration-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-iteration-option-3-feedback" />
+          <span>Только проверка условия цикла.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-iteration-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Проверка условия решает, начинать ли проход по телу while. Если условие сразу ложно, тело не выполнится ни разу.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-iteration-option-4">
+          <input class="visually-hidden" id="review-iteration-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-iteration-option-4-feedback" />
+          <span>Объявление новой переменной.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-iteration-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Переменную можно создать и без цикла. Итерацией называют проход по телу цикла.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-while-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-while-title">Повторение по условию</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово начинает цикл, который повторяет действия, пока условие истинно?</p>
+<form class="quiz" data-quiz="text" data-answer="while"
+  data-success="Верно. while проверяет условие перед каждой итерацией." data-hint="Вспомните английское слово со значением «пока»."
+  autocomplete="off" aria-labelledby="review-while-title">
+  <label for="review-while-answer">Введите ключевое слово Python строчными английскими буквами, без пробелов и кавычек.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-while-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-while-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-while-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-break-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-break-title">Досрочное завершение</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово немедленно завершает ближайший охватывающий цикл, даже если его условие ещё истинно?</p>
+<form class="quiz" data-quiz="text" data-answer="break"
+  data-success="Верно. break завершает цикл, в теле которого находится." data-hint="Нужно слово, которое означает «прервать». Оно завершает цикл целиком."
+  autocomplete="off" aria-labelledby="review-break-title">
+  <label for="review-break-answer">Введите ключевое слово Python строчными английскими буквами, без пробелов и кавычек.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-break-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-break-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-break-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-continue-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-continue-title">Переход к следующей итерации</h3>
+  <div class="special-block__body">
+<p>Какое ключевое слово пропускает оставшиеся команды текущей итерации и передаёт управление к началу следующей?</p>
+<form class="quiz" data-quiz="text" data-answer="continue"
+  data-success="Верно. continue пропускает остаток тела. В while после этого снова проверяется условие." data-hint="Не завершайте весь цикл. Вспомните английское слово со значением «продолжить»."
+  autocomplete="off" aria-labelledby="review-continue-title">
+  <label for="review-continue-answer">Введите ключевое слово Python строчными английскими буквами, без пробелов и кавычек.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-continue-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-continue-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-continue-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-five-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-five-title">Сколько раз выполнится тело?</h3>
+  <div class="special-block__body">
+<p>Посчитайте именно выполнения тела, а не проверки условия.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Счётчик от нуля</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Счётчик от нуля">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">count = 0
+while count &lt; 5:
+    print(count)
+    count += 1</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="5"
+  data-success="Верно. Тело выполняется при count, равном 0, 1, 2, 3 и 4. При 5 условие уже ложно." data-hint="Выпишите значения count, для которых count &lt; 5. Начальное значение 0 тоже подходит."
+  autocomplete="off" aria-labelledby="review-five-title">
+  <label for="review-five-answer">Введите целое число цифрами, без пробелов и точки в конце.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-five-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-five-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-five-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-zero-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-zero-title">Проверка перед первым проходом</h3>
+  <div class="special-block__body">
+<p>Сколько итераций выполнит этот цикл?</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Условие на старте</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Условие на старте">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">count = 5
+while count &lt; 5:
+    print(count)
+    count += 1</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="0"
+  data-success="Верно. 5 &lt; 5 ложно уже при первой проверке, поэтому тело не выполняется." data-hint="Сначала подставьте начальное значение в условие. Нужно ли вообще заходить в тело?"
+  autocomplete="off" aria-labelledby="review-zero-title">
+  <label for="review-zero-answer">Введите целое число цифрами, без пробелов и точки в конце.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-zero-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-zero-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-zero-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-outer-break-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-outer-break-title">Какой цикл прервёт break?</h3>
+  <div class="special-block__body">
+<p>Обратите внимание на отступ строки <code>break</code>. Внутренний цикл к этому моменту уже завершил свою работу.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Два цикла while</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Два цикла while">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">row = 1
+while row &lt;= 3:
+    column = 1
+    while column &lt;= 2:
+        print(row, column)
+        column += 1
+    break
+print(&quot;Done&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-outer-break-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-outer-break-option-1">
+          <input class="visually-hidden" id="review-outer-break-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-outer-break-option-1-feedback" />
+          <span>Внешний цикл <code>while row &lt;= 3</code>.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-outer-break-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span><code>break</code> находится в теле внешнего while, после внутреннего цикла. Выполнение продолжится с <code>print("Done")</code>.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-outer-break-option-2">
+          <input class="visually-hidden" id="review-outer-break-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-outer-break-option-2-feedback" />
+          <span>Внутренний цикл <code>while column &lt;= 2</code>.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-outer-break-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Строка break не входит в тело внутреннего цикла: у неё меньше отступ. Внутренний while уже закончился по своему условию.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-outer-break-option-3">
+          <input class="visually-hidden" id="review-outer-break-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-outer-break-option-3-feedback" />
+          <span>Оба цикла одновременно.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-outer-break-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>break завершает только ближайший цикл, в тело которого он входит. Здесь это внешний while.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-outer-break-option-4">
+          <input class="visually-hidden" id="review-outer-break-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-outer-break-option-4-feedback" />
+          <span>Ни один цикл, только условие.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-outer-break-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>break завершает цикл. Условие не является отдельным блоком, который можно прервать этим словом.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-skipped-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-skipped-title">Какие числа попадут в вывод?</h3>
+  <div class="special-block__body">
+<p>Цикл перебирает числа от 1 до 9 включительно. Отметьте числа, которые напечатает программа.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Пропуск чисел в while</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пропуск чисел в while">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">number = 0
+while number &lt; 9:
+    number += 1
+    if number == 5 or number == 6 or number == 8 or number == 9:
+        continue
+    print(number)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-skipped-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-skipped-option-1">
+          <input class="visually-hidden" id="review-skipped-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-skipped-option-1-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 1 условие в if ложно. Команда print выполняется и выводит это число.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-skipped-option-2">
+          <input class="visually-hidden" id="review-skipped-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-skipped-option-2-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 2 условие в if ложно. Команда print выполняется и выводит это число.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-skipped-option-3">
+          <input class="visually-hidden" id="review-skipped-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-skipped-option-3-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 3 условие в if ложно. Команда print выполняется и выводит это число.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-skipped-option-4">
+          <input class="visually-hidden" id="review-skipped-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-skipped-option-4-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 4 условие в if ложно. Команда print выполняется и выводит это число.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-skipped-option-5">
+          <input class="visually-hidden" id="review-skipped-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-skipped-option-5-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 5 условие в if истинно. continue пропускает print, поэтому это число не выводится.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-skipped-option-6">
+          <input class="visually-hidden" id="review-skipped-option-6" type="checkbox" name="answers" value="6" aria-describedby="review-skipped-option-6-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 6 условие в if истинно. continue пропускает print, поэтому это число не выводится.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-skipped-option-7">
+          <input class="visually-hidden" id="review-skipped-option-7" type="checkbox" name="answers" value="7" aria-describedby="review-skipped-option-7-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 7 условие в if ложно. Команда print выполняется и выводит это число.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-skipped-option-8">
+          <input class="visually-hidden" id="review-skipped-option-8" type="checkbox" name="answers" value="8" aria-describedby="review-skipped-option-8-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 8 условие в if истинно. continue пропускает print, поэтому это число не выводится.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-skipped-option-9">
+          <input class="visually-hidden" id="review-skipped-option-9" type="checkbox" name="answers" value="9" aria-describedby="review-skipped-option-9-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-skipped-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При number = 9 условие в if истинно. continue пропускает print, поэтому это число не выводится.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-input-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-input-title">Почему ввод 0 не завершает цикл?</h3>
+  <div class="special-block__body">
+<p>Пользователь вводит <code>0</code> и нажимает Enter, но программа снова запрашивает ввод. Почему?</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Строка и число</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Строка и число">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">value = input(&quot;Enter 0 to stop: &quot;)
+while value != 0:
+    value = input(&quot;Enter 0 to stop: &quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-input-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-input-option-1">
+          <input class="visually-hidden" id="review-input-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-input-option-1-feedback" />
+          <span><code>input()</code> возвращает строку, а сравнение идёт с целым числом.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Строка <code>"0"</code> не равна числу <code>0</code>, поэтому условие остаётся истинным. Можно сравнивать с <code>"0"</code> или преобразовывать каждый ввод через int, если ожидаются целые числа.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-2">
+          <input class="visually-hidden" id="review-input-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-input-option-2-feedback" />
+          <span><code>input()</code> всегда возвращает число с точкой.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>input возвращает строку, независимо от того, какие цифры вы набрали.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-3">
+          <input class="visually-hidden" id="review-input-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-input-option-3-feedback" />
+          <span>Нельзя сравнивать переменную с нулём.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Такое сравнение допустимо. Здесь проблема в разных типах сравниваемых значений.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-4">
+          <input class="visually-hidden" id="review-input-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-input-option-4-feedback" />
+          <span>Переменная внутри while не обновляется.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>В теле есть присваивание нового результата input переменной value. Но новый результат опять имеет тип str.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-5">
+          <input class="visually-hidden" id="review-input-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-input-option-5-feedback" />
+          <span>Условие while проверяется только один раз.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Условие проверяется перед каждой итерацией. Сравнение строки с числом каждый раз даёт тот же результат.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-6">
+          <input class="visually-hidden" id="review-input-option-6" type="checkbox" name="answers" value="6" aria-describedby="review-input-option-6-feedback" />
+          <span>Любой цикл while требует break для завершения.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>while завершится без break, если его условие станет ложным. Здесь ввод строки не может сделать её равной числу 0.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-7">
+          <input class="visually-hidden" id="review-input-option-7" type="checkbox" name="answers" value="7" aria-describedby="review-input-option-7-feedback" />
+          <span>После ввода 0 нужно ещё раз нажать Enter.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Одного Enter достаточно для завершения input. Дополнительный Enter не преобразует строку в число.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="for-structure">
+        <h2>02 / Как устроен for</h2>
+        <div class="section-content">
+<p>Представьте, что нужно напечатать числа 1, 2 и 3. С <code>while</code> мы сами задавали начальное число, проверяли границу и увеличивали счётчик. У <code>for</code> другой порядок работы: мы указываем, откуда брать значения, а цикл получает их по очереди.</p>
+<aside class="special-block special-block--definition" aria-labelledby="for-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="for-definition-title">Перебор значений</h3>
+  <div class="special-block__body">
+<p><strong>Цикл <code>for</code></strong> выполняет тело для очередного значения из источника перебора. Такое значение записывается в переменную цикла. Когда значения заканчиваются, программа переходит к командам после цикла.</p>
+  </div>
+</aside>
+<p>Общая форма заголовка: <code>for number in ...:</code>. Многоточие здесь обозначает место для источника значений. В рабочей программе его нужно заменить, например, на <code>range(1, 4)</code>. Этот диапазон даст числа 1, 2 и 3. Все формы <code>range()</code> подробно разберём в следующем разделе.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Первый цикл for</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Первый цикл for">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 4):
+    print(number)
+print(&quot;Done&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Первый цикл for">1
+2
+3
+Done</pre>
+  </div>
+</div>
+<ul class="content-list">
+<li><code>for</code> начинает цикл.</li>
+<li><code>number</code> является переменной цикла. При каждом проходе она получает очередное значение. Заранее писать <code>number = 1</code> не нужно.</li>
+<li><code>in</code> отделяет имя переменной от источника значений. Здесь можно прочитать: «для каждого number из диапазона».</li>
+<li><code>range(1, 4)</code> задаёт источник значений. Это не условие вида <code>number &lt; 4</code>.</li>
+<li>Двоеточие <code>:</code> завершает заголовок. На следующих строках с отступом в четыре пробела находится тело цикла.</li>
+<li><code>print("Done")</code> записан без отступа, поэтому выполняется после завершения цикла один раз.</li>
+</ul>
+<p>Проследим выполнение программы по шагам:</p>
+<ol class="content-list">
+<li>Python получает источник <code>range(1, 4)</code> перед началом перебора.</li>
+<li>Берёт первое значение <code>1</code>, присваивает его <code>number</code> и выполняет всё тело: печатает 1.</li>
+<li>Берёт следующее значение <code>2</code>, снова присваивает его <code>number</code> и печатает 2.</li>
+<li>Так же обрабатывает <code>3</code>.</li>
+<li>Следующего значения нет. Цикл заканчивается, выполняется <code>print("Done")</code>.</li>
+</ol>
+<p>В теле может быть несколько команд. Все команды с одинаковым отступом относятся к одному проходу, а уже после них цикл получает следующее значение.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Две команды в одной итерации</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Две команды в одной итерации">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 3):
+    print(&quot;Number:&quot;, number)
+    print(&quot;Ready&quot;)
+print(&quot;Finished&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Две команды в одной итерации">Number: 1
+Ready
+Number: 2
+Ready
+Finished</pre>
+  </div>
+</div>
+        </div>
+      </section>
+      <section id="range">
+        <h2>03 / Повторение с range</h2>
+        <div class="section-content">
+<p><code>range()</code> задаёт последовательность целых чисел с постоянным шагом. Он удобен, когда нужно повторить действие известное число раз или пройти от одной числовой границы к другой. Диапазон не хранит отдельный список всех чисел: он описывает, какие значения цикл должен получить.</p>
+<p>Если указать только <code>stop</code>, отсчёт начинается с нуля, а шаг равен единице. <strong>Граница <code>stop</code> не входит в диапазон.</strong> Поэтому <code>range(5)</code> даёт 0, 1, 2, 3, 4: пять значений, хотя последнее число равно четырём.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Пять значений</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пять значений">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(5):
+    print(number)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Пять значений">0
+1
+2
+3
+4</pre>
+  </div>
+</div>
+<p>Само значение переменной не обязательно использовать в теле. Чтобы три раза вывести одинаковое сообщение, достаточно трёх значений из <code>range(3)</code>. Имя <code>repeat</code> здесь напоминает о повторении.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Повторить действие три раза</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Повторить действие три раза">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for repeat in range(3):
+    print(&quot;Hello!&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Повторить действие три раза">Hello!
+Hello!
+Hello!</pre>
+  </div>
+</div>
+<p>При двух аргументах первое число задаёт начало, второе задаёт границу остановки. Начало входит в диапазон, граница остановки не входит. По умолчанию шаг по-прежнему равен <code>1</code>. Например, <code>range(2, 5)</code> даёт 2, 3, 4. Если по условию задачи нужно вывести числа от 1 до некоторого числа <strong>включительно</strong>, верхнюю границу диапазона увеличивают на один. В следующем примере переменная <code>stop</code> хранит последнее нужное число, а в <code>range()</code> мы передаём <code>stop + 1</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>От одного до stop включительно</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: От одного до stop включительно">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">stop = 5
+for number in range(1, stop + 1):
+    print(number)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: От одного до stop включительно">1
+2
+3
+4
+5</pre>
+  </div>
+</div>
+<p>Отрицательные границы тоже допустимы. Правило исключённой границы не меняется: <code>range(-3, 2)</code> начинается с −3 и заканчивается на 1. Отрицательное начало само по себе не означает движение назад.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Из отрицательных чисел к положительным</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Из отрицательных чисел к положительным">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(-3, 2):
+    print(number)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Из отрицательных чисел к положительным">-3
+-2
+-1
+0
+1</pre>
+  </div>
+</div>
+<p>Третий аргумент <code>step</code> задаёт, на сколько меняется очередное значение. Сначала берётся <code>start</code>, затем к нему прибавляется шаг, затем шаг прибавляется ещё раз. При положительном шаге цикл берёт только значения меньше <code>stop</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Шаг четыре</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг четыре">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(3, 19, 4):
+    print(number)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Шаг четыре">3
+7
+11
+15</pre>
+  </div>
+</div>
+<p>Начинаем с 3. Затем получаем 7, 11 и 15. Следующим было бы 19, но граница не включается, поэтому цикл заканчивается. Граница не обязана совпадать со следующим числом: <code>range(3, 18, 4)</code> даст те же 3, 7, 11, 15, потому что 19 уже больше 18.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/15/01-ForRangeStep.gif"
+      alt="Анимация цикла for с range(3, 19, 4): значения 3, 7, 11 и 15 выводятся, а граница 19 не включается"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 1. Перебор чисел с заданным шагом в range</figcaption>
+</figure>
+<p>Для движения назад нужен отрицательный шаг. В этом случае берутся только значения <strong>больше</strong> <code>stop</code>. Чтобы включить в обратный отсчёт единицу, укажите границу 0.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Обратный отсчёт</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Обратный отсчёт">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(5, 0, -1):
+    print(number)
+print(&quot;Go!&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Обратный отсчёт">5
+4
+3
+2
+1
+Go!</pre>
+  </div>
+</div>
+<p>Ниже приведена краткая таблица вызова разных вариаций <code>range</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Три формы range">
+  <table>
+    <thead><tr><th scope="col">Запись</th><th scope="col">Начало</th><th scope="col">Шаг</th><th scope="col">Значения</th></tr></thead>
+    <tbody>
+<tr><td><code>range(4)</code></td><td>0</td><td>+1</td><td><code>0, 1, 2, 3</code></td></tr>
+<tr><td><code>range(2, 6)</code></td><td>2</td><td>+1</td><td><code>2, 3, 4, 5</code></td></tr>
+<tr><td><code>range(2, 9, 3)</code></td><td>2</td><td>+3</td><td><code>2, 5, 8</code></td></tr>
+<tr><td><code>range(6, 1, -2)</code></td><td>6</td><td>−2</td><td><code>6, 4, 2</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="range-integers-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="range-integers-title">Аргументы должны быть целыми</h3>
+  <div class="special-block__body">
+<p>В наших примерах <code>start</code>, <code>stop</code> и <code>step</code> имеют тип <code>int</code>. Запись <code>range(1, 4, 0.5)</code> вызовет <code>TypeError</code>: дробный шаг не поддерживается. Строка <code>"5"</code> тоже не заменяет число <code>5</code>.</p>
+  </div>
+</aside>
+<p>Переменная цикла и источник значений выполняют разные роли. <code>range()</code> задаёт последовательность, а <code>number</code> хранит текущее полученное значение. Присваивание <code>number = 0</code> изменяет переменную, но не перестраивает диапазон.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Присваивание не меняет диапазон</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Присваивание не меняет диапазон">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(3, 6):
+    print(number)
+    number = 0</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Присваивание не меняет диапазон">3
+4
+5</pre>
+  </div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Трассировка: новое значение в начале каждой итерации">
+  <table>
+    <thead><tr><th scope="col">Итерация</th><th scope="col">Значение из range</th><th scope="col">Действия в теле</th><th scope="col">Вывод</th></tr></thead>
+    <tbody>
+<tr><td>1</td><td><code>number = 3</code></td><td><code>print(number)</code>, затем <code>number = 0</code></td><td><code>3</code></td></tr>
+<tr><td>2</td><td><code>number = 4</code></td><td><code>print(number)</code>, затем <code>number = 0</code></td><td><code>4</code></td></tr>
+<tr><td>3</td><td><code>number = 5</code></td><td><code>print(number)</code>, затем <code>number = 0</code></td><td><code>5</code></td></tr>
+<tr><td>После цикла</td><td>Значений больше нет</td><td>Переход к коду после цикла</td><td>Нового вывода нет</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>После первого присваивания нуля следующая итерация всё равно получает 4 и записывает его в <code>number</code>. Затем так же получает 5. Если поставить <code>number = 0</code> <em>перед</em> <code>print(number)</code>, будут выведены три нуля, но число итераций останется тем же.</p>
+        </div>
+      </section>
+      <section id="empty-ranges">
+        <h2>04 / Когда цикл не выполнится</h2>
+        <div class="section-content">
+<p>У диапазона может не быть ни одного значения. Это нормальная ситуация: тело <code>for</code> не выполняется, и Python сразу переходит к следующей команде после цикла. Даже первое значение должно удовлетворять правилу границы.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Почему диапазон пуст">
+  <table>
+    <caption>Почему диапазон пуст</caption>
+    <thead><tr><th scope="col">Диапазон</th><th scope="col">Причина</th><th scope="col">Итерации</th></tr></thead>
+    <tbody>
+<tr><td><code>range(0)</code></td><td>Начало 0, граница 0. Первое число уже на исключённой границе.</td><td>0</td></tr>
+<tr><td><code>range(4, 4)</code></td><td>Начало совпадает с границей остановки.</td><td>0</td></tr>
+<tr><td><code>range(9, 4)</code></td><td>Шаг +1, но начало уже больше границы. Движение вперёд не даст числа меньше 4.</td><td>0</td></tr>
+<tr><td><code>range(-5)</code></td><td>Начало по умолчанию 0, шаг +1. Для этого направления 0 уже за границей −5.</td><td>0</td></tr>
+<tr><td><code>range(3, 9, -2)</code></td><td>Шаг отрицательный, но начало меньше границы. Для движения назад нужно начать выше stop.</td><td>0</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Тело пропускается целиком</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Тело пропускается целиком">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(9, 4):
+    print(&quot;Inside:&quot;, number)
+print(&quot;After the loop&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Тело пропускается целиком">After the loop</pre>
+  </div>
+</div>
+<p>Если нужен обратный перебор от 9 к 5, надо явно указать отрицательный шаг: <code>range(9, 4, -1)</code>. Python не выбирает направление автоматически по порядку границ. Если шаг не написан, он всегда равен <code>1</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="zero-step-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="zero-step-title">Нулевой шаг вызывает ошибку</h3>
+  <div class="special-block__body">
+<p>Пустой диапазон и недопустимый диапазон ведут себя по-разному. <code>range(1, 5, 0)</code> вызывает <code>ValueError</code> ещё при создании диапазона. Шаг 0 не продвигает нас к границе, поэтому Python запрещает его. Это не способ получить пустой диапазон или бесконечный цикл.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Недопустимый шаг</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Недопустимый шаг">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 5, 0):
+    print(number)
+print(&quot;After the loop&quot;)</code></pre>
+</div>
+<p>Последняя строка сообщения об ошибке: <code>ValueError: range() arg 3 must not be zero</code>. Тело не начнётся, но и <code>print("After the loop")</code> не выполнится: необработанная ошибка остановит программу.</p>
+  </div>
+</aside>
+<p>Чтобы проверить диапазон вручную, сначала посмотрите на знак шага. Для положительного шага начальное число должно быть меньше <code>stop</code>, для отрицательного должно быть больше <code>stop</code>. Если это не так, диапазон пуст. Для любого допустимого шага одинаковые границы тоже дают пустой диапазон.</p>
+<aside class="special-block special-block--tip" aria-labelledby="empty-variable-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="empty-variable-title">Не рассчитывайте на переменную из пустого цикла</h3>
+  <div class="special-block__body">
+<p>Если цикл не выполнился, он не присвоил переменной ни одного значения. Поэтому не стоит читать <code>number</code> после пустого цикла, если до него переменная не была создана: получите <code>NameError</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Вызов переменной цикла вне цикла</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Вызов переменной цикла вне цикла">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(9, 5, 1):
+    print(number)
+print(&quot;After the loop&quot;)
+print(number)</code></pre>
+</div>
+  <p>В примере выше после цикла выводится готовая строка, а затем возникает ошибка <code>NameError</code>, так как цикл ни разу не запустился, из-за чего переменная <code>number</code> не определена.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="while-to-for">
+        <h2>05 / От while к for</h2>
+        <div class="section-content">
+<p>Решим одну задачу двумя способами: выведем числа от 1 до 5 включительно. Сначала используем знакомый <code>while</code>. Здесь мы вручную управляем счётчиком: создаём его, проверяем условие и увеличиваем.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Числа от 1 до 5 через while</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Числа от 1 до 5 через while">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">number = 1
+while number &lt;= 5:
+    print(number)
+    number += 1</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Числа от 1 до 5 через while">1
+2
+3
+4
+5</pre>
+  </div>
+</div>
+<p>В версии с <code>for</code> нужные значения описаны диапазоном. Цикл сам по очереди присваивает их переменной. Отдельное увеличение счётчика в теле не требуется.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Те же числа через for</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Те же числа через for">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 6):
+    print(number)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Те же числа через for">1
+2
+3
+4
+5</pre>
+  </div>
+</div>
+<p>Вывод одинаковый, но способ управления разный. <code>while</code> проверяет условие и не знает, как вы собираетесь его менять. <code>for</code> получает очередное значение из источника перебора и заканчивает работу, когда источник больше ничего не даёт. Поэтому забытое <code>number += 1</code> в первом примере сделало бы цикл бесконечным, а во втором эта команда вообще не нужна.</p>
+<p><code>break</code> в <code>for</code> работает так же, как в <code>while</code>: немедленно завершает ближайший охватывающий цикл. Остальные значения диапазона этот цикл уже не получит.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Остановка перед четвёркой</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Остановка перед четвёркой">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 7):
+    if number == 4:
+        break
+    print(number)
+print(&quot;Done&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Остановка перед четвёркой">1
+2
+3
+Done</pre>
+  </div>
+</div>
+<p>На значении 4 условие становится истинным, и <code>break</code> срабатывает до <code>print(number)</code>. Поэтому четвёрка в вывод не попадает. Значения 5 и 6 не обрабатываются. После выхода выполняется <code>print("Done")</code>. Если перенести вывод перед проверкой, четвёрка тоже будет напечатана: порядок команд важен.</p>
+<p><code>continue</code> в <code>for</code> работает так же, как в <code>while</code>: не завершает весь цикл. Он пропускает команды ниже себя в текущем проходе, а затем <code>for</code> получает следующее значение. Возьмём <code>range(10)</code> и пропустим 5, 6, 8 и 9.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Пропуск чисел в for</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пропуск чисел в for">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(10):
+    if number == 5 or number == 6 or number == 8 or number == 9:
+        continue
+    print(number)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Пропуск чисел в for">0
+1
+2
+3
+4
+7</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/15/02-ForContinue.gif"
+      alt="Анимация цикла for с continue: числа 5, 6, 8 и 9 пропускаются, а 0, 1, 2, 3, 4 и 7 выводятся"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 2. Пропуск итераций с continue в цикле for</figcaption>
+</figure>
+<p>Числа 0, 1, 2, 3 и 4 проходят проверку и выводятся. На 5 и 6 команда <code>continue</code> пропускает <code>print</code>. Затем 7 выводится, а 8 и 9 пропускаются. После 9 значения заканчиваются. Ноль здесь есть, потому что <code>range(10)</code> начинается с нуля; в вопросе на повторение перебор начинался с единицы.</p>
+<p>Внутри <code>for</code> можно написать ещё один цикл. В следующем примере для каждого значения <code>row</code> внутренний цикл заново перебирает все значения <code>column</code>. Используйте разные имена переменных, чтобы внешний и внутренний циклы не перезаписывали друг другу текущее значение.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Две строки по три столбца</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Две строки по три столбца">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for row in range(1, 3):
+    for column in range(1, 4):
+        print(row, column)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Две строки по три столбца">1 1
+1 2
+1 3
+2 1
+2 2
+2 3</pre>
+  </div>
+</div>
+<p>При <code>row = 1</code> внутренний цикл получает 1, 2 и 3. После его завершения внешний получает <code>row = 2</code>, и внутренний перебор снова начинается с 1. Всего команда <code>print</code> выполняется 2 × 3 = 6 раз. Её отступ в восемь пробелов показывает, что она находится внутри двух циклов.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>break внутри внутреннего цикла</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: break внутри внутреннего цикла">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for row in range(1, 3):
+    for column in range(1, 4):
+        if column == 2:
+            break
+        print(row, column)
+print(&quot;Done&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: break внутри внутреннего цикла">1 1
+2 1
+Done</pre>
+  </div>
+</div>
+<p>Здесь <code>break</code> завершает только цикл по <code>column</code>. Внешний цикл продолжает работу со следующей строкой. <code>continue</code> внутри внутреннего цикла тоже относится только к нему. Циклы можно смешивать: <code>for</code> внутри <code>while</code> или <code>while</code> внутри <code>for</code>. Чтобы понять, какой цикл затронут, смотрите на вложенность и отступы команды.</p>
+        </div>
+      </section>
+      <section id="choose-loop">
+        <h2>06 / for или while</h2>
+        <div class="section-content">
+<p>Выбор зависит от того, что управляет повторением. Если нужно пройти по готовым значениям или повторить действие заданное число раз, обычно удобен <code>for</code>. Если нужно продолжать работу, пока выполняется условие, обычно удобен <code>while</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как выбрать цикл">
+  <table>
+    <caption>Как выбрать цикл</caption>
+    <thead><tr><th scope="col">Задача</th><th scope="col">Удобный выбор</th><th scope="col">Почему</th></tr></thead>
+    <tbody>
+<tr><td>Пять раз вывести сообщение</td><td><code>for</code> с <code>range(5)</code></td><td>Число повторений известно заранее.</td></tr>
+<tr><td>Вывести чётные числа от 2 до 10</td><td><code>for</code> с <code>range(2, 11, 2)</code></td><td>Начало, граница и шаг описывают все нужные значения.</td></tr>
+<tr><td>Обработать каждое имя в списке</td><td><code>for</code></td><td>Есть источник элементов. Не нужно вручную считать их или менять счётчик.</td></tr>
+<tr><td>Спрашивать команду до ввода stop</td><td><code>while</code></td><td>Число вводов неизвестно. Продолжение зависит от ответа пользователя.</td></tr>
+<tr><td>Повторять действие, пока баланс меньше цели</td><td><code>while</code></td><td>Решение о следующем повторении зависит от текущего состояния.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Например, пользователь может ввести команду остановки сразу, а может сделать это после двадцати других команд. Здесь повторение удобно выразить условием.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Ввод до команды stop</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ввод до команды stop">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">command = input(&quot;Command (stop to exit): &quot;)
+while command != &quot;stop&quot;:
+    print(&quot;Received:&quot;, command)
+    command = input(&quot;Command (stop to exit): &quot;)
+print(&quot;Finished&quot;)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Ввод до команды stop">Command (stop to exit): hello
+Received: hello
+Command (stop to exit): stop
+Finished</pre>
+  </div>
+</div>
+<p>В консоли показан пример запуска: пользователь ввёл <code>hello</code>, затем <code>stop</code>. Здесь обе стороны сравнения являются строками, поэтому условие действительно станет ложным. При других ответах вывод и количество повторений изменятся.</p>
+<p>В следующих уроках о коллекциях мы рассмотрим больше полезных применений <code>for</code>: обработку строк, списков и других наборов данных. Уже сейчас можно увидеть общий принцип. В переменной <code>names</code> находится список имён, а цикл получает из него очередное имя целиком.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Имена, начинающиеся с A</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Имена, начинающиеся с A">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">names = [&quot;Arthur&quot;, &quot;Tom&quot;, &quot;Kate&quot;, &quot;Bob&quot;, &quot;Alice&quot;, &quot;Astrid&quot;]
+count = 0
+
+for name in names:
+    if name[0] == &quot;A&quot;:
+        count += 1
+
+print(count)</code></pre>
+  <div class="code-example__output">
+    <div class="code-example__output-title">Консоль</div>
+    <pre tabindex="0" aria-label="Вывод примера: Имена, начинающиеся с A">3</pre>
+  </div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/15/03-ForCountNames.gif"
+      alt="Анимация перебора списка names: счётчик увеличивается для Arthur, Alice и Astrid, итоговое значение равно 3"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 3. Подсчёт имён, начинающихся с A</figcaption>
+</figure>
+<ul class="content-list">
+<li>Квадратные скобки в <code>names = [...]</code> создают список. Его элементы здесь являются строками с именами.</li>
+<li><code>count = 0</code> стоит до цикла, чтобы счётчик начал работу с нуля и не сбрасывался на каждом имени.</li>
+<li><code>for name in names:</code> по очереди присваивает переменной <code>name</code> строки из списка.</li>
+<li><code>name[0]</code> получает первый символ строки. Нумерация символов начинается с нуля. Все имена в этом примере непустые, поэтому первый символ у каждого есть.</li>
+<li>Если этот символ равен заглавной <code>"A"</code>, команда <code>count += 1</code> увеличивает счётчик. Сравнение чувствительно к регистру: маленькая <code>"a"</code> здесь не подходит.</li>
+<li><code>print(count)</code> стоит после цикла и выводит итог один раз.</li>
+</ul>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как накапливается количество имён">
+  <table>
+    <caption>Как накапливается количество имён</caption>
+    <thead><tr><th scope="col">Имя</th><th scope="col">Первый символ</th><th scope="col">Увеличиваем счётчик?</th><th scope="col">count после проверки</th></tr></thead>
+    <tbody>
+<tr><td>Arthur</td><td><code>A</code></td><td>Да</td><td>1</td></tr>
+<tr><td>Tom</td><td><code>T</code></td><td>Нет</td><td>1</td></tr>
+<tr><td>Kate</td><td><code>K</code></td><td>Нет</td><td>1</td></tr>
+<tr><td>Bob</td><td><code>B</code></td><td>Нет</td><td>1</td></tr>
+<tr><td>Alice</td><td><code>A</code></td><td>Да</td><td>2</td></tr>
+<tr><td>Astrid</td><td><code>A</code></td><td>Да</td><td>3</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Здесь <code>range()</code> не нужен: источник уже есть, это список <code>names</code>. Мы не увеличиваем <code>name</code> вручную и не проверяем, осталось ли ещё имя. Цикл сам получает следующий элемент. Списки и обращение к символу по номеру подробно разберём позже; сейчас важно увидеть знакомый порядок: получить значение, выполнить тело, перейти к следующему.</p>
+<aside class="special-block special-block--tip" aria-labelledby="choose-by-task-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="choose-by-task-title">Ориентируйтесь на задачу</h3>
+  <div class="special-block__body">
+<p>Оба цикла могут решать многие одни и те же задачи. Выбирайте запись, которая прямо выражает ваш замысел: «для каждого значения» или «пока выполняется условие».</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>07 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-range-five-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-five-title">Какие числа даёт <code>range(5)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-five-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-five-option-1">
+          <input class="visually-hidden" id="check-range-five-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-five-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-five-option-2">
+          <input class="visually-hidden" id="check-range-five-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-five-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-five-option-3">
+          <input class="visually-hidden" id="check-range-five-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-five-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-five-option-4">
+          <input class="visually-hidden" id="check-range-five-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-five-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-five-option-5">
+          <input class="visually-hidden" id="check-range-five-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-five-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-five-option-6">
+          <input class="visually-hidden" id="check-range-five-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-five-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 не входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-five-option-7">
+          <input class="visually-hidden" id="check-range-five-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-five-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 не входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-five-option-8">
+          <input class="visually-hidden" id="check-range-five-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-five-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 не входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-five-option-9">
+          <input class="visually-hidden" id="check-range-five-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-five-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 не входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-five-option-10">
+          <input class="visually-hidden" id="check-range-five-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-five-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-five-option-11">
+          <input class="visually-hidden" id="check-range-five-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-five-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-five-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Начало по умолчанию 0, шаг +1, граница 5 не включается. Получаем 0, 1, 2, 3, 4.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-four-nine-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-four-nine-title">Какие числа даёт <code>range(4, 9)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-four-nine-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-four-nine-option-1">
+          <input class="visually-hidden" id="check-range-four-nine-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-four-nine-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 не входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-four-nine-option-2">
+          <input class="visually-hidden" id="check-range-four-nine-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-four-nine-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 не входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-four-nine-option-3">
+          <input class="visually-hidden" id="check-range-four-nine-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-four-nine-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 не входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-four-nine-option-4">
+          <input class="visually-hidden" id="check-range-four-nine-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-four-nine-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 не входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-four-nine-option-5">
+          <input class="visually-hidden" id="check-range-four-nine-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-four-nine-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-four-nine-option-6">
+          <input class="visually-hidden" id="check-range-four-nine-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-four-nine-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-four-nine-option-7">
+          <input class="visually-hidden" id="check-range-four-nine-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-four-nine-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-four-nine-option-8">
+          <input class="visually-hidden" id="check-range-four-nine-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-four-nine-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-four-nine-option-9">
+          <input class="visually-hidden" id="check-range-four-nine-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-four-nine-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-four-nine-option-10">
+          <input class="visually-hidden" id="check-range-four-nine-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-four-nine-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-four-nine-option-11">
+          <input class="visually-hidden" id="check-range-four-nine-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-four-nine-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-four-nine-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Начинаем с 4 и прибавляем 1, пока число меньше 9. Получаем 4, 5, 6, 7, 8.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-nine-four-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-nine-four-title">Какие числа даёт <code>range(9, 4)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-nine-four-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-1">
+          <input class="visually-hidden" id="check-range-nine-four-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-nine-four-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-2">
+          <input class="visually-hidden" id="check-range-nine-four-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-nine-four-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-3">
+          <input class="visually-hidden" id="check-range-nine-four-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-nine-four-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-4">
+          <input class="visually-hidden" id="check-range-nine-four-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-nine-four-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-5">
+          <input class="visually-hidden" id="check-range-nine-four-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-nine-four-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-6">
+          <input class="visually-hidden" id="check-range-nine-four-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-nine-four-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-7">
+          <input class="visually-hidden" id="check-range-nine-four-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-nine-four-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-8">
+          <input class="visually-hidden" id="check-range-nine-four-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-nine-four-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-9">
+          <input class="visually-hidden" id="check-range-nine-four-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-nine-four-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-nine-four-option-10">
+          <input class="visually-hidden" id="check-range-nine-four-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-nine-four-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-nine-four-option-11">
+          <input class="visually-hidden" id="check-range-nine-four-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-nine-four-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-nine-four-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Шаг по умолчанию +1. Начальное 9 не меньше границы 4, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-negative-stop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-negative-stop-title">Какие числа даёт <code>range(-5)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-negative-stop-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-1">
+          <input class="visually-hidden" id="check-range-negative-stop-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-negative-stop-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-2">
+          <input class="visually-hidden" id="check-range-negative-stop-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-negative-stop-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-3">
+          <input class="visually-hidden" id="check-range-negative-stop-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-negative-stop-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-4">
+          <input class="visually-hidden" id="check-range-negative-stop-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-negative-stop-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-5">
+          <input class="visually-hidden" id="check-range-negative-stop-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-negative-stop-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-6">
+          <input class="visually-hidden" id="check-range-negative-stop-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-negative-stop-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-7">
+          <input class="visually-hidden" id="check-range-negative-stop-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-negative-stop-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-8">
+          <input class="visually-hidden" id="check-range-negative-stop-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-negative-stop-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-9">
+          <input class="visually-hidden" id="check-range-negative-stop-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-negative-stop-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-10">
+          <input class="visually-hidden" id="check-range-negative-stop-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-negative-stop-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-negative-stop-option-11">
+          <input class="visually-hidden" id="check-range-negative-stop-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-negative-stop-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-negative-stop-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При одном аргументе начало равно 0, шаг равен +1. Число 0 не меньше −5, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-positive-step-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-positive-step-title">Какие числа даёт <code>range(3, 9, 2)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-positive-step-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-1">
+          <input class="visually-hidden" id="check-range-positive-step-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-positive-step-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-2">
+          <input class="visually-hidden" id="check-range-positive-step-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-positive-step-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-3">
+          <input class="visually-hidden" id="check-range-positive-step-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-positive-step-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-positive-step-option-4">
+          <input class="visually-hidden" id="check-range-positive-step-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-positive-step-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-5">
+          <input class="visually-hidden" id="check-range-positive-step-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-positive-step-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-positive-step-option-6">
+          <input class="visually-hidden" id="check-range-positive-step-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-positive-step-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-7">
+          <input class="visually-hidden" id="check-range-positive-step-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-positive-step-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-positive-step-option-8">
+          <input class="visually-hidden" id="check-range-positive-step-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-positive-step-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-9">
+          <input class="visually-hidden" id="check-range-positive-step-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-positive-step-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-10">
+          <input class="visually-hidden" id="check-range-positive-step-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-positive-step-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-positive-step-option-11">
+          <input class="visually-hidden" id="check-range-positive-step-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-positive-step-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-positive-step-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>От 3 идём с шагом +2: 3, 5, 7. Следующее число 9 равно исключённой границе.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-wrong-direction-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-wrong-direction-title">Какие числа даёт <code>range(3, 9, -2)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-wrong-direction-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-1">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-wrong-direction-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-2">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-wrong-direction-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-3">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-wrong-direction-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-4">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-wrong-direction-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-5">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-wrong-direction-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-6">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-wrong-direction-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-7">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-wrong-direction-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-8">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-wrong-direction-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-9">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-wrong-direction-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-10">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-wrong-direction-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-wrong-direction-option-11">
+          <input class="visually-hidden" id="check-range-wrong-direction-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-wrong-direction-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-wrong-direction-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>При шаге −2 начальное значение должно быть больше границы. Здесь 3 меньше 9, поэтому диапазон пуст.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-range-countdown-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-range-countdown-title">Какие числа даёт <code>range(5, 2, -1)</code>?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-range-countdown-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-1">
+          <input class="visually-hidden" id="check-range-countdown-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-range-countdown-option-1-feedback" />
+          <span><code>0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 0 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-2">
+          <input class="visually-hidden" id="check-range-countdown-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-range-countdown-option-2-feedback" />
+          <span><code>1</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 1 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-3">
+          <input class="visually-hidden" id="check-range-countdown-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-range-countdown-option-3-feedback" />
+          <span><code>2</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 2 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-countdown-option-4">
+          <input class="visually-hidden" id="check-range-countdown-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-range-countdown-option-4-feedback" />
+          <span><code>3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 3 входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-countdown-option-5">
+          <input class="visually-hidden" id="check-range-countdown-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-range-countdown-option-5-feedback" />
+          <span><code>4</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 4 входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-range-countdown-option-6">
+          <input class="visually-hidden" id="check-range-countdown-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-range-countdown-option-6-feedback" />
+          <span><code>5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 5 входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-7">
+          <input class="visually-hidden" id="check-range-countdown-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-range-countdown-option-7-feedback" />
+          <span><code>6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-7-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 6 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-8">
+          <input class="visually-hidden" id="check-range-countdown-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-range-countdown-option-8-feedback" />
+          <span><code>7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-8-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 7 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-9">
+          <input class="visually-hidden" id="check-range-countdown-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-range-countdown-option-9-feedback" />
+          <span><code>8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-9-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 8 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-10">
+          <input class="visually-hidden" id="check-range-countdown-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-range-countdown-option-10-feedback" />
+          <span><code>9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-10-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Число 9 не входит в диапазон. От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-range-countdown-option-11">
+          <input class="visually-hidden" id="check-range-countdown-option-11" type="checkbox" name="answers" value="11" aria-describedby="check-range-countdown-option-11-feedback" />
+          <span>Ничего</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-range-countdown-option-11-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>От 5 идём с шагом −1: 5, 4, 3. Граница 2 не включается.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-four-iterations-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-four-iterations-title">Сколько итераций у этого for?</h3>
+  <div class="special-block__body">
+<p>Посчитайте выполнения тела цикла.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Подсчёт итераций с шагом</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Подсчёт итераций с шагом">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(3, 19, 4):
+    print(number)</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="4"
+  data-success="Верно. Цикл получает 3, 7, 11 и 15: это четыре итерации. Граница 19 не включается." data-hint="Начните с 3, прибавляйте 4 и остановитесь перед 19. Считайте значения, а не величину последнего числа."
+  autocomplete="off" aria-labelledby="check-four-iterations-title">
+  <label for="check-four-iterations-answer">Введите целое число цифрами, без пробелов и точки в конце.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-four-iterations-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-four-iterations-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-four-iterations-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-zero-iterations-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-zero-iterations-title">Одинаковые границы</h3>
+  <div class="special-block__body">
+<p>Сколько итераций выполнит цикл?</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Начало равно границе</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Начало равно границе">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(7, 7):
+    print(number)</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="0"
+  data-success="Верно. Начало равно исключённой границе, поэтому диапазон пуст и тело не выполняется." data-hint="Проверьте, может ли первое значение попасть в диапазон, если stop не включается."
+  autocomplete="off" aria-labelledby="check-zero-iterations-title">
+  <label for="check-zero-iterations-answer">Введите целое число цифрами, без пробелов и точки в конце.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-zero-iterations-answer" name="answer" type="text" placeholder="Ваш ответ"
+      spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-zero-iterations-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-zero-iterations-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-outer-break-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-outer-break-title">Какой цикл завершится по break?</h3>
+  <div class="special-block__body">
+<p>Внутри <code>while</code> находится <code>for</code>. Определите, к какому циклу относится строка <code>break</code>.</p>
+<div class="code-example">
+  <div class="code-example__header">
+    <span>for внутри while</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: for внутри while">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">attempt = 1
+while attempt &lt;= 3:
+    for number in range(2):
+        print(attempt, number)
+    break
+print(&quot;Done&quot;)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-outer-break-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-outer-break-option-1">
+          <input class="visually-hidden" id="check-outer-break-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-outer-break-option-1-feedback" />
+          <span>Только внешний <code>while</code>.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-outer-break-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>break записан в теле while после for. Внутренний for уже перебрал 0 и 1, а break завершает while.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-outer-break-option-2">
+          <input class="visually-hidden" id="check-outer-break-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-outer-break-option-2-feedback" />
+          <span>Только внутренний <code>for</code>.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-outer-break-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>У break такой же отступ, как у заголовка for. В тело for эта команда не входит.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-outer-break-option-3">
+          <input class="visually-hidden" id="check-outer-break-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-outer-break-option-3-feedback" />
+          <span>Оба цикла одновременно.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-outer-break-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>break относится только к ближайшему охватывающему циклу. Здесь это while, а for к этому моменту уже закончился обычным образом.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-outer-break-option-4">
+          <input class="visually-hidden" id="check-outer-break-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-outer-break-option-4-feedback" />
+          <span>Ни один: break нельзя использовать при смешивании циклов.</span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-outer-break-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Вложенные for и while допустимы. break работает по тому же правилу вложенности.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-reassignment-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-reassignment-title">Что выведет цикл с присваиванием нуля?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Сначала вывод, затем присваивание</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сначала вывод, затем присваивание">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(3, 8):
+    print(number)
+    number = 0</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-reassignment-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-reassignment-option-1">
+          <input class="visually-hidden" id="check-reassignment-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-reassignment-option-1-feedback" />
+          <span><code>3 4 5 6 7 8</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-reassignment-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание не меняет диапазон, но граница 8 в него не входит. Последнее выведенное число 7.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-reassignment-option-2">
+          <input class="visually-hidden" id="check-reassignment-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-reassignment-option-2-feedback" />
+          <span><code>3 0 0 0 0 0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-reassignment-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>На каждой итерации for присваивает следующее значение из range. Нули не сохраняются между итерациями; значений всего пять.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-reassignment-option-3">
+          <input class="visually-hidden" id="check-reassignment-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-reassignment-option-3-feedback" />
+          <span><code>3 0 0 0 0 0 0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-reassignment-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>range(3, 8) даёт пять значений. Перед каждым print переменная получает очередное значение диапазона.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-reassignment-option-4">
+          <input class="visually-hidden" id="check-reassignment-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-reassignment-option-4-feedback" />
+          <span><code>0 0 0 0 0 0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-reassignment-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание нуля идёт после print. Кроме того, в диапазоне пять значений, а не шесть.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-reassignment-option-5">
+          <input class="visually-hidden" id="check-reassignment-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-reassignment-option-5-feedback" />
+          <span><code>0 0 0 0 0</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-reassignment-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Пять нулей получились бы, если бы number = 0 стояло перед print. Здесь вывод происходит раньше присваивания.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-reassignment-option-6">
+          <input class="visually-hidden" id="check-reassignment-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-reassignment-option-6-feedback" />
+          <span><code>3 4 5 6 7</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-reassignment-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Перед каждым проходом for получает новое значение диапазона. print выполняется до присваивания нуля, а граница 8 не включается.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-break-output-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-break-output-title">Что попадёт в вывод до break?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Остановка на шестёрке</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Остановка на шестёрке">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 10):
+    if number == 6:
+        break
+    print(number)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-break-output-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-break-output-option-1">
+          <input class="visually-hidden" id="check-break-output-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-break-output-option-1-feedback" />
+          <span><code>1 2 3 4 5 6 7 8 9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-break-output-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>На 6 срабатывает break. Цикл не проходит оставшуюся часть диапазона.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-break-output-option-2">
+          <input class="visually-hidden" id="check-break-output-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-break-output-option-2-feedback" />
+          <span><code>1 2 3 4 5 6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-break-output-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>На 6 команда break выполняется раньше print, поэтому шестёрка не выводится.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-break-output-option-3">
+          <input class="visually-hidden" id="check-break-output-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-break-output-option-3-feedback" />
+          <span><code>0 1 2 3 4 5 6 7 8 9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-break-output-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Диапазон начинается с 1, а не с 0. Кроме того, break останавливает цикл на 6.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-break-output-option-4">
+          <input class="visually-hidden" id="check-break-output-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-break-output-option-4-feedback" />
+          <span><code>0 1 2 3 4 5 6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-break-output-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Ноль не входит в range(1, 10), а шестёрку не успевает вывести print из-за break.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-break-output-option-5">
+          <input class="visually-hidden" id="check-break-output-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-break-output-option-5-feedback" />
+          <span><code>1 2 3 4 5</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-break-output-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Первые пять чисел выводятся. На 6 break завершает цикл до print; остальные значения не обрабатываются.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-continue-output-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-continue-output-title">Что останется после continue?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header">
+    <span>Пропуск четырёх значений</span>
+    <button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пропуск четырёх значений">Копировать</button>
+  </div>
+  <pre tabindex="0"><code class="language-python">for number in range(1, 10):
+    if number == 4 or number == 5 or number == 7 or number == 8:
+        continue
+    print(number)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-continue-output-title">
+  <fieldset>
+    <legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-continue-output-option-1">
+          <input class="visually-hidden" id="check-continue-output-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-continue-output-option-1-feedback" />
+          <span><code>1 2 3 4 5 6 7 8 9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-continue-output-option-1-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>На 4, 5, 7 и 8 срабатывает continue, поэтому эти числа не выводятся.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-continue-output-option-2">
+          <input class="visually-hidden" id="check-continue-output-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-continue-output-option-2-feedback" />
+          <span><code>1 2 3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-continue-output-option-2-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>continue не завершает цикл целиком. После пропущенных 4 и 5 цикл дойдёт до 6, а позже до 9.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-continue-output-option-3">
+          <input class="visually-hidden" id="check-continue-output-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-continue-output-option-3-feedback" />
+          <span><code>0 1 2 3</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-continue-output-option-3-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Диапазон начинается с 1. continue пропускает отдельные значения, но не прекращает перебор после 3.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-continue-output-option-4">
+          <input class="visually-hidden" id="check-continue-output-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-continue-output-option-4-feedback" />
+          <span><code>1 2 3 6 9 10</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-continue-output-option-4-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Нужные пропуски учтены, но 10 является исключённой границей диапазона.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-continue-output-option-5">
+          <input class="visually-hidden" id="check-continue-output-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-continue-output-option-5-feedback" />
+          <span><code>1 2 3 6</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-continue-output-option-5-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>После пропуска 7 и 8 цикл получает 9. Для него условие ложно, поэтому 9 тоже выводится.</p></div>
+        </div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-continue-output-option-6">
+          <input class="visually-hidden" id="check-continue-output-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-continue-output-option-6-feedback" />
+          <span><code>1 2 3 6 9</code></span>
+          <span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-continue-output-option-6-feedback" aria-hidden="true">
+          <div><p><span class="quiz-option__state-label visually-hidden"></span>Из чисел от 1 до 9 пропускаются 4, 5, 7 и 8. Все остальные доходят до print.</p></div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

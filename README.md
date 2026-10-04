@@ -1,7 +1,7 @@
 ## Next to cover
 
-- [11 - Conditions and Operators](lessons/11%20-%20Conditions%20and%20Operators/)
-- [12 - Conditional Statements](lessons/12%20-%20Conditional%20Statements/)
+- [13 - while Loop](lessons/13%20-%20while%20Loop/)
+- [14 - Working with the while Loop](lessons/14%20-%20Working%20with%20the%20while%20Loop/)
 
 ## What we've already covered
 
@@ -15,6 +15,8 @@
 - [08 - Preparing for Programming](lessons/08%20-%20Preparing%20for%20Programming/)
 - [09 - Data Types](lessons/09%20-%20Data%20Types/)
 - [10 - Mathematical Operators](lessons/10%20-%20Mathematical%20Operators/)
+- [11 - Conditions and Operators](lessons/11%20-%20Conditions%20and%20Operators/)
+- [12 - Conditional Statements](lessons/12%20-%20Conditional%20Statements/)
 
 ## License
 

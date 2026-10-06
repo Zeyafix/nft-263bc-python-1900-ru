@@ -1,7 +1,7 @@
 ## Next to cover
 
-- [13 - while Loop](lessons/13%20-%20while%20Loop/)
-- [14 - Working with the while Loop](lessons/14%20-%20Working%20with%20the%20while%20Loop/)
+- [15 - for Loop](lessons/15%20-%20for%20Loop/)
+- [16 - Working with the for Loop](lessons/16%20-%20Working%20with%20the%20for%20Loop/)
 
 ## What we've already covered
 
@@ -17,6 +17,8 @@
 - [10 - Mathematical Operators](lessons/10%20-%20Mathematical%20Operators/)
 - [11 - Conditions and Operators](lessons/11%20-%20Conditions%20and%20Operators/)
 - [12 - Conditional Statements](lessons/12%20-%20Conditional%20Statements/)
+- [13 - while Loop](lessons/13%20-%20while%20Loop/)
+- [14 - Working with the while Loop](lessons/14%20-%20Working%20with%20the%20while%20Loop/)
 
 ## License
 

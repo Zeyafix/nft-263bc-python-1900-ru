@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Методы строк Python для самостоятельного изучения: регистр, очистка, поиск, замена, проверки, split и join. Подробные примеры, повторение и интерактивная самопроверка." />
+    <title>18 - string Methods</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">18 - string Methods</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="review">
+  <h2>01 / Повторение пройденного</h2>
+  <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-length-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-length-title">Как получить длину строки?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-length-title">
+  <fieldset><legend>В переменной <code>text</code> хранится строка. Отметьте подходящую запись.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-length-option-1">
+    <input class="visually-hidden" type="checkbox" id="review-length-option-1" name="answers" value="1" aria-describedby="review-length-option-1-feedback" />
+    <span><code>len(text)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-length-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Функция len() возвращает количество символов строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-length-option-2">
+    <input class="visually-hidden" type="checkbox" id="review-length-option-2" name="answers" value="2" aria-describedby="review-length-option-2-feedback" />
+    <span><code>text.len()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-length-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У строки нет метода len(). Длину получает отдельная функция len(text).</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-length-option-3">
+    <input class="visually-hidden" type="checkbox" id="review-length-option-3" name="answers" value="3" aria-describedby="review-length-option-3-feedback" />
+    <span><code>length(text)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-length-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Встроенной функции length() в Python нет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-length-option-4">
+    <input class="visually-hidden" type="checkbox" id="review-length-option-4" name="answers" value="4" aria-describedby="review-length-option-4-feedback" />
+    <span><code>text[0]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-length-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это первый символ непустой строки, а не количество символов.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-first-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-first-title">Индекс первого символа</h3>
+  <div class="special-block__body"><p>Дана строка <code>text = &quot;Python&quot;</code>. Какой неотрицательный индекс у символа <code>&quot;P&quot;</code>?</p><form class="quiz" data-quiz="text" data-answer="0" data-success="Верно: первый символ P находится по индексу 0." data-hint="Отсчёт индексов начинается с нуля. Нужен неотрицательный индекс без пробелов." autocomplete="off" aria-labelledby="review-first-title">
+  <label for="review-first-answer">Введите неотрицательный индекс цифрой, без пробелов и кавычек.</label>
+  <div class="quiz__answer-row"><input class="quiz__input" id="review-first-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-first-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+  <div class="quiz__feedback" id="review-first-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-fifth-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-fifth-title">Индекс внутри строки</h3>
+  <div class="special-block__body"><p>Дана строка <code>text = &quot;planet&quot;</code>. Какой неотрицательный индекс у символа <code>&quot;e&quot;</code>?</p><form class="quiz" data-quiz="text" data-answer="4" data-success="Верно: p → 0, l → 1, a → 2, n → 3, e → 4." data-hint="Начните с p под индексом 0 и считайте слева направо до e." autocomplete="off" aria-labelledby="review-fifth-title">
+  <label for="review-fifth-answer">Введите неотрицательный индекс цифрой, без пробелов и кавычек.</label>
+  <div class="quiz__answer-row"><input class="quiz__input" id="review-fifth-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-fifth-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+  <div class="quiz__feedback" id="review-fifth-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-in-true-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-in-true-title">Где результат True?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-in-true-title">
+  <fieldset><legend>Отметьте выражения, в которых оператор <code>in</code> вернёт <code>True</code>.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-in-true-option-1">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-1" name="answers" value="1" aria-describedby="review-in-true-option-1-feedback" />
+    <span><code>&quot;Py&quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Фрагмент Py стоит в начале.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-in-true-option-2">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-2" name="answers" value="2" aria-describedby="review-in-true-option-2-feedback" />
+    <span><code>&quot;thon&quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Фрагмент thon идёт подряд с индекса 2.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-true-option-3">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-3" name="answers" value="3" aria-describedby="review-in-true-option-3-feedback" />
+    <span><code>&quot;py&quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. Маленькая p отличается от большой P.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-true-option-4">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-4" name="answers" value="4" aria-describedby="review-in-true-option-4-feedback" />
+    <span><code>&quot;Pto&quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. Символы Pto не идут подряд.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-true-option-5">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-5" name="answers" value="5" aria-describedby="review-in-true-option-5-feedback" />
+    <span><code>&quot;Python!&quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. Восклицательного знака в строке нет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-true-option-6">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-6" name="answers" value="6" aria-describedby="review-in-true-option-6-feedback" />
+    <span><code>&quot; &quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. В строке нет пробела.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-true-option-7">
+    <input class="visually-hidden" type="checkbox" id="review-in-true-option-7" name="answers" value="7" aria-describedby="review-in-true-option-7-feedback" />
+    <span><code>&quot;no&quot; in &quot;Python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-true-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. Порядок букв имеет значение: есть on, но нет no.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-in-false-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-in-false-title">Где результат False?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-in-false-title">
+  <fieldset><legend>Отметьте выражения, в которых оператор <code>in</code> вернёт <code>False</code>.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-false-option-1">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-1" name="answers" value="1" aria-describedby="review-in-false-option-1-feedback" />
+    <span><code>&quot;cat&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Фрагмент cat стоит в начале.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-false-option-2">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-2" name="answers" value="2" aria-describedby="review-in-false-option-2-feedback" />
+    <span><code>&quot;log&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Фрагмент log стоит в конце.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-false-option-3">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-3" name="answers" value="3" aria-describedby="review-in-false-option-3-feedback" />
+    <span><code>&quot;a&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Буква a есть в строке.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-false-option-4">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-4" name="answers" value="4" aria-describedby="review-in-false-option-4-feedback" />
+    <span><code>&quot;catalog&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Вся строка входит в саму себя.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-false-option-5">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-5" name="answers" value="5" aria-describedby="review-in-false-option-5-feedback" />
+    <span><code>&quot;&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>True</code>. Пустая строка входит в любую строку.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-in-false-option-6">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-6" name="answers" value="6" aria-describedby="review-in-false-option-6-feedback" />
+    <span><code>&quot;Cat&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. Большой C в строке нет.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-in-false-option-7">
+    <input class="visually-hidden" type="checkbox" id="review-in-false-option-7" name="answers" value="7" aria-describedby="review-in-false-option-7-feedback" />
+    <span><code>&quot;tag&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-in-false-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>False</code>. Буквы tag не идут подряд.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-operations-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-operations-title">Какие операции допустимы?</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-operations-title">
+  <fieldset><legend>Перед каждой операцией отдельно выполнено <code>text = &quot;Python&quot;</code>. Отметьте операции, которые выполнятся без ошибки.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-operations-option-1">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-1" name="answers" value="1" aria-describedby="review-operations-option-1-feedback" />
+    <span><code>text[0]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Получится строка "P".</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-operations-option-2">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-2" name="answers" value="2" aria-describedby="review-operations-option-2-feedback" />
+    <span><code>text[-1]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Последний символ: "n".</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-operations-option-3">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-3" name="answers" value="3" aria-describedby="review-operations-option-3-feedback" />
+    <span><code>text[1:100]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Получится "ython". Срез допускает конечную границу за пределами строки.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-operations-option-4">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-4" name="answers" value="4" aria-describedby="review-operations-option-4-feedback" />
+    <span><code>text[::-1]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Получится "nohtyP": срез с шагом -1 читает строку в обратном порядке.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-operations-option-5">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-5" name="answers" value="5" aria-describedby="review-operations-option-5-feedback" />
+    <span><code>text + &quot;!&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Получится новая строка "Python!".</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-operations-option-6">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-6" name="answers" value="6" aria-describedby="review-operations-option-6-feedback" />
+    <span><code>text[0] = &quot;p&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>TypeError: нельзя заменить символ строки присваиванием по индексу.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-operations-option-7">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-7" name="answers" value="7" aria-describedby="review-operations-option-7-feedback" />
+    <span><code>text[6]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>IndexError: неотрицательные индексы здесь от 0 до 5.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-operations-option-8">
+    <input class="visually-hidden" type="checkbox" id="review-operations-option-8" name="answers" value="8" aria-describedby="review-operations-option-8-feedback" />
+    <span><code>text[-7]</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="review-operations-option-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>IndexError: отрицательные индексы здесь от -6 до -1.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+  </div>
+</section>
+<section id="method-call">
+  <h2>02 / Что такое метод и как его вызвать</h2>
+  <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="method-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="method-definition-title">Метод вызывается у значения</h3>
+  <div class="special-block__body"><p>Метод похож на функцию (готовый алгоритм с именем), которая связана с определённым типом данных. У строк есть готовые методы для работы с текстом. Общая запись: <code>text.method(arguments)</code>. Здесь <code>text</code> обозначает строку, <code>method</code> заменяют именем нужного метода, а <code>arguments</code> обозначает передаваемые ему данные. Это схема, а не готовая команда.</p></div>
+</aside>
+<p>Сначала пишут строку или имя переменной, затем точку, имя метода и круглые скобки. Например, <code>text.lower()</code> возвращает текст со строчными буквами. Скобки нужны даже тогда, когда внутри ничего нет. Запись <code>text.lower</code> без скобок только обращается к методу, но не запускает его.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Функция и метод</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Функция и метод">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Python&quot;
+print(len(text))
+print(text.lower())
+print(&quot;HELLO&quot;.lower())</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Функция и метод">6
+python
+hello</pre></div></div>
+<p>В <code>len(text)</code> строка передаётся аргументом отдельной функции. В <code>text.lower()</code> строка уже указана перед точкой. Метод <code>lower()</code> не требует дополнительных аргументов. У <code>text.replace(&quot;P&quot;, &quot;J&quot;)</code> их два: что искать и на что заменить. Аргументы разделяют запятыми.</p>
+<p>Возвращаемое значение можно вывести через <code>print()</code>, сохранить в переменную или использовать в условии. Сам вызов метода в файле программы не печатает результат. Строка неизменяема: методы обработки текста возвращают результат, но не переписывают исходное значение.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Сохранение результата</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сохранение результата">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;HELLO&quot;
+text.lower()
+print(text)
+normalized = text.lower()
+print(normalized)
+text = text.lower()
+print(text)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Сохранение результата">HELLO
+hello
+hello</pre></div></div>
+<p>После <code>text = text.lower()</code> имя <code>text</code> связано с результатом обработки. Это новое присваивание, а не изменение символов старой строки.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Что могут возвращать методы строк"><table><caption>Что могут возвращать методы строк</caption><thead><tr><th scope="col">Вызов</th><th scope="col">Результат</th><th scope="col">Тип</th></tr></thead><tbody><tr><td><code>&quot;Hi&quot;.lower()</code></td><td><code>&quot;hi&quot;</code></td><td><code>str</code></td></tr><tr><td><code>&quot;banana&quot;.count(&quot;a&quot;)</code></td><td><code>3</code></td><td><code>int</code></td></tr><tr><td><code>&quot;Hi&quot;.startswith(&quot;H&quot;)</code></td><td><code>True</code></td><td><code>bool</code></td></tr><tr><td><code>&quot;red blue&quot;.split()</code></td><td><code>[&quot;red&quot;, &quot;blue&quot;]</code></td><td><code>list</code></td></tr></tbody></table></div>
+<p>Список пока можно понимать как несколько значений в определённом порядке. В разделе о <code>split()</code> разберём, как читать его элементы. Не нужно запоминать все методы сразу: выбирайте их по задаче и проверяйте тип результата.</p>
+  </div>
+</section>
+<section id="letter-case">
+  <h2>03 / Изменение регистра</h2>
+  <div class="section-content">
+<p>Регистр определяет, большая буква или маленькая. Это полезно, когда пользователь вводит команду разными способами: <code>&quot;HELP&quot;</code>, <code>&quot;Help&quot;</code> или <code>&quot;help&quot;</code>. Приведение к одному регистру упрощает сравнение.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Четыре способа изменить регистр"><table><caption>Четыре способа изменить регистр</caption><thead><tr><th scope="col">Метод</th><th scope="col">Что делает</th></tr></thead><tbody><tr><td><code>lower()</code></td><td>Переводит буквы в нижний регистр.</td></tr><tr><td><code>upper()</code></td><td>Переводит буквы в верхний регистр.</td></tr><tr><td><code>capitalize()</code></td><td>Первый символ делает заглавным, если это буква; остальные буквы переводит в нижний регистр.</td></tr><tr><td><code>title()</code></td><td>Делает заглавной первую букву каждой группы букв, остальные буквы группы переводит в нижний регистр.</td></tr></tbody></table></div>
+<div class="code-example">
+  <div class="code-example__header"><span>Один текст, четыре результата</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Один текст, четыре результата">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;hELLO pYTHON&quot;
+print(text.lower())
+print(text.upper())
+print(text.capitalize())
+print(text.title())
+print(text)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Один текст, четыре результата">hello python
+HELLO PYTHON
+Hello python
+Hello Python
+hELLO pYTHON</pre></div></div>
+<p>Пробелы, цифры и знаки препинания эти методы не удаляют. <code>capitalize()</code> работает именно с первым символом: если строка начинается с пробела, метод не перескакивает к первой букве. <code>title()</code> использует простые границы групп букв, а не правила языка.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Пробел и апостроф</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пробел и апостроф">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot; hello WORLD&quot;.capitalize())
+print(&quot;they&#x27;re ready&quot;.title())</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Пробел и апостроф"> hello world
+They&#x27;Re Ready</pre></div></div>
+<aside class="special-block special-block--tip" aria-labelledby="case-choice-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="case-choice-title">Выбирайте обработку под задачу</h3>
+  <div class="special-block__body"><p>Для знакомых команд на английском обычно достаточно <code>lower()</code>. Для оформления заголовка можно попробовать <code>title()</code>, но результат для имён и слов с апострофом нужно проверять. Автоматическая смена регистра не исправляет опечатки.</p></div>
+</aside>
+  </div>
+</section>
+<section id="trim">
+  <h2>04 / Очистка краёв строки</h2>
+  <div class="section-content">
+<p>При вводе или копировании текста по краям часто остаются пробелы. Метод <code>strip()</code> без аргументов убирает пробельные символы с обоих краёв: обычные пробелы, табуляции и переводы строк. <code>lstrip()</code> очищает только левый край, <code>rstrip()</code> только правый. Внутри строки пробелы остаются.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Границы результата видны по скобкам</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Границы результата видны по скобкам">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;  red  blue  &quot;
+print(&quot;[&quot; + text.strip() + &quot;]&quot;)
+print(&quot;[&quot; + text.lstrip() + &quot;]&quot;)
+print(&quot;[&quot; + text.rstrip() + &quot;]&quot;)
+print(&quot;[&quot; + &quot;\t hello \n&quot;.strip() + &quot;]&quot;)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Границы результата видны по скобкам">[red  blue]
+[red  blue  ]
+[  red  blue]
+[hello]</pre></div></div>
+<p>Квадратные скобки здесь добавлены только для вывода, чтобы увидеть оставшиеся пробелы. Между <code>red</code> и <code>blue</code> по-прежнему два пробела. Если вся строка состоит из пробельных символов, <code>strip()</code> вернёт пустую строку.</p>
+<aside class="special-block special-block--warning" aria-labelledby="strip-set-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="strip-set-title">Аргумент задаёт набор символов</h3>
+  <div class="special-block__body"><p>В <code>strip(&quot;ab&quot;)</code> буквы <code>a</code> и <code>b</code> удаляются по краям в любом порядке и количестве. Обработка каждого края останавливается на первом символе вне этого набора. Целое слово <code>"ab"</code> метод не ищет. Если аргумент указан, пробел не удалится автоматически: его тоже нужно включить в набор.</p>
+    <div class="code-example">
+  <div class="code-example__header"><span>Набор, а не фрагмент</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Набор, а не фрагмент">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;abbaHello ba&quot;.strip(&quot;ab&quot;))
+print(&quot;***hello***&quot;.strip(&quot;*&quot;))
+print(&quot;  ***hello***  &quot;.strip(&quot;*&quot;))
+print(&quot;  ***hello***  &quot;.strip(&quot; *&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Набор, а не фрагмент">Hello 
+hello
+  ***hello***  
+hello</pre></div></div>
+<p>В первом результате справа сохранился пробел: его нет в наборе <code>&quot;ab&quot;</code>. В третьем результате крайние пробелы не дают добраться до звёздочек. Для удаления конкретного начала или конца строки ниже познакомимся с <code>removeprefix()</code> и <code>removesuffix()</code>.</p>
+  </div>
+</aside>
+  </div>
+</section>
+<section id="boundaries">
+  <h2>05 / Проверка начала и конца</h2>
+  <div class="section-content">
+<p><code>startswith(prefix)</code> проверяет, начинается ли строка указанным фрагментом. <code>endswith(suffix)</code> проверяет конец. Оба метода возвращают <code>bool</code>: <code>True</code> или <code>False</code>. Исходный текст они не меняют, регистр и пробелы учитываются.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Команда должна начинаться с префикса</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Команда должна начинаться с префикса">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">command = &quot;/help&quot;
+print(command.startswith(&quot;/&quot;))
+print(command.startswith(&quot;help&quot;))
+print(&quot;/&quot; in &quot;help / later&quot;)
+print(&quot;help / later&quot;.startswith(&quot;/&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Команда должна начинаться с префикса">True
+False
+True
+False</pre></div></div>
+<p>Оператор <code>in</code> отвечает на вопрос «есть ли фрагмент где-нибудь?». Если команда должна начинаться с косой черты, наличие черты в середине недостаточно. Проверка <code>startswith()</code> выражает требование точнее.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Расширение в конце имени</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Расширение в конце имени">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">filename = &quot;report.txt.backup&quot;
+print(&quot;.txt&quot; in filename)
+print(filename.endswith(&quot;.txt&quot;))
+print(&quot;report.txt&quot;.endswith(&quot;.txt&quot;))
+print(&quot;REPORT.TXT&quot;.endswith(&quot;.txt&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Расширение в конце имени">True
+False
+True
+False</pre></div></div>
+<p>Так можно проверить написание имени файла, но нельзя определить его настоящее содержимое. Для сравнения расширений без учёта регистра сначала приведите имя к нижнему регистру. Цепочки методов разберём ближе к концу урока.</p>
+  </div>
+</section>
+<section id="search">
+  <h2>06 / Поиск позиции и подсчёт вхождений</h2>
+  <div class="section-content">
+<p>Когда нужен индекс найденного фрагмента, используйте <code>find()</code> или <code>index()</code>. Оба ищут первое вхождение слева и возвращают индекс его начала, считая от нуля. Различие проявляется, если фрагмента нет.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Поиск первого вхождения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Поиск первого вхождения">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;banana&quot;
+print(text.find(&quot;na&quot;))
+print(text.index(&quot;na&quot;))
+print(text.find(&quot;ba&quot;))
+print(text.find(&quot;x&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Поиск первого вхождения">2
+2
+0
+-1</pre></div></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Если фрагмент отсутствует"><table><caption>Если фрагмент отсутствует</caption><thead><tr><th scope="col">Вызов</th><th scope="col">Поведение</th></tr></thead><tbody><tr><td><code>&quot;banana&quot;.find(&quot;x&quot;)</code></td><td>Возвращает число -1. Программа продолжает работу.</td></tr><tr><td><code>&quot;banana&quot;.index(&quot;x&quot;)</code></td><td>Вызывает <code>ValueError</code>. Без обработки ошибки выполнение программы остановится.</td></tr><tr><td><code>&quot;banana&quot;.count(&quot;x&quot;)</code></td><td>Возвращает 0: вхождений нет.</td></tr></tbody></table></div>
+<p>Попробуйте <code>&quot;banana&quot;.index(&quot;x&quot;)</code> отдельно в консоли. <code>ValueError</code> сообщает, что значение аргумента не позволило выполнить поиск с обязательным результатом. Обработку исключений изучим позже. Пока выбирайте <code>find()</code>, если отсутствие фрагмента ожидаемо.</p>
+<aside class="special-block special-block--warning" aria-labelledby="find-condition-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="find-condition-title">Почему нельзя проверять просто if text.find(...)</h3>
+  <div class="special-block__body"><p>В условии число 0 считается ложным, а -1 истинным. Поэтому найденный в самом начале фрагмент не запустит ветку <code>if</code>, а отсутствующий запустит. Результат <code>find()</code> является индексом, а не готовым ответом «найдено».</p><div class="code-example">
+  <div class="code-example__header"><span>Проверка, которая даёт обратный смысл</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка, которая даёт обратный смысл">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Python&quot;
+if text.find(&quot;Py&quot;):
+    print(&quot;Found at the start&quot;)
+if text.find(&quot;Java&quot;):
+    print(&quot;This branch runs, but Java is absent&quot;)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверка, которая даёт обратный смысл">This branch runs, but Java is absent</pre></div></div>
+    <p>Правильнее будет проверять на -1. Если поиск не вернул -1, значит элемент найден.</p>
+    <div class="code-example">
+  <div class="code-example__header"><span>Явно проверяем результат поиска</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Явно проверяем результат поиска">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Python&quot;
+position = text.find(&quot;Py&quot;)
+if position != -1:
+    print(&quot;Found at index&quot;, position)
+if &quot;Py&quot; in text:
+    print(&quot;Fragment exists&quot;)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Явно проверяем результат поиска">Found at index 0
+Fragment exists</pre></div></div>
+<p>Если нужен только факт наличия, выбирайте <code>in</code>. Если дальше потребуется позиция, сохраните результат <code>find()</code> и сравните его с -1. Не используйте -1 как индекс найденного фрагмента: <code>text[-1]</code> просто прочитает последний символ строки.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Подсчёт без перекрытий</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Подсчёт без перекрытий">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;banana&quot;.count(&quot;a&quot;))
+print(&quot;banana&quot;.count(&quot;ana&quot;))
+print(&quot;aaaa&quot;.count(&quot;aa&quot;))
+print(&quot;banana&quot;.count(&quot;x&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Подсчёт без перекрытий">3
+1
+2
+0</pre></div></div>
+<p>Метод <code>count()</code> считает неперекрывающиеся вхождения. В <code>banana</code> фрагмент ana встречается с индексов 1 и 3, но эти фрагменты используют общую букву <code>a</code>. После учёта первого фрагмента поиск продолжается за ним, поэтому результат равен 1. В <code>aaaa</code> помещаются два отдельных фрагмента <code>aa</code>.</p>
+  </div>
+</section>
+<section id="replace">
+  <h2>07 / Замена и удаление фрагментов</h2>
+  <div class="section-content">
+<p><code>replace(old, new)</code> возвращает строку, в которой все вхождения <code>old</code> заменены на <code>new</code>. Третий аргумент ограничивает число замен, начиная слева. Метод учитывает регистр. Если <code>old</code> не найден, содержимое результата совпадёт с исходным текстом.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Все замены или только первые</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Все замены или только первые">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;red red red&quot;
+print(text.replace(&quot;red&quot;, &quot;blue&quot;))
+print(text.replace(&quot;red&quot;, &quot;blue&quot;, 2))
+print(text.replace(&quot;red&quot;, &quot;blue&quot;, 0))
+print(text)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Все замены или только первые">blue blue blue
+blue blue red
+red red red
+red red red</pre></div></div>
+<p>Чтобы удалить найденный фрагмент, замените его на пустую строку <code>&quot;&quot;</code>. Например, <code>&quot;12-34-56&quot;.replace(&quot;-&quot;, &quot;&quot;)</code> вернёт <code>&quot;123456&quot;</code>. Удаление затронет все вхождения, включая середину строки.</p>
+<p>Если нужно удалить только конкретное начало, используйте <code>removeprefix()</code>, только конкретный конец, <code>removesuffix()</code>. Они доступны с <strong>Python 3.9</strong>. При отсутствии нужного фрагмента содержимое остаётся прежним. За один вызов удаляется один совпавший префикс или суффикс.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Удаление точного фрагмента</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Удаление точного фрагмента">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;unhappy&quot;.removeprefix(&quot;un&quot;))
+print(&quot;sunny&quot;.removeprefix(&quot;un&quot;))
+print(&quot;report.txt&quot;.removesuffix(&quot;.txt&quot;))
+print(&quot;report.txt.backup&quot;.removesuffix(&quot;.txt&quot;))
+print(&quot;prepretext&quot;.removeprefix(&quot;pre&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Удаление точного фрагмента">happy
+sunny
+report
+report.txt.backup
+pretext</pre></div></div>
+<aside class="special-block special-block--warning" aria-labelledby="strip-versus-suffix-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="strip-versus-suffix-title">Не удаляйте расширение набором символов</h3>
+  <div class="special-block__body"><div class="code-example">
+  <div class="code-example__header"><span>strip() и removesuffix() решают разные задачи</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: strip() и removesuffix() решают разные задачи">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">filename = &quot;text.txt&quot;
+print(filename.strip(&quot;.txt&quot;))
+print(filename.removesuffix(&quot;.txt&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: strip() и removesuffix() решают разные задачи">e
+text</pre></div></div><p><code>strip(".txt")</code> удаляет с обоих краёв любые точки, буквы <code>t</code> и <code>x</code>, пока не дойдёт до другого символа. Поэтому от <code>text.txt</code> остаётся только <code>e</code>. <code>removesuffix(".txt")</code> удаляет точное расширение один раз справа.</p></div>
+</aside>
+  </div>
+</section>
+<section id="predicates">
+  <h2>08 / Проверка содержимого строки</h2>
+  <div class="section-content">
+<p>Методы этой группы возвращают <code>bool</code> и проверяют всю строку. Им не передают аргументы. Для перечисленных ниже методов нужны хотя бы один символ и выполнение условия для каждого символа. Поэтому пустая строка даёт <code>False</code> во всех этих проверках.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Какие символы допускает проверка"><table><caption>Какие символы допускает проверка</caption><thead><tr><th scope="col">Метод</th><th scope="col">Условие</th></tr></thead><tbody><tr><td><code>isalpha()</code></td><td>Все символы являются буквами. Буквы разных алфавитов тоже учитываются.</td></tr><tr><td><code>isdecimal()</code></td><td>Все символы являются десятичными цифрами, в том числе цифрами других систем письма.</td></tr><tr><td><code>isdigit()</code></td><td>Все символы являются цифрами; допускаются и некоторые специальные символы, например ².</td></tr><tr><td><code>isalnum()</code></td><td>Каждый символ является буквой или числовым символом. Пробелы и подчёркивания не подходят.</td></tr><tr><td><code>isspace()</code></td><td>Все символы пробельные: например, пробел, табуляция или перевод строки.</td></tr></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Сравните результаты на разных строках"><table><caption>Сравните результаты на разных строках</caption><thead><tr><th scope="col">Строка</th><th scope="col"><code>isalpha()</code></th><th scope="col"><code>isdecimal()</code></th><th scope="col"><code>isdigit()</code></th><th scope="col"><code>isalnum()</code></th><th scope="col"><code>isspace()</code></th></tr></thead><tbody><tr><td><code>&#x27;Python&#x27;</code></td><td><code>True</code></td><td><code>False</code></td><td><code>False</code></td><td><code>True</code></td><td><code>False</code></td></tr><tr><td><code>&#x27;abc123&#x27;</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>True</code></td><td><code>False</code></td></tr><tr><td><code>&#x27;123&#x27;</code></td><td><code>False</code></td><td><code>True</code></td><td><code>True</code></td><td><code>True</code></td><td><code>False</code></td></tr><tr><td><code>&#x27;&#x27;</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr><tr><td><code>&#x27; &#x27;</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>True</code></td></tr><tr><td><code>&#x27;-12&#x27;</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr><tr><td><code>&#x27;3.14&#x27;</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr><tr><td><code>&#x27;²&#x27;</code></td><td><code>False</code></td><td><code>False</code></td><td><code>True</code></td><td><code>True</code></td><td><code>False</code></td></tr></tbody></table></div>
+<p>Знак минуса и десятичная точка не являются цифрами. Поэтому -12 и 3.14 не проходят <code>isdecimal()</code> и <code>isdigit()</code>, хотя могут обозначать числа. Пробел внутри имени также делает <code>isalpha()</code> ложным. Проверки не удаляют пробелы и не меняют строку.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Пробельные символы и буквы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пробельные символы и буквы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;hello world&quot;.isalpha())
+print(&quot;user_7&quot;.isalnum())
+print(&quot;\t\n&quot;.isspace())
+print(&quot;&quot;.isspace())</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Пробельные символы и буквы">False
+False
+True
+False</pre></div></div>
+<aside class="special-block special-block--warning" aria-labelledby="digits-int-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="digits-int-title">isdigit() не гарантирует успешный int()</h3>
+  <div class="special-block__body"><p>Символ <code>&quot;²&quot;</code> проходит <code>isdigit()</code>, но <code>int(&quot;²&quot;)</code> вызовет <code>ValueError</code>. И наоборот: <code>int(&quot;-12&quot;)</code> работает, хотя строка <code>&quot;-12&quot;</code> не проходит <code>isdigit()</code>. Проверка состава символов и преобразование числа решают разные задачи.</p><div class="code-example">
+  <div class="code-example__header"><span>Цифра и десятичная цифра</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Цифра и десятичная цифра">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;²&quot;.isdigit())
+print(&quot;²&quot;.isdecimal())
+print(&quot;-12&quot;.isdigit())
+print(int(&quot;-12&quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Цифра и десятичная цифра">True
+False
+False
+-12</pre></div></div></div>
+</aside>
+<p>Для короткого ввода неотрицательного целого без знака проверка <code>isdecimal()</code> лучше выражает требование «только десятичные цифры». Но универсальную проверку произвольного ввода через методы <code>is...</code> строить не стоит: допустимые форматы и ограничения преобразования шире. Позже научимся обрабатывать ошибки <code>int()</code>. Сейчас сначала определяйте, какие именно символы разрешены вашей задачей.</p>
+  </div>
+</section>
+<section id="split">
+  <h2>09 / Разбиение строки на части</h2>
+  <div class="section-content">
+<p>Метод <code>split()</code> возвращает список строк. Список хранит несколько элементов в определённом порядке. В записи <code>[&quot;red&quot;, &quot;blue&quot;]</code> квадратные скобки ограничивают список, а запятая разделяет элементы. Здесь два элемента, и каждый из них является целой строкой.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Список, индексы и знакомый цикл</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Список, индексы и знакомый цикл">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;red green blue&quot;
+parts = text.split()
+print(parts)
+print(len(parts))
+print(parts[0])
+print(parts[-1])
+for part in parts:
+    print(part)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Список, индексы и знакомый цикл">[&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;]
+3
+red
+blue
+red
+green
+blue</pre></div></div>
+<p>Индексы списка начинаются с нуля. <code>parts[0]</code> возвращает первое слово, а <code>text[0]</code> вернуло бы первую букву исходной строки. В цикле <code>part</code> по очереди получает целый элемент списка. Обращение к отсутствующему индексу списка также вызывает <code>IndexError</code>.</p>
+<p>Без аргументов <code>split()</code> считает разделителем последовательность пробельных символов. Несколько пробелов подряд работают как один разделитель. Пробелы по краям не создают пустых элементов. Табуляция и перевод строки тоже разделяют текст.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>split() и split(" ")</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: split() и split(" ")">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot; red  blue &quot;
+print(text.split())
+print(text.split(&quot; &quot;))
+print(&quot;red\tblue\ngreen&quot;.split())
+print(&quot;&quot;.split())
+print(&quot;&quot;.split(&quot; &quot;))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: split() и split(" ")">[&#x27;red&#x27;, &#x27;blue&#x27;]
+[&#x27;&#x27;, &#x27;red&#x27;, &#x27;&#x27;, &#x27;blue&#x27;, &#x27;&#x27;]
+[&#x27;red&#x27;, &#x27;blue&#x27;, &#x27;green&#x27;]
+[]
+[&#x27;&#x27;]</pre></div></div>
+<p>Явный разделитель <code>&quot; &quot;</code> обозначает один конкретный пробел. Между соседними разделителями и по краям появляются пустые строки. Табуляция при таком вызове не является разделителем. Пустой список <code>[]</code> и список с одной пустой строкой <code>[&quot;&quot;]</code> отличаются: у первого длина 0, у второго 1.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Разделитель и ограничение разбиений</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разделитель и ограничение разбиений">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;red,green,,blue&quot;.split(&quot;,&quot;))
+print(&quot;red&lt;&gt;green&lt;&gt;blue&quot;.split(&quot;&lt;&gt;&quot;))
+print(&quot;name=Alex=admin&quot;.split(&quot;=&quot;, 1))
+print(&quot;red green blue&quot;.split(maxsplit=1))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разделитель и ограничение разбиений">[&#x27;red&#x27;, &#x27;green&#x27;, &#x27;&#x27;, &#x27;blue&#x27;]
+[&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;]
+[&#x27;name&#x27;, &#x27;Alex=admin&#x27;]
+[&#x27;red&#x27;, &#x27;green blue&#x27;]</pre></div></div>
+<p><code>maxsplit</code> ограничивает число разбиений, а не количество элементов. После одного разбиения остаток строки попадает в последний элемент целиком. В <code>split(&quot;=&quot;, 1)</code> ограничение передано вторым аргументом. Запись <code>split(maxsplit=1)</code> задаёт его по имени и сохраняет обычное разбиение по пробельным символам.</p>
+<aside class="special-block special-block--warning" aria-labelledby="split-empty-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="split-empty-title">Пустой разделитель недопустим</h3>
+  <div class="special-block__body"><p><code>text.split(&quot;&quot;)</code> вызывает <code>ValueError</code>. Если нужно пройти по отдельным символам строки, используйте уже знакомый <code>for char in text</code>. Если разделитель вообще не встретился, <code>split()</code> с явным разделителем вернёт список из исходной строки.</p></div>
+</aside>
+  </div>
+</section>
+<section id="join">
+  <h2>10 / Сборка строки из частей</h2>
+  <div class="section-content">
+<p><code>separator.join(parts)</code> соединяет строки из <code>parts</code>, вставляя между ними <code>separator</code>. Метод вызывают у строки-разделителя. Список частей передают внутрь скобок. Разделитель добавляется только между элементами, без добавления в начало и конец.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Разные разделители</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разные разделители">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">parts = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]
+print(&quot;, &quot;.join(parts))
+print(&quot;-&quot;.join(parts))
+print(&quot;&quot;.join(parts))
+print(&quot;-&quot;.join([&quot;red&quot;]))
+print(&quot;[&quot; + &quot;-&quot;.join([]) + &quot;]&quot;)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разные разделители">red, green, blue
+red-green-blue
+redgreenblue
+red
+[]</pre></div></div>
+<p>Пустой разделитель допустим для <code>join()</code>: части просто склеиваются. Для пустого списка результатом будет пустая строка. В последней строке вывода скобки добавлены вручную, чтобы её показать.</p>
+<aside class="special-block special-block--warning" aria-labelledby="join-strings-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="join-strings-title">Все элементы должны быть строками</h3>
+  <div class="special-block__body"><p><code>&quot;-&quot;.join([&quot;item&quot;, 7])</code> вызывает <code>TypeError</code>: число 7 не является строкой. <code>join()</code> не вызывает <code>str()</code> за вас. Нужна запись <code>&quot;-&quot;.join([&quot;item&quot;, str(7)])</code>, которая даст <code>&quot;item-7&quot;</code>. Запись <code>parts.join(&quot;-&quot;)</code> также неверна: в этой задаче <code>join()</code> вызывается у разделителя, а не у списка.</p></div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Разбить и собрать с другим разделителем</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разбить и собрать с другим разделителем">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;red,green,blue&quot;
+parts = text.split(&quot;,&quot;)
+result = &quot; / &quot;.join(parts)
+print(parts)
+print(result)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разбить и собрать с другим разделителем">[&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;]
+red / green / blue</pre></div></div>
+<p><code>split()</code> превратил одну строку в список частей, затем <code>join()</code> создал из этих частей строку с другим разделителем. Эти операции не всегда точно восстанавливают исходный текст: <code>split()</code> без аргументов теряет сведения о количестве и виде пробелов.</p>
+  </div>
+</section>
+<section id="pipeline">
+  <h2>11 / Несколько методов в одной задаче</h2>
+  <div class="section-content">
+<p>Пользователь может ввести команду с лишними пробелами и в разном регистре. Нормализация приводит допустимые варианты ввода к единому виду. Сначала отделим этапы обработки, чтобы было видно назначение каждого шага.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Сначала промежуточные переменные</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сначала промежуточные переменные">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">raw_command = &quot;  HeLP  &quot;
+trimmed_command = raw_command.strip()
+command = trimmed_command.lower()
+print(&quot;[&quot; + raw_command + &quot;]&quot;)
+print(&quot;[&quot; + trimmed_command + &quot;]&quot;)
+print(command)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Сначала промежуточные переменные">[  HeLP  ]
+[HeLP]
+help</pre></div></div>
+<p>Первый шаг удаляет пробелы по краям, второй меняет регистр. Оба метода возвращают строки, поэтому второй можно вызвать прямо у результата первого. Так получается цепочка вызовов, которая читается слева направо.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Та же обработка коротко</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Та же обработка коротко">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">raw_command = &quot;  HeLP  &quot;
+command = raw_command.strip().lower()
+print(command)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Та же обработка коротко">help</pre></div></div>
+<p>Подключим <code>input()</code> и выберем действие через <code>if</code>. В показанном запуске пользователь ввёл два пробела, <code>HeLP</code> и ещё два пробела. В строке консоли после приглашения отображён этот ввод.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Нормализация введённой команды</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нормализация введённой команды">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">raw_command = input(&quot;Command: &quot;)
+command = raw_command.strip().lower()
+if command == &quot;help&quot;:
+    print(&quot;Available commands: help, exit&quot;)
+elif command == &quot;exit&quot;:
+    print(&quot;Goodbye!&quot;)
+else:
+    print(&quot;Unknown command&quot;)</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Нормализация введённой команды">Command:   HeLP  
+Available commands: help, exit</pre></div></div>
+<p>Сначала <code>input()</code> возвращает строку. Затем <code>strip()</code> убирает края, <code>lower()</code> приводит буквы к нижнему регистру, и только после этого <code>if</code> сравнивает команду с ожидаемым текстом. Попробуйте ввод <code>&quot;EXIT&quot;</code>, <code>&quot;unknown&quot;</code> и строку из пробелов. Последняя станет пустой и попадёт в <code>else</code>. Пробел внутри <code>&quot;he lp&quot;</code> не исчезнет: такая команда тоже неизвестна.</p>
+<aside class="special-block special-block--tip" aria-labelledby="chain-types-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="chain-types-title">Следите за типом результата</h3>
+  <div class="special-block__body"><p>Цепочка работает, пока следующий метод подходит результату предыдущего. <code>text.strip().lower()</code> допустимо: <code>strip()</code> возвращает строку. Но <code>text.isdigit().lower()</code> вызовет <code>AttributeError</code>, потому что <code>isdigit()</code> возвращает <code>bool</code>, у которого нет строкового метода <code>lower()</code>. Результат <code>split()</code> является списком, поэтому <code>join()</code> вызывают отдельно у разделителя.</p>
+  <div class="code-example">
+  <div class="code-example__header"><span>Убираем лишние пробелы между словами</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Убираем лишние пробелы между словами">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;  red   green\tblue  &quot;
+parts = text.split()
+normalized = &quot; &quot;.join(parts)
+print(normalized)
+print(&quot; &quot;.join(text.split()))</code></pre><div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Убираем лишние пробелы между словами">red green blue
+red green blue</pre></div></div>
+<p>Здесь <code>split()</code> выделяет слова, а <code>join()</code> вставляет между ними ровно один пробел. Используйте такую обработку, только если количество исходных пробелов не нужно сохранять. Когда цепочка становится трудной для чтения, вернитесь к промежуточным переменным.</p></div>
+</aside>
+  </div>
+</section>
+<section id="self-check">
+  <h2>12 / Самопроверка</h2>
+  <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-isdigit-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-isdigit-title">Проверка цифр</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-isdigit-title">
+  <fieldset><legend>Нужен метод, который проверяет цифры и возвращает <code>True</code> как для <code>&quot;123&quot;</code>, так и для <code>&quot;²&quot;</code>, но <code>False</code> для <code>&quot;-12&quot;</code> и <code>&quot;abc&quot;</code>. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isdigit-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-1" name="answers" value="1" aria-describedby="check-isdigit-option-1-feedback" />
+    <span><code>isdecimal()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет десятичные цифры. Символ ² эту проверку не проходит.</p></div></div>
+</div><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-isdigit-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-2" name="answers" value="2" aria-describedby="check-isdigit-option-2-feedback" />
+    <span><code>isdigit()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит из цифр, включая некоторые специальные цифры вроде ².</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isdigit-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-3" name="answers" value="3" aria-describedby="check-isdigit-option-3-feedback" />
+    <span><code>isalpha()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит только из букв.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isdigit-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-4" name="answers" value="4" aria-describedby="check-isdigit-option-4-feedback" />
+    <span><code>isalnum()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет буквы и числовые символы в непустой строке; пробелы и подчёркивания не допускает.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isdigit-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-5" name="answers" value="5" aria-describedby="check-isdigit-option-5-feedback" />
+    <span><code>isspace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка целиком состоит из пробельных символов.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isdigit-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-6" name="answers" value="6" aria-describedby="check-isdigit-option-6-feedback" />
+    <span><code>count()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает количество неперекрывающихся вхождений.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isdigit-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-isdigit-option-7" name="answers" value="7" aria-describedby="check-isdigit-option-7-feedback" />
+    <span><code>find()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isdigit-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, возвращает -1.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-isalpha-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-isalpha-title">Только буквы</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-isalpha-title">
+  <fieldset><legend>Нужно получить <code>True</code> для <code>&quot;Python&quot;</code> и <code>False</code> для <code>&quot;Python3&quot;</code>, <code>&quot;hello world&quot;</code> и пустой строки. Отметьте подходящий метод проверки состава строки.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-isalpha-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-1" name="answers" value="1" aria-describedby="check-isalpha-option-1-feedback" />
+    <span><code>isalpha()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит только из букв.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalpha-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-2" name="answers" value="2" aria-describedby="check-isalpha-option-2-feedback" />
+    <span><code>isalnum()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет буквы и числовые символы в непустой строке; пробелы и подчёркивания не допускает.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalpha-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-3" name="answers" value="3" aria-describedby="check-isalpha-option-3-feedback" />
+    <span><code>isdigit()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит из цифр, включая некоторые специальные цифры вроде ².</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalpha-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-4" name="answers" value="4" aria-describedby="check-isalpha-option-4-feedback" />
+    <span><code>isdecimal()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет десятичные цифры. Символ ² эту проверку не проходит.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalpha-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-5" name="answers" value="5" aria-describedby="check-isalpha-option-5-feedback" />
+    <span><code>isspace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка целиком состоит из пробельных символов.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalpha-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-6" name="answers" value="6" aria-describedby="check-isalpha-option-6-feedback" />
+    <span><code>startswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет начало строки и возвращает bool.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalpha-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-isalpha-option-7" name="answers" value="7" aria-describedby="check-isalpha-option-7-feedback" />
+    <span><code>lower()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalpha-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в нижнем регистре.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-isalnum-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-isalnum-title">Буквы и числовые символы</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-isalnum-title">
+  <fieldset><legend>Нужно проверить непустую строку: подходят <code>&quot;Alex7&quot;</code>, <code>&quot;Alex&quot;</code> и <code>&quot;123&quot;</code>, не подходят <code>&quot;Alex_7&quot;</code> и <code>&quot;Alex 7&quot;</code>. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-isalnum-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-1" name="answers" value="1" aria-describedby="check-isalnum-option-1-feedback" />
+    <span><code>isalnum()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет буквы и числовые символы в непустой строке; пробелы и подчёркивания не допускает.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalnum-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-2" name="answers" value="2" aria-describedby="check-isalnum-option-2-feedback" />
+    <span><code>isalpha()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит только из букв.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalnum-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-3" name="answers" value="3" aria-describedby="check-isalnum-option-3-feedback" />
+    <span><code>isdigit()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит из цифр, включая некоторые специальные цифры вроде ².</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalnum-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-4" name="answers" value="4" aria-describedby="check-isalnum-option-4-feedback" />
+    <span><code>isdecimal()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет десятичные цифры. Символ ² эту проверку не проходит.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalnum-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-5" name="answers" value="5" aria-describedby="check-isalnum-option-5-feedback" />
+    <span><code>isspace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка целиком состоит из пробельных символов.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalnum-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-6" name="answers" value="6" aria-describedby="check-isalnum-option-6-feedback" />
+    <span><code>endswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет конец строки и возвращает bool.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-isalnum-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-isalnum-option-7" name="answers" value="7" aria-describedby="check-isalnum-option-7-feedback" />
+    <span><code>count()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-isalnum-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает количество неперекрывающихся вхождений.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-upper-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-upper-title">Все буквы большие</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-upper-title">
+  <fieldset><legend>Какой метод преобразует <code>&quot;hELLO pYTHON&quot;</code> в <code>&quot;HELLO PYTHON&quot;</code>?</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-upper-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-1" name="answers" value="1" aria-describedby="check-upper-option-1-feedback" />
+    <span><code>upper()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в верхнем регистре.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-upper-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-2" name="answers" value="2" aria-describedby="check-upper-option-2-feedback" />
+    <span><code>lower()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в нижнем регистре.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-upper-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-3" name="answers" value="3" aria-describedby="check-upper-option-3-feedback" />
+    <span><code>capitalize()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает первый символ заглавным, если это буква, а остальные буквы строчными.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-upper-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-4" name="answers" value="4" aria-describedby="check-upper-option-4-feedback" />
+    <span><code>title()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает заглавными первые буквы групп букв, остальные переводит в нижний регистр.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-upper-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-5" name="answers" value="5" aria-describedby="check-upper-option-5-feedback" />
+    <span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет пробельные символы с обоих краёв без аргументов; внутри строки их сохраняет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-upper-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-6" name="answers" value="6" aria-describedby="check-upper-option-6-feedback" />
+    <span><code>isalpha()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит только из букв.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-upper-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-upper-option-7" name="answers" value="7" aria-describedby="check-upper-option-7-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-upper-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-capitalize-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-capitalize-title">Большая буква в начале текста</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-capitalize-title">
+  <fieldset><legend>Какой метод преобразует <code>&quot;hELLO pYTHON&quot;</code> в <code>&quot;Hello python&quot;</code>?</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-capitalize-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-1" name="answers" value="1" aria-describedby="check-capitalize-option-1-feedback" />
+    <span><code>capitalize()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает первый символ заглавным, если это буква, а остальные буквы строчными.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-capitalize-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-2" name="answers" value="2" aria-describedby="check-capitalize-option-2-feedback" />
+    <span><code>title()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает заглавными первые буквы групп букв, остальные переводит в нижний регистр.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-capitalize-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-3" name="answers" value="3" aria-describedby="check-capitalize-option-3-feedback" />
+    <span><code>upper()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в верхнем регистре.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-capitalize-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-4" name="answers" value="4" aria-describedby="check-capitalize-option-4-feedback" />
+    <span><code>lower()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в нижнем регистре.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-capitalize-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-5" name="answers" value="5" aria-describedby="check-capitalize-option-5-feedback" />
+    <span><code>lstrip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Очищает только левый край строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-capitalize-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-6" name="answers" value="6" aria-describedby="check-capitalize-option-6-feedback" />
+    <span><code>isalpha()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит только из букв.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-capitalize-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-capitalize-option-7" name="answers" value="7" aria-describedby="check-capitalize-option-7-feedback" />
+    <span><code>join()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-capitalize-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вызывается у разделителя и соединяет переданные строки в одну.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-title-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-title-title">Большие буквы в начале слов</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-title-title">
+  <fieldset><legend>Какой метод преобразует <code>&quot;hELLO pYTHON&quot;</code> в <code>&quot;Hello Python&quot;</code>?</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-title-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-1" name="answers" value="1" aria-describedby="check-title-option-1-feedback" />
+    <span><code>title()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает заглавными первые буквы групп букв, остальные переводит в нижний регистр.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-title-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-2" name="answers" value="2" aria-describedby="check-title-option-2-feedback" />
+    <span><code>capitalize()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает первый символ заглавным, если это буква, а остальные буквы строчными.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-title-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-3" name="answers" value="3" aria-describedby="check-title-option-3-feedback" />
+    <span><code>upper()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в верхнем регистре.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-title-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-4" name="answers" value="4" aria-describedby="check-title-option-4-feedback" />
+    <span><code>lower()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает текст с буквами в нижнем регистре.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-title-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-5" name="answers" value="5" aria-describedby="check-title-option-5-feedback" />
+    <span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет пробельные символы с обоих краёв без аргументов; внутри строки их сохраняет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-title-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-6" name="answers" value="6" aria-describedby="check-title-option-6-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-title-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-title-option-7" name="answers" value="7" aria-describedby="check-title-option-7-feedback" />
+    <span><code>isalnum()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-title-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет буквы и числовые символы в непустой строке; пробелы и подчёркивания не допускает.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-strip-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-strip-title">Очистить края</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-strip-title">
+  <fieldset><legend>Какой метод без аргументов превратит <code>&quot;  red  blue  &quot;</code> в <code>&quot;red  blue&quot;</code>, сохранив два пробела между словами?</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-strip-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-1" name="answers" value="1" aria-describedby="check-strip-option-1-feedback" />
+    <span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет пробельные символы с обоих краёв без аргументов; внутри строки их сохраняет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-strip-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-2" name="answers" value="2" aria-describedby="check-strip-option-2-feedback" />
+    <span><code>lstrip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Очищает только левый край строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-strip-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-3" name="answers" value="3" aria-describedby="check-strip-option-3-feedback" />
+    <span><code>rstrip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Очищает только правый край строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-strip-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-4" name="answers" value="4" aria-describedby="check-strip-option-4-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-strip-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-5" name="answers" value="5" aria-describedby="check-strip-option-5-feedback" />
+    <span><code>replace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменяет вхождения фрагмента на другой фрагмент; число замен можно ограничить.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-strip-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-6" name="answers" value="6" aria-describedby="check-strip-option-6-feedback" />
+    <span><code>removeprefix()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет один точный фрагмент в начале строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-strip-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-strip-option-7" name="answers" value="7" aria-describedby="check-strip-option-7-feedback" />
+    <span><code>removesuffix()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-strip-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет один точный фрагмент в конце строки.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-find-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-find-title">Поиск с результатом -1</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-find-title">
+  <fieldset><legend>Нужно получить индекс первого вхождения фрагмента, а при его отсутствии получить -1. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-find-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-1" name="answers" value="1" aria-describedby="check-find-option-1-feedback" />
+    <span><code>find()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, возвращает -1.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-find-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-2" name="answers" value="2" aria-describedby="check-find-option-2-feedback" />
+    <span><code>index()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, вызывает ValueError.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-find-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-3" name="answers" value="3" aria-describedby="check-find-option-3-feedback" />
+    <span><code>count()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает количество неперекрывающихся вхождений.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-find-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-4" name="answers" value="4" aria-describedby="check-find-option-4-feedback" />
+    <span><code>startswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет начало строки и возвращает bool.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-find-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-5" name="answers" value="5" aria-describedby="check-find-option-5-feedback" />
+    <span><code>endswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет конец строки и возвращает bool.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-find-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-6" name="answers" value="6" aria-describedby="check-find-option-6-feedback" />
+    <span><code>replace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменяет вхождения фрагмента на другой фрагмент; число замен можно ограничить.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-find-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-find-option-7" name="answers" value="7" aria-describedby="check-find-option-7-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-find-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-index-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-index-title">Поиск с ошибкой при отсутствии</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-index-title">
+  <fieldset><legend>Нужно получить индекс первого вхождения фрагмента, а при его отсутствии вызвать <code>ValueError</code>. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-index-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-1" name="answers" value="1" aria-describedby="check-index-option-1-feedback" />
+    <span><code>index()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, вызывает ValueError.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-2" name="answers" value="2" aria-describedby="check-index-option-2-feedback" />
+    <span><code>find()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, возвращает -1.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-3" name="answers" value="3" aria-describedby="check-index-option-3-feedback" />
+    <span><code>count()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает количество неперекрывающихся вхождений.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-4" name="answers" value="4" aria-describedby="check-index-option-4-feedback" />
+    <span><code>startswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет начало строки и возвращает bool.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-5" name="answers" value="5" aria-describedby="check-index-option-5-feedback" />
+    <span><code>endswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет конец строки и возвращает bool.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-6" name="answers" value="6" aria-describedby="check-index-option-6-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-index-option-7" name="answers" value="7" aria-describedby="check-index-option-7-feedback" />
+    <span><code>isdigit()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-index-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет, что непустая строка состоит из цифр, включая некоторые специальные цифры вроде ².</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-replace-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-replace-title">Заменить фрагменты</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-replace-title">
+  <fieldset><legend>Нужно заменить <code>&quot;red&quot;</code> на <code>&quot;blue&quot;</code> по всей строке. Также должна быть возможность ограничить число замен аргументом. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-replace-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-1" name="answers" value="1" aria-describedby="check-replace-option-1-feedback" />
+    <span><code>replace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменяет вхождения фрагмента на другой фрагмент; число замен можно ограничить.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-2" name="answers" value="2" aria-describedby="check-replace-option-2-feedback" />
+    <span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет пробельные символы с обоих краёв без аргументов; внутри строки их сохраняет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-3" name="answers" value="3" aria-describedby="check-replace-option-3-feedback" />
+    <span><code>removeprefix()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет один точный фрагмент в начале строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-4" name="answers" value="4" aria-describedby="check-replace-option-4-feedback" />
+    <span><code>removesuffix()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет один точный фрагмент в конце строки.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-5" name="answers" value="5" aria-describedby="check-replace-option-5-feedback" />
+    <span><code>find()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, возвращает -1.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-6" name="answers" value="6" aria-describedby="check-replace-option-6-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-replace-option-7" name="answers" value="7" aria-describedby="check-replace-option-7-feedback" />
+    <span><code>join()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-replace-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вызывается у разделителя и соединяет переданные строки в одну.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-split-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-split-title">Получить список частей</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-split-title">
+  <fieldset><legend>Нужно разбить <code>&quot;red,green,blue&quot;</code> по запятой и получить список строк. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-split-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-1" name="answers" value="1" aria-describedby="check-split-option-1-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-2" name="answers" value="2" aria-describedby="check-split-option-2-feedback" />
+    <span><code>join()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вызывается у разделителя и соединяет переданные строки в одну.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-3" name="answers" value="3" aria-describedby="check-split-option-3-feedback" />
+    <span><code>replace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменяет вхождения фрагмента на другой фрагмент; число замен можно ограничить.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-4" name="answers" value="4" aria-describedby="check-split-option-4-feedback" />
+    <span><code>find()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, возвращает -1.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-5" name="answers" value="5" aria-describedby="check-split-option-5-feedback" />
+    <span><code>count()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает количество неперекрывающихся вхождений.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-6" name="answers" value="6" aria-describedby="check-split-option-6-feedback" />
+    <span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет пробельные символы с обоих краёв без аргументов; внутри строки их сохраняет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-split-option-7" name="answers" value="7" aria-describedby="check-split-option-7-feedback" />
+    <span><code>index()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-split-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, вызывает ValueError.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-join-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-join-title">Соединить части</h3>
+  <div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-join-title">
+  <fieldset><legend>Есть список <code>[&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]</code>. Нужен метод строки-разделителя, чтобы получить <code>&quot;red / green / blue&quot;</code>. Отметьте подходящий метод.</legend><div class="quiz__options"><div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-join-option-1">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-1" name="answers" value="1" aria-describedby="check-join-option-1-feedback" />
+    <span><code>join()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вызывается у разделителя и соединяет переданные строки в одну.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-join-option-2">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-2" name="answers" value="2" aria-describedby="check-join-option-2-feedback" />
+    <span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разбивает строку и возвращает список строк.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-join-option-3">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-3" name="answers" value="3" aria-describedby="check-join-option-3-feedback" />
+    <span><code>replace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменяет вхождения фрагмента на другой фрагмент; число замен можно ограничить.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-join-option-4">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-4" name="answers" value="4" aria-describedby="check-join-option-4-feedback" />
+    <span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет пробельные символы с обоих краёв без аргументов; внутри строки их сохраняет.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-join-option-5">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-5" name="answers" value="5" aria-describedby="check-join-option-5-feedback" />
+    <span><code>count()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает количество неперекрывающихся вхождений.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-join-option-6">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-6" name="answers" value="6" aria-describedby="check-join-option-6-feedback" />
+    <span><code>title()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Делает заглавными первые буквы групп букв, остальные переводит в нижний регистр.</p></div></div>
+</div><div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-join-option-7">
+    <input class="visually-hidden" type="checkbox" id="check-join-option-7" name="answers" value="7" aria-describedby="check-join-option-7-feedback" />
+    <span><code>find()</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+  </label>
+  <div class="quiz__feedback" id="check-join-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает индекс первого вхождения; если фрагмента нет, возвращает -1.</p></div></div>
+</div></div></fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+  </div>
+</section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

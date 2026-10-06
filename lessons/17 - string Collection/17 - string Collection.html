@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Строки Python для самостоятельного изучения: индексы, длина, срезы, in и not in, перебор, неизменяемость, маскирование номера и интерактивная самопроверка." />
+    <title>17 - string Collection</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">17 - string Collection</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+      <section id="review">
+        <h2>01 / Повторение пройденного</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-type-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-type-title">Какой тип данных позволяет хранить символы и текст?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-type-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-type-option-1">
+          <input class="visually-hidden" id="review-type-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-type-option-1-feedback" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-type-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Целые числа имеют тип int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-type-option-2">
+          <input class="visually-hidden" id="review-type-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-type-option-2-feedback" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-type-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Дробные числа имеют тип float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-type-option-3">
+          <input class="visually-hidden" id="review-type-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-type-option-3-feedback" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-type-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Тип str хранит текст, в том числе один символ или пустую строку.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-type-option-4">
+          <input class="visually-hidden" id="review-type-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-type-option-4-feedback" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-type-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Тип bool содержит логические значения True и False.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-type-option-5">
+          <input class="visually-hidden" id="review-type-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-type-option-5-feedback" />
+          <span><code>NoneType</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-type-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это тип значения None, которое обозначает отсутствие значения.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-input-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-input-title">Какой тип данных возвращает <code>input()</code>, если вписать <code>5869</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-input-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-1">
+          <input class="visually-hidden" id="review-input-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-input-option-1-feedback" />
+          <span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После ввода 5869 функция input() возвращает строку <code>&quot;5869&quot;</code>. Преобразование в число нужно написать отдельно.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-2">
+          <input class="visually-hidden" id="review-input-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-input-option-2-feedback" />
+          <span><code>float</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После ввода 5869 функция input() возвращает строку <code>&quot;5869&quot;</code>. Преобразование в число нужно написать отдельно.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-input-option-3">
+          <input class="visually-hidden" id="review-input-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-input-option-3-feedback" />
+          <span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После ввода 5869 функция input() возвращает строку <code>&quot;5869&quot;</code>. Содержимое из цифр само по себе не меняет тип.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-4">
+          <input class="visually-hidden" id="review-input-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-input-option-4-feedback" />
+          <span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После ввода 5869 функция input() возвращает строку <code>&quot;5869&quot;</code>. Преобразование в число нужно написать отдельно.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-input-option-5">
+          <input class="visually-hidden" id="review-input-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-input-option-5-feedback" />
+          <span><code>NoneType</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-input-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>После ввода 5869 функция input() возвращает строку <code>&quot;5869&quot;</code>. Преобразование в число нужно написать отдельно.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-range-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-range-title">Что делает <code>range</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-range-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-range-option-1">
+          <input class="visually-hidden" id="review-range-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-range-option-1-feedback" />
+          <span>Задаёт последовательность целых чисел с началом, исключённой границей stop и шагом.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-range-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range описывает целочисленный диапазон. Например, range(3) даёт при переборе 0, 1, 2.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-range-option-2">
+          <input class="visually-hidden" id="review-range-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-range-option-2-feedback" />
+          <span>Считывает число с клавиатуры.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-range-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Ввод читает input(). range не взаимодействует с клавиатурой.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-range-option-3">
+          <input class="visually-hidden" id="review-range-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-range-option-3-feedback" />
+          <span>Самостоятельно печатает все числа диапазона.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-range-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для вывода нужно вызвать print(), например внутри цикла.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-range-option-4">
+          <input class="visually-hidden" id="review-range-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-range-option-4-feedback" />
+          <span>Всегда включает правую границу в последовательность.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-range-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Граница stop не включается ни при положительном, ни при отрицательном шаге.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-range-option-5">
+          <input class="visually-hidden" id="review-range-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-range-option-5-feedback" />
+          <span>Создаёт последовательность любых дробных чисел.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-range-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Аргументы range должны быть целыми числами; дробный шаг вроде 0.5 не подходит.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-range-stop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-range-stop-title">Диапазон от нуля</h3>
+  <div class="special-block__body">
+<p>Запишите вызов range с одним аргументом, который при переборе даст <code>0, 1, 2, 3, 4</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="range(5)" data-success="Верно: range(5) задаёт числа от 0 до 4." data-hint="Начало 0 и шаг 1 можно не писать. Граница должна идти сразу после 4." autocomplete="off" aria-labelledby="review-range-stop-title">
+  <label for="review-range-stop-answer">Введите выражение без пробелов и без print().</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-range-stop-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-range-stop-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-range-stop-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-range-bounds-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-range-bounds-title">Диапазон с началом</h3>
+  <div class="special-block__body">
+<p>Запишите вызов range с двумя аргументами для чисел <code>9, 10, 11, 12, 13, 14</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="range(9, 15)" data-success="Верно: начало 9 включается, граница 15 не включается." data-hint="Первый аргумент задаёт начало 9. Второй должен быть на единицу больше последнего числа." autocomplete="off" aria-labelledby="review-range-bounds-title">
+  <label for="review-range-bounds-answer">Введите вызов range с одним пробелом после запятой, без других пробелов и без print().</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-range-bounds-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-range-bounds-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-range-bounds-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-range-backward-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-range-backward-title">Диапазон в обратном направлении</h3>
+  <div class="special-block__body">
+<p>Запишите вызов range с тремя аргументами для чисел <code>30, 29, 28, 27, 26</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="range(30, 25, -1)" data-success="Верно: range(30, 25, -1) уменьшает число на 1 и останавливается перед 25." data-hint="Нужен шаг -1. Чтобы последним стало 26, исключённая граница должна быть 25." autocomplete="off" aria-labelledby="review-range-backward-title">
+  <label for="review-range-backward-answer">Введите вызов range с одним пробелом после каждой запятой, без других пробелов и без print().</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="review-range-backward-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-range-backward-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="review-range-backward-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-while-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-while-title">В каких ситуациях удобнее выбрать <code>while</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-while-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-while-option-1">
+          <input class="visually-hidden" id="review-while-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-while-option-1-feedback" />
+          <span>Повторять действие, пока условие истинно; готового диапазона нет.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>while проверяет условие перед каждой итерацией.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-while-option-2">
+          <input class="visually-hidden" id="review-while-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-while-option-2-feedback" />
+          <span>Повторять ввод до команды выхода, когда число попыток заранее неизвестно.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Завершение определяется вводом пользователя.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-while-option-3">
+          <input class="visually-hidden" id="review-while-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-while-option-3-feedback" />
+          <span>Выполнить действие ровно 10 раз.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для известного числа повторений удобнее for с range(10).</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-while-option-4">
+          <input class="visually-hidden" id="review-while-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-while-option-4-feedback" />
+          <span>Обработать каждый элемент готового набора.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для прямого перебора элементов удобнее for.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-while-option-5">
+          <input class="visually-hidden" id="review-while-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-while-option-5-feedback" />
+          <span>Пройти по целым числам от 0 до 99.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот диапазон удобно задать через range(100) в цикле for.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-while-option-6">
+          <input class="visually-hidden" id="review-while-option-6" type="checkbox" name="answers" value="6" aria-describedby="review-while-option-6-feedback" />
+          <span>Проверить условие один раз без повторения.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Если повторение не нужно, достаточно if.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-while-option-7">
+          <input class="visually-hidden" id="review-while-option-7" type="checkbox" name="answers" value="7" aria-describedby="review-while-option-7-feedback" />
+          <span>Вывести приветствие один раз.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-while-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для одного вывода достаточно print(), цикл не нужен.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-for-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-for-title">В каких ситуациях удобнее выбрать <code>for</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-for-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-for-option-1">
+          <input class="visually-hidden" id="review-for-option-1" type="checkbox" name="answers" value="1" aria-describedby="review-for-option-1-feedback" />
+          <span>Число повторений известно заранее.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>for вместе с range позволяет задать нужное число повторений.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="review-for-option-2">
+          <input class="visually-hidden" id="review-for-option-2" type="checkbox" name="answers" value="2" aria-describedby="review-for-option-2-feedback" />
+          <span>Есть набор элементов, каждый из которых нужно обработать.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>for последовательно получает элементы набора.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-for-option-3">
+          <input class="visually-hidden" id="review-for-option-3" type="checkbox" name="answers" value="3" aria-describedby="review-for-option-3-feedback" />
+          <span>Запрашивать пароль до верного ввода без ограничения попыток.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь удобнее while: неизвестно, сколько попыток понадобится.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-for-option-4">
+          <input class="visually-hidden" id="review-for-option-4" type="checkbox" name="answers" value="4" aria-describedby="review-for-option-4-feedback" />
+          <span>Показывать меню до команды выхода без ограничения числа команд.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Завершение по условию удобно выразить через while.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-for-option-5">
+          <input class="visually-hidden" id="review-for-option-5" type="checkbox" name="answers" value="5" aria-describedby="review-for-option-5-feedback" />
+          <span>Повторять расчёт, пока значение не достигнет порога; число шагов неизвестно.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Если важна проверка условия, удобнее while.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-for-option-6">
+          <input class="visually-hidden" id="review-for-option-6" type="checkbox" name="answers" value="6" aria-describedby="review-for-option-6-feedback" />
+          <span>Один раз выбрать сообщение в зависимости от возраста.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Выбор между ветками выполняет if, повторение не требуется.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="review-for-option-7">
+          <input class="visually-hidden" id="review-for-option-7" type="checkbox" name="answers" value="7" aria-describedby="review-for-option-7-feedback" />
+          <span>Один раз присвоить переменной число.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="review-for-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для присваивания цикл не нужен.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="sequence">
+        <h2>02 / Строка как последовательность</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="string-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="string-definition-title">Строка хранит текст</h3>
+  <div class="special-block__body">
+<p><strong>Строка</strong>, значение типа <code>str</code>, представляет собой упорядоченную последовательность символов. В строке можно хранить имя, сообщение, номер телефона или текст программы. Кавычки в исходном коде обозначают границы строки и сами в её содержимое не входят.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Текст бывает разным</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Текст бывает разным">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">message = &quot;Hello World&quot;
+number = &quot;5869&quot;
+space = &quot; &quot;
+empty = &quot;&quot;
+print(message)
+print(type(number))
+print(number + &quot;1&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Текст бывает разным">Hello World
+&lt;class &#x27;str&#x27;&gt;
+58691</pre></div>
+</div>
+<p>В <code>"Hello World"</code> сначала идут буквы <code>Hello</code>, затем пробел, затем <code>World</code>. Порядок важен: <code>"ab"</code> и <code>"ba"</code> являются разными строками. Цифры в кавычках остаются текстом: сложение строк соединяет их, поэтому <code>"5869" + "1"</code> даёт <code>"58691"</code>.</p>
+<p>Пробелы, запятые, точки и другие знаки тоже входят в строку. Например, в <code>"Hi!"</code> три элемента, а в <code>"Hi !"</code> четыре. Пустая строка <code>""</code> не содержит ни одного элемента.</p>
+<p>Отдельный элемент строки тоже имеет тип <code>str</code>. Отдельного типа char для символов в Python нет: один символ представлен строкой длины 1. Дальше мы научимся получать такой элемент по его позиции.</p>
+        </div>
+      </section>
+      <section id="indices">
+        <h2>03 / Индексы</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="index-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="index-definition-title">Индекс обозначает позицию</h3>
+  <div class="special-block__body">
+<p><strong>Индекс</strong> элемента строки обозначает его позицию. При отсчёте слева первый элемент имеет индекс <code>0</code>, второй <code>1</code> и так далее. Чтобы получить элемент, после имени строки пишут индекс в квадратных скобках: <code>text[0]</code>.</p>
+  </div>
+</aside>
+<p>Представьте <code>"Hello World"</code> как ряд ячеек. Индекс позволяет выбрать ячейку, не перебирая все предыдущие символы вручную. Индекс описывает положение внутри строки, а адрес памяти описывает расположение данных в памяти компьютера. Это разные понятия.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/17/StringHeap.gif"
+      alt="Учебная схема: символы Hello World заполняют ячейки с условными адресами, а имя text ссылается на объект строки целиком"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 1. Строка в памяти: упрощённая схема с условными адресами</figcaption>
+</figure>
+<p>На схеме памяти строку можно условно изобразить в heap, то есть в области памяти для объектов, и подписать адреса в шестнадцатеричной записи, например <code>0x1000</code>. Для работы со строкой такие адреса не нужны. Учебная схема упрощает устройство памяти: она не означает, что каждый символ хранится как отдельный объект или всегда занимает один байт.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Две линейки индексов для Hello World">
+  <table><caption>Две линейки индексов для Hello World</caption><thead><tr><th scope="col">Линейка</th><th scope="col">1-я позиция</th><th scope="col">2-я позиция</th><th scope="col">3-я позиция</th><th scope="col">4-я позиция</th><th scope="col">5-я позиция</th><th scope="col">6-я позиция</th><th scope="col">7-я позиция</th><th scope="col">8-я позиция</th><th scope="col">9-я позиция</th><th scope="col">10-я позиция</th><th scope="col">11-я позиция</th></tr></thead>
+    <tbody><tr><td>Неотрицательный индекс</td><td><code>0</code></td><td><code>1</code></td><td><code>2</code></td><td><code>3</code></td><td><code>4</code></td><td><code>5</code></td><td><code>6</code></td><td><code>7</code></td><td><code>8</code></td><td><code>9</code></td><td><code>10</code></td></tr><tr><td>Отрицательный индекс</td><td><code>-11</code></td><td><code>-10</code></td><td><code>-9</code></td><td><code>-8</code></td><td><code>-7</code></td><td><code>-6</code></td><td><code>-5</code></td><td><code>-4</code></td><td><code>-3</code></td><td><code>-2</code></td><td><code>-1</code></td></tr><tr><td>Символ</td><td><code>H</code></td><td><code>e</code></td><td><code>l</code></td><td><code>l</code></td><td><code>o</code></td><td>␠</td><td><code>W</code></td><td><code>o</code></td><td><code>r</code></td><td><code>l</code></td><td><code>d</code></td></tr></tbody>
+  </table>
+</div>
+<p>Знак ␠ в таблице обозначает обычный пробел. В самой строке находится пробел, а не этот значок. Один и тот же символ можно получить по двум индексам: <code>text[0]</code> и <code>text[-11]</code> вернут <code>"H"</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Чтение символа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Чтение символа">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+print(text[0])
+print(text[6])
+print(text[10])
+print(type(text[0]))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Чтение символа">H
+W
+d
+&lt;class &#x27;str&#x27;&gt;</pre></div>
+</div>
+<p>Сначала Python получает значение <code>text</code>, затем выбирает символ в квадратных скобках. Выражение <code>text[6]</code> возвращает <code>"W"</code>, а <code>print()</code> выводит его без кавычек. Пробел на позиции 5 тоже можно получить: <code>text[5]</code> вернёт <code>" "</code>.</p>
+<p>Функция <code>len(text)</code> возвращает длину строки целым числом. Здесь длина равна 11. Допустимые неотрицательные индексы идут от <code>0</code> до <code>10</code>. Для непустой строки последний неотрицательный индекс равен <code>len(text) - 1</code>. Длина показывает количество элементов, поэтому она на единицу больше последнего такого индекса.</p>
+<aside class="special-block special-block--warning" aria-labelledby="index-error-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="index-error-title">У несуществующей позиции нет символа</h3>
+  <div class="special-block__body">
+<p>Запустите этот пример отдельно. Индекс <code>11</code> уже за пределами строки, поэтому возникнет <code>IndexError</code>. Python не вернёт пустую строку и не продолжит выполнение следующих команд после необработанной ошибки.</p><div class="code-example">
+  <div class="code-example__header"><span>Индекс за пределами строки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Индекс за пределами строки">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+print(text[11])</code></pre>
+</div><p>В конце сообщения об ошибке будет <code>IndexError: string index out of range</code>. То же произойдёт при <code>text[-12]</code>. У пустой строки нет допустимых индексов вообще: и <code>""[0]</code>, и <code>""[-1]</code> вызывают IndexError.</p>
+  </div>
+</aside>
+<p>Отрицательные индексы считают справа: <code>-1</code> обозначает последний символ, <code>-2</code> предпоследний. Для строки длины 11 крайний допустимый отрицательный индекс равен <code>-11</code>. В общем случае отрицательные индексы непустой строки лежат от <code>-len(text)</code> до <code>-1</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Отсчёт с конца</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отсчёт с конца">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+print(text[-1])
+print(text[-2])
+print(text[-11])
+print(text[len(text) - 1])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Отсчёт с конца">d
+l
+H
+d</pre></div>
+</div>
+<p>Считать с конца удобно, когда длина заранее неизвестна. Например, последнюю букву введённого слова можно получить через <code>word[-1]</code>. Перед этим нужно убедиться, что слово не пустое. Индексы <code>0</code> и <code>-0</code> совпадают: минус перед нулём не означает конец строки.</p>
+<aside class="special-block special-block--tip" aria-labelledby="minus-one-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="minus-one-title">У значения -1 бывают разные роли</h3>
+  <div class="special-block__body">
+<p>В программировании часто встречается соглашение: функция поиска возвращает <code>-1</code>, если позиция не найдена. Так работает, например, строковый метод <code>find()</code>, который мы разберём позже. Но в выражении <code>text[-1]</code> это допустимый индекс последнего символа. Результат поиска нужно проверить перед использованием в квадратных скобках.</p>
+  </div>
+</aside>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/17/StringIndexRulers.gif"
+      alt="Две линейки индексов строки Hello World: от 0 до 10 и от -11 до -1; обращение по индексу выбирает соответствующий символ, включая пробел"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 2. Доступ к символам по неотрицательным и отрицательным индексам</figcaption>
+</figure>
+<div class="code-example">
+  <div class="code-example__header"><span>Пустая строка и пробелы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пустая строка и пробелы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(len(&quot;Hello World&quot;))
+print(len(&quot;&quot;))
+print(len(&quot; &quot;))
+print(len(&quot;   &quot;))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Пустая строка и пробелы">11
+0
+1
+3</pre></div>
+</div>
+<p>Пустая строка и строка из пробелов выглядят похоже при выводе, но имеют разную длину. Нажатие Enter сразу после приглашения <code>input()</code> даёт пустую строку. Если сначала нажать пробел, а потом Enter, длина результата будет 1.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверяем длину введённого имени</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем длину введённого имени">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">name = input(&quot;Name: &quot;)
+if len(name) == 0:
+    print(&quot;Name is empty&quot;)
+elif len(name) &lt; 2:
+    print(&quot;Name is too short&quot;)
+else:
+    print(&quot;First character:&quot;, name[0])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверяем длину введённого имени">Name: Anna
+First character: A</pre></div>
+</div>
+<p>Пустой ввод попадёт в первую ветку, имя из одного символа во вторую, а имя из двух или более символов в третью. Обращение <code>name[0]</code> выполняется только в третьей ветке, где строка точно не пуста. Это проверка длины, а не полноценная проверка имени: два пробела тоже пройдут её. Работу с лишними пробелами изучим вместе с методами строк.</p>
+        </div>
+      </section>
+      <section id="slices">
+        <h2>04 / Срезы: получение части строки</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="slice-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="slice-definition-title">Срез выбирает фрагмент</h3>
+  <div class="special-block__body">
+<p><strong>Срез</strong> получает часть строки по записи <code>text[start:stop]</code>. Начальная позиция <code>start</code> включается, граница <code>stop</code> не включается. Результат тоже имеет тип <code>str</code>, в том числе когда ни один символ не выбран.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Первые пять символов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Первые пять символов">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+part = text[0:5]
+print(part)
+print(text)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Первые пять символов">Hello
+Hello World</pre></div>
+</div>
+<p>Здесь выбираются индексы 0, 1, 2, 3 и 4. Пробел с индексом 5 уже не входит в результат. Это напоминает <code>range</code>: начальная граница включается, конечная нет. Исходная строка после получения среза сохраняет своё содержимое.</p>
+<p>Если при положительном шаге пропустить <code>start</code>, отсчёт начнётся с начала строки. Если пропустить <code>stop</code>, срез дойдёт до конца. Отрицательные границы обозначают позиции с конца точно так же, как при индексации. Во всех строках следующей таблицы <code>text = "Hello World"</code>; кавычки вокруг результата показывают его границы.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Срезы с шагом 1">
+  <table><caption>Срезы с шагом 1</caption><thead><tr><th scope="col">Выражение</th><th scope="col">Результат</th><th scope="col">Как читать</th></tr></thead>
+    <tbody><tr><td><code>text[0:5]</code></td><td><code>&quot;Hello&quot;</code></td><td>Индексы 0, 1, 2, 3, 4; индекс 5 исключён.</td></tr><tr><td><code>text[6:]</code></td><td><code>&quot;World&quot;</code></td><td>От индекса 6 до конца.</td></tr><tr><td><code>text[:5]</code></td><td><code>&quot;Hello&quot;</code></td><td>От начала до индекса 5, не включая его.</td></tr><tr><td><code>text[:]</code></td><td><code>&quot;Hello World&quot;</code></td><td>Всё содержимое строки.</td></tr><tr><td><code>text[-5:]</code></td><td><code>&quot;World&quot;</code></td><td>Последние пять символов.</td></tr><tr><td><code>text[:-6]</code></td><td><code>&quot;Hello&quot;</code></td><td>От начала до индекса -6, не включая его.</td></tr><tr><td><code>text[-5:-1]</code></td><td><code>&quot;Worl&quot;</code></td><td>Индекс -1 исключён.</td></tr><tr><td><code>text[5:5]</code></td><td><code>&quot;&quot;</code></td><td>Границы совпали.</td></tr><tr><td><code>text[7:2]</code></td><td><code>&quot;&quot;</code></td><td>При шаге 1 движение вправо не ведёт от 7 к 2.</td></tr><tr><td><code>text[6:100]</code></td><td><code>&quot;World&quot;</code></td><td>Правая граница выходит за конец и ограничивается длиной.</td></tr><tr><td><code>text[100:]</code></td><td><code>&quot;&quot;</code></td><td>После конца строки нет символов.</td></tr></tbody>
+  </table>
+</div>
+<aside class="special-block special-block--tip" aria-labelledby="slice-vs-index-title">
+  <div class="special-block__header"><span class="special-block__label">Интересный момент</span></div>
+  <h3 class="special-block__title" id="slice-vs-index-title">Индекс требует элемент, срез ограничивает область</h3>
+  <div class="special-block__body">
+<p><code>text[100]</code> требует один конкретный элемент, которого нет, и вызывает <code>IndexError</code>. Срез <code>text[6:100]</code> задаёт область: Python берёт из неё только существующие символы. Поэтому результат равен <code>"World"</code>. Срез <code>text[100:]</code> возвращает <code>""</code>. У пустой строки любой срез с допустимым ненулевым шагом тоже будет пустым.</p>
+  </div>
+</aside>
+<p>Третья часть записи задаёт шаг: <code>text[start:stop:step]</code>. Если <code>step</code> не указан, он равен 1. Шаг 2 выбирает каждый второй символ, начиная с <code>start</code>. Отрицательный шаг двигается влево, к началу строки.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Каждый второй символ</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Каждый второй символ">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+print(text[::2])
+print(text[1::2])
+print(text[0:5:2])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Каждый второй символ">HloWrd
+el ol
+Hlo</pre></div>
+</div>
+<p>В <code>text[::2]</code> выбираются индексы 0, 2, 4, 6, 8, 10. В <code>text[1::2]</code> выбираются 1, 3, 5, 7, 9; поэтому в результате есть пробел. В <code>text[0:5:2]</code> выбираются только 0, 2, 4.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Движение справа налево</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Движение справа налево">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+print(text[::-1])
+print(text[10:5:-1])
+print(text[-1:-6:-1])
+print(text[6:1:-2])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Движение справа налево">dlroW olleH
+dlroW
+dlroW
+Wol</pre></div>
+</div>
+<p>При шаге <code>-1</code> пропущенное начало означает последний символ, а пропущенный конец позволяет пройти до самого начала включительно. Поэтому <code>text[::-1]</code> разворачивает строку. В <code>text[10:5:-1]</code> выбираются индексы 10, 9, 8, 7, 6. Индекс 5 по-прежнему исключён. В <code>text[6:1:-2]</code> выбираются 6, 4, 2.</p>
+<p>Направление должно вести от <code>start</code> к <code>stop</code>. Запись <code>text[2:7:-1]</code> даст пустую строку: начиная с 2 и уменьшая индекс, нельзя дойти до 7. Не заменяйте пропущенный <code>stop</code> при развороте на <code>-1</code>: в <code>text[:-1:-1]</code> явный stop обозначает последний символ, который исключается, поэтому срез пуст. Для разворота оставляйте обе границы пропущенными.</p>
+<aside class="special-block special-block--warning" aria-labelledby="zero-step-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="zero-step-title">Шаг не может быть нулём</h3>
+  <div class="special-block__body">
+<p>Шаг определяет переход к следующему индексу. При нуле позиция не менялась бы. Python запрещает такой срез: <code>text[::0]</code> вызывает <code>ValueError: slice step cannot be zero</code>. Это правило действует даже для пустой строки.</p>
+  </div>
+</aside>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/17/StringSlices.gif"
+      alt="Срезы строки Hello World: начало, исключённая граница stop и шаг определяют выбранные символы и результат; отрицательный шаг задаёт движение влево"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 3. Как границы и шаг среза определяют результат</figcaption>
+</figure>
+        </div>
+      </section>
+      <section id="membership">
+        <h2>05 / Поиск подстроки через in</h2>
+        <div class="section-content">
+<p>Иногда нужно узнать только, есть ли в тексте символ или фрагмент. Такой непрерывный фрагмент называют <strong>подстрокой</strong>. Выражение <code>"World" in text</code> проверяет, содержит ли text подстроку World. Результат имеет тип bool: <code>True</code> или <code>False</code>. Индекс или число вхождений этот оператор не возвращает.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверяем наличие</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверяем наличие">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+print(&quot;W&quot; in text)
+print(&quot;World&quot; in text)
+print(&quot;world&quot; in text)
+print(&quot;Word&quot; in text)
+print(&quot;Python&quot; not in text)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверяем наличие">True
+True
+False
+False
+True</pre></div>
+</div>
+<p>Порядок и соседство символов важны. В <code>"World"</code> есть буквы W, o, r и d, но между r и d стоит l, поэтому фрагмент <code>"Word"</code> не найден. Регистр тоже важен: заглавная <code>W</code> и строчная <code>w</code> различаются. Оператор <code>not in</code> возвращает <code>True</code>, когда фрагмента нет.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/17/SubstringSearch.gif"
+      alt="Поиск World в Hello World: совпадают пять соседних символов с индексами от 6 до 10, поэтому выражение &quot;World&quot; in text возвращает True"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 4. Учебная схема поиска подстроки: объяснение результата, а не внутреннего алгоритма Python</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Равенство и наличие при text = &quot;Hello World&quot;">
+  <table><caption>Равенство и наличие при text = "Hello World"</caption><thead><tr><th scope="col">Проверка</th><th scope="col">Результат</th><th scope="col">Что проверяем</th></tr></thead>
+    <tbody><tr><td><code>text == &quot;World&quot;</code></td><td><code>False</code></td><td>Вся строка не совпадает с World.</td></tr><tr><td><code>&quot;World&quot; in text</code></td><td><code>True</code></td><td>Внутри строки есть такой фрагмент.</td></tr><tr><td><code>&quot;World&quot; not in text</code></td><td><code>False</code></td><td>Фрагмент есть, поэтому проверка отсутствия ложна.</td></tr><tr><td><code>text == &quot;Hello World&quot;</code></td><td><code>True</code></td><td>Совпадает всё содержимое строки.</td></tr></tbody>
+  </table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Используем результат в условии</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Используем результат в условии">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+if &quot;World&quot; in text:
+    print(&quot;Fragment found&quot;)
+else:
+    print(&quot;Fragment missing&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Используем результат в условии">Fragment found</pre></div>
+</div>
+<p>Пустая строка считается подстрокой любой строки: <code>"" in "Hello World"</code> и <code>"" in ""</code> дают <code>True</code>. Если вы просите пользователя ввести искомый фрагмент, отдельно проверяйте его длину, когда пустой поиск не имеет смысла.</p>
+<aside class="special-block special-block--warning" aria-labelledby="custom-membership-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="custom-membership-title">Поведение in зависит от объекта</h3>
+  <div class="special-block__body">
+<p>Здесь мы используем <code>in</code> со строками. При работе с пользовательскими классами этот оператор может иметь другой смысл или вообще не поддерживаться, что приведёт к ошибке. Его поведение зависит от реализации класса. Подробности разберём на парах по ООП.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="iteration">
+        <h2>06 / Перебор строки</h2>
+        <div class="section-content">
+<p>Если нужно обработать каждый символ, передайте строку прямо в <code>for</code>. На каждой итерации переменная <code>char</code> получает очередной символ, начиная с первого. Пробелы не пропускаются. Цикл завершится, когда символы закончатся.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Перебор символов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Перебор символов">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+for char in text:
+    print(&quot;[&quot; + char + &quot;]&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Перебор символов">[H]
+[e]
+[l]
+[l]
+[o]
+[ ]
+[W]
+[o]
+[r]
+[l]
+[d]</pre></div>
+</div>
+<p>Квадратные скобки в выводе добавлены специально, чтобы увидеть пробел. В переменной <code>char</code> находится только один символ, без этих скобок. Если text равен <code>""</code>, тело цикла не выполнится ни разу.</p>
+<p>Если нужна позиция символа, перебирайте индексы через <code>range(len(text))</code>. Сначала <code>len</code> вычисляет длину 11, затем <code>range</code> задаёт числа от 0 до 10. На каждой итерации <code>index</code> содержит число, а <code>text[index]</code> позволяет получить символ по этому числу.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Перебор индексов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Перебор индексов">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+for index in range(len(text)):
+    print(index, &quot;[&quot; + text[index] + &quot;]&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Перебор индексов">0 [H]
+1 [e]
+2 [l]
+3 [l]
+4 [o]
+5 [ ]
+6 [W]
+7 [o]
+8 [r]
+9 [l]
+10 [d]</pre></div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/17/StringIteration.gif"
+      alt="Два цикла синхронно проходят Hello World за 11 шагов: for char in text получает символы, а for index in range(len(text)) получает индексы и читает символы через text[index]"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 5. Перебор строки по символам и по индексам</figcaption>
+</figure>
+<aside class="special-block special-block--warning" aria-labelledby="loop-variable-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="loop-variable-title">Имя переменной не определяет её значение</h3>
+  <div class="special-block__body">
+<p>Значения задаёт выражение после <code>in</code>. В <code>for i in text</code> переменная <code>i</code> получает символы, хотя индексы принято кратко называть <code>i</code>, <code>j</code>, <code>k</code>. В <code>for char in range(len(text))</code> переменная <code>char</code> получит числа. Выбирайте имя по смыслу: <code>index</code> для позиции, <code>char</code> для символа. Имена <code>item</code> и <code>elem</code> обычно обозначают элемент набора.</p>
+  </div>
+</aside>
+<p>Посчитаем, сколько раз встречается строчная буква <code>l</code>. Перед циклом заведём счётчик <code>count</code> со значением 0. В цикле сравним очередной символ с <code>target</code> и увеличим счётчик только при совпадении. Итог напечатаем после цикла, без отступа.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Считаем выбранный символ</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Считаем выбранный символ">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+target = &quot;l&quot;
+count = 0
+for char in text:
+    if char == target:
+        count += 1
+print(count)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Считаем выбранный символ">3</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Все шаги подсчёта буквы l">
+  <table><caption>Все шаги подсчёта буквы l</caption><thead><tr><th scope="col">Итерация</th><th scope="col">Индекс</th><th scope="col">char</th><th scope="col">char == target</th><th scope="col">count до</th><th scope="col">count после</th></tr></thead>
+    <tbody><tr><td>1</td><td><code>0</code></td><td><code>&quot;H&quot;</code></td><td><code>False</code></td><td>0</td><td>0</td></tr><tr><td>2</td><td><code>1</code></td><td><code>&quot;e&quot;</code></td><td><code>False</code></td><td>0</td><td>0</td></tr><tr><td>3</td><td><code>2</code></td><td><code>&quot;l&quot;</code></td><td><code>True</code></td><td>0</td><td>1</td></tr><tr><td>4</td><td><code>3</code></td><td><code>&quot;l&quot;</code></td><td><code>True</code></td><td>1</td><td>2</td></tr><tr><td>5</td><td><code>4</code></td><td><code>&quot;o&quot;</code></td><td><code>False</code></td><td>2</td><td>2</td></tr><tr><td>6</td><td><code>5</code></td><td><code>&quot; &quot;</code></td><td><code>False</code></td><td>2</td><td>2</td></tr><tr><td>7</td><td><code>6</code></td><td><code>&quot;W&quot;</code></td><td><code>False</code></td><td>2</td><td>2</td></tr><tr><td>8</td><td><code>7</code></td><td><code>&quot;o&quot;</code></td><td><code>False</code></td><td>2</td><td>2</td></tr><tr><td>9</td><td><code>8</code></td><td><code>&quot;r&quot;</code></td><td><code>False</code></td><td>2</td><td>2</td></tr><tr><td>10</td><td><code>9</code></td><td><code>&quot;l&quot;</code></td><td><code>True</code></td><td>2</td><td>3</td></tr><tr><td>11</td><td><code>10</code></td><td><code>&quot;d&quot;</code></td><td><code>False</code></td><td>3</td><td>3</td></tr></tbody>
+  </table>
+</div>
+<p>Буква <code>l</code> встречается на индексах 2, 3 и 9. На остальных шагах счётчик сохраняет значение. В таблице индекс помогает следить за ходом выполнения, хотя сам код перебирает символы и не хранит индекс. Если перенести <code>count = 0</code> внутрь цикла, накопленный результат будет сбрасываться на каждом шаге. Для пустой строки цикл пропустится, и результат останется равен 0.</p>
+        </div>
+      </section>
+      <section id="immutability">
+        <h2>07 / Неизменяемость и создание новой строки</h2>
+        <div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="immutable-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="immutable-definition-title">Содержимое строки изменить нельзя</h3>
+  <div class="special-block__body">
+<p>Строка является <strong>неизменяемым объектом</strong>. После создания строки нельзя заменить, удалить или добавить символ внутри этого объекта. Можно вычислить другое строковое значение и присвоить его переменной.</p>
+  </div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="assignment-error-title">
+  <div class="special-block__header"><span class="special-block__label">Неверный подход</span></div>
+  <h3 class="special-block__title" id="assignment-error-title">Присваивание по индексу запрещено</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Пример с намеренной ошибкой</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пример с намеренной ошибкой">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+text[0] = &quot;A&quot;</code></pre>
+</div><p>Этот пример завершится ошибкой <code>TypeError: 'str' object does not support item assignment</code>. Индекс 0 допустим для чтения. Причина ошибки в том, что строка не поддерживает изменение элемента. Присваивание срезу, например <code>text[:1] = "A"</code>, тоже запрещено.</p>
+  </div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Собираем новое содержимое</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Собираем новое содержимое">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+changed = &quot;A&quot; + text[1:]
+print(changed)
+print(text)
+print(&quot;-&quot; * 5)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Собираем новое содержимое">Aello World
+Hello World
+-----</pre></div>
+</div>
+<p>Срез <code>text[1:]</code> даёт <code>"ello World"</code>. Оператор <code>+</code> соединяет две строки, поэтому <code>"A" + text[1:]</code> даёт <code>"Aello World"</code>. Оператор <code>*</code> повторяет строку заданное целое число раз. Ноль или отрицательное число повторений дают пустую строку.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Переменная получает другое значение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Переменная получает другое значение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Hello World&quot;
+original = text
+text = &quot;A&quot; + text[1:]
+print(text)
+print(original)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Переменная получает другое значение">Aello World
+Hello World</pre></div>
+</div>
+<p>Сначала <code>text</code> и <code>original</code> связаны с одной исходной строкой. Затем правая часть присваивания вычисляет строку с другим содержимым, а имя <code>text</code> связывается с результатом. Имя <code>original</code> всё ещё связано с <code>"Hello World"</code>. Поэтому изменение значения переменной не равно изменению объекта.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/17/StringRebinding.gif"
+      alt="Попытка изменить символ строки вызывает TypeError. После создания Aello World имя text ссылается на новую строку, а original сохраняет ссылку на неизменённую Hello World"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 6. Неизменяемость строки и присваивание переменной нового значения</figcaption>
+</figure>
+<aside class="special-block special-block--tip" aria-labelledby="new-value-title">
+  <div class="special-block__header"><span class="special-block__label">Совет</span></div>
+  <h3 class="special-block__title" id="new-value-title">Запоминайте правило о содержимом</h3>
+  <div class="special-block__body">
+<p>Если в результате операции содержимое строки отличается от исходного, результат является другой строкой. Исходный объект не меняется. При этом не нужно считать выделенные объекты памяти: операции, которые сохраняют содержимое, например полный срез <code>text[:]</code>, могут вернуть существующий объект. Для задач этого урока важно значение строки.</p>
+  </div>
+</aside>
+        </div>
+      </section>
+      <section id="worked-example">
+        <h2>08 / Разбираем задачу целиком</h2>
+        <div class="section-content">
+<p><strong>Задача:</strong> прочитать номер как текст, оставить последние четыре символа, а все предыдущие заменить звёздочками. Если введено четыре символа или меньше, вывести исходный ввод. Если ввод пуст, сообщить об этом. Например, из <code>"1234567890"</code> должно получиться <code>"******7890"</code>.</p>
+<p>Работаем с символами: пробел, плюс и дефис тоже учитываются, если пользователь их ввёл. В этой задаче не проверяем формат телефонного номера. Преобразовывать ввод в <code>int</code> не нужно: начальные нули должны сохраниться.</p>
+<ol class="content-list"><li>Получить строку через <code>input()</code> и вычислить её длину.</li><li>Если длина равна 0, вывести сообщение о пустом вводе.</li><li>Если длина не больше 4, вывести строку целиком.</li><li>Иначе вычислить число скрытых символов как <code>length - 4</code>.</li><li>Получить звёздочки через умножение строки и последние четыре символа через <code>number[-4:]</code>.</li><li>Соединить обе части и вывести результат.</li></ol>
+<div class="code-example">
+  <div class="code-example__header"><span>Маскируем номер</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Маскируем номер">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">number = input(&quot;Number: &quot;)
+length = len(number)
+
+if length == 0:
+    print(&quot;Number is empty&quot;)
+elif length &lt;= 4:
+    print(number)
+else:
+    hidden_count = length - 4
+    masked = &quot;*&quot; * hidden_count + number[-4:]
+    print(masked)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Маскируем номер">Number: 1234567890
+******7890</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Разбор обычного ввода">
+  <table><caption>Разбор обычного ввода</caption><thead><tr><th scope="col">Шаг</th><th scope="col">Значение</th><th scope="col">Почему</th></tr></thead>
+    <tbody><tr><td><code>number</code></td><td><code>&quot;1234567890&quot;</code></td><td><code>input()</code> возвращает текст.</td></tr><tr><td><code>length</code></td><td><code>10</code></td><td>В строке десять символов.</td></tr><tr><td><code>hidden_count</code></td><td><code>6</code></td><td>10 - 4 = 6 символов нужно скрыть.</td></tr><tr><td><code>&quot;*&quot; * hidden_count</code></td><td><code>&quot;******&quot;</code></td><td>Получаем шесть звёздочек.</td></tr><tr><td><code>number[-4:]</code></td><td><code>&quot;7890&quot;</code></td><td>Берём последние четыре символа.</td></tr><tr><td><code>masked</code></td><td><code>&quot;******7890&quot;</code></td><td>Соединяем две части; длина остаётся равна 10.</td></tr></tbody>
+  </table>
+</div>
+<p>Для короткого ввода <code>"42"</code> длина равна 2, поэтому выполняется ветка <code>elif</code>: результат <code>"42"</code>. Для <code>"1234"</code> срабатывает та же ветка. Для пустого ввода выполняется первая ветка и выводится <code>Number is empty</code>. Индексация нигде не используется, поэтому не возникает обращения к несуществующему символу.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Проверяем границы задачи">
+  <table><caption>Проверяем границы задачи</caption><thead><tr><th scope="col">Введено</th><th scope="col">Вывод после приглашения</th><th scope="col">Что проверяем</th></tr></thead>
+    <tbody><tr><td><code>&quot;1234567890&quot;</code></td><td><code>&quot;******7890&quot;</code></td><td>Обычный длинный ввод.</td></tr><tr><td><code>&quot;12345&quot;</code></td><td><code>&quot;*2345&quot;</code></td><td>Скрывается ровно один символ.</td></tr><tr><td><code>&quot;1234&quot;</code></td><td><code>&quot;1234&quot;</code></td><td>Ровно четыре символа.</td></tr><tr><td><code>&quot;42&quot;</code></td><td><code>&quot;42&quot;</code></td><td>Короткий ввод.</td></tr><tr><td><code>&quot;&quot;</code></td><td><code>&quot;Number is empty&quot;</code></td><td>Enter без символов.</td></tr><tr><td><code>&quot;001234&quot;</code></td><td><code>&quot;**1234&quot;</code></td><td>Начальные нули учитываются.</td></tr></tbody>
+  </table>
+</div>
+<p>Запустите программу для каждого ввода из таблицы. Кавычки в таблице обозначают границы текста, вводить их не нужно. Попробуйте объяснить, почему количество звёздочек равно <code>length - 4</code>, а не length, и почему срез начинается с <code>-4</code>.</p>
+        </div>
+      </section>
+      <section id="self-check">
+        <h2>09 / Самопроверка</h2>
+        <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-index-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-index-title">Что такое индекс элемента строки?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-index-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-index-option-1">
+          <input class="visually-hidden" id="check-index-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-index-option-1-feedback" />
+          <span>Позиция элемента внутри строки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс позволяет обратиться к элементу по его позиции.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-index-option-2">
+          <input class="visually-hidden" id="check-index-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-index-option-2-feedback" />
+          <span>Количество символов во всей строке.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Количество символов возвращает len().</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-index-option-3">
+          <input class="visually-hidden" id="check-index-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-index-option-3-feedback" />
+          <span>Адрес строки в оперативной памяти.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс обозначает позицию внутри строки, а не адрес объекта.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-index-option-4">
+          <input class="visually-hidden" id="check-index-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-index-option-4-feedback" />
+          <span>Число повторений символа.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Один символ может встречаться на нескольких разных позициях.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-str-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-str-title">Какие из значений имеют тип <code>str</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-str-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-str-option-1">
+          <input class="visually-hidden" id="check-str-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-str-option-1-feedback" />
+          <span><code>&quot;5869&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кавычки создают строковый литерал, даже если внутри только цифры.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-str-option-2">
+          <input class="visually-hidden" id="check-str-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-str-option-2-feedback" />
+          <span><code>&quot; &quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пробел в кавычках является строкой длины 1.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-str-option-3">
+          <input class="visually-hidden" id="check-str-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-str-option-3-feedback" />
+          <span><code>&quot;&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пустая строка тоже имеет тип str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-str-option-4">
+          <input class="visually-hidden" id="check-str-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-str-option-4-feedback" />
+          <span><code>&quot;Hello&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Текст в кавычках является строкой.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-str-option-5">
+          <input class="visually-hidden" id="check-str-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-str-option-5-feedback" />
+          <span><code>5869</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Без кавычек это целое число типа int.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-str-option-6">
+          <input class="visually-hidden" id="check-str-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-str-option-6-feedback" />
+          <span><code>5.869</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это дробное число типа float.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-str-option-7">
+          <input class="visually-hidden" id="check-str-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-str-option-7-feedback" />
+          <span><code>True</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это логическое значение типа bool.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-str-option-8">
+          <input class="visually-hidden" id="check-str-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-str-option-8-feedback" />
+          <span><code>None</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-str-option-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это значение типа NoneType.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-length-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-length-title">Какой вызов вернёт длину строки <code>text</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-length-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-length-option-1">
+          <input class="visually-hidden" id="check-length-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-length-option-1-feedback" />
+          <span><code>len(text)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-length-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>len(text) возвращает число элементов строки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-length-option-2">
+          <input class="visually-hidden" id="check-length-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-length-option-2-feedback" />
+          <span><code>type(text)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-length-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>type() возвращает тип объекта, а не длину.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-length-option-3">
+          <input class="visually-hidden" id="check-length-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-length-option-3-feedback" />
+          <span><code>str(text)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-length-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>str() возвращает строковое представление значения.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-length-option-4">
+          <input class="visually-hidden" id="check-length-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-length-option-4-feedback" />
+          <span><code>print(text)</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-length-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>print() выводит текст, но возвращает None.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-e-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-e-title">Где находится символ e?</h3>
+  <div class="special-block__body">
+<p>Дано <code>text = "abcdefghij"</code>. Укажите неотрицательный индекс символа <code>e</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="4" data-success="Верно: a имеет индекс 0, b 1, c 2, d 3, e 4." data-hint="Начните отсчёт с a под индексом 0. Учитывайте, что индекс и порядковый номер отличаются на 1." autocomplete="off" aria-labelledby="check-e-title">
+  <label for="check-e-answer">Введите целое число без пробелов.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-e-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-e-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-e-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-valid-indices-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-valid-indices-title">Какие индексы допустимы для <code>text = "abcdefghij"</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-valid-indices-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-valid-indices-option-1">
+          <input class="visually-hidden" id="check-valid-indices-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-valid-indices-option-1-feedback" />
+          <span><code>0</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. По индексу 0 находится a.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-valid-indices-option-2">
+          <input class="visually-hidden" id="check-valid-indices-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-valid-indices-option-2-feedback" />
+          <span><code>7</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. По индексу 7 находится h.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-valid-indices-option-3">
+          <input class="visually-hidden" id="check-valid-indices-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-valid-indices-option-3-feedback" />
+          <span><code>-1</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. По индексу -1 находится j.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-valid-indices-option-4">
+          <input class="visually-hidden" id="check-valid-indices-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-valid-indices-option-4-feedback" />
+          <span><code>-10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. По индексу -10 находится a.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-valid-indices-option-5">
+          <input class="visually-hidden" id="check-valid-indices-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-valid-indices-option-5-feedback" />
+          <span><code>10</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. Индекс 10 вне этих границ и вызовет IndexError.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-valid-indices-option-6">
+          <input class="visually-hidden" id="check-valid-indices-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-valid-indices-option-6-feedback" />
+          <span><code>12</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. Индекс 12 вне этих границ и вызовет IndexError.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-valid-indices-option-7">
+          <input class="visually-hidden" id="check-valid-indices-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-valid-indices-option-7-feedback" />
+          <span><code>-12</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-valid-indices-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина строки 10. Допустимые индексы: от 0 до 9 и от -10 до -1. Индекс -12 вне этих границ и вызовет IndexError.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-tail-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-tail-title">Получите хвост строки</h3>
+  <div class="special-block__body">
+<p>Дано <code>text = "abcdefghij"</code>. Получите <code>"hij"</code>. Используйте неотрицательный <code>start</code> и пропустите <code>stop</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="text[7:]" data-success="Верно: text[7:] берёт символы с индекса 7 до конца." data-hint="h находится под индексом 7. После двоеточия оставьте границу пустой." autocomplete="off" aria-labelledby="check-tail-title">
+  <label for="check-tail-answer">Введите выражение без пробелов и без <code>print()</code>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-tail-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-tail-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-tail-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-middle-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-middle-title">Получите середину</h3>
+  <div class="special-block__body">
+<p>Дано <code>text = "abcdefghij"</code>. Получите <code>"cde"</code>. Укажите обе неотрицательные границы, шаг не пишите.</p>
+<form class="quiz" data-quiz="text" data-answer="text[2:5]" data-success="Верно: text[2:5] выбирает индексы 2, 3, 4." data-hint="c находится под индексом 2, e под индексом 4. Правая граница должна идти после e." autocomplete="off" aria-labelledby="check-middle-title">
+  <label for="check-middle-answer">Введите выражение без пробелов и без <code>print()</code>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-middle-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-middle-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-middle-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-head-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-head-title">Получите начало строки</h3>
+  <div class="special-block__body">
+<p>Дано <code>text = "abcdefghij"</code>. Получите <code>"abcd"</code>. Пропустите <code>start</code> и укажите неотрицательный stop.</p>
+<form class="quiz" data-quiz="text" data-answer="text[:4]" data-success="Верно: text[:4] берёт символы с начала до индекса 4, не включая его." data-hint="d имеет индекс 3. Граница stop не включается в срез." autocomplete="off" aria-labelledby="check-head-title">
+  <label for="check-head-answer">Введите выражение без пробелов и без <code>print()</code>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-head-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-head-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-head-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-step-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-step-title">Выберите каждый второй символ</h3>
+  <div class="special-block__body">
+<p>Дано <code>text = "abcdefghij"</code>. Получите <code>"bdfhj"</code>. Укажите неотрицательный <code>start</code> и положительный шаг, <code>stop</code> пропустите.</p>
+<form class="quiz" data-quiz="text" data-answer="text[1::2]" data-success="Верно: text[1::2] выбирает индексы 1, 3, 5, 7, 9." data-hint="Начните с b под индексом 1 и увеличивайте индекс на 2. Для пропущенного stop нужны два двоеточия подряд." autocomplete="off" aria-labelledby="check-step-title">
+  <label for="check-step-answer">Введите выражение без пробелов и без <code>print()</code>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-step-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-step-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-step-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-reverse-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-reverse-title">Разверните строку</h3>
+  <div class="special-block__body">
+<p>Дано <code>text = "abcdefghij"</code>. Получите <code>"jihgfedcba"</code>. Обе границы пропустите и задайте шаг.</p>
+<form class="quiz" data-quiz="text" data-answer="text[::-1]" data-success="Верно: text[::-1] проходит от последнего символа к первому." data-hint="Чтобы пройти справа налево по всем символам, используйте шаг -1." autocomplete="off" aria-labelledby="check-reverse-title">
+  <label for="check-reverse-answer">Введите выражение без пробелов и без <code>print()</code>.</label>
+  <div class="quiz__answer-row">
+    <input class="quiz__input" id="check-reverse-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-reverse-feedback" />
+    <button class="quiz__submit-button" type="submit">Ответить</button>
+  </div>
+  <div class="quiz__feedback" id="check-reverse-feedback" aria-hidden="true"><div><p></p></div></div>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-facts-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-facts-title">Какие утверждения о <code>str</code> верны?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-facts-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-facts-option-1">
+          <input class="visually-hidden" id="check-facts-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-facts-option-1-feedback" />
+          <span>Операция, результат которой отличается содержимым от исходной строки, даёт другую строку.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Исходный объект не изменяется. Если содержимое прежнее, Python может использовать существующий объект.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-facts-option-2">
+          <input class="visually-hidden" id="check-facts-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-facts-option-2-feedback" />
+          <span>Строка неизменяема.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Изменить отдельный элемент существующего объекта str нельзя.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-facts-option-3">
+          <input class="visually-hidden" id="check-facts-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-facts-option-3-feedback" />
+          <span>Элементы строки упорядочены и имеют индексы.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Позиция каждого элемента определяет, какой символ вернёт индексация.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-facts-option-4">
+          <input class="visually-hidden" id="check-facts-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-facts-option-4-feedback" />
+          <span>У непустой строки последний неотрицательный индекс равен длине минус 1.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Отсчёт начинается с нуля; у пустой строки последнего элемента нет.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-facts-option-5">
+          <input class="visually-hidden" id="check-facts-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-facts-option-5-feedback" />
+          <span>Индексация слева начинается с 0.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первый элемент имеет индекс 0.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-facts-option-6">
+          <input class="visually-hidden" id="check-facts-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-facts-option-6-feedback" />
+          <span>Первый символ имеет индекс 1.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Под индексом 1 находится второй символ, если он существует.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-facts-option-7">
+          <input class="visually-hidden" id="check-facts-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-facts-option-7-feedback" />
+          <span>Пробелы не учитываются в длине строки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Каждый обычный пробел является элементом строки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-facts-option-8">
+          <input class="visually-hidden" id="check-facts-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-facts-option-8-feedback" />
+          <span>Индекс за пределами строки возвращает пустую строку.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Обращение по несуществующему индексу вызывает IndexError.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-facts-option-9">
+          <input class="visually-hidden" id="check-facts-option-9" type="checkbox" name="answers" value="9" aria-describedby="check-facts-option-9-feedback" />
+          <span>Присваивание <code>text[0] = "A"</code> заменяет первый символ строки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-9-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание элементу str вызывает TypeError.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-facts-option-10">
+          <input class="visually-hidden" id="check-facts-option-10" type="checkbox" name="answers" value="10" aria-describedby="check-facts-option-10-feedback" />
+          <span>Отдельный элемент строки имеет особый тип <code>char</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-facts-option-10-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В Python отдельный символ строки тоже имеет тип <code>str</code>.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-index-loop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-index-loop-title">Какие значения по очереди получает переменная <code>i</code>?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Цикл по индексам</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Цикл по индексам">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;abcde&quot;
+for i in range(len(text)):
+    print(i)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-index-loop-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-index-loop-option-1">
+          <input class="visually-hidden" id="check-index-loop-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-index-loop-option-1-feedback" />
+          <span><code>0</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range(len(text)) задаёт целые числа от 0 до 4, включая 0.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-index-loop-option-2">
+          <input class="visually-hidden" id="check-index-loop-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-index-loop-option-2-feedback" />
+          <span><code>1</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range(len(text)) задаёт целые числа от 0 до 4, включая 1.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-index-loop-option-3">
+          <input class="visually-hidden" id="check-index-loop-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-index-loop-option-3-feedback" />
+          <span><code>2</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range(len(text)) задаёт целые числа от 0 до 4, включая 2.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-index-loop-option-4">
+          <input class="visually-hidden" id="check-index-loop-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-index-loop-option-4-feedback" />
+          <span><code>3</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range(len(text)) задаёт целые числа от 0 до 4, включая 3.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-index-loop-option-5">
+          <input class="visually-hidden" id="check-index-loop-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-index-loop-option-5-feedback" />
+          <span><code>4</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range(len(text)) задаёт целые числа от 0 до 4, включая 4.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-index-loop-option-6">
+          <input class="visually-hidden" id="check-index-loop-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-index-loop-option-6-feedback" />
+          <span><code>5</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Длина 5 служит исключённой границей range.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-index-loop-option-7">
+          <input class="visually-hidden" id="check-index-loop-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-index-loop-option-7-feedback" />
+          <span><code>&quot;a&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Цикл перебирает числа диапазона, а не символы строки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-index-loop-option-8">
+          <input class="visually-hidden" id="check-index-loop-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-index-loop-option-8-feedback" />
+          <span><code>&quot;e&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-index-loop-option-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для символа нужен text[i] или прямой перебор строки.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-char-loop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-char-loop-title">Какие значения по очереди получает переменная <code>item</code>?</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Цикл по символам</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Цикл по символам">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;abcde&quot;
+for item in text:
+    print(item)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-char-loop-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-char-loop-option-1">
+          <input class="visually-hidden" id="check-char-loop-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-char-loop-option-1-feedback" />
+          <span><code>&quot;a&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Цикл перебирает саму строку, поэтому получает символ a как значение str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-char-loop-option-2">
+          <input class="visually-hidden" id="check-char-loop-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-char-loop-option-2-feedback" />
+          <span><code>&quot;b&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Цикл перебирает саму строку, поэтому получает символ b как значение str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-char-loop-option-3">
+          <input class="visually-hidden" id="check-char-loop-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-char-loop-option-3-feedback" />
+          <span><code>&quot;c&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Цикл перебирает саму строку, поэтому получает символ c как значение str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-char-loop-option-4">
+          <input class="visually-hidden" id="check-char-loop-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-char-loop-option-4-feedback" />
+          <span><code>&quot;d&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Цикл перебирает саму строку, поэтому получает символ d как значение str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-char-loop-option-5">
+          <input class="visually-hidden" id="check-char-loop-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-char-loop-option-5-feedback" />
+          <span><code>&quot;e&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Цикл перебирает саму строку, поэтому получает символ e как значение str.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-char-loop-option-6">
+          <input class="visually-hidden" id="check-char-loop-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-char-loop-option-6-feedback" />
+          <span><code>0</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индексы не выдаются автоматически при переборе самой строки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-char-loop-option-7">
+          <input class="visually-hidden" id="check-char-loop-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-char-loop-option-7-feedback" />
+          <span><code>4</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>item получает символ e на последнем шаге, а не его индекс 4.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-char-loop-option-8">
+          <input class="visually-hidden" id="check-char-loop-option-8" type="checkbox" name="answers" value="8" aria-describedby="check-char-loop-option-8-feedback" />
+          <span><code>&quot;abcde&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-char-loop-option-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вся строка задаёт последовательность; на каждом шаге выдаётся один символ.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-in-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-in-title">Какие выражения вернут <code>True</code> при <code>text = "abcdefghij"</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-in-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-in-option-1">
+          <input class="visually-hidden" id="check-in-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-in-option-1-feedback" />
+          <span><code>&quot;a&quot; in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Символ a есть в начале строки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-in-option-2">
+          <input class="visually-hidden" id="check-in-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-in-option-2-feedback" />
+          <span><code>&quot;cde&quot; in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Символы c, d, e идут подряд в нужном порядке.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-in-option-3">
+          <input class="visually-hidden" id="check-in-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-in-option-3-feedback" />
+          <span><code>&quot;hij&quot; in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот фрагмент находится в конце строки.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-in-option-4">
+          <input class="visually-hidden" id="check-in-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-in-option-4-feedback" />
+          <span><code>&quot;z&quot; not in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Символа z нет, поэтому проверка отсутствия истинна.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-in-option-5">
+          <input class="visually-hidden" id="check-in-option-5" type="checkbox" name="answers" value="5" aria-describedby="check-in-option-5-feedback" />
+          <span><code>&quot;edc&quot; in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В строке есть cde, но нет обратного фрагмента edc.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-in-option-6">
+          <input class="visually-hidden" id="check-in-option-6" type="checkbox" name="answers" value="6" aria-describedby="check-in-option-6-feedback" />
+          <span><code>&quot;abc&quot; not in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Фрагмент abc есть, поэтому not in возвращает False.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-in-option-7">
+          <input class="visually-hidden" id="check-in-option-7" type="checkbox" name="answers" value="7" aria-describedby="check-in-option-7-feedback" />
+          <span><code>&quot;A&quot; in text</code></span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-in-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заглавной A нет. Поиск учитывает регистр.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-immutable-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-immutable-title">Почему для <code>text = "abcdefghij"</code> нельзя выполнить <code>text[0] = "A"</code>?</h3>
+  <div class="special-block__body">
+
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-immutable-title">
+  <fieldset><legend>Отметьте все подходящие варианты.</legend>
+    <div class="quiz__options">
+      <div class="quiz-option" data-correct="true">
+        <label class="quiz-option__label" for="check-immutable-option-1">
+          <input class="visually-hidden" id="check-immutable-option-1" type="checkbox" name="answers" value="1" aria-describedby="check-immutable-option-1-feedback" />
+          <span>Строка неизменяема и не поддерживает присваивание отдельному элементу.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-immutable-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Можно создать строку с другим содержимым и присвоить её переменной.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-immutable-option-2">
+          <input class="visually-hidden" id="check-immutable-option-2" type="checkbox" name="answers" value="2" aria-describedby="check-immutable-option-2-feedback" />
+          <span>Индекс 0 выходит за пределы строки.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-immutable-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У этой строки индекс 0 допустим для чтения.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-immutable-option-3">
+          <input class="visually-hidden" id="check-immutable-option-3" type="checkbox" name="answers" value="3" aria-describedby="check-immutable-option-3-feedback" />
+          <span>В Python строки не могут содержать заглавные буквы.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-immutable-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заглавные буквы можно хранить в строках.</p></div></div>
+      </div>
+      <div class="quiz-option" data-correct="false">
+        <label class="quiz-option__label" for="check-immutable-option-4">
+          <input class="visually-hidden" id="check-immutable-option-4" type="checkbox" name="answers" value="4" aria-describedby="check-immutable-option-4-feedback" />
+          <span>Для замены нужно использовать круглые скобки вместо квадратных.</span><span class="quiz-option__icon" aria-hidden="true"></span>
+        </label>
+        <div class="quiz__feedback" id="check-immutable-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Круглые скобки не добавляют строке возможность менять элементы.</p></div></div>
+      </div>
+    </div>
+  </fieldset>
+  <button class="quiz__submit-button" type="submit">Ответить</button>
+  <p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+  </div>
+</aside>
+        </div>
+      </section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

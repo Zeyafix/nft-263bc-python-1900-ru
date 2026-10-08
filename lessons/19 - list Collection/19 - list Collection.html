@@ -1,0 +1,2017 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Списки Python для самостоятельного изучения: создание, индексы, срезы, изменение, методы, перебор и статистика. Пошаговый журнал оценок, повторение и самопроверка." />
+    <title>19 - list Collection</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">19 - list Collection</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="review">
+  <h2>01 / Повторение пройденного</h2>
+  <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-index-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-index-definition-title">Что такое индекс?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-index-definition-title">
+<fieldset><legend>Выберите определение индекса элемента последовательности.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-index-definition-option-1"><input class="visually-hidden" type="checkbox" id="review-index-definition-option-1" name="answers" value="1" aria-describedby="review-index-definition-option-1-feedback" /><span>Целое число, по которому можно обратиться к элементу на определённой позиции.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-index-definition-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>При отсчёте слева первый элемент имеет индекс 0. Отрицательные индексы отсчитывают позиции с конца.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-index-definition-option-2"><input class="visually-hidden" type="checkbox" id="review-index-definition-option-2" name="answers" value="2" aria-describedby="review-index-definition-option-2-feedback" /><span>Количество элементов в последовательности.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-index-definition-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Количество элементов называют длиной. Его возвращает len().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-index-definition-option-3"><input class="visually-hidden" type="checkbox" id="review-index-definition-option-3" name="answers" value="3" aria-describedby="review-index-definition-option-3-feedback" /><span>Значение, записанное в элементе.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-index-definition-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс указывает позицию. Значение получают при обращении по этой позиции.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-index-definition-option-4"><input class="visually-hidden" type="checkbox" id="review-index-definition-option-4" name="answers" value="4" aria-describedby="review-index-definition-option-4-feedback" /><span>Имя переменной, в которой хранится последовательность.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-index-definition-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя переменной и индекс выполняют разные роли: text[2] использует имя text и индекс 2.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-len-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-len-title">Как узнать длину?</h3>
+  <div class="special-block__body">
+<p>Какая встроенная функция возвращает количество символов строки?</p>
+<form class="quiz" data-quiz="text" data-answer="len" data-hint="Вспомните запись: имя функции, затем строка в круглых скобках. Имя состоит из трёх букв." data-success="Верно: len(text) возвращает длину строки text." autocomplete="off" aria-labelledby="review-len-title">
+<label for="review-len-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-len-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-len-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-len-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-zero-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-zero-title">Первый символ</h3>
+  <div class="special-block__body">
+<p>Дана строка <code>text = "notebook"</code>. Какой неотрицательный индекс у символа <code>"n"</code>?</p>
+<form class="quiz" data-quiz="text" data-answer="0" data-hint="Отсчёт слева начинается с нуля." data-success="Верно: символ n находится по индексу 0." autocomplete="off" aria-labelledby="review-zero-title">
+<label for="review-zero-answer">Введите неотрицательный индекс цифрой, без пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-zero-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-zero-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-zero-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-seven-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-seven-title">Последний символ</h3>
+  <div class="special-block__body">
+<p>Дана строка <code>text = "notebook"</code>. Какой неотрицательный индекс у символа <code>"k"</code>?</p>
+<form class="quiz" data-quiz="text" data-answer="7" data-hint="В строке восемь символов. Индекс последнего на единицу меньше длины." data-success="Верно: индексы строки notebook идут от 0 до 7." autocomplete="off" aria-labelledby="review-seven-title">
+<label for="review-seven-answer">Введите неотрицательный индекс цифрой, без пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-seven-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-seven-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-seven-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-in-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-in-title">Поиск в строке</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-in-title">
+<fieldset><legend>Какие выражения вернут <code>True</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-in-option-1"><input class="visually-hidden" type="checkbox" id="review-in-option-1" name="answers" value="1" aria-describedby="review-in-option-1-feedback" /><span><code>&quot;cat&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В начале catalog есть непрерывная подстрока cat.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-in-option-2"><input class="visually-hidden" type="checkbox" id="review-in-option-2" name="answers" value="2" aria-describedby="review-in-option-2-feedback" /><span><code>&quot;log&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Строка catalog заканчивается подстрокой log.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-option-3"><input class="visually-hidden" type="checkbox" id="review-in-option-3" name="answers" value="3" aria-describedby="review-in-option-3-feedback" /><span><code>&quot;Cat&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Регистр важен: заглавной C в строке нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-option-4"><input class="visually-hidden" type="checkbox" id="review-in-option-4" name="answers" value="4" aria-describedby="review-in-option-4-feedback" /><span><code>&quot;dog&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Подстроки dog в catalog нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-option-5"><input class="visually-hidden" type="checkbox" id="review-in-option-5" name="answers" value="5" aria-describedby="review-in-option-5-feedback" /><span><code>&quot;cl&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Символы подстроки должны идти подряд. Между c и l есть другие символы.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-option-6"><input class="visually-hidden" type="checkbox" id="review-in-option-6" name="answers" value="6" aria-describedby="review-in-option-6-feedback" /><span><code>&quot;catalogs&quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Искомая строка длиннее исходной и содержит лишнюю s.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-in-option-7"><input class="visually-hidden" type="checkbox" id="review-in-option-7" name="answers" value="7" aria-describedby="review-in-option-7-feedback" /><span><code>&quot; &quot; in &quot;catalog&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-in-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В строке нет пробела.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-str-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-str-title">Что характерно для str?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-str-title">
+<fieldset><legend>Отметьте верные утверждения о строках Python.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-str-option-1"><input class="visually-hidden" type="checkbox" id="review-str-option-1" name="answers" value="1" aria-describedby="review-str-option-1-feedback" /><span>Строка неизменяема.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нельзя заменить отдельный символ существующей строки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-str-option-2"><input class="visually-hidden" type="checkbox" id="review-str-option-2" name="answers" value="2" aria-describedby="review-str-option-2-feedback" /><span>К символу можно обратиться по индексу.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, "cat"[0] вернёт "c".</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-str-option-3"><input class="visually-hidden" type="checkbox" id="review-str-option-3" name="answers" value="3" aria-describedby="review-str-option-3-feedback" /><span>Первый символ имеет индекс 0.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Неотрицательные индексы начинаются с нуля.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-str-option-4"><input class="visually-hidden" type="checkbox" id="review-str-option-4" name="answers" value="4" aria-describedby="review-str-option-4-feedback" /><span>Строка может быть пустой.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пустая строка записывается как "" и имеет длину 0.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="review-str-option-5"><input class="visually-hidden" type="checkbox" id="review-str-option-5" name="answers" value="5" aria-describedby="review-str-option-5-feedback" /><span>Срез строки возвращает строку.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, "cat"[:2] вернёт "ca".</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-str-option-6"><input class="visually-hidden" type="checkbox" id="review-str-option-6" name="answers" value="6" aria-describedby="review-str-option-6-feedback" /><span>После <code>test = "test"</code> можно выполнить <code>test[3] = "c"</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание по индексу для str вызывает TypeError.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-str-option-7"><input class="visually-hidden" type="checkbox" id="review-str-option-7" name="answers" value="7" aria-describedby="review-str-option-7-feedback" /><span>Метод <code>upper()</code> меняет исходную строку.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span><code>upper()</code> возвращает результат. Исходная строка остаётся прежней.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-str-option-8"><input class="visually-hidden" type="checkbox" id="review-str-option-8" name="answers" value="8" aria-describedby="review-str-option-8-feedback" /><span>Оператор <code>in</code> не учитывает регистр.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>"A" и "a" различаются.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-str-option-9"><input class="visually-hidden" type="checkbox" id="review-str-option-9" name="answers" value="9" aria-describedby="review-str-option-9-feedback" /><span><code>len()</code> возвращает индекс последнего символа.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-9-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>len() возвращает длину. У непустой строки последний неотрицательный индекс равен <code>len(text) - 1</code>.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="review-str-option-10"><input class="visually-hidden" type="checkbox" id="review-str-option-10" name="answers" value="10" aria-describedby="review-str-option-10-feedback" /><span><code>split()</code> автоматически превращает числовой текст в числа.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="review-str-option-10-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Части после split() остаются строками. Для целых чисел нужен int().</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-isdigit-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-isdigit-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает <code>True</code>, если строка непустая и все её символы являются цифрами.</p>
+<form class="quiz" data-quiz="text" data-answer="isdigit" data-hint="Имя начинается с is и связано со словом digit." data-success="Верно: isdigit проверяет цифры; знак минуса и десятичная точка проверку не проходят." autocomplete="off" aria-labelledby="review-isdigit-title">
+<label for="review-isdigit-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-isdigit-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-isdigit-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-isdigit-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-isalpha-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-isalpha-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает <code>True</code>, если строка непустая и состоит только из букв.</p>
+<form class="quiz" data-quiz="text" data-answer="isalpha" data-hint="Имя начинается с is и связано со словом alphabet." data-success="Верно: isalpha проверяет буквы; пробел между словами даст False." autocomplete="off" aria-labelledby="review-isalpha-title">
+<label for="review-isalpha-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-isalpha-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-isalpha-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-isalpha-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-isalnum-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-isalnum-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает <code>True</code>, если строка непустая и каждый символ является буквой или числовым символом. Подчёркивания и пробелы не допускаются.</p>
+<form class="quiz" data-quiz="text" data-answer="isalnum" data-hint="В имени соединены сокращения слов alphabet и number после is." data-success="Верно: isalnum допускает буквы и числовые символы, в том числе строки только с буквами или только с числами." autocomplete="off" aria-labelledby="review-isalnum-title">
+<label for="review-isalnum-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-isalnum-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-isalnum-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-isalnum-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-upper-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-upper-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает строку, в которой буквы переведены в верхний регистр.</p>
+<form class="quiz" data-quiz="text" data-answer="upper" data-hint="Вспомните английское слово со значением «верхний»." data-success="Верно: upper возвращает результат в верхнем регистре: &quot;cat&quot;.upper() даёт &quot;CAT&quot;." autocomplete="off" aria-labelledby="review-upper-title">
+<label for="review-upper-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-upper-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-upper-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-upper-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-title-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-title-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает строку, где каждое слово начинается с заглавной буквы, а остальные буквы слова строчные. Например, <code>"hELLO wORLD"</code> превращается в <code>"Hello World"</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="title" data-hint="Имя совпадает с английским словом «заголовок»." data-success="Верно: title меняет регистр слов; capitalize работает со строкой целиком и даст другой результат." autocomplete="off" aria-labelledby="review-title-title">
+<label for="review-title-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-title-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-title-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-title-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-strip-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-strip-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Без аргументов удаляет пробельные символы с обоих краёв строки, сохраняя пробелы внутри.</p>
+<form class="quiz" data-quiz="text" data-answer="strip" data-hint="Нужен метод для двух краёв, без начальных l или r." data-success="Верно: strip убирает пробельные символы с краёв и возвращает результат." autocomplete="off" aria-labelledby="review-strip-title">
+<label for="review-strip-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-strip-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-strip-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-strip-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-find-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-find-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает индекс первого вхождения подстроки, а при её отсутствии возвращает -1.</p>
+<form class="quiz" data-quiz="text" data-answer="find" data-hint="Этот метод возвращает -1 вместо ошибки." data-success="Верно: find возвращает позицию первого совпадения или -1." autocomplete="off" aria-labelledby="review-find-title">
+<label for="review-find-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-find-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-find-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-find-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-index-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-index-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает индекс первого вхождения подстроки, а при её отсутствии вызывает <code>ValueError</code>.</p>
+<form class="quiz" data-quiz="text" data-answer="index" data-hint="Имя метода совпадает с английским названием позиции элемента." data-success="Верно: index отличается от find поведением при отсутствии подстроки: возникает ValueError." autocomplete="off" aria-labelledby="review-index-title">
+<label for="review-index-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-index-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-index-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-index-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-replace-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-replace-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Возвращает строку с заменой одной подстроки на другую; без ограничения количества заменяет все вхождения.</p>
+<form class="quiz" data-quiz="text" data-answer="replace" data-hint="Имя означает «заменить»." data-success="Верно: replace возвращает результат замены и не меняет исходную строку." autocomplete="off" aria-labelledby="review-replace-title">
+<label for="review-replace-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-replace-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-replace-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-replace-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-split-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-split-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Разбивает строку на части и возвращает список строк; без аргументов разделяет по пробельным символам.</p>
+<form class="quiz" data-quiz="text" data-answer="split" data-hint="Имя означает «разделить»." data-success="Верно: split возвращает список, даже если часть только одна." autocomplete="off" aria-labelledby="review-split-title">
+<label for="review-split-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-split-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-split-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-split-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-join-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="review-join-title">Узнайте метод по описанию</h3>
+  <div class="special-block__body">
+<p>Вызывается у строки-разделителя и соединяет последовательность строк в одну строку.</p>
+<form class="quiz" data-quiz="text" data-answer="join" data-hint="Имя означает «соединить»." data-success="Верно: join вызывают у разделителя: &quot;, &quot;.join([&quot;Ann&quot;, &quot;Bob&quot;]) вернёт &quot;Ann, Bob&quot;." autocomplete="off" aria-labelledby="review-join-title">
+<label for="review-join-answer">Введите только имя строчными английскими буквами, без точки, скобок и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-join-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-join-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-join-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+  </div>
+</section>
+
+<section id="purpose">
+  <h2>02 / Зачем нужен список</h2>
+  <div class="section-content">
+<p>Представьте, что программа хранит оценки студента. Пока оценок три, можно завести три переменные. Но для четвёртой придётся добавить ещё одно имя, а для расчёта суммы постоянно переписывать выражение.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Отдельные переменные</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отдельные переменные">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">score_1 = 8
+score_2 = 10
+score_3 = 8
+print(score_1 + score_2 + score_3)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Отдельные переменные">26</pre></div>
+</div>
+<p>Список объединяет значения. Имя <code>scores</code> обозначает всю последовательность, а квадратные скобки и запятые задают её элементы. Одинаковые оценки не пропадают: каждая занимает свою позицию.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Одна переменная со списком</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одна переменная со списком">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8]
+print(scores)
+print(len(scores))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Одна переменная со списком">[8, 10, 8]
+3</pre></div>
+</div>
+<aside class="special-block special-block--definition" aria-labelledby="list-definition-title">
+  <div class="special-block__header"><span class="special-block__label">Определение</span></div>
+  <h3 class="special-block__title" id="list-definition-title">Список: тип list</h3>
+  <div class="special-block__body">
+<p><strong>Список</strong> представляет собой изменяемую последовательность элементов. Порядок сохраняется, пока вы сами его не измените. Значения могут повторяться. Можно заменять элементы, добавлять новые и удалять существующие, поэтому длина списка может меняться.</p>
+</div>
+</aside>
+<div class="code-example">
+  <div class="code-example__header"><span>Оценки, имена и разные типы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Оценки, имена и разные типы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8]
+names = [&quot;Ann&quot;, &quot;Bob&quot;, &quot;Sam&quot;]
+profile = [&quot;Ann&quot;, 18, True]
+print(scores)
+print(names)
+print(profile)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Оценки, имена и разные типы">[8, 10, 8]
+[&#x27;Ann&#x27;, &#x27;Bob&#x27;, &#x27;Sam&#x27;]
+[&#x27;Ann&#x27;, 18, True]</pre></div>
+</div>
+<p>Разные типы в одном списке допустимы. Но для общей обработки удобнее собирать данные одного назначения и совместимых типов: оценки складывать, имена приводить к одному регистру. Смешанный <code>profile</code> нельзя целиком сложить как оценки.</p>
+<p>Полезная модель памяти: переменная <code>names</code> ссылается на объект списка, а его позиции содержат ссылки на объекты строк. При обращении по индексу Python находит позицию и получает соответствующий объект. Такая модель объясняет, почему в списке могут соседствовать разные типы. На схеме адреса вида <code>0xA100</code> условные, запоминать их не нужно.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListMemory.gif"
+      alt="Переменная names ссылается на список, его позиции ссылаются на строки Ann, Bob и Sam; индекс выбирает нужную строку"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 1. Список и ссылки на его элементы. Адреса условные; показана модель CPython.</figcaption>
+</figure>
+  </div>
+</section>
+
+<section id="creation">
+  <h2>03 / Создание списка</h2>
+  <div class="section-content">
+<p>Самый прямой способ создать список: перечислить значения внутри <code>[]</code>. Такая запись называется литералом. Запятые отделяют элементы друг от друга. Пустые скобки создают список без элементов, а <code>[123]</code> содержит один элемент, число 123.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Литералы списков</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Литералы списков">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [10, 20, 30]
+empty = []
+single = [123]
+names = [
+    &quot;Ann&quot;,
+    &quot;Bob&quot;,
+    &quot;Sam&quot;,
+]
+print(scores)
+print(empty)
+print(single)
+print(names)
+print(type(scores))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Литералы списков">[10, 20, 30]
+[]
+[123]
+[&#x27;Ann&#x27;, &#x27;Bob&#x27;, &#x27;Sam&#x27;]
+&lt;class &#x27;list&#x27;&gt;</pre></div>
+</div>
+<p>В многострочной записи запятая после последнего элемента разрешена. Она удобна, когда добавляете следующую строку. <code>print()</code> показывает содержимое списка, а <code>type()</code> подтверждает тип всего объекта.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Создание через list()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Создание через list()">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">empty = list()
+numbers = list(range(5))
+letters = list(&quot;cat&quot;)
+words = &quot;cat dog&quot;.split()
+print(empty)
+print(numbers)
+print(letters)
+print(words)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Создание через list()">[]
+[0, 1, 2, 3, 4]
+[&#x27;c&#x27;, &#x27;a&#x27;, &#x27;t&#x27;]
+[&#x27;cat&#x27;, &#x27;dog&#x27;]</pre></div>
+</div>
+<p><code>list()</code> без аргумента создаёт пустой список. С аргументом он собирает элементы того, что можно перебрать: <code>range(5)</code> отдаёт числа от 0 до 4, строка отдаёт отдельные символы. Поэтому <code>list("cat")</code> даёт список символов, а <code>"cat dog".split()</code> даёт список слов.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Число не является последовательностью</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Число не является последовательностью">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">numbers = list(123)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Число не является последовательностью">TypeError: &#x27;int&#x27; object is not iterable</pre></div>
+</div>
+<p>В числе <code>123</code> нельзя таким способом перебрать элементы. Для списка с одним числом нужны квадратные скобки: <code>[123]</code>. Для списка символов числового текста подошло бы <code>list("123")</code>, но его элементы были бы строками.</p>
+<p>После <code>split()</code> каждая часть остаётся строкой. Кавычки в выводе списка помогают это заметить. Чтобы получить числа, создадим пустой список, пройдём по частям циклом и применим <code>int()</code> к каждой части. Метод <code>append()</code> добавляет один элемент в конец списка; подробно разберём его в разделе 07.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Преобразование частей через for</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Преобразование частей через for">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;8 10 12&quot;
+parts = text.split()
+scores = []
+for part in parts:
+    score = int(part)
+    scores.append(score)
+print(parts)
+print(scores)
+print(type(parts[0]))
+print(type(scores[0]))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Преобразование частей через for">[&#x27;8&#x27;, &#x27;10&#x27;, &#x27;12&#x27;]
+[8, 10, 12]
+&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;int&#x27;&gt;</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как растёт scores">
+<table><caption>Как растёт scores</caption>
+<thead><tr><th scope="col">Часть part</th><th scope="col">Результат int(part)</th><th scope="col">scores после добавления</th></tr></thead>
+<tbody>
+<tr><td><code>&quot;8&quot;</code></td><td><code>8</code></td><td><code>[8]</code></td></tr>
+<tr><td><code>&quot;10&quot;</code></td><td><code>10</code></td><td><code>[8, 10]</code></td></tr>
+<tr><td><code>&quot;12&quot;</code></td><td><code>12</code></td><td><code>[8, 10, 12]</code></td></tr>
+</tbody></table>
+</div>
+<p>Переменная <code>parts</code> продолжает хранить строки. Мы создали отдельный список <code>scores</code> и добавили в него результаты преобразования. Здесь исходный текст содержит только корректные записи целых чисел.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/SplitIntLoop.gif"
+      alt="Строка 8 10 12 разбивается на строки, затем цикл преобразует каждую в число и добавляет в scores"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 2. От строки к списку чисел: split(), int() и append().</figcaption>
+</figure>
+  </div>
+</section>
+
+<section id="length-indexes">
+  <h2>04 / Длина и индексы</h2>
+  <div class="section-content">
+<p>Длина отвечает на вопрос «сколько элементов?», индекс отвечает на вопрос «на какой позиции?». В списке <code>[8, 10, 12]</code> три элемента. Оценка <code>10</code> стоит второй для человека, но имеет индекс <code>1</code>. Само значение <code>10</code> не является её индексом.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Позиции в scores = [8, 10, 12]">
+<table><caption>Позиции в scores = [8, 10, 12]</caption>
+<thead><tr><th scope="col">Номер для человека</th><th scope="col">Индекс слева</th><th scope="col">Индекс с конца</th><th scope="col">Значение</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>0</td><td>-3</td><td>8</td></tr>
+<tr><td>2</td><td>1</td><td>-2</td><td>10</td></tr>
+<tr><td>3</td><td>2</td><td>-1</td><td>12</td></tr>
+</tbody></table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Длина и доступ к элементу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Длина и доступ к элементу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+print(len(scores))
+print(scores[0])
+print(scores[1])
+print(scores[-1])
+print(scores[-3])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Длина и доступ к элементу">3
+8
+10
+12
+8</pre></div>
+</div>
+<p>Для непустого списка длины <code>n</code> неотрицательные индексы идут от <code>0</code> до <code>n - 1</code>, отрицательные от <code>-n</code> до <code>-1</code>. Индекс <code>-1</code> всегда означает последний элемент. У пустого списка допустимых индексов нет.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Индекс за правой границей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Индекс за правой границей">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+print(scores[3])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Индекс за правой границей">IndexError: list index out of range</pre></div>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Доступ к пустому списку</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Доступ к пустому списку">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = []
+print(scores[0])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Доступ к пустому списку">IndexError: list index out of range</pre></div>
+</div>
+<p>Такая же ошибка возникнет при <code>scores[-4]</code> для списка из трёх элементов. Если человек вводит номер, сначала проверяйте диапазон от 1 до длины, затем вычитайте единицу. Номер 0 недопустим: без проверки он превратится в индекс -1 и ошибочно выберет последний элемент.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверка номера</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка номера">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+number = 2
+if 1 &lt;= number &lt;= len(scores):
+    index = number - 1
+    print(scores[index])
+else:
+    print(&quot;Invalid number&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверка номера">10</pre></div>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверка непустого списка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка непустого списка">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = []
+if scores:
+    print(scores[-1])
+else:
+    print(&quot;No scores&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверка непустого списка">No scores</pre></div>
+</div>
+<p>В условии пустой список считается ложным, а непустой истинным. Даже <code>[0]</code> непустой: проверяется наличие элементов, а не значение каждого из них.</p>
+  </div>
+</section>
+
+<section id="slices">
+  <h2>05 / Срезы списка</h2>
+  <div class="section-content">
+<p>Срез выбирает часть списка и возвращает список. В записи <code>scores[start:stop:step]</code> начало <code>start</code> включается, граница <code>stop</code> исключается, а <code>step</code> задаёт шаг. Для положительного шага движение идёт слева направо. Если шаг не указан, он равен 1.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Срезы на одном списке</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Срезы на одном списке">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [4, 6, 8, 10, 12]
+print(scores[1:4])
+print(scores[:3])
+print(scores[2:])
+print(scores[-3:-1])
+print(scores[::2])
+print(scores[::-1])
+print(scores[4:1:-1])
+print(scores[:])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Срезы на одном списке">[6, 8, 10]
+[4, 6, 8]
+[8, 10, 12]
+[8, 10]
+[4, 8, 12]
+[12, 10, 8, 6, 4]
+[12, 10, 8]
+[4, 6, 8, 10, 12]</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как читать границы и шаг">
+<table><caption>Как читать границы и шаг</caption>
+<thead><tr><th scope="col">Срез</th><th scope="col">Что выбирается</th></tr></thead>
+<tbody>
+<tr><td><code>[1:4]</code></td><td>Индексы 1, 2, 3. Элемент под индексом 4 не включён.</td></tr>
+<tr><td><code>[:3]</code></td><td>От начала до индекса 3, не включая его.</td></tr>
+<tr><td><code>[2:]</code></td><td>От индекса 2 до конца.</td></tr>
+<tr><td><code>[-3:-1]</code></td><td>От третьего с конца до последнего, не включая последний.</td></tr>
+<tr><td><code>[::2]</code></td><td>Индексы 0, 2, 4: каждый второй элемент с первого.</td></tr>
+<tr><td><code>[::-1]</code></td><td>От последнего к первому. При отрицательном шаге пропущенные границы задают движение с конца.</td></tr>
+<tr><td><code>[4:1:-1]</code></td><td>Индексы 4, 3, 2: шаг отрицательный, граница 1 исключена.</td></tr>
+</tbody></table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Пустые срезы и далёкие границы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пустые срезы и далёкие границы">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [4, 6, 8, 10, 12]
+print(scores[3:1])
+print(scores[2:2])
+print(scores[20:30])
+print(scores[-100:100])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Пустые срезы и далёкие границы">[]
+[]
+[]
+[4, 6, 8, 10, 12]</pre></div>
+</div>
+<p>При положительном шаге нельзя дойти от индекса 3 к границе 1, поэтому результат пустой. Одинаковые границы тоже дают пустой срез. Далёкие границы среза ограничиваются длиной списка: <code>scores[20:30]</code> допустим, хотя обращение <code>scores[20]</code> вызовет <code>IndexError</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Шаг не может быть нулём</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг не может быть нулём">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [4, 6, 8]
+print(scores[::0])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Шаг не может быть нулём">ValueError: slice step cannot be zero</pre></div>
+</div>
+<p>Срез списка создаёт новый список.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Замена в результате среза</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Замена в результате среза">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [4, 6, 8, 10]
+selected = scores[1:3]
+print(selected)
+selected[0] = 12
+print(selected)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Замена в результате среза">[6, 8]
+[12, 8]
+[4, 6, 8, 10]</pre></div>
+</div>
+<p>Сначала <code>selected</code> содержит <code>[6, 8]</code>. Присваивание заменяет элемент только в новом списке. В исходном <code>scores</code> число 6 остаётся на месте. Срез создаёт новый <strong>внешний</strong> список, но не копирует рекурсивно вложенные объекты. Вложенные списки и общие ссылки подробно изучим в следующей теме; здесь работаем с числами.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListSliceReplacement.gif"
+      alt="Срез scores[1:3] создаёт список [6, 8]; замена selected[0] на 12 не меняет исходный scores"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 3. Замена элемента в срезе не меняет исходный список чисел.</figcaption>
+</figure>
+  </div>
+</section>
+
+<section id="replacement">
+  <h2>06 / Изменение элементов</h2>
+  <div class="section-content">
+<p>У списка можно заменить элемент на существующей позиции. В <code>scores[1] = 12</code> сначала выбирается позиция с индексом 1, затем в неё записывается новое значение. Остальные элементы не сдвигаются, длина не меняется.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Исправление одной оценки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Исправление одной оценки">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 9]
+print(scores)
+scores[1] = 12
+print(scores)
+print(len(scores))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Исправление одной оценки">[8, 10, 9]
+[8, 12, 9]
+3</pre></div>
+</div>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListReplaceIndex.gif"
+      alt="В списке [8, 10, 9] элемент с индексом 1 заменяется на 12, длина остаётся равной 3"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 4. Замена элемента по индексу.</figcaption>
+</figure>
+<p>Ниже пример того, как мы можем использовать изменение элемента списка по введённым пользователем данным.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Номер человека превращается в индекс</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Номер человека превращается в индекс">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 9]
+number = int(input(&quot;Score number: &quot;))
+if 1 &lt;= number &lt;= len(scores):
+    new_score = int(input(&quot;New score (1-12): &quot;))
+    if 1 &lt;= new_score &lt;= 12:
+        scores[number - 1] = new_score
+    else:
+        print(&quot;Invalid score&quot;)
+else:
+    print(&quot;Invalid number&quot;)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Номер человека превращается в индекс">Score number: 2
+New score (1-12): 12
+[8, 12, 9]</pre></div>
+</div>
+<p>Если ввести номер <code>0</code> или <code>4</code>, программа напечатает <code>Invalid number</code> и оставит список прежним. Новая оценка запрашивается только после проверки номера.</p>
+  </div>
+</section>
+
+<section id="adding">
+  <h2>07 / Добавление элементов</h2>
+  <div class="section-content">
+<p>Добавление увеличивает длину списка. Выбор метода зависит от того, нужно ли добавить один объект, вставить его в середину или присоединить несколько элементов.</p>
+<p>Разберём метод <code>append</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Добавить оценку в конец</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Добавить оценку в конец">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10]
+scores.append(12)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Добавить оценку в конец">[8, 10, 12]</pre></div>
+</div>
+<p>Метод получает одно значение. Старые элементы сохраняют свои позиции, новый занимает следующую свободную позицию. У пустого списка первый добавленный элемент получит индекс 0.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListAppend.gif"
+      alt="append(12) добавляет 12 в конец списка [8, 10], длина увеличивается с 2 до 3"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 5. Добавление элемента в конец списка через append().</figcaption>
+</figure>
+<p>Метод <code>insert</code> позволяет вставлять элементы по индексу.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Вставить оценку в середину</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Вставить оценку в середину">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10]
+scores.insert(1, 12)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Вставить оценку в середину">[8, 12, 10]</pre></div>
+</div>
+<p>Число 12 вставлено перед прежним элементом с индексом 1. Число 10 сдвинулось вправо. Это отличается от <code>scores[1] = 12</code>: при замене 10 исчезло бы из этой позиции, а длина осталась бы 2. <code>insert(0, value)</code> вставляет в начало. Слишком большой индекс вставляет в конец, слишком маленький отрицательный в начало, без <code>IndexError</code>.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListInsert.gif"
+      alt="insert(1, 12) сдвигает число 10 вправо и превращает список [8, 10] в [8, 12, 10]"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 6. Вставка элемента перед указанной позицией через insert().</figcaption>
+</figure>
+<p>Метод <code>extend</code> позволяет разом добавить несколько элементов в конец списка.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Присоединить несколько оценок</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Присоединить несколько оценок">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10]
+scores.extend([11, 12])
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Присоединить несколько оценок">[8, 10, 11, 12]</pre></div>
+</div>
+<p>Метод принимает переданную последовательность, перебирает её и добавляет каждый её элемент в конец исходного списка. Порядок добавляемых элементов сохраняется.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListExtend.gif"
+      alt="extend([11, 12]) добавляет два отдельных элемента в список [8, 10], результат [8, 10, 11, 12]"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 7. Добавление элементов последовательности через extend().</figcaption>
+</figure>
+<p>Есть разница между использованием <code>append</code> и <code>extend</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Список как элемент или элементы списка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Список как элемент или элементы списка">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">items = [1, 2]
+items.append([3, 4])
+print(items)
+print(len(items))
+
+items = [1, 2]
+items.extend([3, 4])
+print(items)
+print(len(items))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Список как элемент или элементы списка">[1, 2, [3, 4]]
+3
+[1, 2, 3, 4]
+4</pre></div>
+</div>
+<p>В первом случае <code>[3, 4]</code> стал одним элементом внутри другого списка. Это вложенный список, поэтому внешняя длина равна 3. Во втором случае добавлены два отдельных числа. Вложенность подробно разберём в следующей теме.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Строка целиком и по символам</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Строка целиком и по символам">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">items = []
+items.append(&quot;cat&quot;)
+print(items)
+
+items = []
+items.extend(&quot;cat&quot;)
+print(items)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Строка целиком и по символам">[&#x27;cat&#x27;]
+[&#x27;c&#x27;, &#x27;a&#x27;, &#x27;t&#x27;]</pre></div>
+</div>
+<p>Строку можно перебирать по символам. Поэтому <code>extend("cat")</code> добавляет три символа, а <code>append("cat")</code> один объект строки.</p>
+<aside class="special-block special-block--warning" aria-labelledby="append-return-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="append-return-title">Изменение списка и результат вызова</h3>
+  <div class="special-block__body">
+<p><code>append()</code>, <code>insert()</code> и <code>extend()</code> меняют существующий список и возвращают <code>None</code>. Это специальное значение обозначает отсутствие содержательного результата. Вызывайте метод отдельной строкой, затем используйте изменённый список.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Список изменился, результат равен None</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Список изменился, результат равен None">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">items = [1, 2]
+result = items.append(3)
+print(items)
+print(result)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Список изменился, результат равен None">[1, 2, 3]
+None</pre></div>
+</div>
+<p>Поэтому для работы этих методов достаточно просто вызывать их, без присваивания к <code>result</code> и другим подобным переменным.</p>
+</div>
+</aside>
+  </div>
+</section>
+
+<section id="removing">
+  <h2>08 / Удаление элементов</h2>
+  <div class="section-content">
+<p>Для удаления сначала определите, что вам известно: значение элемента или его позиция. В списке <code>[8, 10, 8, 12]</code> значение 8 встречается дважды, поэтому удаление по значению и удаление по индексу могут затронуть разные элементы.</p>
+<p>Если требуется удалить элемент по значению, то выбираем <code>remove</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>remove(): первое равное значение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: remove(): первое равное значение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8, 12]
+result = scores.remove(8)
+print(scores)
+print(result)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: remove(): первое равное значение">[10, 8, 12]
+None</pre></div>
+</div>
+<p><code>remove(8)</code> ищет значение 8 слева направо и удаляет только первое совпадение. Второе остаётся. Элементы справа сдвигаются влево, поэтому их индексы меняются.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListRemove.gif"
+      alt="remove(8) удаляет первую восьмёрку из [8, 10, 8, 12], оставляя [10, 8, 12]"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 8. Удаление первого совпадения через remove().</figcaption>
+</figure>
+<p>Если требуется удалить элемент по индексу и этот удалённый элемент сохранить в переменной для дальнейшего использования, то выбираем <code>pop</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>pop(): удалить и получить значение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: pop(): удалить и получить значение">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8, 12]
+removed = scores.pop()
+print(removed)
+print(scores)
+removed = scores.pop(1)
+print(removed)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: pop(): удалить и получить значение">12
+[8, 10, 8]
+10
+[8, 8]</pre></div>
+</div>
+<p>Без аргумента <code>pop()</code> выбирает последний элемент. С аргументом <code>pop(1)</code> выбирает индекс 1, а не значение 1. Возвращённое значение можно сохранить в переменной и, например, сообщить, какую оценку удалили.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListPop.gif"
+      alt="pop() удаляет и возвращает 12 из [8, 10, 8, 12], затем pop(1) удаляет и возвращает 10; остаётся [8, 8]"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 9. Удаление и получение элемента через pop().</figcaption>
+</figure>
+<p>Если требуется только удаление по индексу, то можно использовать оператор <code>del</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>del и clear()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: del и clear()">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8, 12]
+del scores[2]
+print(scores)
+result = scores.clear()
+print(scores)
+print(result)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: del и clear()">[8, 10, 12]
+[]
+None</pre></div>
+</div>
+<p><code>del scores[2]</code> удаляет элемент под индексом 2, то есть вторую восьмёрку. <code>del</code> является инструкцией Python, а не методом: точки и вызова <code>scores.del()</code> здесь нет. Инструкция не возвращает значение для присваивания.</p>
+<figure class="image-block">
+  <div class="image-block__frame">
+    <img
+      src="https://zeyafix.github.io/pbv3-assets/img/lessons/19/ListDel.gif"
+      alt="del scores[2] удаляет вторую восьмёрку из [8, 10, 8, 12], число 12 сдвигается влево"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <figcaption>Рис 10. Удаление элемента по индексу инструкцией del.</figcaption>
+</figure>
+<p>Если требуется полностью очистить список от элементов, то можно использовать метод <code>clear()</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как выбрать удаление">
+<table><caption>Как выбрать удаление</caption>
+<thead><tr><th scope="col">Что известно</th><th scope="col">Операция</th><th scope="col">Что удаляется</th><th scope="col">Что возвращается</th></tr></thead>
+<tbody>
+<tr><td>Значение</td><td><code>scores.remove(8)</code></td><td>Первое равное значение 8</td><td><code>None</code></td></tr>
+<tr><td>Нужен последний элемент</td><td><code>scores.pop()</code></td><td>Последний элемент</td><td>Удалённый элемент</td></tr>
+<tr><td>Индекс</td><td><code>scores.pop(1)</code></td><td>Элемент с индексом 1</td><td>Удалённый элемент</td></tr>
+<tr><td>Индекс, результат не нужен</td><td><code>del scores[1]</code></td><td>Элемент с индексом 1</td><td>Не выражение, возвращаемого значения нет</td></tr>
+<tr><td>Нужно убрать всё</td><td><code>scores.clear()</code></td><td>Все элементы</td><td><code>None</code></td></tr>
+</tbody></table>
+</div>
+<p>Перед тем, как удалять элемент, стоит проверить, а действительно ли он находится в коллекции. В случае удалении по индексу стоит проверить, что индекс находится в пределах границ коллекции.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Безопасное удаление</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Безопасное удаление">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8]
+value = 7
+if value in scores:
+    scores.remove(value)
+else:
+    print(&quot;Value not found&quot;)
+print(scores)
+
+index = 1
+if 0 &lt;= index &lt; len(scores):
+    removed = scores.pop(index)
+    print(removed)
+print(scores)
+
+scores.clear()
+if scores:
+    print(scores.pop())
+else:
+    print(&quot;No scores&quot;)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Безопасное удаление">Value not found
+[8, 10, 8]
+10
+[8, 8]
+No scores
+[]</pre></div>
+</div>
+<p>Здесь принимаются только неотрицательные индексы. Если интерфейс программы допускает отрицательные, полный диапазон проверки будет <code>-len(scores) &lt;= index &lt; len(scores)</code>. При удалении по человеческому номеру используйте <code>1 &lt;= number &lt;= len(scores)</code> и затем <code>number - 1</code>.</p>
+  </div>
+</section>
+
+<section id="search">
+  <h2>09 / Поиск и подсчёт</h2>
+  <div class="section-content">
+<p>Когда нужно узнать, есть ли значение, используйте <code>in</code>. Для проверки отсутствия подходит <code>not in</code>. Эти выражения дают <code>True</code> или <code>False</code>. Метод <code>count(value)</code> считает все равные элементы, а <code>index(value)</code> возвращает индекс первого совпадения.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Проверить, посчитать, найти</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверить, посчитать, найти">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8, 12]
+print(8 in scores)
+print(7 not in scores)
+print(scores.count(8))
+print(scores.count(7))
+print(scores.index(8))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверить, посчитать, найти">True
+True
+2
+0
+0</pre></div>
+</div>
+<p>Результат <code>index(8)</code> равен 0, потому что первое совпадение стоит в начале. Это индекс, а не количество повторений и не само число 8. Если значение отсутствует, <code>count()</code> вернёт 0, а <code>index()</code> вызовет ошибку.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Нет значения для index()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нет значения для index()">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8, 12]
+print(scores.index(7))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Нет значения для index()">ValueError: list.index(x): x not in list</pre></div>
+</div>
+<p>Поэтому перед вызовом <code>index()</code> можно проверить наличие элемента в коллекции.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Позиция только после проверки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Позиция только после проверки">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 8, 12]
+value = 8
+print(value in scores)
+print(scores.count(value))
+if value in scores:
+    index = scores.index(value)
+    print(&quot;Index:&quot;, index)
+    print(&quot;Number:&quot;, index + 1)
+else:
+    print(&quot;Value not found&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Позиция только после проверки">True
+2
+Index: 0
+Number: 1</pre></div>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="membership-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="membership-title">Подстрока и элемент списка</h3>
+  <div class="special-block__body">
+<div class="code-example">
+  <div class="code-example__header"><span>Одинаковый in, разные последовательности</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одинаковый in, разные последовательности">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;cat&quot; in &quot;catalog&quot;)
+print(&quot;cat&quot; in [&quot;catalog&quot;])
+print(&quot;cat&quot; in [&quot;catalog&quot;, &quot;cat&quot;])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Одинаковый in, разные последовательности">True
+False
+True</pre></div>
+</div>
+<p>Первый <code>in</code> ищет подстроку <code>cat</code> в строке <code>catalog</code>, поэтому вернёт <code>True</code>.</p>
+<p>Второй <code>in</code> ищет <strong>элемент</strong> <code>cat</code> в списке, который содержит только элемент <code>catalog</code>, поэтому вернёт <code>False</code>.</p>
+<p>Третий <code>in</code> вернёт <code>True</code>, так как список содержит элемент <code>cat</code>.</p>
+</div>
+</aside>
+  </div>
+</section>
+
+<section id="iteration">
+  <h2>10 / Перебор и обработка списка</h2>
+  <div class="section-content">
+<p>Если нужны сами значения, перебирайте список напрямую. На каждой итерации переменная цикла получает очередной элемент.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Перебор значений</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Перебор значений">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+for score in scores:
+    print(score)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Перебор значений">8
+10
+12</pre></div>
+</div>
+<p>Если нужна позиция, перебирайте индексы от 0 до <code>len(scores) - 1</code> включительно.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Перебор индексов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Перебор индексов">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+for index in range(len(scores)):
+    print(index, scores[index])</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Перебор индексов">0 8
+1 10
+2 12</pre></div>
+</div>
+<p>Название переменной не определяет её содержимое. В <code>for index in scores</code> переменная с именем <code>index</code> получала бы оценки. В <code>for score in range(len(scores))</code> переменная с именем <code>score</code> получала бы индексы. Данные задаёт выражение после <code>in</code>; понятное имя лишь помогает читать код.</p>
+<p>Ниже пример того, как можно использовать перебор оценок.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Накопление количества</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Накопление количества">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 11, 10, 12]
+threshold = 10
+count = 0
+for score in scores:
+    if score &gt; threshold:
+        count += 1
+print(count)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Накопление количества">2</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Состояние счётчика после каждой оценки">
+<table><caption>Состояние счётчика после каждой оценки</caption>
+<thead><tr><th scope="col">score</th><th scope="col">score > 10</th><th scope="col">count</th></tr></thead>
+<tbody>
+<tr><td>8</td><td>False</td><td>0</td></tr>
+<tr><td>11</td><td>True</td><td>1</td></tr>
+<tr><td>10</td><td>False</td><td>1</td></tr>
+<tr><td>12</td><td>True</td><td>2</td></tr>
+</tbody></table>
+</div>
+<p>Счётчик создаётся до цикла, чтобы не сбрасываться на каждой итерации. Оценка 10 не учитывается: условие требует строго больше 10. На пустом списке тело цикла не выполнится ни разу, и счётчик останется равен 0.</p>
+<p>Возьмём другой пример. Предположим мы хотим изменить каждый элемент списка.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Присваивание переменной цикла</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Присваивание переменной цикла">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [7, 9, 10]
+for score in scores:
+    score = score + 1
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Присваивание переменной цикла">[7, 9, 10]</pre></div>
+</div>
+<p>Переменная <code>score</code> сначала ссылается на очередное число. Выражение <code>score + 1</code> даёт новое число, и присваивание связывает с ним только имя <code>score</code>. <strong>В список ничего не записывается.</strong> Чтобы заменить элемент, используйте позицию слева от знака <code>=</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Замена каждого элемента по индексу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Замена каждого элемента по индексу">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [7, 9, 10]
+for index in range(len(scores)):
+    scores[index] = scores[index] + 1
+    print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Замена каждого элемента по индексу">[8, 9, 10]
+[8, 10, 10]
+[8, 10, 11]</pre></div>
+</div>
+<p>На индексе 0 заменяем 7 на 8, на индексе 1 заменяем 9 на 10, на индексе 2 заменяем 10 на 11. Длина остаётся равной 3. В этом примере не добавляем и не удаляем элементы во время перебора; особенности таких изменений разберём отдельно.</p>
+<p>Есть некоторые функции, которые умеют работать с перебираемыми коллекциями. Например, можно найти сумму элементов списка при помощи обычного прохода по каждому элементу с помощью цикла, а можно просто вызвать функцию <code>sum</code>. Таких функций много, запоминать их все не требуется.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Статистика числового списка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Статистика числового списка">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+print(sum(scores))
+print(min(scores))
+print(max(scores))
+print(sum(scores) / len(scores))
+print(sum([]))</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Статистика числового списка">30
+8
+12
+10.0
+0</pre></div>
+</div>
+<p><code>sum()</code> складывает числа. <code>min()</code> выбирает наименьшее значение, <code>max()</code> наибольшее. Среднее получается делением суммы на количество. Оператор <code>/</code> возвращает число типа <code>float</code>, поэтому здесь выводится <code>10.0</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Что произойдёт на пустом списке">
+<table><caption>Что произойдёт на пустом списке</caption>
+<thead><tr><th scope="col">Выражение</th><th scope="col">Результат или ошибка</th><th scope="col">Причина</th></tr></thead>
+<tbody>
+<tr><td><code>sum([])</code></td><td><code>0</code></td><td>Сумма без слагаемых равна нулю.</td></tr>
+<tr><td><code>min([])</code></td><td><code>ValueError</code></td><td>Нет элементов для выбора минимума.</td></tr>
+<tr><td><code>max([])</code></td><td><code>ValueError</code></td><td>Нет элементов для выбора максимума.</td></tr>
+<tr><td><code>sum([]) / len([])</code></td><td><code>ZeroDivisionError</code></td><td>Длина равна нулю, делить на неё нельзя.</td></tr>
+</tbody></table>
+</div>
+<div class="code-example">
+  <div class="code-example__header"><span>Статистика с проверкой</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Статистика с проверкой">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = []
+if scores:
+    print(&quot;Min:&quot;, min(scores))
+    print(&quot;Max:&quot;, max(scores))
+    print(&quot;Average:&quot;, sum(scores) / len(scores))
+else:
+    print(&quot;No scores&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Статистика с проверкой">No scores</pre></div>
+</div>
+  </div>
+</section>
+
+<section id="ordering">
+  <h2>11 / Сортировка и обратный порядок</h2>
+  <div class="section-content">
+<p>Сортировка располагает значения по порядку сравнения: например, числа от меньшего к большему. Выберите, нужно ли менять существующий список или получить отдельный результат.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>sort() меняет исходный список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: sort() меняет исходный список">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 12, 6, 10]
+result = scores.sort()
+print(scores)
+print(result)
+scores.sort(reverse=True)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: sort() меняет исходный список">[6, 8, 10, 12]
+None
+[12, 10, 8, 6]</pre></div>
+</div>
+<p><code>sort()</code> является методом списка, поэтому записывается после точки. Как видно, метод <code>sort</code> возвращает <code>None</code>, поэтому результат работы <code>scores.sort()</code> не требуется присваивать переменной.</p>
+<p>Существует отдельная функция <code>sorted</code>, которая возвращает отсортированный результат, при этом не меняет порядок в исходном объекте.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>sorted() возвращает новый список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: sorted() возвращает новый список">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 12, 6, 10]
+ordered = sorted(scores)
+descending = sorted(scores, reverse=True)
+print(ordered)
+print(descending)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: sorted() возвращает новый список">[6, 8, 10, 12]
+[12, 10, 8, 6]
+[8, 12, 6, 10]</pre></div>
+</div>
+<p>Оба способа по умолчанию сортируют по возрастанию, а <code>reverse=True</code> задаёт убывание. Для сортировки элементы должны поддерживать сравнение друг с другом: смесь чисел и строк, например <code>[8, "Ann"]</code>, так отсортировать нельзя.</p>
+<p>Сравним получение обратного списка с помощью среза, сортировку с помощью <code>sorted</code> и метод <code>reverse</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Разворот и сортировка на неупорядоченных данных</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разворот и сортировка на неупорядоченных данных">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 12, 6, 10]
+backward = scores[::-1]
+descending = sorted(scores, reverse=True)
+print(backward)
+print(descending)
+print(scores)
+result = scores.reverse()
+print(scores)
+print(result)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разворот и сортировка на неупорядоченных данных">[10, 6, 12, 8]
+[12, 10, 8, 6]
+[8, 12, 6, 10]
+[10, 6, 12, 8]
+None</pre></div>
+</div>
+<p><code>scores[::-1]</code> создаст новый обратный список. <code>sorted(scores, reverse=True)</code> вернёт новый список, отсортированный по убыванию. <code>reverse()</code> изменит порядок элементов в существующем списке.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Результаты операций с порядком">
+<table><caption>Результаты операций с порядком</caption>
+<thead><tr><th scope="col">Операция</th><th scope="col">Меняет исходный список</th><th scope="col">Возвращает</th></tr></thead>
+<tbody>
+<tr><td><code>scores.sort()</code></td><td>Да</td><td><code>None</code></td></tr>
+<tr><td><code>sorted(scores)</code></td><td>Нет</td><td>Новый отсортированный список</td></tr>
+<tr><td><code>scores.reverse()</code></td><td>Да</td><td><code>None</code></td></tr>
+<tr><td><code>scores[::-1]</code></td><td>Нет</td><td>Новый список в обратном порядке</td></tr>
+</tbody></table>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="sort-return-title">
+  <div class="special-block__header"><span class="special-block__label">Важно</span></div>
+  <h3 class="special-block__title" id="sort-return-title">Не теряйте список при присваивании</h3>
+  <div class="special-block__body">
+<p>Записи <code>scores = scores.sort()</code> и <code>scores = scores.reverse()</code> оставят в переменной <code>None</code>, что не имеет смысла. Поэтому если метод <strong>изменяет</strong> порядок, вызывайте метод отдельной строкой. Для методов, которые что-то явно возвращают, создавайте переменные, чтобы хранить и дальше использовать результат работы метода. Например, <code>ordered = sorted(scores)</code>.</p>
+</div>
+</aside>
+  </div>
+</section>
+
+<section id="text">
+  <h2>12 / Список и текст</h2>
+  <div class="section-content">
+<p>Текст удобен для ввода и вывода, а список для обработки отдельных значений. <code>split()</code> разбивает текст на части. Строковый метод <code>join()</code> соединяет части через выбранный разделитель.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>От текста к словам и обратно</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: От текста к словам и обратно">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = &quot;Ann Bob Sam&quot;
+parts = text.split()
+separator = &quot;, &quot;
+result = separator.join(parts)
+print(parts)
+print(result)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: От текста к словам и обратно">[&#x27;Ann&#x27;, &#x27;Bob&#x27;, &#x27;Sam&#x27;]
+Ann, Bob, Sam</pre></div>
+</div>
+<p>Разделитель добавляется только между элементами, а не в начале или конце. <code>join()</code> вызывается у строки <code>separator</code>, не у списка. <strong>Все соединяемые элементы должны быть строками.</strong> Выражение <code>", ".join([8, 10])</code> вызовет <code>TypeError</code>: метод не преобразует числа автоматически. Ниже разберём несколько примеров.</p>
+<p>Договоримся о корректном формате: целые числа разделены пробелами; например, <code>8 10 12</code>. В этом примере не вводим буквы, запятые или десятичные дроби. Пустая строка допустима и даст пустой список. <code>split()</code> без аргументов также обработает несколько пробелов подряд.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Ввод, разделение, преобразование</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ввод, разделение, преобразование">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = input(&quot;Scores: &quot;)
+parts = text.split()
+scores = []
+for part in parts:
+    scores.append(int(part))
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Ввод, разделение, преобразование">Scores: 8 10 12
+[8, 10, 12]</pre></div>
+</div>
+<p><code>input()</code> возвращает одну строку. Затем <code>split()</code> создаёт список строк. Цикл берёт каждую часть, <code>int()</code> преобразует её в целое число, <code>append()</code> добавляет это число. Например, на второй итерации часть <code>"10"</code> превращается в число <code>10</code>.</p>
+<p>Другой пример. Допустим у нас уже есть список чисел, который мы хотим показать через запятую.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Подготовить строки для join()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Подготовить строки для join()">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+parts = []
+for score in scores:
+    parts.append(str(score))
+text = &quot;, &quot;.join(parts)
+print(parts)
+print(text)
+print(scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Подготовить строки для join()">[&#x27;8&#x27;, &#x27;10&#x27;, &#x27;12&#x27;]
+8, 10, 12
+[8, 10, 12]</pre></div>
+</div>
+<p>Исходный список остаётся числовым. Отдельный список <code>parts</code> нужен только для представления результата текстом. Если он пустой, <code>join()</code> вернёт пустую строку; <code>print()</code> выведет пустую строку консоли.</p>
+  </div>
+</section>
+
+<section id="score-program">
+  <h2>13 / Разбор программы с оценками</h2>
+  <div class="section-content">
+<p>Соберём небольшую программу журнала оценок. Она один раз запрашивает начальные оценки, добавляет новую, исправляет одну по номеру, удаляет одну по номеру и показывает статистику.</p>
+<p>Сначала проследим один запуск с данными <code>8 10 9</code>. Следующие короткие блоки выполняются <strong>последовательно</strong> в одной программе: каждый продолжает предыдущий. В конце раздела есть полный код для копирования.</p>
+<h3>Шаг 1. Создать список</h3>
+<p>До чтения частей <code>scores</code> пуст. Для ввода <code>8 10 9</code> цикл добавит три числа. После шага в списке <code>[8, 10, 9]</code>. При пустой строке цикл не выполнится, список останется пустым.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Шаг 1: ввод начальных оценок</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг 1: ввод начальных оценок">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = input(&quot;Initial scores: &quot;)
+scores = []
+for part in text.split():
+    score = int(part)
+    if 1 &lt;= score &lt;= 12:
+        scores.append(score)
+    else:
+        print(&quot;Skipped invalid score:&quot;, score)
+print(&quot;Scores:&quot;, scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Шаг 1: ввод начальных оценок">Initial scores: 8 10 9
+Scores: [8, 10, 9]</pre></div>
+</div>
+<h3>Шаг 2. Добавить оценку</h3>
+<p>До шага список равен <code>[8, 10, 9]</code>. Вводим 12, проверяем диапазон и добавляем в конец. После шага получаем <code>[8, 10, 9, 12]</code>.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Шаг 2: добавление</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг 2: добавление">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">score = int(input(&quot;Add score (1-12): &quot;))
+if 1 &lt;= score &lt;= 12:
+    scores.append(score)
+else:
+    print(&quot;Invalid score&quot;)
+print(&quot;Scores:&quot;, scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Шаг 2: добавление">Add score (1-12): 12
+Scores: [8, 10, 9, 12]</pre></div>
+</div>
+<h3>Шаг 3. Исправить по номеру</h3>
+<p>До шага список равен <code>[8, 10, 9, 12]</code>. Исправляем оценку номер 2 на 11. После проверки переводим номер 2 в индекс 1. Результат <code>[8, 11, 9, 12]</code>, длина всё ещё 4.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Шаг 3: исправление</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг 3: исправление">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">number = int(input(&quot;Number to edit: &quot;))
+if 1 &lt;= number &lt;= len(scores):
+    score = int(input(&quot;New score (1-12): &quot;))
+    if 1 &lt;= score &lt;= 12:
+        scores[number - 1] = score
+    else:
+        print(&quot;Invalid score&quot;)
+else:
+    print(&quot;Invalid number&quot;)
+print(&quot;Scores:&quot;, scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Шаг 3: исправление">Number to edit: 2
+New score (1-12): 11
+Scores: [8, 11, 9, 12]</pre></div>
+</div>
+<h3>Шаг 4. Удалить по номеру</h3>
+<p>До шага список равен <code>[8, 11, 9, 12]</code>. Удаляем оценку номер 1 через индекс 0. <code>pop()</code> возвращает удалённую восьмёрку. После шага список равен <code>[11, 9, 12]</code>; прежняя вторая оценка теперь первая.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Шаг 4: удаление</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг 4: удаление">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">number = int(input(&quot;Number to remove: &quot;))
+if 1 &lt;= number &lt;= len(scores):
+    removed = scores.pop(number - 1)
+    print(&quot;Removed:&quot;, removed)
+else:
+    print(&quot;Invalid number&quot;)
+print(&quot;Scores:&quot;, scores)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Шаг 4: удаление">Number to remove: 1
+Removed: 8
+Scores: [11, 9, 12]</pre></div>
+</div>
+<h3>Шаг 5. Вывести статистику</h3>
+<p>До и после шага список один и тот же: <code>[11, 9, 12]</code>. Расчёт статистики его не меняет. Сумма равна 32, количество 3, поэтому среднее равно результату <code>32 / 3</code>. При пустом списке количество и сумма равны нулю; минимум, максимум и среднее не вычисляем.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Шаг 5: статистика</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Шаг 5: статистика">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">print(&quot;Count:&quot;, len(scores))
+print(&quot;Total:&quot;, sum(scores))
+if scores:
+    print(&quot;Min:&quot;, min(scores))
+    print(&quot;Max:&quot;, max(scores))
+    print(&quot;Average:&quot;, sum(scores) / len(scores))
+else:
+    print(&quot;No scores for statistics&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Шаг 5: статистика">Count: 3
+Total: 32
+Min: 9
+Max: 12
+Average: 10.666666666666666</pre></div>
+</div>
+<h3>Полная программа</h3>
+<p>Ниже находится полная программа и то, что можно увидеть в консоли, при вводе определённых данных.</p>
+<div class="code-example">
+  <div class="code-example__header"><span>Журнал оценок</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Журнал оценок">Копировать</button></div>
+  <pre tabindex="0"><code class="language-python">text = input(&quot;Initial scores: &quot;)
+scores = []
+for part in text.split():
+    score = int(part)
+    if 1 &lt;= score &lt;= 12:
+        scores.append(score)
+    else:
+        print(&quot;Skipped invalid score:&quot;, score)
+print(&quot;Scores:&quot;, scores)
+
+score = int(input(&quot;Add score (1-12): &quot;))
+if 1 &lt;= score &lt;= 12:
+    scores.append(score)
+else:
+    print(&quot;Invalid score&quot;)
+print(&quot;Scores:&quot;, scores)
+
+number = int(input(&quot;Number to edit: &quot;))
+if 1 &lt;= number &lt;= len(scores):
+    score = int(input(&quot;New score (1-12): &quot;))
+    if 1 &lt;= score &lt;= 12:
+        scores[number - 1] = score
+    else:
+        print(&quot;Invalid score&quot;)
+else:
+    print(&quot;Invalid number&quot;)
+print(&quot;Scores:&quot;, scores)
+
+number = int(input(&quot;Number to remove: &quot;))
+if 1 &lt;= number &lt;= len(scores):
+    removed = scores.pop(number - 1)
+    print(&quot;Removed:&quot;, removed)
+else:
+    print(&quot;Invalid number&quot;)
+print(&quot;Scores:&quot;, scores)
+
+print(&quot;Count:&quot;, len(scores))
+print(&quot;Total:&quot;, sum(scores))
+if scores:
+    print(&quot;Min:&quot;, min(scores))
+    print(&quot;Max:&quot;, max(scores))
+    print(&quot;Average:&quot;, sum(scores) / len(scores))
+else:
+    print(&quot;No scores for statistics&quot;)</code></pre>
+  <div class="code-example__output"><div class="code-example__output-title">Пример сеанса</div><pre tabindex="0" aria-label="Вывод примера: Журнал оценок">Initial scores: 8 10 9
+Scores: [8, 10, 9]
+Add score (1-12): 12
+Scores: [8, 10, 9, 12]
+Number to edit: 2
+New score (1-12): 11
+Scores: [8, 11, 9, 12]
+Number to remove: 1
+Removed: 8
+Scores: [11, 9, 12]
+Count: 3
+Total: 32
+Min: 9
+Max: 12
+Average: 10.666666666666666</pre></div>
+</div>
+  </div>
+</section>
+
+<section id="self-check">
+  <h2>14 / Самопроверка</h2>
+  <div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-properties-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-properties-title">Свойства списка</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-properties-title">
+<fieldset><legend>Какие утверждения верны для <code>list</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-properties-option-1"><input class="visually-hidden" type="checkbox" id="check-properties-option-1" name="answers" value="1" aria-describedby="check-properties-option-1-feedback" /><span>Элементы имеют определённый порядок и доступны по индексу.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список является последовательностью: позиции начинаются с индекса 0.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-properties-option-2"><input class="visually-hidden" type="checkbox" id="check-properties-option-2" name="answers" value="2" aria-describedby="check-properties-option-2-feedback" /><span>Список можно изменять, добавляя, заменяя и удаляя элементы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>list является изменяемым типом; длина может меняться.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-properties-option-3"><input class="visually-hidden" type="checkbox" id="check-properties-option-3" name="answers" value="3" aria-describedby="check-properties-option-3-feedback" /><span>Одинаковые значения могут встречаться несколько раз.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>[8, 8] содержит два элемента.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-properties-option-4"><input class="visually-hidden" type="checkbox" id="check-properties-option-4" name="answers" value="4" aria-describedby="check-properties-option-4-feedback" /><span>После создания длину списка менять нельзя.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append() увеличивает длину, а удаление уменьшает её.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-properties-option-5"><input class="visually-hidden" type="checkbox" id="check-properties-option-5" name="answers" value="5" aria-describedby="check-properties-option-5-feedback" /><span>Список автоматически сортирует элементы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Порядок определяется добавлением и явными операциями, такими как sort().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-properties-option-6"><input class="visually-hidden" type="checkbox" id="check-properties-option-6" name="answers" value="6" aria-describedby="check-properties-option-6-feedback" /><span>Список может содержать только строки.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список может хранить числа и объекты других типов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-properties-option-7"><input class="visually-hidden" type="checkbox" id="check-properties-option-7" name="answers" value="7" aria-describedby="check-properties-option-7-feedback" /><span>Первый элемент имеет индекс 1.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-properties-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первый элемент имеет индекс 0.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-empty-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-empty-title">Пустой список</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-empty-title">
+<fieldset><legend>Какие выражения создают пустой список?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-empty-option-1"><input class="visually-hidden" type="checkbox" id="check-empty-option-1" name="answers" value="1" aria-describedby="check-empty-option-1-feedback" /><span><code>[]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-empty-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пустые квадратные скобки создают list без элементов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-empty-option-2"><input class="visually-hidden" type="checkbox" id="check-empty-option-2" name="answers" value="2" aria-describedby="check-empty-option-2-feedback" /><span><code>list()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-empty-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Без аргументов list() создаёт пустой список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-empty-option-3"><input class="visually-hidden" type="checkbox" id="check-empty-option-3" name="answers" value="3" aria-describedby="check-empty-option-3-feedback" /><span><code>[0]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-empty-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь один элемент, число 0.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-empty-option-4"><input class="visually-hidden" type="checkbox" id="check-empty-option-4" name="answers" value="4" aria-describedby="check-empty-option-4-feedback" /><span><code>[&quot;&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-empty-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь один элемент, пустая строка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-empty-option-5"><input class="visually-hidden" type="checkbox" id="check-empty-option-5" name="answers" value="5" aria-describedby="check-empty-option-5-feedback" /><span><code>&quot;[]&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-empty-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это строка из двух символов, а не список.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-index-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-index-title">Элемент под индексом 3</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-index-title">
+<fieldset><legend><code>names = ["Ann", "Bob", "Sam", "Tom", "Eva"]</code>. Чему равно <code>names[3]</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-1"><input class="visually-hidden" type="checkbox" id="check-index-option-1" name="answers" value="1" aria-describedby="check-index-option-1-feedback" /><span><code>&quot;Ann&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя Ann находится под индексом 0.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-2"><input class="visually-hidden" type="checkbox" id="check-index-option-2" name="answers" value="2" aria-describedby="check-index-option-2-feedback" /><span><code>&quot;Bob&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя Bob находится под индексом 1.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-3"><input class="visually-hidden" type="checkbox" id="check-index-option-3" name="answers" value="3" aria-describedby="check-index-option-3-feedback" /><span><code>&quot;Sam&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя Sam находится под индексом 2.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-index-option-4"><input class="visually-hidden" type="checkbox" id="check-index-option-4" name="answers" value="4" aria-describedby="check-index-option-4-feedback" /><span><code>&quot;Tom&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя Tom находится под индексом 3.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-option-5"><input class="visually-hidden" type="checkbox" id="check-index-option-5" name="answers" value="5" aria-describedby="check-index-option-5-feedback" /><span><code>&quot;Eva&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя Eva находится под индексом 4.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-slice-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-slice-title">Элементы среза</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-slice-title">
+<fieldset><legend><code>names = ["Ann", "Bob", "Sam", "Tom", "Eva"]</code>. Какие имена попадут в <code>names[1:4:2]</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-slice-option-1"><input class="visually-hidden" type="checkbox" id="check-slice-option-1" name="answers" value="1" aria-describedby="check-slice-option-1-feedback" /><span><code>&quot;Ann&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-slice-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У Ann индекс 0. Срез выбирает индексы 1 и 3, граница 4 не включается.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-slice-option-2"><input class="visually-hidden" type="checkbox" id="check-slice-option-2" name="answers" value="2" aria-describedby="check-slice-option-2-feedback" /><span><code>&quot;Bob&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-slice-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У Bob индекс 1. Срез выбирает индексы 1 и 3, граница 4 не включается.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-slice-option-3"><input class="visually-hidden" type="checkbox" id="check-slice-option-3" name="answers" value="3" aria-describedby="check-slice-option-3-feedback" /><span><code>&quot;Sam&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-slice-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У Sam индекс 2. Срез выбирает индексы 1 и 3, граница 4 не включается.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-slice-option-4"><input class="visually-hidden" type="checkbox" id="check-slice-option-4" name="answers" value="4" aria-describedby="check-slice-option-4-feedback" /><span><code>&quot;Tom&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-slice-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У Tom индекс 3. Срез выбирает индексы 1 и 3, граница 4 не включается.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-slice-option-5"><input class="visually-hidden" type="checkbox" id="check-slice-option-5" name="answers" value="5" aria-describedby="check-slice-option-5-feedback" /><span><code>&quot;Eva&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-slice-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У Eva индекс 4. Срез выбирает индексы 1 и 3, граница 4 не включается.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-replace-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-replace-title">Заменить второй элемент</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-replace-title">
+<fieldset><legend>Дан список <code>names = ["Ann", "Bob", "Sam"]</code>. Как заменить второй элемент на <code>"Eva"</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-replace-option-1"><input class="visually-hidden" type="checkbox" id="check-replace-option-1" name="answers" value="1" aria-describedby="check-replace-option-1-feedback" /><span><code>names[1] = &quot;Eva&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-replace-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Второму элементу соответствует индекс 1.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-2"><input class="visually-hidden" type="checkbox" id="check-replace-option-2" name="answers" value="2" aria-describedby="check-replace-option-2-feedback" /><span><code>names[2] = &quot;Eva&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-replace-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это замена третьего элемента Sam.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-3"><input class="visually-hidden" type="checkbox" id="check-replace-option-3" name="answers" value="3" aria-describedby="check-replace-option-3-feedback" /><span><code>names[1] == &quot;Eva&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-replace-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Оператор == сравнивает значения и ничего не присваивает.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-replace-option-4"><input class="visually-hidden" type="checkbox" id="check-replace-option-4" name="answers" value="4" aria-describedby="check-replace-option-4-feedback" /><span><code>names.insert(1, &quot;Eva&quot;)</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-replace-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это вставка: Eva добавится перед Bob, а длина увеличится.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-append-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-append-title">Добавление одного объекта</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-append-title">
+<fieldset><legend>Какой метод добавляет один переданный объект в конец списка?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-append-option-1"><input class="visually-hidden" type="checkbox" id="check-append-option-1" name="answers" value="1" aria-describedby="check-append-option-1-feedback" /><span><code>append</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-append-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append: добавляет один элемент в конец.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-append-option-2"><input class="visually-hidden" type="checkbox" id="check-append-option-2" name="answers" value="2" aria-describedby="check-append-option-2-feedback" /><span><code>insert</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-append-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>insert: вставляет элемент перед указанной позицией.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-append-option-3"><input class="visually-hidden" type="checkbox" id="check-append-option-3" name="answers" value="3" aria-describedby="check-append-option-3-feedback" /><span><code>extend</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-append-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>extend: добавляет по отдельности элементы другой последовательности.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-append-option-4"><input class="visually-hidden" type="checkbox" id="check-append-option-4" name="answers" value="4" aria-describedby="check-append-option-4-feedback" /><span><code>pop</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-append-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>pop: удаляет и возвращает элемент по индексу или последний элемент.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-insert-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-insert-title">Вставка перед позицией</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-insert-title">
+<fieldset><legend>Какой метод принимает индекс и значение и вставляет значение перед этой позицией?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-insert-option-1"><input class="visually-hidden" type="checkbox" id="check-insert-option-1" name="answers" value="1" aria-describedby="check-insert-option-1-feedback" /><span><code>append</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-insert-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append: добавляет один элемент в конец.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-insert-option-2"><input class="visually-hidden" type="checkbox" id="check-insert-option-2" name="answers" value="2" aria-describedby="check-insert-option-2-feedback" /><span><code>insert</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-insert-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>insert: вставляет элемент перед указанной позицией.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-insert-option-3"><input class="visually-hidden" type="checkbox" id="check-insert-option-3" name="answers" value="3" aria-describedby="check-insert-option-3-feedback" /><span><code>extend</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-insert-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>extend: добавляет по отдельности элементы другой последовательности.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-insert-option-4"><input class="visually-hidden" type="checkbox" id="check-insert-option-4" name="answers" value="4" aria-describedby="check-insert-option-4-feedback" /><span><code>remove</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-insert-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>remove: удаляет первое равное значение.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-extend-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-extend-title">Добавление нескольких элементов</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-extend-title">
+<fieldset><legend>Какой метод добавит 3 и 4 как отдельные элементы при передаче ему списка <code>[3, 4]</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-extend-option-1"><input class="visually-hidden" type="checkbox" id="check-extend-option-1" name="answers" value="1" aria-describedby="check-extend-option-1-feedback" /><span><code>append</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-extend-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append: добавляет один элемент в конец.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-extend-option-2"><input class="visually-hidden" type="checkbox" id="check-extend-option-2" name="answers" value="2" aria-describedby="check-extend-option-2-feedback" /><span><code>insert</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-extend-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>insert: вставляет элемент перед указанной позицией.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-extend-option-3"><input class="visually-hidden" type="checkbox" id="check-extend-option-3" name="answers" value="3" aria-describedby="check-extend-option-3-feedback" /><span><code>extend</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-extend-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>extend: добавляет по отдельности элементы другой последовательности.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-extend-option-4"><input class="visually-hidden" type="checkbox" id="check-extend-option-4" name="answers" value="4" aria-describedby="check-extend-option-4-feedback" /><span><code>clear</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-extend-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>clear: удаляет все элементы списка.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-remove-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-remove-title">Удаление по значению</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-remove-title">
+<fieldset><legend>Известно значение. Какой метод удалит первое равное ему значение?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-remove-option-1"><input class="visually-hidden" type="checkbox" id="check-remove-option-1" name="answers" value="1" aria-describedby="check-remove-option-1-feedback" /><span><code>remove</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-remove-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>remove: удаляет первое равное значение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-remove-option-2"><input class="visually-hidden" type="checkbox" id="check-remove-option-2" name="answers" value="2" aria-describedby="check-remove-option-2-feedback" /><span><code>pop</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-remove-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>pop: удаляет и возвращает элемент по индексу или последний элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-remove-option-3"><input class="visually-hidden" type="checkbox" id="check-remove-option-3" name="answers" value="3" aria-describedby="check-remove-option-3-feedback" /><span><code>clear</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-remove-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>clear: удаляет все элементы списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-remove-option-4"><input class="visually-hidden" type="checkbox" id="check-remove-option-4" name="answers" value="4" aria-describedby="check-remove-option-4-feedback" /><span><code>append</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-remove-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append: добавляет один элемент в конец.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-pop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-pop-title">Получить удалённый элемент</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-pop-title">
+<fieldset><legend>Какой метод без аргументов удалит последний элемент и вернёт его?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-pop-option-1"><input class="visually-hidden" type="checkbox" id="check-pop-option-1" name="answers" value="1" aria-describedby="check-pop-option-1-feedback" /><span><code>pop</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-pop-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>pop: удаляет и возвращает элемент по индексу или последний элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-pop-option-2"><input class="visually-hidden" type="checkbox" id="check-pop-option-2" name="answers" value="2" aria-describedby="check-pop-option-2-feedback" /><span><code>remove</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-pop-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>remove: удаляет первое равное значение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-pop-option-3"><input class="visually-hidden" type="checkbox" id="check-pop-option-3" name="answers" value="3" aria-describedby="check-pop-option-3-feedback" /><span><code>clear</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-pop-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>clear: удаляет все элементы списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-pop-option-4"><input class="visually-hidden" type="checkbox" id="check-pop-option-4" name="answers" value="4" aria-describedby="check-pop-option-4-feedback" /><span><code>extend</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-pop-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>extend: добавляет по отдельности элементы другой последовательности.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-del-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-del-title">Инструкция удаления</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-del-title">
+<fieldset><legend>Какое ключевое слово используется в записи для удаления по индексу без возвращаемого значения?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-del-option-1"><input class="visually-hidden" type="checkbox" id="check-del-option-1" name="answers" value="1" aria-describedby="check-del-option-1-feedback" /><span><code>del</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-del-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>del: удаляет по индексу как инструкция Python.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-del-option-2"><input class="visually-hidden" type="checkbox" id="check-del-option-2" name="answers" value="2" aria-describedby="check-del-option-2-feedback" /><span><code>pop</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-del-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>pop: удаляет и возвращает элемент по индексу или последний элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-del-option-3"><input class="visually-hidden" type="checkbox" id="check-del-option-3" name="answers" value="3" aria-describedby="check-del-option-3-feedback" /><span><code>remove</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-del-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>remove: удаляет первое равное значение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-del-option-4"><input class="visually-hidden" type="checkbox" id="check-del-option-4" name="answers" value="4" aria-describedby="check-del-option-4-feedback" /><span><code>clear</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-del-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>clear: удаляет все элементы списка.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-clear-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-clear-title">Очистить список</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-clear-title">
+<fieldset><legend>Какой метод удаляет все элементы существующего списка?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-clear-option-1"><input class="visually-hidden" type="checkbox" id="check-clear-option-1" name="answers" value="1" aria-describedby="check-clear-option-1-feedback" /><span><code>clear</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-clear-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>clear: удаляет все элементы списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-clear-option-2"><input class="visually-hidden" type="checkbox" id="check-clear-option-2" name="answers" value="2" aria-describedby="check-clear-option-2-feedback" /><span><code>remove</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-clear-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>remove: удаляет первое равное значение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-clear-option-3"><input class="visually-hidden" type="checkbox" id="check-clear-option-3" name="answers" value="3" aria-describedby="check-clear-option-3-feedback" /><span><code>pop</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-clear-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>pop: удаляет и возвращает элемент по индексу или последний элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-clear-option-4"><input class="visually-hidden" type="checkbox" id="check-clear-option-4" name="answers" value="4" aria-describedby="check-clear-option-4-feedback" /><span><code>insert</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-clear-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>insert: вставляет элемент перед указанной позицией.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-in-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-in-title">Проверка наличия элемента</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-in-title">
+<fieldset><legend>Какие выражения вернут <code>True</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-in-option-1"><input class="visually-hidden" type="checkbox" id="check-in-option-1" name="answers" value="1" aria-describedby="check-in-option-1-feedback" /><span><code>8 in [8, 10, 12]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В списке есть число 8.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-in-option-2"><input class="visually-hidden" type="checkbox" id="check-in-option-2" name="answers" value="2" aria-describedby="check-in-option-2-feedback" /><span><code>&quot;Ann&quot; in [&quot;Ann&quot;, &quot;Bob&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В списке есть строка Ann целиком.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-in-option-3"><input class="visually-hidden" type="checkbox" id="check-in-option-3" name="answers" value="3" aria-describedby="check-in-option-3-feedback" /><span><code>&quot;cat&quot; in [&quot;catalog&quot;, &quot;cat&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Второй элемент равен cat.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-in-option-4"><input class="visually-hidden" type="checkbox" id="check-in-option-4" name="answers" value="4" aria-describedby="check-in-option-4-feedback" /><span><code>&quot;cat&quot; in [&quot;catalog&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>catalog не равен cat. Подстроки внутри элементов автоматически не ищутся.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-in-option-5"><input class="visually-hidden" type="checkbox" id="check-in-option-5" name="answers" value="5" aria-describedby="check-in-option-5-feedback" /><span><code>&quot;8&quot; in [8, 10, 12]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Строка "8" не равна числу 8.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-in-option-6"><input class="visually-hidden" type="checkbox" id="check-in-option-6" name="answers" value="6" aria-describedby="check-in-option-6-feedback" /><span><code>0 in []</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В пустом списке нет элементов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-in-option-7"><input class="visually-hidden" type="checkbox" id="check-in-option-7" name="answers" value="7" aria-describedby="check-in-option-7-feedback" /><span><code>&quot;ann&quot; in [&quot;Ann&quot;, &quot;Bob&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-in-option-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Регистр различается: ann не равно Ann.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-values-loop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-values-loop-title">Что печатает перебор значений?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-values-loop-title">
+<fieldset><legend><code>names = ["Ann", "Bob", "Sam"]</code>. Цикл <code>for item in names:</code> выполняет <code>print(item)</code>. Какие значения появятся в отдельных строках вывода?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-values-loop-option-1"><input class="visually-hidden" type="checkbox" id="check-values-loop-option-1" name="answers" value="1" aria-describedby="check-values-loop-option-1-feedback" /><span><code>Ann</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-values-loop-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первый элемент names является строкой Ann. print() выводит её без кавычек.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-values-loop-option-2"><input class="visually-hidden" type="checkbox" id="check-values-loop-option-2" name="answers" value="2" aria-describedby="check-values-loop-option-2-feedback" /><span><code>Bob</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-values-loop-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>На второй итерации item равен Bob.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-values-loop-option-3"><input class="visually-hidden" type="checkbox" id="check-values-loop-option-3" name="answers" value="3" aria-describedby="check-values-loop-option-3-feedback" /><span><code>Sam</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-values-loop-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>На третьей итерации item равен Sam.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-values-loop-option-4"><input class="visually-hidden" type="checkbox" id="check-values-loop-option-4" name="answers" value="4" aria-describedby="check-values-loop-option-4-feedback" /><span><code>0</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-values-loop-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Этот цикл получает значения, а не индексы.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-values-loop-option-5"><input class="visually-hidden" type="checkbox" id="check-values-loop-option-5" name="answers" value="5" aria-describedby="check-values-loop-option-5-feedback" /><span><code>1</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-values-loop-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс 1 не печатается: печатается значение Bob.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-values-loop-option-6"><input class="visually-hidden" type="checkbox" id="check-values-loop-option-6" name="answers" value="6" aria-describedby="check-values-loop-option-6-feedback" /><span><code>2</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-values-loop-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс 2 не печатается: печатается значение Sam.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-index-loop-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-index-loop-title">Что печатает перебор range?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-index-loop-title">
+<fieldset><legend><code>names = ["Ann", "Bob", "Sam"]</code>. Цикл <code>for item in range(len(names)):</code> выполняет <code>print(item)</code>. Какие значения появятся в отдельных строках вывода?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-index-loop-option-1"><input class="visually-hidden" type="checkbox" id="check-index-loop-option-1" name="answers" value="1" aria-describedby="check-index-loop-option-1-feedback" /><span><code>0</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-loop-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>range(3) начинает с 0.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-index-loop-option-2"><input class="visually-hidden" type="checkbox" id="check-index-loop-option-2" name="answers" value="2" aria-describedby="check-index-loop-option-2-feedback" /><span><code>1</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-loop-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Следующее значение range(3) равно 1.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-index-loop-option-3"><input class="visually-hidden" type="checkbox" id="check-index-loop-option-3" name="answers" value="3" aria-describedby="check-index-loop-option-3-feedback" /><span><code>2</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-loop-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Последнее значение range(3) равно 2, правая граница 3 исключена.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-loop-option-4"><input class="visually-hidden" type="checkbox" id="check-index-loop-option-4" name="answers" value="4" aria-describedby="check-index-loop-option-4-feedback" /><span><code>Ann</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-loop-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Чтобы получить имя, нужно обратиться names[item]. Здесь печатается сам item.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-loop-option-5"><input class="visually-hidden" type="checkbox" id="check-index-loop-option-5" name="answers" value="5" aria-describedby="check-index-loop-option-5-feedback" /><span><code>Bob</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-loop-option-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Название item не меняет источник данных: range() отдаёт числа.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-index-loop-option-6"><input class="visually-hidden" type="checkbox" id="check-index-loop-option-6" name="answers" value="6" aria-describedby="check-index-loop-option-6-feedback" /><span><code>Sam</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-index-loop-option-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь перебирается range(3), а не список имён.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-sort-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-sort-title">Результат names.sort()</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-sort-title">
+<fieldset><legend>Выполнено <code>names = ["Sam", "Ann", "Bob"]</code>, затем <code>result = names.sort()</code>. Выберите верные утверждения.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-sort-option-1"><input class="visually-hidden" type="checkbox" id="check-sort-option-1" name="answers" value="1" aria-describedby="check-sort-option-1-feedback" /><span><code>names == [&quot;Ann&quot;, &quot;Bob&quot;, &quot;Sam&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sort-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>sort() изменил порядок в исходном списке.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-sort-option-2"><input class="visually-hidden" type="checkbox" id="check-sort-option-2" name="answers" value="2" aria-describedby="check-sort-option-2-feedback" /><span><code>result</code> равен <code>None</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sort-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>sort() изменяет список и возвращает None.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-sort-option-3"><input class="visually-hidden" type="checkbox" id="check-sort-option-3" name="answers" value="3" aria-describedby="check-sort-option-3-feedback" /><span><code>names</code> остался в прежнем порядке.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sort-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Метод sort() изменяет исходный список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-sort-option-4"><input class="visually-hidden" type="checkbox" id="check-sort-option-4" name="answers" value="4" aria-describedby="check-sort-option-4-feedback" /><span><code>result</code> содержит новый отсортированный список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sort-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Новый список возвращает sorted(), а sort() возвращает None.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-sorted-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-sorted-title">Результат sorted(names)</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-sorted-title">
+<fieldset><legend>Выполнено <code>names = ["Sam", "Ann", "Bob"]</code>, затем <code>result = sorted(names)</code>. Выберите верные утверждения.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-sorted-option-1"><input class="visually-hidden" type="checkbox" id="check-sorted-option-1" name="answers" value="1" aria-describedby="check-sorted-option-1-feedback" /><span><code>result == [&quot;Ann&quot;, &quot;Bob&quot;, &quot;Sam&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sorted-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>sorted() вернул новый отсортированный список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-sorted-option-2"><input class="visually-hidden" type="checkbox" id="check-sorted-option-2" name="answers" value="2" aria-describedby="check-sorted-option-2-feedback" /><span><code>names == [&quot;Sam&quot;, &quot;Ann&quot;, &quot;Bob&quot;]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sorted-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Исходный список сохранил порядок.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-sorted-option-3"><input class="visually-hidden" type="checkbox" id="check-sorted-option-3" name="answers" value="3" aria-describedby="check-sorted-option-3-feedback" /><span><code>result</code> равен <code>None</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sorted-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>sorted() возвращает список, а не None.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-sorted-option-4"><input class="visually-hidden" type="checkbox" id="check-sorted-option-4" name="answers" value="4" aria-describedby="check-sorted-option-4-feedback" /><span><code>names</code> теперь отсортирован по возрастанию.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-sorted-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Функция sorted() не меняет переданный список.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-split-title">
+  <div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+  <h3 class="special-block__title" id="check-split-title">Какой тип возвращает split()?</h3>
+  <div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-split-title">
+<fieldset><legend>Какой тип у результата <code>"8 10 12".split()</code>?</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+  <label class="quiz-option__label" for="check-split-option-1"><input class="visually-hidden" type="checkbox" id="check-split-option-1" name="answers" value="1" aria-describedby="check-split-option-1-feedback" /><span><code>list</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-split-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращается список строк ["8", "10", "12"].</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-2"><input class="visually-hidden" type="checkbox" id="check-split-option-2" name="answers" value="2" aria-describedby="check-split-option-2-feedback" /><span><code>str</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-split-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Исходный объект является строкой, но результат split() является списком.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-3"><input class="visually-hidden" type="checkbox" id="check-split-option-3" name="answers" value="3" aria-describedby="check-split-option-3-feedback" /><span><code>int</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-split-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>split() не преобразует текст в числа.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+  <label class="quiz-option__label" for="check-split-option-4"><input class="visually-hidden" type="checkbox" id="check-split-option-4" name="answers" value="4" aria-describedby="check-split-option-4-feedback" /><span><code>bool</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+  <div class="quiz__feedback" id="check-split-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>split() разбивает строку, а не выполняет логическую проверку.</p></div></div>
+</div>
+</div></fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+  </div>
+</section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

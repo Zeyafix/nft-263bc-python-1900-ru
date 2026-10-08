@@ -1,7 +1,7 @@
 ## Next to cover
 
-- [15 - for Loop](lessons/15%20-%20for%20Loop/)
-- [16 - Working with the for Loop](lessons/16%20-%20Working%20with%20the%20for%20Loop/)
+- [17 - string Collection](lessons/17%20-%20string%20Collection/)
+- [18 - string Methods](lessons/18%20-%20string%20Methods/)
 
 ## What we've already covered
 
@@ -19,6 +19,8 @@
 - [12 - Conditional Statements](lessons/12%20-%20Conditional%20Statements/)
 - [13 - while Loop](lessons/13%20-%20while%20Loop/)
 - [14 - Working with the while Loop](lessons/14%20-%20Working%20with%20the%20while%20Loop/)
+- [15 - for Loop](lessons/15%20-%20for%20Loop/)
+- [16 - Working with the for Loop](lessons/16%20-%20Working%20with%20the%20for%20Loop/)
 
 ## License
 

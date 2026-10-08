@@ -1,0 +1,1646 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Особенности списков Python для самостоятельного изучения: ссылки, вложенные списки, поверхностное и глубокое копирование, повторение и фильтрация. Подробные примеры, схемы и самопроверка." />
+    <title>20 - list Features</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">20 - list Features</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="review">
+<h2>01 / Повторение пройденного</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-append-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-append-title">Какой метод добавляет один переданный объект в конец списка?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="append" data-success="Верно. append добавляет один объект, даже если этот объект сам является списком." data-hint="Вспомните scores.append(12). Нужно только название метода строчными буквами, без скобок и пробелов." autocomplete="off" aria-labelledby="review-append-title">
+<label for="review-append-answer">Введите название строчными латинскими буквами, без скобок, точки и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-append-answer" name="answer" type="text" placeholder="Название" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-append-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-append-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-insert-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-insert-title">Какой метод вставляет элемент перед указанной позицией?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="insert" data-success="Верно. insert получает индекс и значение; следующие элементы сдвигаются вправо." data-hint="Вызов имеет вид scores.insert(1, 12). Введите только название метода." autocomplete="off" aria-labelledby="review-insert-title">
+<label for="review-insert-answer">Введите название строчными латинскими буквами, без скобок, точки и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-insert-answer" name="answer" type="text" placeholder="Название" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-insert-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-insert-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-extend-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-extend-title">Какой метод добавляет в конец списка все элементы переданной последовательности?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="extend" data-success="Верно. extend перебирает переданные элементы и добавляет их по отдельности." data-hint="Вспомните scores.extend([10, 12]). Здесь нужны две новые оценки, а не один вложенный список." autocomplete="off" aria-labelledby="review-extend-title">
+<label for="review-extend-answer">Введите название строчными латинскими буквами, без скобок, точки и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-extend-answer" name="answer" type="text" placeholder="Название" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-extend-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-extend-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-remove-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-remove-title">Какой метод удаляет первое вхождение указанного значения?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="remove" data-success="Верно. remove ищет значение, а не индекс. Если значения нет, возникает ValueError." data-hint="Вызов scores.remove(8) удаляет первую оценку 8. Введите название без скобок." autocomplete="off" aria-labelledby="review-remove-title">
+<label for="review-remove-answer">Введите название строчными латинскими буквами, без скобок, точки и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-remove-answer" name="answer" type="text" placeholder="Название" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-remove-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-remove-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-pop-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-pop-title">Какой метод удаляет элемент по индексу и возвращает его, а без индекса берёт последний?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="pop" data-success="Верно. pop позволяет сохранить удалённый элемент, например last = scores.pop()." data-hint="Вспомните scores.pop(). Название состоит из трёх букв." autocomplete="off" aria-labelledby="review-pop-title">
+<label for="review-pop-answer">Введите название строчными латинскими буквами, без скобок, точки и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-pop-answer" name="answer" type="text" placeholder="Название" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-pop-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-pop-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-del-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-del-title">Какой оператор удаляет элемент или срез по записи вроде scores[1:3]?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="text" data-answer="del" data-success="Верно. del scores[1:3] удаляет выбранную часть списка. del не является методом списка." data-hint="Вспомните запись del scores[1:3]. Введите только ключевое слово." autocomplete="off" aria-labelledby="review-del-title">
+<label for="review-del-answer">Введите название строчными латинскими буквами, без скобок, точки и пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="review-del-answer" name="answer" type="text" placeholder="Название" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="review-del-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="review-del-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-sort-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-sort-title">Какие утверждения описывают <code>scores.sort()</code>?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-sort-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-sort-option-1"><input class="visually-hidden" type="checkbox" id="review-sort-option-1" name="answers" value="1" aria-describedby="review-sort-option-1-feedback" /><span>Изменяет порядок элементов самого списка <code>scores</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sort-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>sort сортирует существующий объект списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-sort-option-2"><input class="visually-hidden" type="checkbox" id="review-sort-option-2" name="answers" value="2" aria-describedby="review-sort-option-2-feedback" /><span>Возвращает <code>None</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sort-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Результат сортировки остаётся в scores. Присваивание scores = scores.sort() свяжет имя с None.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-sort-option-3"><input class="visually-hidden" type="checkbox" id="review-sort-option-3" name="answers" value="3" aria-describedby="review-sort-option-3-feedback" /><span>Возвращает новый отсортированный список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sort-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Новый список возвращает sorted(scores).</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-sort-option-4"><input class="visually-hidden" type="checkbox" id="review-sort-option-4" name="answers" value="4" aria-describedby="review-sort-option-4-feedback" /><span>По умолчанию сортирует числа по убыванию.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sort-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>По умолчанию порядок возрастающий. Для убывания передайте reverse=True.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-sorted-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-sorted-title">Какие утверждения описывают <code>sorted(scores)</code> для списка чисел?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-sorted-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-sorted-option-1"><input class="visually-hidden" type="checkbox" id="review-sorted-option-1" name="answers" value="1" aria-describedby="review-sorted-option-1-feedback" /><span>Возвращает новый отсортированный список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sorted-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Его можно сохранить: ordered = sorted(scores).</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-sorted-option-2"><input class="visually-hidden" type="checkbox" id="review-sorted-option-2" name="answers" value="2" aria-describedby="review-sorted-option-2-feedback" /><span>Сохраняет порядок элементов исходного списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sorted-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сортировка выполняется в новом списке; scores остаётся прежним.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-sorted-option-3"><input class="visually-hidden" type="checkbox" id="review-sorted-option-3" name="answers" value="3" aria-describedby="review-sorted-option-3-feedback" /><span>Возвращает <code>None</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sorted-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В отличие от sort(), функция sorted() возвращает список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-sorted-option-4"><input class="visually-hidden" type="checkbox" id="review-sorted-option-4" name="answers" value="4" aria-describedby="review-sorted-option-4-feedback" /><span>Изменяет исходный список на месте.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-sorted-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для изменения самого scores можно вызвать scores.sort().</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+</div>
+</section>
+<section id="names-and-objects">
+<h2>02 / Переменная и объект списка</h2>
+<div class="section-content">
+<p>Представьте журнал оценок. Запись <code>scores = [8, 10, 12]</code> создаёт список и связывает с ним имя <code>scores</code>. Переменная позволяет найти объект по имени. Сам список существует отдельно от имени, которым мы к нему обращаемся.</p>
+<aside class="special-block special-block--definition" aria-labelledby="reference-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="reference-title">Имя ссылается на объект</h3>
+<div class="special-block__body">
+<p>Ссылка позволяет обратиться к уже существующему объекту. В записи <code>backup = scores</code> Python сначала находит объект по имени <code>scores</code>, затем связывает с тем же объектом имя <code>backup</code>. Слово <code>backup</code> само по себе не означает, что создана резервная копия.</p>
+</div>
+</aside>
+<div class="code-example">
+<div class="code-example__header"><span>Два имени, один список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Два имени, один список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+backup = scores
+
+scores.append(9)
+print(scores)
+print(backup)
+
+backup[0] = 11
+print(scores)
+print(backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Два имени, один список">[8, 10, 12, 9]
+[8, 10, 12, 9]
+[11, 10, 12, 9]
+[11, 10, 12, 9]</pre></div>
+</div>
+<ol class="content-list">
+<li><code>scores = [8, 10, 12]</code> создаёт один объект списка. Назовём его <strong>A</strong>.</li>
+<li><code>backup = scores</code> добавляет второе имя для <strong>A</strong>. Копирования элементов нет.</li>
+<li><code>scores.append(9)</code> меняет <strong>A</strong>. Обращение через <code>backup</code> показывает уже изменённый <strong>A</strong>.</li>
+<li><code>backup[0] = 11</code> заменяет элемент того же <strong>A</strong>. Поэтому изменение видно и через scores.</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Схема общей ссылки">
+<table>
+<caption class="visually-hidden">Схема общей ссылки</caption>
+<thead><tr><th scope="col">Имя</th><th scope="col">Объект после всех изменений</th></tr></thead>
+<tbody>
+<tr><td><code>scores</code></td><td>A: <code>[11, 10, 12, 9]</code></td></tr>
+<tr><td><code>backup</code></td><td>Тот же A: <code>[11, 10, 12, 9]</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Элементы списка тоже являются ссылками на объекты. В упрощённой схеме памяти <code>scores</code> указывает на объект списка, а его позиции ссылаются на числа 8, 10 и 12. Область памяти с объектами часто называют <strong>heap</strong>, или <strong>кучей</strong>. Для работы со списками не нужно вычислять адреса: важно видеть, какие имена и позиции ведут к одному объекту.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/ListNamesAndObjects.gif" alt="scores и backup ссылаются на общий список; изменения видны через оба имени, а переприсваивание backup создаёт связь с другим списком" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 1. Имена, объекты и общие ссылки на список</figcaption>
+</figure>
+<p>Переприсваивание меняет связь имени.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Новое значение переменной backup</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Новое значение переменной backup">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+backup = scores
+backup = [1, 2]
+backup.append(3)
+
+print(scores)
+print(backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Новое значение переменной backup">[8, 10, 12]
+[1, 2, 3]</pre></div>
+</div>
+<p>Правая часть [1, 2] создаёт новый список <strong>B</strong>. Присваивание связывает <code>backup</code> с <strong>B</strong>, а <code>scores</code> продолжает ссылаться на <strong>A</strong>. Последующий <code>append</code> меняет только <strong>B</strong>. Здесь не было команды, которая меняла бы элементы <strong>A</strong>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Изменение объекта и переприсваивание">
+<table>
+<caption class="visually-hidden">Изменение объекта и переприсваивание</caption>
+<thead><tr><th scope="col">Запись</th><th scope="col">Что происходит</th></tr></thead>
+<tbody>
+<tr><td><code>backup.append(9)</code></td><td>Меняется список, доступный через <code>backup</code>. Все его имена видят изменение.</td></tr>
+<tr><td><code>backup[0] = 11</code></td><td>В существующем списке заменяется ссылка в одной позиции.</td></tr>
+<tr><td><code>backup = [1, 2]</code></td><td>Имя <code>backup</code> связывается с новым списком. Старый список этой командой не меняется.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="equality-and-identity">
+<h2>03 / Равенство и один и тот же объект</h2>
+<div class="section-content">
+<p>Два списка могут содержать одинаковые оценки и при этом быть разными объектами. Сравнение содержимого и проверка общей ссылки отвечают на разные вопросы.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Равные значения и общая ссылка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Равные значения и общая ссылка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+backup = scores
+other = [8, 10, 12]
+
+print(scores == backup)
+print(scores is backup)
+print(scores == other)
+print(scores is other)
+
+backup[0] = 7
+print(scores)
+print(other)
+print(scores == backup)
+print(scores is backup)
+print(scores == other)
+print(scores is other)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Равные значения и общая ссылка">True
+True
+True
+False
+[7, 10, 12]
+[8, 10, 12]
+True
+True
+False
+False</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Сравнения до и после изменения">
+<table>
+<caption class="visually-hidden">Сравнения до и после изменения</caption>
+<thead><tr><th scope="col">Выражение</th><th scope="col">До backup[0] = 7</th><th scope="col">После</th><th scope="col">Причина</th></tr></thead>
+<tbody>
+<tr><td><code>scores == backup</code></td><td><code>True</code></td><td><code>True</code></td><td>Оба имени показывают содержимое одного списка.</td></tr>
+<tr><td><code>scores is backup</code></td><td><code>True</code></td><td><code>True</code></td><td>Общая ссылка сохранилась.</td></tr>
+<tr><td><code>scores == other</code></td><td><code>True</code></td><td><code>False</code></td><td>Первый элемент изменился только в scores.</td></tr>
+<tr><td><code>scores is other</code></td><td><code>False</code></td><td><code>False</code></td><td>С самого начала созданы два объекта.</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="special-block special-block--definition" aria-labelledby="equality-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="equality-title"><code>==</code> и <code>is</code></h3>
+<div class="special-block__body">
+<p>Для списков <code>==</code> сравнивает длину и соответствующие элементы в их порядке. <code>is</code> проверяет, один ли это объект, без сравнения его содержимого. Поэтому для сравнения значений используйте <code>==</code>. В этом уроке <code>is</code> помогает исследовать общие ссылки.</p>
+</div>
+</aside>
+<p>Обозначим объект <code>scores</code> и <code>backup</code> буквой <strong>A</strong>, а объект <code>other</code> буквой <strong>B</strong>. До изменения <strong>A</strong> и <strong>B</strong> имеют одинаковое содержимое. После изменения <strong>A</strong> отличается от <strong>B</strong>, но сами связи имён с <strong>A</strong> и <strong>B</strong> остаются прежними. Смена оценки не создаёт новый внешний список.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/ListEqualityAndIdentity.gif" alt="Сравнение списков через == и is до и после изменения: scores и backup ведут к одному объекту, а other к отдельному" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 2. Равенство содержимого и совпадение объектов</figcaption>
+</figure>
+</div>
+</section>
+<section id="flat-copy">
+<h2>04 / Копирование обычного списка</h2>
+<div class="section-content">
+<p>Если нужно поэкспериментировать с оценками и сохранить исходный список, второго имени недостаточно. Нужен отдельный список. Для этого есть метод <code>copy()</code>, полный срез <code>[:]</code> и вызов <code>list()</code> с исходным списком.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Способы получить backup из scores">
+<table>
+<caption class="visually-hidden">Способы получить backup из scores</caption>
+<thead><tr><th scope="col">Запись</th><th scope="col">Новый внешний список?</th><th scope="col">backup is scores</th></tr></thead>
+<tbody>
+<tr><td><code>backup = scores</code></td><td>Нет, остаётся общая ссылка.</td><td><code>True</code></td></tr>
+<tr><td><code>backup = scores.copy()</code></td><td>Да, поверхностная копия.</td><td><code>False</code></td></tr>
+<tr><td><code>backup = scores[:]</code></td><td>Да, полный срез создаёт поверхностную копию.</td><td><code>False</code></td></tr>
+<tr><td><code>backup = list(scores)</code></td><td>Да, новый список из элементов <code>scores</code>.</td><td><code>False</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Срез <code>[:]</code> берёт все позиции от начала до конца, а <code>list(scores)</code> собирает новый список из элементов исходного. Во всех трёх вариантах содержимое сначала равно исходному.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/ListFlatCopy.gif" alt="Присваивание сохраняет общий список, а copy(), срез [:] и list(scores) создают отдельный список; замена элемента копии не меняет исходный" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 3. Присваивание и три способа копирования списка</figcaption>
+</figure>
+<div class="code-example">
+<div class="code-example__header"><span>Три изменения в копии</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Три изменения в копии">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+backup = scores.copy()
+
+backup[0] = 7
+print(backup)
+backup.append(9)
+print(backup)
+backup.pop(1)
+print(backup)
+
+print(scores)
+print(backup)
+print(backup is scores)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Три изменения в копии">[7, 10, 12]
+[7, 10, 12, 9]
+[7, 12, 9]
+[8, 10, 12]
+[7, 12, 9]
+False</pre></div>
+</div>
+<ol class="content-list">
+<li>Замена <code>backup[0] = 7</code> меняет позицию 0 только в новом списке.</li>
+<li><code>append(9)</code> создаёт дополнительную позицию в <code>backup</code>.</li>
+<li><code>pop(1)</code> удаляет из <code>backup</code> элемент с индексом 1, то есть число 10. Результат метода здесь не сохраняется.</li>
+<li>Позиции списка <code>scores</code> не менялись. Его содержимое осталось <code>[8, 10, 12]</code>.</li>
+</ol>
+<aside class="special-block special-block--definition" aria-labelledby="shallow-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="shallow-title">Поверхностная копия</h3>
+<div class="special-block__body">
+<p>Поверхностное копирование создаёт новый внешний список, но переносит в него ссылки на те же элементы. Сами объекты элементов не копируются рекурсивно. Так работают <code>copy()</code>, <code>[:]</code> и <code>list(scores)</code> для исходного списка.</p>
+</div>
+</aside>
+<p>Числа неизменяемы: команда <code>backup[0] = 7</code> не превращает объект числа 8 в число 7. Она заменяет ссылку в одной позиции <code>backup</code>. Поэтому общие ссылки на числа не мешают независимому изменению двух списков чисел. Но если элемент сам является изменяемым списком, изменение внутри него может оказаться общим. Следующие разделы объяснят этот случай.</p>
+</div>
+</section>
+<section id="nested-lists">
+<h2>05 / Вложенные списки</h2>
+<div class="section-content">
+<p>Для нескольких студентов удобно хранить отдельный список оценок каждого студента. Эти списки можно собрать в один общий. Получится список списков: его элементами будут не числа, а другие списки.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Журнал нескольких студентов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Журнал нескольких студентов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [
+    [8, 10, 12],
+    [9, 11],
+    [],
+]
+
+print(grades[0])
+print(grades[0][1])
+print(len(grades))
+print(len(grades[0]))
+print(len(grades[1]))
+print(len(grades[2]))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Журнал нескольких студентов">[8, 10, 12]
+10
+3
+3
+2
+0</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Структура журнала">
+<table>
+<caption class="visually-hidden">Структура журнала</caption>
+<thead><tr><th scope="col">Выражение</th><th scope="col">Что это</th><th scope="col">Значение</th></tr></thead>
+<tbody>
+<tr><td><code>grades</code></td><td>Внешний список. Одна позиция на студента.</td><td><code>[[8, 10, 12], [9, 11], []]</code></td></tr>
+<tr><td><code>grades[0]</code></td><td>Вложенный список оценок первого студента.</td><td><code>[8, 10, 12]</code></td></tr>
+<tr><td><code>grades[0][1]</code></td><td>Элемент первого вложенного списка с индексом 1, вторая оценка.</td><td><code>10</code></td></tr>
+<tr><td><code>len(grades)</code></td><td>Количество внутренних списков, включая пустые.</td><td><code>3</code></td></tr>
+<tr><td><code>len(grades[0])</code></td><td>Количество оценок первого студента.</td><td><code>3</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Внешний список может содержать вложенные списки разной длины. Пустой список <code>[]</code> означает, что для студента ещё нет оценок.</p>
+<p>При указании двух индексов интерпретатор читает их слева направо.</p>
+<ol class="content-list">
+<li>В <code>grades[0][1]</code> сначала вычисляется <code>grades[0]</code>. Получаем внутренний список <code>[8, 10, 12]</code>.</li>
+<li>Затем к полученному списку применяется <code>[1]</code>. Получаем число 10.</li>
+<li>Тот же доступ можно разложить: <code>row = grades[0]</code>, затем <code>row[1]</code>. Переменная <code>row</code> ссылается на существующий вложенный список, а не копирует его.</li>
+</ol>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/NestedListAccess.gif" alt="Доступ grades[0][1]: выбор вложенного списка с индексом 0, затем числа 10 с индексом 1; длина внешнего списка и его вложенных списков" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 4. Индексы и длина вложенных списков</figcaption>
+</figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Ошибки индексов для этого журнала">
+<table>
+<caption class="visually-hidden">Ошибки индексов для этого журнала</caption>
+<thead><tr><th scope="col">Выражение</th><th scope="col">Результат</th><th scope="col">Где проблема</th></tr></thead>
+<tbody>
+<tr><td><code>grades[3]</code></td><td><code>IndexError</code></td><td>Во внешнем списке допустимы неотрицательные индексы 0, 1, 2.</td></tr>
+<tr><td><code>grades[1][2]</code></td><td><code>IndexError</code></td><td>Вложенный список с индексом 1 есть, но в нём только индексы 0 и 1.</td></tr>
+<tr><td><code>grades[2][0]</code></td><td><code>IndexError</code></td><td>Вложенный список с индексом 2 есть, но пуст. В нём нет элемента 0.</td></tr>
+<tr><td><code>grades[-1]</code></td><td><code>[]</code></td><td>Последний внутренний список существует, хотя оценок в нём нет.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Длина внешнего списка не сообщает длину каждого вложенного списка. Сначала убедитесь, что вложенный список существует, затем проверьте нужный индекс внутри него. В примере ниже проверяется доступ по неотрицательным индексам.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Проверка двух границ до обращения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка двух границ до обращения">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10, 12], [9, 11], []]
+student_index = 2
+grade_index = 0
+
+if 0 &lt;= student_index &lt; len(grades):
+    row = grades[student_index]
+    if 0 &lt;= grade_index &lt; len(row):
+        print(row[grade_index])
+    else:
+        print(&quot;No grade at this index&quot;)
+else:
+    print(&quot;No student at this index&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Проверка двух границ до обращения">No grade at this index</pre></div>
+</div>
+<p>Если заменить <code>grades</code> на <code>[]</code>, сработает внешняя ветка <code>else</code>. Если <code>student_index</code> равен 0, а <code>grade_index</code> равен 1, программа напечатает 10. Ни в одном из этих случаев не нужно обращаться к отсутствующей позиции.</p>
+</div>
+</section>
+<section id="nested-changes">
+<h2>06 / Изменение вложенного списка</h2>
+<div class="section-content">
+<p>Перед изменением найдите объект, к которому относится операция. В <code>grades[0].append(10)</code> сначала выбирается вложенный список, а затем меняется именно он. В <code>grades.append([7, 8])</code> метод вызывается у внешнего списка и добавляет целый вложенный список.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Меняем оценки и вложенные списки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Меняем оценки и вложенные списки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [9, 11]]
+
+grades[0][1] = 12
+print(grades)
+grades[0].append(10)
+print(grades)
+grades.append([7, 8])
+print(grades)
+grades[1] = [12]
+print(grades)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Меняем оценки и вложенные списки">[[8, 12], [9, 11]]
+[[8, 12, 10], [9, 11]]
+[[8, 12, 10], [9, 11], [7, 8]]
+[[8, 12, 10], [12], [7, 8]]</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Какой объект меняется">
+<table>
+<caption class="visually-hidden">Какой объект меняется</caption>
+<thead><tr><th scope="col">Операция</th><th scope="col">Изменяемый объект</th><th scope="col">Последствие</th></tr></thead>
+<tbody>
+<tr><td><code>grades[0][1] = 12</code></td><td>Вложенный список с индексом 0.</td><td>В нём заменяется вторая оценка.</td></tr>
+<tr><td><code>grades[0].append(10)</code></td><td>Вложенный список с индексом 0.</td><td>В нём становится на одну оценку больше.</td></tr>
+<tr><td><code>grades.append([7, 8])</code></td><td>Внешний список.</td><td>В конце появляется ссылка на новый вложенный список.</td></tr>
+<tr><td><code>grades[1] = [12]</code></td><td>Внешний список.</td><td>Ссылка в позиции 1 заменяется ссылкой на новый вложенный список.</td></tr>
+</tbody>
+</table>
+</div>
+<p>При замене <code>grades[1]</code> старый внутренний список не переписывается. Меняется ссылка на него во внешнем списке. Если другая переменная сохраняет старый вложенный список, она по-прежнему увидит его прежние элементы.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Имя row и вложенный список журнала</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Имя row и вложенный список журнала">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [9, 11]]
+row = grades[0]
+row.append(9)
+print(grades)
+
+row = [9]
+print(row)
+print(grades)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Имя row и вложенный список журнала">[[8, 10, 9], [9, 11]]
+[9]
+[[8, 10, 9], [9, 11]]</pre></div>
+</div>
+<p>Сначала <code>row</code> и позиция <code>grades[0]</code> ведут к одному внутреннему списку, поэтому append виден в журнале. Затем <code>row = [9]</code> перенаправляет только имя <code>row</code>. Чтобы заменить вложенный список журнала, нужна запись <code>grades[0] = [9]</code>.</p>
+<p>При использовании оператора <code>in</code> работа со вложенными списками остаётся прежней.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Поиск вложенного списка и поиск оценки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Поиск вложенного списка и поиск оценки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [9, 11], []]
+value = 10
+
+print(value in grades)
+print([8, 10] in grades)
+
+found = False
+for row in grades:
+    if value in row:
+        found = True
+        break
+
+print(found)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Поиск вложенного списка и поиск оценки">False
+True
+True</pre></div>
+</div>
+<p>Во внешнем списке лежат списки <code>[8, 10]</code>, <code>[9, 11]</code> и <code>[]</code>, поэтому число 10 не равно ни одному его элементу. Проверка <code>[8, 10] in grades</code> находит равный вложенный список: для этого не требуется тот же объект. Чтобы найти число, цикл выбирает каждый вложенный список и выполняет <code>value in row</code>. Проверка <code>value in row</code> для пустого вложенного списка даёт <code>False</code>. Если <code>grades</code> пуст, цикл не выполнится и <code>found</code> останется <code>False</code>.</p>
+</div>
+</section>
+<section id="nested-loops">
+<h2>07 / Перебор вложенных списков</h2>
+<div class="section-content">
+<p>Один цикл по <code>grades</code> выдаёт вложенные списки целиком. Для действий с каждой оценкой внутри него нужен второй цикл. Он проходит текущий вложенный список до конца, и только после этого внешний цикл выбирает следующего студента.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Сначала вложенный список, затем его оценки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сначала вложенный список, затем его оценки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [], [12]]
+
+for row in grades:
+    for score in row:
+        print(score)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Сначала вложенный список, затем его оценки">8
+10
+12</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Ход вложенных циклов">
+<table>
+<caption class="visually-hidden">Ход вложенных циклов</caption>
+<thead><tr><th scope="col">Шаг внешнего цикла</th><th scope="col">row</th><th scope="col">Шаги внутреннего цикла</th><th scope="col">Вывод</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><code>[8, 10]</code></td><td><code>score</code> сначала равен 8, затем 10.</td><td>8, затем 10 на новой строке.</td></tr>
+<tr><td>2</td><td><code>[]</code></td><td>Элементов нет, тело внутреннего цикла не выполняется.</td><td>Нет вывода.</td></tr>
+<tr><td>3</td><td><code>[12]</code></td><td><code>score</code> равен 12.</td><td>12.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Отступы задают вложенность. <code>print</code> находится внутри обоих циклов. Второй вложенный список журнала пуст, но это не ошибка: внешний цикл выбирает его, а внутреннему просто нечего перебирать.</p>
+<p>Чтобы заменить оценку в журнале, нужно присваивание в позицию списка. Запись <code>score = score + 1</code> внутри перебора чисел меняла бы только переменную <code>score</code>. Она не записывает новое число обратно во вложенный список.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Повышаем каждую оценку на один балл</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Повышаем каждую оценку на один балл">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [], [12]]
+
+for student_index in range(len(grades)):
+    for grade_index in range(len(grades[student_index])):
+        if grades[student_index][grade_index] &lt; 12:
+            grades[student_index][grade_index] += 1
+
+print(grades)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Повышаем каждую оценку на один балл">[[9, 11], [], [12]]</pre></div>
+</div>
+<p>Внешний индекс выбирает студента, внутренний индекс выбирает оценку. <code>range(len(grades[student_index]))</code> использует длину текущего вложенного списка. Поэтому код подходит и для двух оценок, и для одной, и для пустого вложенного списка. Проверка <code>&lt; 12</code> сохраняет верхнюю границу принятой здесь шкалы. Длина списков во время этого прохода не меняется.</p>
+<p>Таким образом, можно составить программу статистики по всем студентам.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Суммы, количество и средние</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Суммы, количество и средние">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [], [12]]
+total = 0
+count = 0
+
+for student_index in range(len(grades)):
+    row = grades[student_index]
+    row_total = 0
+    for score in row:
+        row_total += score
+
+    print(&quot;Student&quot;, student_index + 1, &quot;sum:&quot;, row_total)
+    if len(row) &gt; 0:
+        print(&quot;Average:&quot;, row_total / len(row))
+    else:
+        print(&quot;No grades&quot;)
+
+    total += row_total
+    count += len(row)
+
+print(&quot;Total:&quot;, total)
+print(&quot;Count:&quot;, count)
+if count &gt; 0:
+    print(&quot;Overall average:&quot;, total / count)
+else:
+    print(&quot;No overall average&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Суммы, количество и средние">Student 1 sum: 18
+Average: 9.0
+Student 2 sum: 0
+No grades
+Student 3 sum: 12
+Average: 12.0
+Total: 30
+Count: 3
+Overall average: 10.0</pre></div>
+</div>
+<ol class="content-list">
+<li><code>total</code> и <code>count</code> создаются до внешнего цикла: они накапливают результат по всему журналу.</li>
+<li><code>row_total</code> обнуляется для каждого студента, затем внутренний цикл складывает его оценки.</li>
+<li>Среднее студента вычисляется только при непустом вложенном списке. Сумма пустого вложенного списка равна 0, но среднего у него нет.</li>
+<li>После обработки вложенного списка его сумма добавляется в <code>total</code>, а длина в <code>count</code>. Деление <code>total / count</code> выполняется после всех вложенных списков и только при <code>count &gt; 0</code>.</li>
+</ol>
+</div>
+</section>
+<section id="shallow-nested-copy">
+<h2>08 / Где поверхностной копии недостаточно</h2>
+<div class="section-content">
+<p>Вернёмся к резервной копии журнала. Метод <code>copy()</code> создаёт новые позиции только во внешнем списке. Если в этих позициях лежат ссылки на внутренние списки, копия получает ссылки на те же вложенные списки.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Разные оболочки, общие вложенные списки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разные оболочки, общие вложенные списки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+backup = grades.copy()
+
+print(backup == grades)
+print(backup is grades)
+print(backup[0] is grades[0])
+print(backup[1] is grades[1])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разные оболочки, общие вложенные списки">True
+False
+True
+True</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Ссылки после grades.copy()">
+<table>
+<caption class="visually-hidden">Ссылки после grades.copy()</caption>
+<thead><tr><th scope="col">Путь из оригинала</th><th scope="col">Путь из копии</th><th scope="col">Куда ведут</th></tr></thead>
+<tbody>
+<tr><td><code>grades</code></td><td><code>backup</code></td><td>К разным внешним спискам <strong>A</strong> и <strong>B</strong>.</td></tr>
+<tr><td><code>grades[0]</code></td><td><code>backup[0]</code></td><td>К одному вложенному списку <strong>R0</strong>: <code>[8, 10]</code>.</td></tr>
+<tr><td><code>grades[1]</code></td><td><code>backup[1]</code></td><td>К одному вложенному списку <strong>R1</strong>: <code>[12]</code>.</td></tr>
+</tbody>
+</table>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/NestedListShallowCopy.gif" alt="Поверхностная копия создаёт отдельный внешний список с общими вложенными списками: добавление и замена вложенного списка отличаются от изменения элемента общего вложенного списка" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 5. Общие вложенные списки при поверхностном копировании</figcaption>
+</figure>
+<p>Сравним три независимых запуска. В каждом сначала заново создаются <code>grades</code> и <code>backup</code>, чтобы замена вложенного списка из одного примера не влияла на следующий.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Добавление вложенного списка только в копию</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Добавление вложенного списка только в копию">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+backup = grades.copy()
+backup.append([7, 8])
+
+print(grades)
+print(backup)
+print(backup[0] is grades[0])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Добавление вложенного списка только в копию">[[8, 10], [12]]
+[[8, 10], [12], [7, 8]]
+True</pre></div>
+</div>
+<p><code>append</code> вызван у <code>backup</code>. Он добавляет новую позицию в <strong>B</strong>; внешний список <strong>A</strong> не меняется. Уже существующие вложенные списки по-прежнему общие.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Замена целого вложенного списка только в копии</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Замена целого вложенного списка только в копии">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+backup = grades.copy()
+backup[0] = [7, 8]
+
+print(grades)
+print(backup)
+print(backup[0] is grades[0])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Замена целого вложенного списка только в копии">[[8, 10], [12]]
+[[7, 8], [12]]
+False</pre></div>
+</div>
+<p>Присваивание <code>backup[0] = [7, 8]</code> меняет ссылку в <strong>B</strong>. Теперь <strong>B[0]</strong> ведёт к новому вложенному списку, а <code>grades[0]</code> по-прежнему ведёт к старому. Содержимое старого вложенного списка никто не менял.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Замена оценки в общем вложенном списке</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Замена оценки в общем вложенном списке">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+backup = grades.copy()
+backup[0][0] = 7
+
+print(grades)
+print(backup)
+print(backup[0] is grades[0])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Замена оценки в общем вложенном списке">[[7, 10], [12]]
+[[7, 10], [12]]
+True</pre></div>
+</div>
+<p>Здесь <code>backup[0]</code> сначала находит общий вложенный список <strong>R0</strong>. Следующее <code>[0]</code> выбирает позицию внутри <strong>R0</strong>, и она меняется. Поэтому оба внешних списка показывают оценку 7.</p>
+<div class="code-example">
+<div class="code-example__header"><span>У среза и list() та же граница</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: У среза и list() та же граница">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+slice_backup = grades[:]
+list_backup = list(grades)
+
+print(slice_backup is grades)
+print(list_backup is grades)
+print(slice_backup[0] is grades[0])
+print(list_backup[0] is grades[0])
+
+slice_backup[0].append(9)
+print(grades)
+print(list_backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: У среза и list() та же граница">False
+False
+True
+True
+[[8, 10, 9], [12]]
+[[8, 10, 9], [12]]</pre></div>
+</div>
+<p>Подводя итог этой секции можно сказать, что в <code>backup.append(...)</code> меняется <code>backup</code>. В <code>backup[0] = ...</code> тоже меняется <code>backup</code>, его позиция 0. В <code>backup[0][0] = ...</code> меняется уже список <code>backup[0]</code>. Именно на этом уровне и нужно проверять, есть ли общие ссылки.</p>
+</div>
+</section>
+<section id="independent-copy">
+<h2>09 / Независимая копия вложенных данных</h2>
+<div class="section-content">
+<p>Для журнала, где каждый вложенный список содержит только числа, достаточно отдельно скопировать внешний список и каждый вложенный список. Сначала создадим пустой <code>backup</code>, затем пройдём <code>grades</code> и добавим копию каждого вложенного списка.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Копируем вложенные списки обычным циклом</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Копируем вложенные списки обычным циклом">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [], [12]]
+backup = []
+for row in grades:
+    backup.append(row.copy())
+
+print(backup == grades)
+print(backup is grades)
+print(backup[0] is grades[0])
+print(backup[1] is grades[1])
+
+backup[0][0] = 7
+backup[1].append(9)
+print(grades)
+print(backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Копируем вложенные списки обычным циклом">True
+False
+False
+False
+[[8, 10], [], [12]]
+[[7, 10], [9], [12]]</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Схема до изменения копии">
+<table>
+<caption class="visually-hidden">Схема до изменения копии</caption>
+<thead><tr><th scope="col">Исходный путь</th><th scope="col">Путь в копии</th><th scope="col">Связь</th></tr></thead>
+<tbody>
+<tr><td>grades → A</td><td>backup → B</td><td>Два внешних списка.</td></tr>
+<tr><td>A[0] → R0: <code>[8, 10]</code></td><td>B[0] → S0: <code>[8, 10]</code></td><td>R0 и S0 различны, числа в них равны.</td></tr>
+<tr><td>A[1] → R1: <code>[]</code></td><td>B[1] → S1: <code>[]</code></td><td>Даже пустой вложенный список скопирован в отдельный объект.</td></tr>
+<tr><td>A[2] → R2: <code>[12]</code></td><td>B[2] → S2: <code>[12]</code></td><td>Замена позиций S2 не затронет R2.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Каждый вызов <code>row.copy()</code> создаёт отдельный список. append сохраняет его во внешнем <code>backup</code>. Числа остаются общими объектами, но они неизменяемы. Замена чисел, добавление и удаление оценок теперь затрагивают только вложенные списки выбранного журнала.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Ещё один вложенный список остаётся общим</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ещё один вложенный список остаётся общим">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[[8, 10]], [[12]]]
+backup = []
+for row in grades:
+    backup.append(row.copy())
+
+print(backup[0] is grades[0])
+print(backup[0][0] is grades[0][0])
+backup[0][0][0] = 7
+print(grades)
+print(backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Ещё один вложенный список остаётся общим">False
+True
+[[[7, 10]], [[12]]]
+[[[7, 10]], [[12]]]</pre></div>
+</div>
+<p>Вложенным списком здесь является <code>[[8, 10]]</code>, а его элементом является ещё один список <code>[8, 10]</code>. Метод <code>row.copy()</code> копирует вложенный список, но переносит ссылку на его вложенный элемент. Значит, самый глубокий список всё ещё общий. Для такой структуры прежнего цикла недостаточно.</p>
+<p>В Python есть готовый инструмент <code>deepcopy</code> из модуля <code>copy</code>. Модуль можно понимать как набор готовых инструментов. Строка <code>from copy import deepcopy</code> делает имя <code>deepcopy</code> доступным в нашей программе.</p>
+<aside class="special-block special-block--definition" aria-labelledby="deep-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="deep-title">Глубокая копия</h3>
+<div class="special-block__body">
+<p>Для рассматриваемых вложенных списков <code>deepcopy()</code> создаёт новый внешний список и рекурсивно копирует вложенные списки. Рекурсивно значит, что та же операция продолжается на следующих уровнях вложенности. Копии изменяемых списков отделяются от оригинала. Неизменяемые значения, например числа, могут оставаться теми же объектами.</p>
+</div>
+</aside>
+<div class="code-example">
+<div class="code-example__header"><span>Глубокая копия трёх уровней</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Глубокая копия трёх уровней">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">from copy import deepcopy
+
+grades = [[[8, 10]], [[12]]]
+backup = deepcopy(grades)
+
+print(backup is grades)
+print(backup[0] is grades[0])
+print(backup[0][0] is grades[0][0])
+
+backup[0][0][0] = 7
+print(grades)
+print(backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Глубокая копия трёх уровней">False
+False
+False
+[[[8, 10]], [[12]]]
+[[[7, 10]], [[12]]]</pre></div>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/NestedListDeepCopy.gif" alt="deepcopy создаёт новые списки на каждом уровне: изменение backup не затрагивает grades, а повторные ссылки внутри копии сохраняются" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 6. Глубокое копирование вложенных списков</figcaption>
+</figure>
+<p>Если исходный список содержал копии два одинаковых списка, то <code>deepcopy</code> это скопирует в новый список точно так же.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Один общий вложенный список остаётся общим внутри копии</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Один общий вложенный список остаётся общим внутри копии">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">from copy import deepcopy
+
+row = [8, 10]
+grades = [row, row]
+backup = deepcopy(grades)
+
+print(backup[0] is grades[0])
+print(backup[0] is backup[1])
+backup[0][0] = 7
+print(grades)
+print(backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Один общий вложенный список остаётся общим внутри копии">False
+True
+[[8, 10], [8, 10]]
+[[7, 10], [7, 10]]</pre></div>
+</div>
+<p><code>deepcopy</code> помнит, какие объекты уже скопированы. Обе позиции <code>grades</code> ведут к одному вложенному списку. Обе позиции <code>backup</code> ведут к одному новому вложенному списку. Оригинал защищён от изменения копии, но вложенные списки внутри <code>backup</code> не стали независимыми друг от друга. Это сохранение структуры ссылок, а не ошибка.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как выбрать способ копирования">
+<table>
+<caption class="visually-hidden">Как выбрать способ копирования</caption>
+<thead><tr><th scope="col">Способ</th><th scope="col">Когда нужен</th><th scope="col">Что остаётся общим</th></tr></thead>
+<tbody>
+<tr><td><code>backup = grades</code></td><td>Нужно ещё одно имя для того же журнала, и изменения должны быть общими.</td><td>Весь объект.</td></tr>
+<tr><td><code>backup = grades.copy()</code></td><td>Нужно независимо добавлять, удалять или заменять вложенные списки внешнего списка.</td><td>Объекты элементов, в том числе внутренние списки.</td></tr>
+<tr><td>Цикл с <code>backup.append(row.copy())</code></td><td>Нужны независимые вложенные списки, каждый из которых содержит только числа.</td><td>Объекты внутри вложенных списков; более глубокие списки тоже остаются общими.</td></tr>
+<tr><td><code>backup = deepcopy(grades)</code></td><td>Нужно отделить вложенные списки на всех уровнях рассматриваемой структуры.</td><td>Повторные ссылки могут сохраниться внутри копии; числа могут быть общими неизменяемыми объектами.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="repetition">
+<h2>10 / Повторение элементов и общие вложенные списки</h2>
+<div class="section-content">
+<p>Оператор <code>+</code> объединяет элементы списков, а <code>*</code> повторяет их заданное число раз. Оба создают новый внешний список. Они переносят ссылки на элементы, поэтому не заменяют глубокое копирование.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Объединение и повторение чисел</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Объединение и повторение чисел">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = [8, 10]
+second = [12]
+combined = first + second
+repeated = first * 2
+
+print(combined)
+print(repeated)
+print(combined is first)
+print(repeated is first)
+print(first)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Объединение и повторение чисел">[8, 10, 12]
+[8, 10, 8, 10]
+False
+False
+[8, 10]</pre></div>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>Объединение не копирует внутренние списки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Объединение не копирует внутренние списки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = [[8, 10]]
+second = [[12]]
+combined = first + second
+
+print(combined is first)
+print(combined[0] is first[0])
+combined[0].append(9)
+print(first)
+print(combined)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Объединение не копирует внутренние списки">False
+True
+[[8, 10, 9]]
+[[8, 10, 9], [12]]</pre></div>
+</div>
+<p>Разберём, почему <code>[0] * 3</code> удобно, а <code>[[0] * 3] * 2</code> требует внимания.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Обычный ряд из нулей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Обычный ряд из нулей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">row = [0] * 3
+row[0] = 1
+print(row)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Обычный ряд из нулей">[1, 0, 0]</pre></div>
+</div>
+<p>Список содержит три ссылки на число 0. Но числа неизменяемы: <code>row[0] = 1</code> заменяет только ссылку в первой позиции. Остальные позиции продолжают указывать на 0.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="repeated-row-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="repeated-row-title">Повторилась ссылка на вложенный список</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Две позиции ведут к одному вложенному списку</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Две позиции ведут к одному вложенному списку">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grid = [[0] * 3] * 2
+print(grid)
+print(grid[0] is grid[1])
+
+grid[0][0] = 1
+print(grid)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Две позиции ведут к одному вложенному списку">[[0, 0, 0], [0, 0, 0]]
+True
+[[1, 0, 0], [1, 0, 0]]</pre></div>
+</div>
+<p>Сначала <code>[0] * 3</code> создаёт один вложенный список. Квадратные скобки вокруг него создают список с одной ссылкой на этот вложенный список. Умножение на 2 повторяет ссылку. Поэтому <code>grid[0]</code> и <code>grid[1]</code> ведут к одному изменяемому списку.</p>
+</div>
+</aside>
+<aside class="special-block special-block--correct" aria-labelledby="separate-rows-title">
+<div class="special-block__header"><span class="special-block__label">Верный подход</span></div>
+<h3 class="special-block__title" id="separate-rows-title">Создавайте вложенный список заново на каждой итерации</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Независимые вложенные списки сетки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Независимые вложенные списки сетки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grid = []
+for row_index in range(2):
+    grid.append([0] * 3)
+
+grid[0][0] = 1
+print(grid)
+print(grid[0] is grid[1])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Независимые вложенные списки сетки">[[1, 0, 0], [0, 0, 0]]
+False</pre></div>
+</div>
+<p>Выражение <code>[0] * 3</code> выполняется два раза. Каждый раз возникает новый список. Теперь у двух вложенных списков отдельные позиции для оценок или других значений.</p>
+</div>
+</aside>
+<div class="code-example">
+<div class="code-example__header"><span>Та же ошибка через append</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Та же ошибка через append">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grid = []
+row = [0] * 3
+for row_index in range(2):
+    grid.append(row)
+
+grid[0][1] = 5
+print(grid)
+print(grid[0] is grid[1])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Та же ошибка через append">[[0, 5, 0], [0, 5, 0]]
+True</pre></div>
+</div>
+<p>Сам <code>append</code> ничего не копирует: он добавляет переданный объект. Здесь <code>row</code> создан только один раз до цикла. Чтобы использовать отдельную переменную, перенесите <code>row = [0] * 3</code> внутрь цикла перед <code>grid.append(row)</code>. Тогда на каждом шаге будет создан новый вложенный список.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/ListRepeatedRows.gif" alt="Повторение чисел в [0] * 3 и общего вложенного списка в [[0] * 3] * 2; создание независимых вложенных списков в цикле" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 7. Повторение ссылок и создание независимых вложенных списков</figcaption>
+</figure>
+</div>
+</section>
+<section id="mutation-during-iteration">
+<h2>11 / Изменение списка во время перебора</h2>
+<div class="section-content">
+<p>Допустим, из списка нужно убрать отрицательные значения. Кажется удобным удалять их прямо в <code>for</code>. Но цикл двигается по позициям, а удаление сдвигает оставшиеся элементы. Из-за этого некоторые значения могут не попасть на проверку.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="remove-in-loop-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="remove-in-loop-title">Соседний элемент пропускается</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Удаление из перебираемого списка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Удаление из перебираемого списка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">items = [-2, -1, 3, 4]
+for value in items:
+    if value &lt; 0:
+        items.remove(value)
+
+print(items)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Удаление из перебираемого списка">[-1, 3, 4]</pre></div>
+</div>
+</div>
+</aside>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Почему -1 осталось в списке">
+<table>
+<caption class="visually-hidden">Почему -1 осталось в списке</caption>
+<thead><tr><th scope="col">Следующая позиция цикла</th><th scope="col">Полученное значение</th><th scope="col">Действие и состояние</th></tr></thead>
+<tbody>
+<tr><td>0</td><td><code>-2</code></td><td>Удаляем -2. Список становится <code>[-1, 3, 4]</code>, число -1 сдвинулось на позицию 0.</td></tr>
+<tr><td>1</td><td><code>3</code></td><td>Цикл уже идёт к позиции 1. Число -1 на позиции 0 осталось позади.</td></tr>
+<tr><td>2</td><td><code>4</code></td><td>Удаления нет. После этого позиции заканчиваются.</td></tr>
+</tbody>
+</table>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/ListRemoveDuringIteration.gif" alt="После удаления -2 из items число -1 сдвигается на позицию 0, а цикл переходит к позиции 1 и пропускает -1" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 8. Пропуск элемента при удалении во время перебора</figcaption>
+</figure>
+<p>Если требуется оставить только подходящие значения, то имеет смысл переносит значения в отдельный список.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Фильтрация в новый список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Фильтрация в новый список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">items = [-2, -1, 3, 4]
+filtered = []
+
+for value in items:
+    if value &gt;= 0:
+        filtered.append(value)
+    print(filtered)
+
+print(&quot;Original:&quot;, items)
+print(&quot;Filtered:&quot;, filtered)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Фильтрация в новый список">[]
+[]
+[3]
+[3, 4]
+Original: [-2, -1, 3, 4]
+Filtered: [3, 4]</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Результат после каждой итерации">
+<table>
+<caption class="visually-hidden">Результат после каждой итерации</caption>
+<thead><tr><th scope="col">value</th><th scope="col">value &gt;= 0</th><th scope="col">filtered после шага</th></tr></thead>
+<tbody>
+<tr><td><code>-2</code></td><td><code>False</code></td><td><code>[]</code></td></tr>
+<tr><td><code>-1</code></td><td><code>False</code></td><td><code>[]</code></td></tr>
+<tr><td><code>3</code></td><td><code>True</code></td><td><code>[3]</code></td></tr>
+<tr><td><code>4</code></td><td><code>True</code></td><td><code>[3, 4]</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Во время цикла <code>items</code> сохраняет прежние позиции. Меняется только отдельный <code>filtered</code>, который сейчас не перебирается. Поэтому ни одно исходное значение не пропускается. После цикла можно решить, оставить результат отдельно или заменить исходные данные.</p>
+
+<div class="code-example">
+<div class="code-example__header"><span>Переприсваивание меняет только одно имя</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Переприсваивание меняет только одно имя">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">items = [-2, -1, 3, 4]
+backup = items
+filtered = []
+for value in items:
+    if value &gt;= 0:
+        filtered.append(value)
+
+items = filtered
+print(items)
+print(backup)
+print(items is backup)
+print(items is filtered)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Переприсваивание меняет только одно имя">[3, 4]
+[-2, -1, 3, 4]
+False
+True</pre></div>
+</div>
+<p>После <code>items = filtered</code> имя <code>items</code> ведёт к новому результату, а <code>backup</code> продолжает показывать старый объект. Это подходит, если вам достаточно перенаправить одно имя.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/20/ListSliceAssignment.gif" alt="items = filtered перенаправляет имя items к другому списку; items[:] = filtered заменяет содержимое общего списка items и backup" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 9. Переприсваивание имени и замена содержимого через срез</figcaption>
+</figure>
+<p>Для очищения списка достаточно вызвать метод <code>clear</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>clear очищает общий объект</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: clear очищает общий объект">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">items = [3, 4]
+backup = items
+items.clear()
+
+print(items)
+print(backup)
+print(items is backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: clear очищает общий объект">[]
+[]
+True</pre></div>
+</div>
+<p>Если две переменные указывали на один и тот же список, то после вызова очищения с помощью <code>clear</code> обе переменные будут указывать на пустой список.</p>
+<p>Если же важно оставить одну переменную со списком, а вторую очистить, то достаточно во второй создать пустой список.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Присваивание [] создаёт новый объект</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Присваивание [] создаёт новый объект">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">items = [3, 4]
+backup = items
+items = []
+
+print(items)
+print(backup)
+print(items is backup)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Присваивание [] создаёт новый объект">[]
+[3, 4]
+False</pre></div>
+</div>
+</div>
+</section>
+<section id="self-check">
+<h2>12 / Самопроверка</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-shallow-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-shallow-title">Что означает поверхностное копирование списка?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-shallow-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-shallow-option-1"><input class="visually-hidden" type="checkbox" id="check-shallow-option-1" name="answers" value="1" aria-describedby="check-shallow-option-1-feedback" /><span>Создаётся новый внешний список со ссылками на те же элементы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Копируются позиции внешнего списка. Вложенные изменяемые объекты могут остаться общими.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-shallow-option-2"><input class="visually-hidden" type="checkbox" id="check-shallow-option-2" name="answers" value="2" aria-describedby="check-shallow-option-2-feedback" /><span>Создаётся только новое имя для исходного списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это обычное присваивание backup = scores. При копировании внешний объект новый.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-shallow-option-3"><input class="visually-hidden" type="checkbox" id="check-shallow-option-3" name="answers" value="3" aria-describedby="check-shallow-option-3-feedback" /><span>Все вложенные списки обязательно копируются на любую глубину.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Поверхностная копия обрабатывает только внешний уровень.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-shallow-option-4"><input class="visually-hidden" type="checkbox" id="check-shallow-option-4" name="answers" value="4" aria-describedby="check-shallow-option-4-feedback" /><span>Копируются только первые два элемента.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Слово «поверхностная» относится к глубине, а не к количеству элементов.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-deep-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-deep-title">Что означает глубокое копирование вложенных списков?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-deep-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-deep-option-1"><input class="visually-hidden" type="checkbox" id="check-deep-option-1" name="answers" value="1" aria-describedby="check-deep-option-1-feedback" /><span>Новый внешний список и копии вложенных списков создаются рекурсивно.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>deepcopy отделяет вложенные списки от оригинала. Повторные ссылки внутри структуры при этом могут сохраниться.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-deep-option-2"><input class="visually-hidden" type="checkbox" id="check-deep-option-2" name="answers" value="2" aria-describedby="check-deep-option-2-feedback" /><span>Создаётся новое имя без новых объектов списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Так работает присваивание =, а не deepcopy.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-deep-option-3"><input class="visually-hidden" type="checkbox" id="check-deep-option-3" name="answers" value="3" aria-describedby="check-deep-option-3-feedback" /><span>Создаётся только новый внешний список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Такой границей ограничена поверхностная копия.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-deep-option-4"><input class="visually-hidden" type="checkbox" id="check-deep-option-4" name="answers" value="4" aria-describedby="check-deep-option-4-feedback" /><span>Каждое вхождение общего объекта обязательно превращается в отдельный объект.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>deepcopy запоминает уже скопированные объекты и сохраняет повторные ссылки внутри копии.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-assignment-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-assignment-title">Что делает <code>backup = scores</code>, если scores уже ссылается на список?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-assignment-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-assignment-option-1"><input class="visually-hidden" type="checkbox" id="check-assignment-option-1" name="answers" value="1" aria-describedby="check-assignment-option-1-feedback" /><span>Связывает <code>backup</code> с тем же списком, что и <code>scores</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-assignment-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Правая часть находит существующий объект; новое имя получает ссылку на него.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-assignment-option-2"><input class="visually-hidden" type="checkbox" id="check-assignment-option-2" name="answers" value="2" aria-describedby="check-assignment-option-2-feedback" /><span>Создаёт поверхностную копию списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-assignment-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание само по себе список не копирует.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-assignment-option-3"><input class="visually-hidden" type="checkbox" id="check-assignment-option-3" name="answers" value="3" aria-describedby="check-assignment-option-3-feedback" /><span>Создаёт глубокую копию списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-assignment-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для этого нужен отдельный вызов deepcopy.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-assignment-option-4"><input class="visually-hidden" type="checkbox" id="check-assignment-option-4" name="answers" value="4" aria-describedby="check-assignment-option-4-feedback" /><span>Перемещает список и оставляет scores пустым.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-assignment-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя scores продолжает ссылаться на тот же объект.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-copy-method-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-copy-method-title">Что делает <code>backup = scores.copy()</code>?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-copy-method-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-copy-method-option-1"><input class="visually-hidden" type="checkbox" id="check-copy-method-option-1" name="answers" value="1" aria-describedby="check-copy-method-option-1-feedback" /><span>Создаёт новый внешний список с теми же элементами.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-method-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это поверхностная копия: backup is scores даст False.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-method-option-2"><input class="visually-hidden" type="checkbox" id="check-copy-method-option-2" name="answers" value="2" aria-describedby="check-copy-method-option-2-feedback" /><span>Связывает оба имени с одним внешним списком.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-method-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>copy() возвращает новый объект списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-method-option-3"><input class="visually-hidden" type="checkbox" id="check-copy-method-option-3" name="answers" value="3" aria-describedby="check-copy-method-option-3-feedback" /><span>Очищает <code>scores</code> после копирования.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-method-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Содержимое scores не меняется.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-method-option-4"><input class="visually-hidden" type="checkbox" id="check-copy-method-option-4" name="answers" value="4" aria-describedby="check-copy-method-option-4-feedback" /><span>Гарантированно копирует все вложенные списки.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-method-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вложенные списки остаются общими, если они есть.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-slice-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-slice-title">Что делает <code>backup = scores[:]</code>?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-slice-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-slice-option-1"><input class="visually-hidden" type="checkbox" id="check-slice-option-1" name="answers" value="1" aria-describedby="check-slice-option-1-feedback" /><span>Создаёт поверхностную копию всего списка <code>scores</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-slice-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Правая часть [:] берёт все элементы в новый внешний список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-slice-option-2"><input class="visually-hidden" type="checkbox" id="check-slice-option-2" name="answers" value="2" aria-describedby="check-slice-option-2-feedback" /><span>Связывает <code>backup</code> с исходным внешним списком.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-slice-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Полный срез списка создаёт отдельный список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-slice-option-3"><input class="visually-hidden" type="checkbox" id="check-slice-option-3" name="answers" value="3" aria-describedby="check-slice-option-3-feedback" /><span>Удаляет элементы <code>scores</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-slice-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Здесь срез читается. Он не стоит слева от присваивания и не удаляется через del.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-slice-option-4"><input class="visually-hidden" type="checkbox" id="check-slice-option-4" name="answers" value="4" aria-describedby="check-slice-option-4-feedback" /><span>Копирует все уровни вложенности.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-slice-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Полный срез означает все позиции, а не все уровни вложенности.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-list-constructor-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-list-constructor-title">Что делает <code>backup = list(scores)</code> для списка scores?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-list-constructor-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-list-constructor-option-1"><input class="visually-hidden" type="checkbox" id="check-list-constructor-option-1" name="answers" value="1" aria-describedby="check-list-constructor-option-1-feedback" /><span>Собирает новый список из элементов <code>scores</code>, сохраняя ссылки на них.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-constructor-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для исходного списка это ещё один способ поверхностного копирования.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-list-constructor-option-2"><input class="visually-hidden" type="checkbox" id="check-list-constructor-option-2" name="answers" value="2" aria-describedby="check-list-constructor-option-2-feedback" /><span>Возвращает тот же внешний объект списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-constructor-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Создаётся новый внешний список, даже если scores уже имеет тип list.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-list-constructor-option-3"><input class="visually-hidden" type="checkbox" id="check-list-constructor-option-3" name="answers" value="3" aria-describedby="check-list-constructor-option-3-feedback" /><span>Превращает каждый элемент в текст.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-constructor-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>list() собирает элементы без такого преобразования.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-list-constructor-option-4"><input class="visually-hidden" type="checkbox" id="check-list-constructor-option-4" name="answers" value="4" aria-describedby="check-list-constructor-option-4-feedback" /><span>Создаёт независимые копии всех вложенных списков.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-constructor-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Объекты элементов не копируются рекурсивно.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-alias-value-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-alias-value-title">Что выведет программа с общей ссылкой?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Предскажите вывод: присваивание</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Предскажите вывод: присваивание">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+backup = scores
+backup[0] = 7
+print(scores)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-alias-value-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-alias-value-option-1"><input class="visually-hidden" type="checkbox" id="check-alias-value-option-1" name="answers" value="1" aria-describedby="check-alias-value-option-1-feedback" /><span>[7, 10, 12]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-alias-value-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>backup и scores ведут к одному объекту. Первая позиция этого объекта заменена.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-alias-value-option-2"><input class="visually-hidden" type="checkbox" id="check-alias-value-option-2" name="answers" value="2" aria-describedby="check-alias-value-option-2-feedback" /><span>[8, 10, 12]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-alias-value-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Исходное содержимое сохранилось бы при отдельной копии внешнего списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-alias-value-option-3"><input class="visually-hidden" type="checkbox" id="check-alias-value-option-3" name="answers" value="3" aria-describedby="check-alias-value-option-3-feedback" /><span>[7]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-alias-value-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменена одна позиция; остальные элементы не удаляются.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-alias-value-option-4"><input class="visually-hidden" type="checkbox" id="check-alias-value-option-4" name="answers" value="4" aria-describedby="check-alias-value-option-4-feedback" /><span>Возникнет ошибка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-alias-value-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс 0 существует, а список допускает замену элемента.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-copy-value-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-copy-value-title">Что выведет программа с копией списка чисел?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Предскажите вывод: copy()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Предскажите вывод: copy()">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 12]
+backup = scores.copy()
+backup[0] = 7
+print(scores)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-copy-value-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-copy-value-option-1"><input class="visually-hidden" type="checkbox" id="check-copy-value-option-1" name="answers" value="1" aria-describedby="check-copy-value-option-1-feedback" /><span>[8, 10, 12]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-value-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первая позиция заменена только в новом внешнем списке backup.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-value-option-2"><input class="visually-hidden" type="checkbox" id="check-copy-value-option-2" name="answers" value="2" aria-describedby="check-copy-value-option-2-feedback" /><span>[7, 10, 12]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-value-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Так было бы при backup = scores. Здесь вызван copy().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-value-option-3"><input class="visually-hidden" type="checkbox" id="check-copy-value-option-3" name="answers" value="3" aria-describedby="check-copy-value-option-3-feedback" /><span>[8, 7, 12]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-value-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>scores вообще не менялся. Кроме того, индекс 0 обозначает первую позицию.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-value-option-4"><input class="visually-hidden" type="checkbox" id="check-copy-value-option-4" name="answers" value="4" aria-describedby="check-copy-value-option-4-feedback" /><span>[]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-value-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Копирование и замена в backup не очищают scores.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-equality-operator-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-equality-operator-title">Как проверить равенство содержимого двух списков?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-equality-operator-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-equality-operator-option-1"><input class="visually-hidden" type="checkbox" id="check-equality-operator-option-1" name="answers" value="1" aria-describedby="check-equality-operator-option-1-feedback" /><span>scores == backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-operator-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>== сравнивает длину и соответствующие элементы списков.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-equality-operator-option-2"><input class="visually-hidden" type="checkbox" id="check-equality-operator-option-2" name="answers" value="2" aria-describedby="check-equality-operator-option-2-feedback" /><span>scores is backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-operator-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>is проверяет, один ли это объект, а не равенство двух разных списков.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-equality-operator-option-3"><input class="visually-hidden" type="checkbox" id="check-equality-operator-option-3" name="answers" value="3" aria-describedby="check-equality-operator-option-3-feedback" /><span>scores = backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-operator-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это присваивание, а не проверка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-equality-operator-option-4"><input class="visually-hidden" type="checkbox" id="check-equality-operator-option-4" name="answers" value="4" aria-describedby="check-equality-operator-option-4-feedback" /><span>scores in backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-operator-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>in ищет элемент, равный scores, среди элементов backup.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-identity-operator-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-identity-operator-title">Как проверить, ведут ли два имени к одному объекту списка?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-identity-operator-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-identity-operator-option-1"><input class="visually-hidden" type="checkbox" id="check-identity-operator-option-1" name="answers" value="1" aria-describedby="check-identity-operator-option-1-feedback" /><span>scores is backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-identity-operator-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>is проверяет идентичность объектов, на которые ссылаются имена.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-identity-operator-option-2"><input class="visually-hidden" type="checkbox" id="check-identity-operator-option-2" name="answers" value="2" aria-describedby="check-identity-operator-option-2-feedback" /><span>scores == backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-identity-operator-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разные списки с одинаковыми элементами тоже дадут True.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-identity-operator-option-3"><input class="visually-hidden" type="checkbox" id="check-identity-operator-option-3" name="answers" value="3" aria-describedby="check-identity-operator-option-3-feedback" /><span>len(scores) == len(backup)</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-identity-operator-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Совпадение длины ничего не говорит об общей ссылке.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-identity-operator-option-4"><input class="visually-hidden" type="checkbox" id="check-identity-operator-option-4" name="answers" value="4" aria-describedby="check-identity-operator-option-4-feedback" /><span>scores != backup</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-identity-operator-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это проверка неравенства содержимого.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-index-path-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-index-path-title">Как обратиться к оценке 11 в этом журнале?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Журнал для поиска индексов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Журнал для поиска индексов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [7, 9, 11]]</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-index-path-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-index-path-option-1"><input class="visually-hidden" type="checkbox" id="check-index-path-option-1" name="answers" value="1" aria-describedby="check-index-path-option-1-feedback" /><span>grades[1][2]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-index-path-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс 1 выбирает второй вложенный список [7, 9, 11], индекс 2 выбирает его третий элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-index-path-option-2"><input class="visually-hidden" type="checkbox" id="check-index-path-option-2" name="answers" value="2" aria-describedby="check-index-path-option-2-feedback" /><span>grades[2][1]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-index-path-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Внешнего индекса 2 нет: в журнале два вложенных списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-index-path-option-3"><input class="visually-hidden" type="checkbox" id="check-index-path-option-3" name="answers" value="3" aria-describedby="check-index-path-option-3-feedback" /><span>grades[1][1]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-index-path-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Эта запись вернёт 9, второй элемент второго вложенного списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-index-path-option-4"><input class="visually-hidden" type="checkbox" id="check-index-path-option-4" name="answers" value="4" aria-describedby="check-index-path-option-4-feedback" /><span>grades[0][2]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-index-path-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В первом вложенном списке два элемента, поэтому внутренний индекс 2 вне границ.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-nested-copy-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-nested-copy-title">Какие связи создаёт copy() в этом примере?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Связи после copy()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Связи после copy()">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+backup = grades.copy()</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-nested-copy-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-nested-copy-option-1"><input class="visually-hidden" type="checkbox" id="check-nested-copy-option-1" name="answers" value="1" aria-describedby="check-nested-copy-option-1-feedback" /><span>Внешние списки разные, а соответствующие внутренние списки общие.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-copy-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>backup is grades даст False, а backup[0] is grades[0] даст True.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-nested-copy-option-2"><input class="visually-hidden" type="checkbox" id="check-nested-copy-option-2" name="answers" value="2" aria-describedby="check-nested-copy-option-2-feedback" /><span>Внешний список общий, а внутренние списки разные.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-copy-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>copy() создаёт именно новый внешний список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-nested-copy-option-3"><input class="visually-hidden" type="checkbox" id="check-nested-copy-option-3" name="answers" value="3" aria-describedby="check-nested-copy-option-3-feedback" /><span>Все списки на всех уровнях становятся независимыми.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-copy-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>copy() не копирует внутренние списки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-nested-copy-option-4"><input class="visually-hidden" type="checkbox" id="check-nested-copy-option-4" name="answers" value="4" aria-describedby="check-nested-copy-option-4-feedback" /><span>Внешний список и все вложенные списки остаются теми же объектами.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-copy-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Внешний объект backup новый, хотя его элементы общие.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-nested-deepcopy-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-nested-deepcopy-title">Какие связи создаёт deepcopy() в этом примере?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Связи после deepcopy()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Связи после deepcopy()">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">from copy import deepcopy
+
+grades = [[8, 10], [12]]
+backup = deepcopy(grades)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-nested-deepcopy-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-nested-deepcopy-option-1"><input class="visually-hidden" type="checkbox" id="check-nested-deepcopy-option-1" name="answers" value="1" aria-describedby="check-nested-deepcopy-option-1-feedback" /><span>Внешний список и оба вложенных списка отделены от исходных списков.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-deepcopy-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Все три списка скопированы. Изменение вложенного списка backup не затронет вложенный список grades.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-nested-deepcopy-option-2"><input class="visually-hidden" type="checkbox" id="check-nested-deepcopy-option-2" name="answers" value="2" aria-describedby="check-nested-deepcopy-option-2-feedback" /><span>Создаётся только новый внешний список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-deepcopy-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>deepcopy продолжает копирование и во вложенных списках.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-nested-deepcopy-option-3"><input class="visually-hidden" type="checkbox" id="check-nested-deepcopy-option-3" name="answers" value="3" aria-describedby="check-nested-deepcopy-option-3-feedback" /><span>Оба имени ведут к одному внешнему списку.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-deepcopy-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это было бы верно для простого присваивания.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-nested-deepcopy-option-4"><input class="visually-hidden" type="checkbox" id="check-nested-deepcopy-option-4" name="answers" value="4" aria-describedby="check-nested-deepcopy-option-4-feedback" /><span>Исходные вложенные списки удаляются из grades.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-nested-deepcopy-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Копирование не удаляет исходные данные.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-shallow-value-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-shallow-value-title">Что выведет изменение внутри поверхностной копии?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Предскажите вывод: вложенная поверхностная копия</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Предскажите вывод: вложенная поверхностная копия">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">grades = [[8, 10], [12]]
+backup = grades.copy()
+backup[0][0] = 7
+print(grades)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-shallow-value-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-shallow-value-option-1"><input class="visually-hidden" type="checkbox" id="check-shallow-value-option-1" name="answers" value="1" aria-describedby="check-shallow-value-option-1-feedback" /><span>[[7, 10], [12]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-value-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>backup[0] и grades[0] ведут к одному вложенному списку. Изменён его элемент 0.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-shallow-value-option-2"><input class="visually-hidden" type="checkbox" id="check-shallow-value-option-2" name="answers" value="2" aria-describedby="check-shallow-value-option-2-feedback" /><span>[[8, 10], [12]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-value-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Исходный вложенный список сохранился бы при отдельной копии вложенного списка или deepcopy.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-shallow-value-option-3"><input class="visually-hidden" type="checkbox" id="check-shallow-value-option-3" name="answers" value="3" aria-describedby="check-shallow-value-option-3-feedback" /><span>[[7], [12]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-value-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Заменена одна оценка. Остальные элементы вложенного списка сохранились.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-shallow-value-option-4"><input class="visually-hidden" type="checkbox" id="check-shallow-value-option-4" name="answers" value="4" aria-describedby="check-shallow-value-option-4-feedback" /><span>[[8, 10], [7]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-shallow-value-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Первый индекс 0 выбирает первый вложенный список, а не второй.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-deep-value-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-deep-value-title">Что выведет изменение внутри глубокой копии?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Предскажите вывод: глубокая копия</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Предскажите вывод: глубокая копия">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">from copy import deepcopy
+
+grades = [[8, 10], [12]]
+backup = deepcopy(grades)
+backup[0][0] = 7
+print(grades)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-deep-value-title">
+<fieldset><legend>Отметьте верные варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-deep-value-option-1"><input class="visually-hidden" type="checkbox" id="check-deep-value-option-1" name="answers" value="1" aria-describedby="check-deep-value-option-1-feedback" /><span>[[8, 10], [12]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-value-option-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вложенный список backup отделён от исходного вложенного списка grades.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-deep-value-option-2"><input class="visually-hidden" type="checkbox" id="check-deep-value-option-2" name="answers" value="2" aria-describedby="check-deep-value-option-2-feedback" /><span>[[7, 10], [12]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-value-option-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Так было бы при поверхностной копии внешнего списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-deep-value-option-3"><input class="visually-hidden" type="checkbox" id="check-deep-value-option-3" name="answers" value="3" aria-describedby="check-deep-value-option-3-feedback" /><span>[[7, 10], [7]]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-value-option-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Меняется только первый вложенный список копии, а grades не меняется вообще.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-deep-value-option-4"><input class="visually-hidden" type="checkbox" id="check-deep-value-option-4" name="answers" value="4" aria-describedby="check-deep-value-option-4-feedback" /><span>Возникнет ошибка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-deep-value-option-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>deepcopy импортирован, все индексы существуют, замена элемента допустима.</p></div></div>
+</div>
+</div>
+</fieldset>
+<button class="quiz__submit-button" type="submit">Ответить</button>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form>
+</div>
+</aside>
+</div>
+</section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

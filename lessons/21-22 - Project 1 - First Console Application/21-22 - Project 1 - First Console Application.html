@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Git и GitHub для первого консольного проекта: установка, клонирование заготовки, свой репозиторий, коммиты, push, pull и сдача по ссылке. Подробный самоучитель для Windows PowerShell."
+    />
+    <title>21-22 - Project 1 - First Console Application</title>
+    <!-- Python icon: https://www.python.org/static/favicon.ico -->
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">21-22 - Project 1 - First Console Application</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="install-git">
+<h2>01 / Скачать и установить Git</h2>
+<div class="section-content">
+
+<p>Откройте <a href="https://git-scm.com/">официальный сайт Git</a>. Перейдите в раздел <strong>Install</strong> и выберите <strong>Windows</strong>. Можно сразу открыть <a href="https://git-scm.com/install/windows">страницу установки Git для Windows</a>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/git-scm.png" alt="Главная страница сайта Git: переход в раздел Install" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 1. Раздел Install на сайте Git</figcaption>
+</figure>
+<p>В разделе <strong>Standalone Installer</strong> скачайте установщик <strong>Setup</strong> для своего компьютера. Для большинства компьютеров подходит <strong>x64</strong>. Для Windows на <strong>ARM</strong> нужен <strong>ARM64</strong>. Тип системы можно посмотреть в параметрах Windows: «Система» → «О системе». <strong>Нужен установщик, а не Portable</strong>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/git-scm-install.png" alt="Страница установки Git для Windows: ссылки на установщики в разделе Standalone Installer" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 2. Выбор установщика Git для Windows</figcaption>
+</figure>
+<p>Откройте скачанный файл <code>.exe</code>. Если Windows запросит разрешение на установку, подтвердите его. Проходите установщик кнопкой <strong>Next</strong>. Обратите внимание на следующие настройки. Проставьте их как указано на картинках.</p>
+<p>Здесь выставляем по умолчанию название ветки <code>main</code>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/main.png" alt="Установщик Git: выбор main как имени начальной ветки" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 3. Имя начальной ветки main</figcaption>
+</figure>
+<p>Здесь добавляем <code>git</code> в <strong>PATH</strong>, чтобы PowerShell мог находить команду <code>git</code>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/path.png" alt="Установщик Git: настройка PATH для запуска Git из командной строки и других программ" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 4. Добавление Git в PATH</figcaption>
+</figure>
+<p>Здесь выбираем <strong>Git Credential Manager</strong>, чтобы он помогал войти в GitHub через браузер при первой отправке и запоминал вход.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/git-credential-manager.png" alt="Установщик Git: выбор Git Credential Manager для управления учётными данными" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 5. Выбор Git Credential Manager</figcaption>
+</figure>
+<p>Все остальные настройки не трогайте, просто жмите <strong>Next</strong>.</p>
+<p>Полностью закройте ранее открытые окна PowerShell и Windows Terminal. Через меню «Пуск» откройте Windows PowerShell или новую вкладку PowerShell в Windows Terminal. Выполните проверку.</p>
+
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: установлен ли Git</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: установлен ли Git">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git --version</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: установлен ли Git">git version 2.56.0.windows.1</pre>
+</div>
+</div>
+<p>Номер выше приведён как пример: ваша версия может отличаться. Важно, что команда вывела строку с версией и не сообщила об ошибке.</p>
+</div>
+</section>
+<section id="github-account">
+<h2>02 / Зарегистрироваться на GitHub</h2>
+<div class="section-content">
+<p>Если у вас уже есть личный аккаунт GitHub, войдите в него и проверьте подтверждение почты. Создавать второй аккаунт для этого проекта не нужно.</p>
+<ol class="content-list">
+<li>Откройте <a href="https://github.com/signup">регистрацию GitHub</a>. Создайте бесплатный личный аккаунт, следуя подсказкам формы. При регистрации по электронной почте укажите свой адрес и задайте пароль.</li>
+<li>Выберите свободное имя пользователя, <strong>username</strong>. Оно будет частью адресов ваших репозиториев. Например, у учебного пользователя <code>tom-student</code> профиль имеет адрес <code>https://github.com/tom-student</code>. Это пример, у вас будет своё имя.</li>
+<li>Выполните предложенную проверку и подтвердите электронную почту по письму GitHub. Если письма нет, проверьте папку спама и адрес в форме. Подтверждённая почта нужна для основных действий, включая создание репозитория.</li>
+<li>Войдите в аккаунт. Откройте меню своей аватарки в правом верхнем углу и выберите <strong>Your profile</strong>. Посмотрите <strong>username</strong> на странице и в её адресной строке.</li>
+</ol>
+<p><strong>Username</strong> может отличаться от отображаемого имени в профиле и от имени автора коммитов. В ссылку на репозиторий мы подставляем именно <strong>username</strong>.</p>
+</div>
+</section>
+<section id="git-author">
+<h2>03 / Один раз настроить имя и почту</h2>
+<div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="commit-definition-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="commit-definition-title">Коммит</h3>
+<div class="special-block__body">
+<p><strong>Коммит</strong> в Git фиксирует состояние отслеживаемых файлов проекта в истории. Это контрольная точка: позже можно посмотреть, что изменилось по сравнению с предыдущей версией, и вернуться к сохранённому состоянию. У коммита есть уникальный идентификатор, сведения об авторе, время и сообщение с описанием изменений.</p>
+</div>
+</aside>
+<p>В каждом коммите Git записывает автора. Настроим имя и почту до первого собственного коммита. Это подпись в истории: она не выполняет вход в GitHub и не подтверждает права на репозиторий.</p>
+<p>Для проверки автора вызовите команды, указанные ниже.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: проверить автора</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: проверить автора">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git config --global user.name
+git config --global user.email
+git config --global init.defaultBranch</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: проверить автора">Tom Student
+student@example.com
+main</pre>
+</div>
+</div>
+<p>Поменять их можно следующими командами.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: настроить автора</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: настроить автора">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git config --global user.name "Tom Student"
+git config --global user.email "student@example.com"
+git config --global init.defaultBranch main</code></pre>
+</div>
+<p>Вместо <code>Tom Student</code> укажите своё имя, например имя и фамилию латиницей. Вместо <code>student@example.com</code> укажите подтверждённую почту своего GitHub-аккаунта или точный адрес noreply из настроек. Учебный адрес из примера не используйте для своих коммитов. <code>init.defaultBranch</code> отвечает за ветку по умолчанию (обычно это <code>main</code>).</p>
+<aside class="special-block special-block--warning" aria-labelledby="email-privacy-title">
+<div class="special-block__header"><span class="special-block__label">Внимание</span></div>
+<h3 class="special-block__title" id="email-privacy-title">Выберите почту до создания коммитов</h3>
+<div class="special-block__body">
+<p>Почта автора сохраняется в истории. После публикации репозитория её смогут увидеть другие люди. Чтобы скрыть личный адрес, откройте GitHub: <strong>аватарка → Settings → Emails</strong>, включите <strong>Keep my email addresses private</strong> и скопируйте показанный GitHub адрес <strong>noreply</strong>. Не составляйте его по шаблону: используйте точное значение из своего аккаунта. Поздняя смена настройки Git не меняет почту в уже созданных коммитах.</p>
+</div>
+</aside>
+<p>Параметр <code>--global</code> применяет настройку ко всем вашим Git-репозиториям в текущей учётной записи Windows. Обычно её достаточно выполнить один раз.</p>
+</div>
+</section>
+<section id="clone-starter">
+<h2>04 / Клонировать репозиторий преподавателя</h2>
+<div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="repository-definition-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="repository-definition-title">Репозиторий: локальный и удалённый</h3>
+<div class="special-block__body">
+<p><strong>Репозиторий</strong> в Git хранит версии файлов проекта и историю их изменений в виде коммитов. Благодаря этой истории можно сравнить версии и узнать, кто и что изменил.</p>
+<ul class="content-list">
+<li><strong>Локальный репозиторий</strong> находится на вашем компьютере. Обычно это служебная папка <code>.git</code> внутри папки проекта, рядом с файлами, которые вы редактируете. Создавать коммиты и просматривать сохранённую историю можно без интернета.</li>
+<li><strong>Удалённый репозиторий</strong> находится по отдельному адресу, в нашем случае на GitHub. Через него можно делиться проектом и получать изменения с другого компьютера.</li>
+</ul>
+</div>
+</aside>
+<p>Получите у преподавателя ссылку на учебную заготовку, предназначенную для копирования студентами. Для проекта <strong>Student Profile</strong> примером служит <a href="https://github.com/Zeyafix/task-student-profile">репозиторий task-student-profile</a>. Если преподаватель выдал другой адрес или отдельную версию после занятия, используйте выданную ссылку.</p>
+
+<p>Откройте репозиторий в браузере. На вкладке <strong>Code</strong> нажмите кнопку <strong>Code</strong>, выберите <strong>HTTPS</strong> и скопируйте адрес, заканчивающийся на <code>.git</code>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/git-clone.png" alt="Меню Code в репозитории GitHub: HTTPS-адрес и кнопка его копирования для клонирования" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 6. Копирование HTTPS-адреса для клонирования</figcaption>
+</figure>
+<p>В Проводнике откройте папку, куда собираетесь клонировать репозиторий. Например, <code>C:\Users\Tom\Python Bootcamp</code>. В этой папке откройте PowerShell. Дальше введите <code>git clone &lt;URL.git&gt; &lt;REPO-NAME&gt;</code>, где вместо <code>&lt;URL.git&gt;</code> вставьте скопированный <strong>HTTPS</strong>, а вместо <code>&lt;REPO-NAME&gt;</code> укажите название. Например, может получится как указано ниже.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: шаблон клонирования</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: шаблон клонирования">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git clone https://github.com/Zeyafix/task-student-profile.git first-console-application
+cd first-console-application</code></pre>
+</div>
+<p>Команда <code>clone</code> скачивает файлы и историю, создаёт локальный репозиторий и запоминает исходный адрес под именем <code>origin</code>. Последнее слово в команде задаёт имя новой папки на вашем компьютере. Переходите в неё только после успешного клонирования. Если папка с таким именем уже существует и содержит файлы, не удаляйте её: проверьте, не ваш ли это готовый клон, или выберите другую родительскую папку.</p>
+<p>Выполните следующие команды, чтобы проверить репозиторий.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: проверить полученный клон</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: проверить полученный клон">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git status
+git log --oneline -n 5</code></pre>
+</div>
+<p>В <code>status</code> вы увидите текущую ветку и состояние файлов, а в <code>log</code> несколько коммитов. Сообщения и идентификаторы зависят от её версии.</p>
+<p>Выполните ещё одну команду.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: адрес сразу после клонирования</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: адрес сразу после клонирования">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git remote -v</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: адрес сразу после клонирования">origin  https://github.com/Zeyafix/task-student-profile.git (fetch)
+origin  https://github.com/Zeyafix/task-student-profile.git (push)</pre>
+</div>
+</div>
+<p>Строка <code>fetch</code> показывает адрес для получения, <code>push</code> для отправки. Сейчас обе ведут к преподавателю. В следующем разделе заменим их своим адресом. Скрытую папку <code>.git</code> не трогайте, в ней находится история и настройки.</p>
+</div>
+</section>
+<section id="own-origin">
+<h2>05 / Связать клон со своим репозиторием</h2>
+<div class="section-content">
+<p>Теперь создадим место для вашей работы на GitHub. Локальный клон уже содержит историю преподавателя, поэтому новый удалённый репозиторий должен быть пустым.</p>
+<p>Войдите в свой GitHub-аккаунт. В верхнем меню «+» выберите <strong>New repository</strong>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/git-new-repository.png" alt="Меню плюс на GitHub с пунктом New repository для создания репозитория" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 7. Создание репозитория через New repository</figcaption>
+</figure>
+<p>В <strong>Owner</strong> выберите свой личный аккаунт. В <strong>Repository name</strong> введите название репозитория, например <code>first-console-application</code>. Убедитесь, что такого репозитория в аккаунте ещё нет. Выберите <strong>Public</strong>, чтобы другие пользователи могли видеть, что находится в репозитории (если вы не собираетесь ни с кем делиться своим репозиторием, то ставьте <strong>Private</strong>). Оставьте выключенным добавление README, для .gitignore и License выберите вариант без добавления. Эти файлы сейчас создавать на сайте не нужно. Нажмите <strong>Create repository</strong>.</p>
+<p>На странице пустого репозитория выберите HTTPS и скопируйте адрес. Не выполняйте все предложенные GitHub команды: репозиторий на компьютере у вас уже есть, нужна только ссылка.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/21/git-copy.png" alt="Страница пустого репозитория GitHub: HTTPS-адрес и кнопка его копирования" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 8. Копирование HTTPS-адреса своего репозитория</figcaption>
+</figure>
+<p>Вернитесь в PowerShell, где открыт ваш репозиторий. Введите <code>git remote set-url origin &lt;URL.git&gt;</code>. У вас получится что-то подобное:</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: заменить адрес origin</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: заменить адрес origin">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git remote set-url origin https://github.com/tom-student/first-console-application.git</code></pre>
+</div>
+<p>Затем выполните команду <code>git remote -v</code>, чтобы проверить наличие удалённого репозитория. Вы увидите что-то подобное:</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: проверить свой адрес</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: проверить свой адрес">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git remote -v</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: проверить свой адрес">origin  https://github.com/tom-student/first-console-application.git (fetch)
+origin  https://github.com/tom-student/first-console-application.git (push)</pre>
+</div>
+</div>
+<p>Команда <code>set-url</code> меняет сохранённый адрес. Существующие файлы, коммиты и авторство остаются теми же, что изначально были в клонированном репозитории, а все последующие действия будут связаны с вашим удалённым репозиторием. <code>origin</code> отражает название удалённого репозитория.</p>
+<p>Выполните следующий код, чтобы проверить ветку.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: проверить текущую ветку</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: проверить текущую ветку">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git status</code></pre>
+</div>
+<p>В строке <code>On branch main</code> имя текущей ветки уже подходящее. Если вместо <code>main</code> указано другое имя, например <code>master</code>, один раз переименуйте текущую ветку в этом локальном учебном клоне:</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: только если ветка называется иначе</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: только если ветка называется иначе">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git branch -M main</code></pre>
+</div>
+<p>Эта команда переименовывает текущую ветку. В нашем маршруте используем одну ветку <code>main</code>. До первой отправки <code>status</code> ещё может упоминать старую связь с <code>origin/master</code> или <code>origin/main</code>: это сохранённые сведения клона, а не проверка содержимого нового сайта. Дальше первой отправкой с <code>-u</code> мы зададим нужную связь.</p>
+</div>
+</section>
+<section id="status-and-history">
+<h2>06 / Изменения и коммиты</h2>
+<div class="section-content">
+<p>Команда <code>git status</code> отвечает на вопрос «Что сейчас происходит в рабочей папке?». Она ничего не сохраняет и не отправляет. Запускайте её перед подготовкой изменений, перед коммитом и после него. Ниже показаны сокращённые фрагменты вывода: подсказки Git и сведения о связи с удалённой веткой могут занимать дополнительные строки.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Как читать git status">
+<table><caption>Как читать git status</caption>
+<thead><tr><th scope="col">Фрагмент вывода</th><th scope="col">Что он означает</th></tr></thead>
+<tbody>
+<tr><td><code>On branch main</code></td><td>Вы работаете в ветке main.</td></tr>
+<tr><td><code>Untracked files:</code></td><td>Новые файлы, которые Git ещё не отслеживает. Они не попадут в коммит сами.</td></tr>
+<tr><td><code>Changes not staged for commit:</code></td><td>Изменения отслеживаемых файлов ещё не подготовлены для следующего коммита.</td></tr>
+<tr><td><code>Changes to be committed:</code></td><td>Эти изменения уже подготовлены и попадут в следующий коммит.</td></tr>
+<tr><td><code>modified: main.py</code></td><td>Файл main.py изменён. Смотрите, под каким заголовком находится эта строка: именно заголовок определяет, подготовлен ли он.</td></tr>
+<tr><td><code>nothing to commit, working tree clean</code></td><td>Нет подготовленных или незафиксированных изменений и неотслеживаемых файлов, которые показывает status. Игнорируемые файлы могут оставаться в папке.</td></tr>
+</tbody></table>
+</div>
+<p>Проследим за одним файлом <code>main.py</code>. Этот раздел показывает весь переход между состояниями, а следующий подробно объясняет подготовку и коммит. Если пройдёте пример сейчас, повторно делать тот же коммит в разделе 08 не нужно.</p>
+<ol class="content-list">
+<li>Откройте папку клона в редакторе кода. Если <code>main.py</code> ещё нет, создайте его в корне проекта. Если файл уже есть, сохраните существующую программу и добавьте одну отдельную строку приветствия в подходящем месте <code>print("Hello, student!")</code>. Не заменяйте весь проект учебным примером.</li>
+<li>Введите строку из блока ниже и сохраните файл через <strong>Ctrl + S</strong>. Затем вернитесь в PowerShell, который открыт в папке проекта, и выполните <code>git status</code>.</li>
+</ol>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: после сохранения существующего файла</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: после сохранения существующего файла">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git status</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: после сохранения существующего файла">On branch main
+Changes not staged for commit:
+  modified:   main.py</pre>
+</div>
+</div>
+<p>Если файл создан впервые, вместо этого вы увидите <code>Untracked files:</code> и под ним <code>main.py</code>. Это значит, с файлом <code>main.py</code> произошли изменения (его только добавили, изменили или удалили) и эти изменения пока не запомнились гитом.</p>
+<p>Вызовем команду, чтобы гит запомнил текущие изменения файла <code>main.py</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: подготовить файл и проверить</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: подготовить файл и проверить">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git add main.py
+git status</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: подготовить файл и проверить">On branch main
+Changes to be committed:
+  modified:   main.py</pre>
+</div>
+</div>
+<p>Описание после вызова команды <code>add</code> может отличаться. Гит запомнил текущий вариант файла <code>main.py</code> для следующего коммита.</p>
+<p>Теперь зафиксируем подготовленные изменения с помощью <code>git commit -m "Add greeting"</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: зафиксировать подготовленное изменение</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: зафиксировать подготовленное изменение">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git commit -m "Add greeting"
+git status</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: зафиксировать подготовленное изменение">[main a1b2c3d] Add greeting
+ 1 file changed, 1 insertion(+)
+On branch main
+nothing to commit, working tree clean</pre>
+</div>
+</div>
+<p>Команда <code>commit</code> создаёт контрольную точку изменений. Параметр <code>-m</code> позволяет через пробел в кавычках кратко указать комментарий. Обычно в комментариях кратко указывают действия в повелительном наклонении, которые отражают изменения.</p>
+<p>Идентификатор <code>a1b2c3d</code> условный, у вас будет другой. Если кроме <code>main.py</code> вы изменяли другие файлы, они могут остаться в <code>status</code>. Чистая папка в примере означает, что это было единственное изменение.</p>
+<aside class="special-block special-block--tip" aria-labelledby="stage-all-title">
+<div class="special-block__header"><span class="special-block__label">Совет</span></div>
+<h3 class="special-block__title" id="stage-all-title">Когда изменилось несколько файлов</h3>
+<div class="special-block__body">
+<p>Из корня проекта <code>git add .</code> готовит все неигнорируемые новые файлы и изменения в текущей папке и вложенных папках, включая удаления отслеживаемых файлов. Точка означает текущую папку. Сначала просмотрите список: случайный файл тоже может попасть в коммит.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: подготовка всех нужных изменений</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: подготовка всех нужных изменений">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git status
+git add .
+git status</code></pre>
+</div>
+<p>Перед коммитом убедитесь, что в группе <code>Changes to be committed</code> только нужные файлы. Если сомневаетесь, используйте <code>git add</code> с именами отдельных файлов.</p>
+</div>
+</aside>
+<p>Чтобы увидеть краткую историю коммитов, полезна следующая команда:</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: последние коммиты</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: последние коммиты">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git log --oneline -n 5</code></pre>
+<div class="code-example__output">
+<div class="code-example__output-title">Пример вывода</div>
+<pre tabindex="0" aria-label="Вывод примера: PowerShell: последние коммиты">a1b2c3d Add greeting
+83d29ab First commit</pre>
+</div>
+</div>
+<p><code>--oneline</code> выводит по одной короткой строке на коммит, <code>-n 5</code> ограничивает список пятью последними коммитами. Если коммитов меньше, строк будет меньше. Новые стоят сверху. Слева короткий идентификатор, справа сообщение автора. Git также может показать имена веток в скобках.</p>
+<p><code>log</code> показывает локальную историю. Он не показывает правки, которые ещё не закоммичены, и не доказывает, что коммит отправлен на GitHub. Даже чистый <code>status</code> возможен до публикации: это состояние рабочей папки, а не проверка сайта.</p>
+<p>В корне репозитория создайте файл <code>.gitignore</code> и впишите в него следующее:</p>
+<div class="code-example">
+<div class="code-example__header"><span>Файл .gitignore: типичные исключения Python</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Файл .gitignore: типичные исключения Python">Копировать</button></div>
+<pre tabindex="0"><code class="language-text">.venv/
+__pycache__/
+.env</code></pre>
+</div>
+<p>В файле <code>.gitignore</code> вписываются пути/файлы, которые не должны отслеживаться гитом. <code>.venv/</code> исключает папку локального виртуального окружения, <code>__pycache__/</code> служебный кэш Python, <code>.env</code> файл локальных настроек, где могут находиться секреты. Если этих файлов ещё нет, правила могут пригодиться позже.</p>
+<p>Сам <code>.gitignore</code> нужно добавить в Git и закоммитить, например командой <code>git add .gitignore</code> и обычным коммитом с сообщением <code>Add Python ignore rules</code>.</p>
+</div>
+</section>
+<section id="push-to-github">
+<h2>07 / Отправить коммиты на GitHub</h2>
+<div class="section-content">
+<p>Проверьте направление отправки ещё раз командой <code>git remote -v</code>. В обеих строках должны быть ваш username и ваш <code>first-console-application</code>. Если там всё ещё заготовка преподавателя, вернитесь к разделу 04 и исправьте адрес.</p>
+<p>Если указан ваш удалённый репозиторий, то выполните команду <code>git push -u origin main</code>. Здесь <code>push</code> отвечает за отправление локальных коммитов, <code>origin</code> за имя удалённого репозитория, <code>main</code> за локальную ветку. Параметр <code>-u</code> позволяет запомнить локальную ветку и удалённый репозиторий, чтобы все последующие вызовы <code>git push</code> по умолчанию считались как <code>git push origin main</code>. Если в удалённом репозитории отсутствует ветка <code>main</code>, то она создастся автоматически.</p>
+<p>При первом обращении, требующем входа, <strong>Git Credential Manager</strong> предложит авторизацию. Если вход уже сохранён, окно может не появиться. Клонирование публичной заготовки обычно не требует входа, а отправка в ваш репозиторий требует.</p>
+<ol class="content-list">
+<li>Если появилось окно <strong>Git Credential Manager</strong>, выберите вход через браузер, обычно <strong>Sign in with your browser</strong>.</li>
+<li>В открывшемся браузере проверьте аккаунт: нужен тот, которому принадлежит ваш репозиторий. Войдите в него.</li>
+<li>Подтвердите запрос авторизации <strong>Git Credential Manager</strong>, если он показан. Дождитесь сообщения об успешном входе.</li>
+<li>Вернитесь в PowerShell и дождитесь завершения <code>push</code>. После успешного входа менеджер сохранит учётные данные для последующих обращений.</li>
+</ol>
+
+<p>После успешного <code>push</code>, обновите страницу репозитория в браузере: вместо инструкции для пустого репозитория должны появиться файлы и последний коммит.</p>
+<p><code>push</code> отправляет коммиты. Несохранённый текст редактора, сохранённые правки без <code>add</code> и подготовленные правки без <code>commit</code> на сайте GitHub не появятся.</p>
+<p>Команда <code>git pull</code> получает изменения из связанного удалённого репозитория и применяет их к текущей локальной ветке. В нашем случае это обновление <code>main</code> из своего <code>origin</code>. Когда над проектом работают несколько человек, обычно перед <code>push</code> делают <code>git pull</code>.</p>
+<aside class="special-block special-block--warning" aria-labelledby="pull-conflicts-title">
+<div class="special-block__header"><span class="special-block__label">Внимание</span></div>
+<h3 class="special-block__title" id="pull-conflicts-title">Чистая папка и совместимая история различаются</h3>
+<div class="special-block__body">
+<p>Перед каждым <code>pull</code> проверяйте <code>status</code> и завершайте текущую работу. Локальный коммит сохраняет её в истории, но сам по себе не гарантирует отсутствие конфликта. Например, если вы изменили одну и ту же строку локально и через сайт, Git может попросить решить, какой вариант оставить.</p>
+<p>Если обычный <code>push</code> отклонён из-за новых коммитов на GitHub, сначала получите их через <code>pull</code> при чистой рабочей папке. После успешного объединения проверьте программу и повторите <code>push</code>.</p>
+</div>
+</aside>
+<p>Частый сценарий — на другом устройстве один раз клонируют репозиторий, затем используют <code>pull</code> перед работой, чтобы быть на последней версии коммитов.</p>
+<aside class="special-block special-block--tip" aria-labelledby="share-repository-title">
+<div class="special-block__header"><span class="special-block__label">Подсказка</span></div>
+<h3 class="special-block__title" id="share-repository-title">Как отправить ссылку на свою работу</h3>
+<div class="special-block__body">
+<ol class="content-list">
+<li>Откройте главную страницу своего репозитория на GitHub и обновите её. Проверьте, что видны ваши последние изменения и нужные файлы проекта.</li>
+<li>Скопируйте адрес из адресной строки браузера, например <code>https://github.com/tom-student/first-console-application</code>.</li>
+<li>Чтобы другие люди видели репозиторий, он должен быть публичным (<strong>Public</strong>). Откройте скопированную ссылку в приватном окне браузера без входа в GitHub и убедитесь, что файлы доступны.</li>
+</ol>
+</div>
+</aside>
+</div>
+</section>
+<section id="new-repository">
+<h2>08 / Создания своего репозитория с нуля</h2>
+<div class="section-content">
+<p>Предположим требуется создать полностью новый и чистый репозиторий.</p>
+<ol class="content-list">
+<li>Выберите существующую родительскую папку для проектов вне других Git-репозиториев. Перейдите в неё в PowerShell.</li>
+<li>Создайте новую пустую папку (например, <code>test</code>) и перейдите в неё.</li>
+<li>Создайте файл <code>README.md</code> в этой папке и поместите в него <code># Заголовок файла</code>.</li>
+</ol>
+<p>На GitHub создайте новый репозиторий (например, <code>test</code>) под своим аккаунтом: Public, без README, .gitignore и лицензии, как делали раннее. Скопируйте его HTTPS-адрес. Перед выполнением следующего блока замените <code>&lt;username&gt;</code> своим username, а <code>&lt;repo_name&gt;</code> на название вашего репозитория, вместе с угловыми скобками (например, <code>test</code>). Выполняйте строки по очереди.</p>
+<div class="code-example">
+<div class="code-example__header"><span>PowerShell: первая история и отправка нового проекта</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: PowerShell: первая история и отправка нового проекта">Копировать</button></div>
+<pre tabindex="0"><code class="language-powershell">git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/&lt;username&gt;/&lt;repo_name&gt;.git
+git push -u origin main</code></pre>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Что делает каждая строка">
+<table><caption>Что делает каждая строка</caption>
+<thead><tr><th scope="col">Команда</th><th scope="col">Результат</th></tr></thead>
+<tbody>
+<tr><td><code>git init</code></td><td>Создаёт Git-репозиторий и служебную папку .git в текущей папке test.</td></tr>
+<tr><td><code>git add .</code></td><td>Подготавливает созданный <code>README</code>. В этом примере других файлов пока нет.</td></tr>
+<tr><td><code>git commit -m "first commit"</code></td><td>Создаёт первый локальный коммит.</td></tr>
+<tr><td><code>git branch -M main</code></td><td>Задаёт текущей ветке имя <code>main</code>.</td></tr>
+<tr><td><code>git remote add origin</code> с HTTPS-адресом</td><td>Впервые добавляет сохранённый адрес удалённого репозитория.</td></tr>
+<tr><td><code>git push -u origin main</code></td><td>Отправляет первый коммит и запоминает связь веток.</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+<section id="amend-last-commit">
+<h2>09 / Исправление последнего коммита</h2>
+<div class="section-content">
+<p>Представьте, что вы сделали коммит с небольшим изменением <code>main.py</code>, но сразу заметили опечатку в этом же изменении. Если это <strong>ваш последний коммит и вы его ещё не отправляли</strong>, его можно заменить исправленной версией. Для этого достаточно вызвать <code>git commit --amend --no-edit</code>.</p>
+<p><code>--amend</code> заменяет последний коммит новым с учётом подготовленных изменений. <code>--no-edit</code> сохраняет прежний комментарий к коммиту.</p>
+<p>Если старый вариант <strong>не был отправлен</strong> на GitHub, обычного <code>git push</code> достаточно.</p>
+<p>Для обычной дальнейшей работы по-прежнему подходят новые коммиты.</p>
+<aside class="special-block special-block--warning" aria-labelledby="published-amend-title">
+<div class="special-block__header"><span class="special-block__label">Внимание</span></div>
+<h3 class="special-block__title" id="published-amend-title">Проверьте, был ли старый вариант на GitHub</h3>
+<div class="special-block__body">
+<p>Если же перед локальными изменениями вы уже отправили старый коммит, то после <code>amend</code> локальная и удалённая истории разойдутся. Обычный <code>push</code> может быть отклонён. Поэтому есть два способа, как действовать дальше.</p>
+<p>Первый вариант и наиболее простой — сохранить исправление отдельным обычным коммитом вместо <code>amend</code>, затем с помощью <code>git push</code> отправить на GitHub.</p>
+<p>Второй вариант — выполнить <code>git push --force-with-lease</code>. При выполнении этой команды Git сначала убеждается, что удалённая ветка не изменилась с момента, когда её последний раз видели. Если кто-то успел запушить новый коммит, команда обычно откажется перезаписывать его.</p>
+</div>
+</aside>
+</div>
+</section>
+    </main>
+    <div
+      id="copy-status"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+    ></div>
+  </body>
+</html>

@@ -1,7 +1,6 @@
 ## Next to cover
 
-- [19 - list Collection](lessons/19%20-%20list%20Collection/)
-- [20 - list Features](lessons/20%20-%20list%20Features/)
+- [21-22 - Project 1 - First Console Application](lessons/21-22%20-%20Project%201%20-%20First%20Console%20Application/)
 
 ## What we've already covered
 
@@ -23,6 +22,8 @@
 - [16 - Working with the for Loop](lessons/16%20-%20Working%20with%20the%20for%20Loop/)
 - [17 - string Collection](lessons/17%20-%20string%20Collection/)
 - [18 - string Methods](lessons/18%20-%20string%20Methods/)
+- [19 - list Collection](lessons/19%20-%20list%20Collection/)
+- [20 - list Features](lessons/20%20-%20list%20Features/)
 
 ## License
 

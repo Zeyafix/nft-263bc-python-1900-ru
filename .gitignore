@@ -1,6 +1,7 @@
 .venv
 /lessons/**/rubric.md
 /lessons/**/gold-standard
+/lessons/**/gold-standard.md
 /lessons/**/tests
 /lessons/**/_grading
 /lessons/**/prompt.md
@@ -9,9 +10,9 @@
 /lessons/**/gif-prompt.md
 /lessons/**/IMPORTANT.md
 /lessons/**/questions.md
-/lessons/**/gold-standard.md
 checklist.md
 .agents
 AGENTS.md
 students/*
+archive_student/*
 scripts/*

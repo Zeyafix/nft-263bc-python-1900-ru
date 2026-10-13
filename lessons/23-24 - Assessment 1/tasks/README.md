@@ -1,0 +1,17 @@
+Задачи, которые нужно выполнить:
+
+- [01-weekly-temperature](01/task/README.md)
+- [02-online-discount](02/task/README.md)
+- [03-interview-invitation](03/task/README.md)
+- [04-environment-quality](04/task/README.md)
+- [05-purchase-discount](05/task/README.md)
+- [06-pin-atm](06/task/README.md)
+- [07-water-reserve](07/task/README.md)
+- [08-parcel-selection](08/task/README.md)
+- [09-string-traversal](09/task/README.md)
+- [10-phone-normalization](10/task/README.md)
+- [11-login-validation](11/task/README.md)
+- [12-household-expenses](12/task/README.md)
+- [13-application-selection](13/task/README.md)
+- [14-group-grades](14/task/README.md)
+- [15-hall-booking](15/task/README.md)

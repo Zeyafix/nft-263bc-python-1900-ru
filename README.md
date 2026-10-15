@@ -1,6 +1,6 @@
 ## Next to cover
 
-- [21-22 - Project 1 - First Console Application](lessons/21-22%20-%20Project%201%20-%20First%20Console%20Application/)
+- [23-24 - Assessment 1](lessons/23-24%20-%20Assessment%201/)
 
 ## What we've already covered
 
@@ -24,6 +24,7 @@
 - [18 - string Methods](lessons/18%20-%20string%20Methods/)
 - [19 - list Collection](lessons/19%20-%20list%20Collection/)
 - [20 - list Features](lessons/20%20-%20list%20Features/)
+- [21-22 - Project 1 - First Console Application](lessons/21-22%20-%20Project%201%20-%20First%20Console%20Application/)
 
 ## License
 

@@ -1,0 +1,1765 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Словари dict в Python: подробный урок для самостоятельного изучения, ключи, чтение и изменение записей, перебор, копирование, подсчёт слов, учёт товаров и самопроверка." />
+    <title>26 - dict Collection</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">26 - dict Collection</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="review">
+<h2>01 / Повторение пройденного</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-hash-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-hash-title">Что означает хешируемость?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-hash-title">
+<fieldset><legend>Какие утверждения верны? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-hash-1"><input class="visually-hidden" type="checkbox" id="review-hash-1" name="answers" value="1" aria-describedby="review-hash-1-feedback" /><span>У объекта есть хеш, который не меняется в течение его жизни.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-hash-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Постоянство хеша позволяет использовать объект в хеш-таблице.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-hash-2"><input class="visually-hidden" type="checkbox" id="review-hash-2" name="answers" value="2" aria-describedby="review-hash-2-feedback" /><span>У равных хешируемых объектов должны совпадать хеши.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-hash-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Объекты, равные по ==, должны иметь одинаковый хеш.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-hash-3"><input class="visually-hidden" type="checkbox" id="review-hash-3" name="answers" value="3" aria-describedby="review-hash-3-feedback" /><span>Разные объекты обязательно имеют разные хеши.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-hash-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У разных значений бывают одинаковые хеши. Такие совпадения называют коллизиями.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-hash-4"><input class="visually-hidden" type="checkbox" id="review-hash-4" name="answers" value="4" aria-describedby="review-hash-4-feedback" /><span>Любой неизменяемый контейнер хешируем, независимо от содержимого.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-hash-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кортеж со списком внутри неизменяем, но не хешируем.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-collection-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-collection-title">Какие коллекции используют хешируемость?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-collection-title">
+<fieldset><legend>В каких изученных коллекциях элементы должны быть хешируемыми? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-collection-1"><input class="visually-hidden" type="checkbox" id="review-collection-1" name="answers" value="1" aria-describedby="review-collection-1-feedback" /><span>set</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-collection-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Элементы множества должны быть хешируемыми.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-collection-2"><input class="visually-hidden" type="checkbox" id="review-collection-2" name="answers" value="2" aria-describedby="review-collection-2-feedback" /><span>frozenset</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-collection-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У неизменяемого множества то же требование к элементам.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-collection-3"><input class="visually-hidden" type="checkbox" id="review-collection-3" name="answers" value="3" aria-describedby="review-collection-3-feedback" /><span>list</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-collection-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В списке могут находиться другие списки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-collection-4"><input class="visually-hidden" type="checkbox" id="review-collection-4" name="answers" value="4" aria-describedby="review-collection-4-feedback" /><span>tuple</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-collection-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кортеж может содержать список. Сам такой кортеж будет нехешируемым.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-types-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-types-title">Какие значения хешируемы?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-types-title">
+<fieldset><legend>Какие значения можно поместить в множество? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-types-1"><input class="visually-hidden" type="checkbox" id="review-types-1" name="answers" value="1" aria-describedby="review-types-1-feedback" /><span>42 и &quot;Alice&quot;</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-types-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Целое число и строка хешируемы.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-types-2"><input class="visually-hidden" type="checkbox" id="review-types-2" name="answers" value="2" aria-describedby="review-types-2-feedback" /><span>(1, &quot;A&quot;)</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-types-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Оба элемента кортежа хешируемы.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-types-3"><input class="visually-hidden" type="checkbox" id="review-types-3" name="answers" value="3" aria-describedby="review-types-3-feedback" /><span>frozenset({1, 2})</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-types-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>frozenset хешируем и может быть элементом другого множества.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-types-4"><input class="visually-hidden" type="checkbox" id="review-types-4" name="answers" value="4" aria-describedby="review-types-4-feedback" /><span>[1, 2]</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-types-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список не хешируем.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-types-5"><input class="visually-hidden" type="checkbox" id="review-types-5" name="answers" value="5" aria-describedby="review-types-5-feedback" /><span>{1, 2}</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-types-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Изменяемое множество set не хешируемо.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-types-6"><input class="visually-hidden" type="checkbox" id="review-types-6" name="answers" value="6" aria-describedby="review-types-6-feedback" /><span>(1, [2])</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-types-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список внутри делает весь кортеж нехешируемым.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-in-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-in-title">Что проверяет in?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-in-title">
+<fieldset><legend>Как понимать выражение <code>value in data</code> для списка или множества? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-in-1"><input class="visually-hidden" type="checkbox" id="review-in-1" name="answers" value="1" aria-describedby="review-in-1-feedback" /><span>Проверяет, есть ли равный <code>value</code> элемент в <code>data</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-in-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Результат проверки принадлежности имеет тип bool.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-in-2"><input class="visually-hidden" type="checkbox" id="review-in-2" name="answers" value="2" aria-describedby="review-in-2-feedback" /><span>Возвращает индекс найденного элемента.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-in-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>in возвращает True или False, а у множества вообще нет индексов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-in-3"><input class="visually-hidden" type="checkbox" id="review-in-3" name="answers" value="3" aria-describedby="review-in-3-feedback" /><span>Добавляет <code>value</code>, если его ещё нет.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-in-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверка ничего не добавляет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-in-4"><input class="visually-hidden" type="checkbox" id="review-in-4" name="answers" value="4" aria-describedby="review-in-4-feedback" /><span><code>not in</code> проверяет отсутствие элемента.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-in-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>not in даёт противоположный результат проверки принадлежности.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-index-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-index-title">Что такое индекс?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-index-title">
+<fieldset><legend>Какие утверждения об индексах списка верны? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-index-1"><input class="visually-hidden" type="checkbox" id="review-index-1" name="answers" value="1" aria-describedby="review-index-1-feedback" /><span>Индекс указывает позицию элемента в последовательности.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-index-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, items[0] читает первый элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-index-2"><input class="visually-hidden" type="checkbox" id="review-index-2" name="answers" value="2" aria-describedby="review-index-2-feedback" /><span>Первый элемент списка имеет индекс 0.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-index-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Положительные индексы начинаются с нуля.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-index-3"><input class="visually-hidden" type="checkbox" id="review-index-3" name="answers" value="3" aria-describedby="review-index-3-feedback" /><span>Индекс обязательно равен значению элемента.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-index-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В списке [50, 70] индекс 0 относится к значению 50.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-index-4"><input class="visually-hidden" type="checkbox" id="review-index-4" name="answers" value="4" aria-describedby="review-index-4-feedback" /><span>У любого контейнера есть доступ к первому элементу через [0].</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-index-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Множества не поддерживают такой доступ. У словаря скобки означают поиск по ключу.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+</div>
+</section>
+<section id="why-dict">
+<h2>02 / Зачем нужен словарь</h2>
+<div class="section-content">
+<p>Представьте журнал: у каждого студента есть уникальный ID и оценка. Нужно узнать оценку студента <code>102</code>. В списке пар придётся проверять записи, пока не встретится нужный ID. Кортеж в каждой записи содержит сначала ID, затем оценку; цикл распаковывает его в две переменные.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Поиск оценки в списке записей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Поиск оценки в списке записей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">records = [(101, 10), (102, 8), (103, 12)]
+target_id = 102
+for student_id, score in records:
+    if student_id == target_id:
+        print(score)
+        break</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Поиск оценки в списке записей">8</pre></div>
+</div>
+<p>Если обращение по ID требуется постоянно, удобно сразу связать ID с оценкой. У словаря мы указываем известный ключ в квадратных скобках. Писать собственный цикл поиска для этого не нужно.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Поиск оценки по ключу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Поиск оценки по ключу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8}
+print(scores[102])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Поиск оценки по ключу">8</pre></div>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/26/DictLookupComparison.gif" alt="Цикл проверяет пары в records до ID 102 и находит оценку 8; обращение scores[102] получает ту же оценку по ключу." loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 1. Поиск оценки перебором списка и по ключу словаря</figcaption>
+</figure>
+<aside class="special-block special-block--definition" aria-labelledby="dict-definition-title">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="dict-definition-title">Словарь dict</h3>
+<div class="special-block__body">
+<p>Словарь <code>dict</code> является изменяемой коллекцией пар «ключ: значение». Ключ помогает найти запись. Значение хранит связанные с ключом данные. Пара объединяет конкретный ключ и его значение.</p>
+</div>
+</aside>
+<p>В <code>scores = {101: 10, 102: 8}</code> ключ <code>101</code> обозначает ID студента, значение <code>10</code> обозначает его оценку, а <code>101: 10</code> является одной парой. Переменная <code>scores</code> ссылается на весь словарь.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Словарь scores как таблица">
+<table><caption>Словарь scores как таблица</caption>
+<thead><tr><th scope="col">Ключ: ID студента</th><th scope="col">Значение: оценка</th></tr></thead>
+<tbody>
+<tr><td>101</td><td>10</td></tr>
+<tr><td>102</td><td>8</td></tr>
+</tbody></table>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/26/DictKeyValuePairs.gif" alt="Пары словаря scores показаны в столбцах ключей и значений: ключу 101 соответствует 10, ключу 102 соответствует 8. Обращение scores[101] возвращает 10." loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 2. Ключ, значение и пара в словаре</figcaption>
+</figure>
+<p>Квадратные скобки знакомы по спискам, но их смысл зависит от коллекции. У списка внутри находится индекс, у словаря ключ. Даже числовой ключ не становится индексом.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Позиция списка и ключ словаря</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Позиция списка и ключ словаря">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">items = [10, 8]
+scores = {101: 10, 102: 8}
+print(items[0])
+print(scores[101])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Позиция списка и ключ словаря">10
+10</pre></div>
+</div>
+<p>Оба выражения дали <code>10</code>, но нашли его по разным правилам. <code>items[0]</code> берёт элемент на первой позиции. <code>scores[101]</code> ищет ключ <code>101</code>. Выражение <code>scores[0]</code> не означает «первая оценка»: оно потребует отдельную запись с ключом <code>0</code>.</p>
+</div>
+</section>
+<section id="creation">
+<h2>03 / Создание словаря и основные свойства</h2>
+<div class="section-content">
+<p>Чтобы начать пустой журнал и добавлять записи позже, создайте <code>{}</code> или вызовите <code>dict()</code> без аргументов. Если данные известны заранее, используйте литерал: фигурные скобки с парами. Двоеточие соединяет ключ с его значением, запятая отделяет одну пару от другой.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Пустой словарь и готовые записи</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пустой словарь и готовые записи">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">empty_scores = {}
+empty_profile = dict()
+student = {"name": "Alice", "age": 18}
+print(empty_scores)
+print(empty_profile)
+print(student)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Пустой словарь и готовые записи">{}
+{}
+{'name': 'Alice', 'age': 18}</pre></div>
+</div>
+<p>Список пар из предыдущего раздела можно преобразовать через <code>dict(pairs)</code>. Каждый элемент должен содержать ровно две части: ключ и значение. Это та же структура кортежа, которую мы распаковывали в <code>student_id, score</code>. Сам вызов <code>dict()</code> выполняет построение словаря за нас.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Из списка кортежей в словарь</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Из списка кортежей в словарь">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">pairs = [(101, 10), (102, 8)]
+student_id, score = pairs[0]
+scores = dict(pairs)
+print(student_id, score)
+print(scores)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Из списка кортежей в словарь">101 10
+{101: 10, 102: 8}</pre></div>
+</div>
+<p>Для строковых ключей, которые можно записать как имена аргументов, есть короткая форма <code>dict(name=&quot;Alice&quot;, age=18)</code>. Здесь слева от <code>=</code> стоят имена аргументов, а не переменные, которые нужно заранее создать. В словаре они становятся строками <code>&quot;name&quot;</code> и <code>&quot;age&quot;</code>. Для числовых ключей или ключа с пробелом удобнее литерал.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Строковые ключи из имён аргументов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Строковые ключи из имён аргументов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = dict(name="Alice", age=18)
+print(student)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Строковые ключи из имён аргументов">{'name': 'Alice', 'age': 18}</pre></div>
+</div>
+<p>У каждого ключа в словаре только одно текущее значение. Если равный ключ указан повторно, последнее значение заменяет предыдущее. Значения разных ключей могут совпадать: два студента вполне могут получить одинаковую оценку.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Повтор ключа и повтор значения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Повтор ключа и повтор значения">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8, 101: 12, 103: 8}
+print(scores)
+print(len(scores))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Повтор ключа и повтор значения">{101: 12, 102: 8, 103: 8}
+3</pre></div>
+</div>
+<p>Запись <code>101</code> теперь содержит <code>12</code>. Ключей три, поэтому <code>len(scores)</code> возвращает <code>3</code>: длина словаря равна количеству пар. Два значения <code>8</code> у разных ключей не мешают друг другу. Условие <code>if data</code> проверяет, есть ли в словаре хотя бы одна пара, независимо от истинности её значения.</p>
+<p>Ниже приведён пример того, как можно проверять на пустые словари.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Есть ли записи в журнале</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Есть ли записи в журнале">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {101: 0}
+if data:
+    print("Records:", len(data))
+else:
+    print("No records")
+
+data = {}
+if data:
+    print("Records:", len(data))
+else:
+    print("No records")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Есть ли записи в журнале">Records: 1
+No records</pre></div>
+</div>
+<p>Словарь сохраняет порядок добавления ключей. Этот порядок виден при печати и переборе. Обновление значения оставляет ключ на прежнем месте, а удаление ключа и последующее добавление помещают его в конец. Ни сортировка, ни доступ по позиции из этого не следуют.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Порядок вставки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Порядок вставки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {102: 8, 101: 10}
+data[102] = 9
+print(data)
+del data[102]
+data[102] = 12
+print(data)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Порядок вставки">{102: 9, 101: 10}
+{101: 10, 102: 12}</pre></div>
+</div>
+<p>В строке <code>data[102] = 9</code> мы записали новое значение по прежнему ключу. Команда <code>del data[102]</code> удалила пару целиком, поэтому следующая запись того же ключа стала новым добавлением. Подробно разберём эти операции в разделах 07 и 09.</p>
+</div>
+</section>
+<section id="keys">
+<h2>04 / Какие значения подходят для ключей</h2>
+<div class="section-content">
+<p>Словарь использует хешируемость для поиска по ключу. Ключ должен иметь неизменный хеш, а равные ключи должны иметь равные хеши. Значение словаря таким ограничением не связано: в качестве значения можно сохранить список, множество или другой словарь.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Строка, число, кортеж и frozenset как ключи</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Строка, число, кортеж и frozenset как ключи">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {
+    "name": "Alice",
+    101: [8, 10],
+    (2, 3): "desk",
+    frozenset({"read", "write"}): "editor",
+}
+print(data["name"])
+print(data[101])
+print(data[(2, 3)])
+print(data[frozenset({"write", "read"})])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Строка, число, кортеж и frozenset как ключи">Alice
+[8, 10]
+desk
+editor</pre></div>
+</div>
+<p>Кортеж <code>(2, 3)</code> подходит, потому что оба его элемента хешируемы. <code>frozenset</code> тоже хешируем: он неизменяем и состоит из хешируемых элементов. Порядок элементов множества не важен, поэтому оба набора прав из примера дают один и тот же ключ. В значении ключа <code>101</code> свободно хранится изменяемый список.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="bad-list-key-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="bad-list-key-title">Список нельзя использовать как ключ</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: ключ-список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: ключ-список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {[2, 3]: "desk"}</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: ключ-список">TypeError: cannot use 'list' as a dict key (unhashable type: 'list')</pre></div>
+</div>
+<p>Список не хешируем. Для пары координат используйте кортеж <code>(2, 3)</code>: <code>data = {(2, 3): &quot;desk&quot;}</code>.</p>
+</div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="bad-set-key-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="bad-set-key-title">Множество нельзя использовать как ключ</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: ключ-множество</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: ключ-множество">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {{"read", "write"}: "editor"}</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: ключ-множество">TypeError: cannot use 'set' as a dict key (unhashable type: 'set')</pre></div>
+</div>
+<p>Здесь внутренние фигурные скобки создают <code>set</code>. Для набора прав используйте <code>frozenset({&quot;read&quot;, &quot;write&quot;})</code>, как в рабочем примере выше.</p>
+</div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="bad-tuple-key-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="bad-tuple-key-title">Неизменяемость не гарантирует хешируемость</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: список внутри кортежа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: список внутри кортежа">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {(2, [3]): "desk"}</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: список внутри кортежа">TypeError: cannot use 'tuple' as a dict key (unhashable type: 'list')</pre></div>
+</div>
+<p>Сам кортеж менять нельзя, но его элемент является списком. Вложенный список делает кортеж нехешируемым. Если по смыслу нужны вложенные координаты, замените список кортежем: <code>(2, (3,))</code>.</p>
+</div>
+</aside>
+<p>Здесь показаны сообщения <strong>Python 3.14</strong>. В других версиях формулировка может быть короче, например <code>TypeError: unhashable type: &#x27;list&#x27;</code>. Причина та же: ключ или один из его элементов не хешируем.</p>
+<p>Тип ключа имеет значение. Строка <code>&quot;101&quot;</code> не равна числу <code>101</code>, поэтому эти ключи создают разные записи. Это особенно важно после <code>input()</code>, который возвращает строку: для поиска по числовому ID сначала требуется <code>int()</code> при корректном числовом вводе.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Строковый и числовой ID</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Строковый и числовой ID">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"101": "text ID", 101: "numeric ID"}
+print(len(data))
+print(data["101"])
+print(data[101])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Строковый и числовой ID">2
+text ID
+numeric ID</pre></div>
+</div>
+<p>Но разные типы не всегда означают разные ключи. Числа <code>1</code> и <code>1.0</code>, а также логическое значение <code>True</code> равны друг другу и имеют одинаковый хеш. Словарь считает их одним ключом.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Равные числовые ключи</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Равные числовые ключи">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {1: "integer", 1.0: "float", True: "boolean"}
+print(len(data))
+print(data[1])
+print(data[1.0])
+print(data[True])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Равные числовые ключи">1
+boolean
+boolean
+boolean</pre></div>
+</div>
+</div>
+</section>
+<section id="reading">
+<h2>05 / Чтение значения и проверка наличия ключа</h2>
+<div class="section-content">
+<p>Чтобы показать имя из профиля, напишите имя словаря и ключ в квадратных скобках: <code>student[&quot;name&quot;]</code>. Python находит пару с таким ключом и возвращает её значение. Строковый ключ нужно заключить в кавычки. Без кавычек <code>name</code> означало бы отдельную переменную.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Чтение имени</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Чтение имени">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "age": 18}
+print(student["name"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Чтение имени">Alice</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="missing-key-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="missing-key-title">Запрошенной записи нет</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: отсутствующий город</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: отсутствующий город">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "age": 18}
+print(student["city"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: отсутствующий город">KeyError: 'city'</pre></div>
+</div>
+<p>Ошибка <code>KeyError</code> сообщает об отсутствии запрошенного ключа. При обычном запуске программа остановится на этой строке. Исправление зависит от задачи: добавить обязательную запись или заранее проверить наличие необязательной.</p>
+</div>
+</aside>
+<p>Выражение <code>key in data</code> проверяет наличие ключа, а <code>key not in data</code> его отсутствие. Проверка не читает значение и не меняет словарь. Метод <code>values()</code> даёт доступ к значениям: чтобы искать среди них, пишут <code>value in data.values()</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Где именно ищет in</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Где именно ищет in">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "age": 18}
+print("name" in student)
+print("city" not in student)
+print("Alice" in student)
+print("Alice" in student.values())</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Где именно ищет in">True
+True
+False
+True</pre></div>
+</div>
+<p><code>Alice</code> есть среди значений, но ключа <code>&quot;Alice&quot;</code> нет. Поэтому третья строка вывода содержит <code>False</code>, а четвёртая <code>True</code>. Для необязательного поля можно сначала проверить ключ и только затем читать его значение. В следующем примере цикл позволяет проверить сразу оба случая.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Отдельные ветки для найденного и отсутствующего ключа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отдельные ветки для найденного и отсутствующего ключа">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "age": 18}
+for key in ["name", "city"]:
+    if key in student:
+        print(key, student[key])
+    else:
+        print(key, "not found")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Отдельные ветки для найденного и отсутствующего ключа">name Alice
+city not found</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="truthiness-key-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="truthiness-key-title">Истинность значения не проверяет наличие ключа</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Логическая ошибка: нулевая оценка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Логическая ошибка: нулевая оценка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 0}
+if scores[101]:
+    print("Record exists")
+else:
+    print("No record")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Логическая ошибка: нулевая оценка">No record</pre></div>
+</div>
+<p>Ключ 101 существует, но <code>scores[101]</code> вернул <code>0</code>. Условие посчитало ноль ложным и выбрало неверное сообщение. То же происходит со значениями <code>False</code> и <code>&quot;&quot;</code>. При отсутствующем ключе чтение вообще вызовет <code>KeyError</code> ещё до выбора ветки.</p>
+</div>
+</aside>
+<aside class="special-block special-block--correct" aria-labelledby="correct-key-title">
+<div class="special-block__header"><span class="special-block__label">Верно</span></div>
+<h3 class="special-block__title" id="correct-key-title">Проверяем наличие ключа</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Проверка наличия ключа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка наличия ключа">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 0}
+if 101 in scores:
+    print("Record exists:", scores[101])
+else:
+    print("No record")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Проверка наличия ключа">Record exists: 0</pre></div>
+</div>
+<p>Разделяйте вопросы «существует ли запись?» и «истинно ли её значение?». Для первого используйте <code>in</code>. Для второго читайте значение, когда наличие ключа уже известно.</p>
+</div>
+</aside>
+</div>
+</section>
+<section id="get">
+<h2>06 / Безопасное чтение через get()</h2>
+<div class="section-content">
+<p>Город в профиле может быть не заполнен. Если в этом случае достаточно показать запасной текст, удобно вызвать <code>student.get(&quot;city&quot;, &quot;Unknown&quot;)</code>. Первый аргумент является ключом, второй значением по умолчанию. Метод возвращает найденное значение; запасной вариант используется только при отсутствии ключа.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Получаем обязательное и необязательное поле</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Получаем обязательное и необязательное поле">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice"}
+print(student.get("name"))
+print(student.get("city"))
+print(student.get("city", "Unknown"))
+print(student)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Получаем обязательное и необязательное поле">Alice
+None
+Unknown
+{'name': 'Alice'}</pre></div>
+</div>
+<p>Без второго аргумента значение по умолчанию равно <code>None</code>. Здесь <code>None</code> означает, что метод не нашёл запись. Последняя строка показывает: <code>get()</code> ничего не добавил в профиль. Безопасность относится к отсутствию ключа. Переданный ключ всё равно должен быть хешируемым.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Существующие ложные значения сохраняются</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Существующие ложные значения сохраняются">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"score": 0, "active": False, "city": "", "phone": None}
+print(data.get("score", 100))
+print(data.get("active", True))
+print("[" + data.get("city", "Unknown") + "]")
+print(data.get("phone", "Unknown"))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Существующие ложные значения сохраняются">0
+False
+[]
+None</pre></div>
+</div>
+<p>Каждый ключ существует, поэтому ни один запасной вариант не использован. Скобки в выводе <code>[]</code> помогают увидеть пустую строку между ними. <code>get()</code> не проверяет, насколько значение полезно для нашей задачи: если нужно заменить пустой текст, это отдельное правило программы.</p>
+<p>Решим одну задачу этими способами. Для профиля с обязательным городом можно сразу использовать скобки. Для необязательного города проверка <code>in</code> позволит, например, отдельно сообщить об отсутствии. <code>get()</code> сократит код, когда требуется просто напечатать текст.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Одна задача, три способа чтения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одна задача, три способа чтения">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "city": "Baku"}
+print(student["city"])
+
+if "city" in student:
+    print(student["city"])
+else:
+    print("Unknown")
+
+print(student.get("city", "Unknown"))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Одна задача, три способа чтения">Baku
+Baku
+Baku</pre></div>
+</div>
+<p>Один результат <code>None</code> не доказывает отсутствие ключа: такое значение могло быть сохранено намеренно. Чтобы отличить «телефон ещё не указан» от «поля телефона вообще нет», дополнительно проверьте <code>in</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Сохранённый None и отсутствующая запись</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сохранённый None и отсутствующая запись">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"phone": None}
+print(student.get("phone"))
+print(student.get("city"))
+print("phone" in student)
+print("city" in student)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Сохранённый None и отсутствующая запись">None
+None
+True
+False</pre></div>
+</div>
+<aside class="special-block special-block--correct" aria-labelledby="city-task-title">
+<div class="special-block__header"><span class="special-block__label">Верный подход</span></div>
+<h3 class="special-block__title" id="city-task-title">Разбор: необязательный город</h3>
+<div class="special-block__body">
+<p>Нужно вывести город из каждого профиля. Если ключа нет, выводим <code>Unknown</code>. Если сохранена пустая строка, оставляем её пустой. Сначала предскажите результат для трёх профилей, затем запустите пример.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Город есть, отсутствует или пуст</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Город есть, отсутствует или пуст">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">profiles = [
+    {"name": "Alice", "city": "Baku"},
+    {"name": "Bob"},
+    {"name": "Carol", "city": ""},
+]
+for profile in profiles:
+    city = profile.get("city", "Unknown")
+    print(profile["name"], "[" + city + "]")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Город есть, отсутствует или пуст">Alice [Baku]
+Bob [Unknown]
+Carol []</pre></div>
+</div>
+<p>У <code>Alice</code> найден <code>Baku</code>. У <code>Bob</code> нет ключа, поэтому получен <code>Unknown</code>. У <code>Carol</code> ключ есть, поэтому возвращена пустая строка. Имя читаем через <code>[]</code>, поскольку оно задано в каждом профиле.</p>
+</div>
+</aside>
+</div>
+</section>
+<section id="assignment">
+<h2>07 / Добавление и изменение записей</h2>
+<div class="section-content">
+<p>Чтобы записать оценку, используйте <code>data[key] = value</code>. Python сначала вычисляет правую часть, затем сохраняет значение по ключу. Если ключа не было, появится новая пара и длина увеличится. Если ключ уже был, изменится только его значение.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Обновляем оценку и добавляем студента</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Обновляем оценку и добавляем студента">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8}
+scores[102] = 9
+print(scores, len(scores))
+scores[103] = 12
+print(scores, len(scores))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Обновляем оценку и добавляем студента">{101: 10, 102: 9} 2
+{101: 10, 102: 9, 103: 12} 3</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="До и после записи по ключу">
+<table><caption>До и после записи по ключу</caption>
+<thead><tr><th scope="col">Шаг</th><th scope="col">Содержимое scores</th><th scope="col">Длина</th></tr></thead>
+<tbody>
+<tr><td>До изменения</td><td><code>{101: 10, 102: 8}</code></td><td>2</td></tr>
+<tr><td><code>scores[102] = 9</code></td><td><code>{101: 10, 102: 9}</code></td><td>2: заменили значение</td></tr>
+<tr><td><code>scores[103] = 12</code></td><td><code>{101: 10, 102: 9, 103: 12}</code></td><td>3: добавили пару</td></tr>
+</tbody></table>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/26/DictAssignAndInsert.gif" alt="Присваивание scores[102] = 9 заменяет значение и сохраняет длину 2. Присваивание scores[103] = 12 добавляет пару и увеличивает длину до 3." loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 3. Замена значения и добавление новой пары</figcaption>
+</figure>
+<p>Если количество товара нужно увеличить, а не заменить заранее известным числом, используйте сокращённое присваивание. <code>stock[&quot;pen&quot;] += 1</code> сначала читает старое значение, прибавляет единицу и записывает результат по тому же ключу.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Увеличиваем количество товара</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Увеличиваем количество товара">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 4}
+stock["pen"] += 1
+print(stock)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Увеличиваем количество товара">{'pen': 5}</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="increment-missing-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="increment-missing-title">Для += запись должна существовать</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: увеличение отсутствующего счётчика</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: увеличение отсутствующего счётчика">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {}
+stock["pen"] += 1</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: увеличение отсутствующего счётчика">KeyError: 'pen'</pre></div>
+</div>
+<p>Читать старое значение пока неоткуда. Сначала создайте <code>stock[&quot;pen&quot;] = 0</code> или используйте <code>stock[&quot;pen&quot;] = stock.get(&quot;pen&quot;, 0) + 1</code>. Во втором варианте отсутствующий счётчик начинается с нуля.</p>
+</div>
+</aside>
+<p>Словарь изменяем, поэтому важно помнить о ссылках. Присваивание <code>alias = scores</code> не копирует пары. Обе переменные получают доступ к одному объекту, как это было со списками.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Два имени одного словаря</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Два имени одного словаря">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10}
+alias = scores
+alias[101] = 12
+print(scores)
+print(alias is scores)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Два имени одного словаря">{101: 12}
+True</pre></div>
+</div>
+<aside class="special-block special-block--warning" aria-labelledby="no-set-title">
+<div class="special-block__header"><span class="special-block__label">Обратите внимание</span></div>
+<h3 class="special-block__title" id="no-set-title">У dict нет метода set()</h3>
+<div class="special-block__body">
+<p>Для записи используйте <code>data[key] = value</code>. Вызова <code>data.set(key, value)</code> у словаря нет. Метод словаря <code>setdefault()</code> решает другую задачу: добавляет значение только при отсутствии ключа. Его разберём дальше.</p>
+</div>
+</aside>
+</div>
+</section>
+<section id="update-setdefault">
+<h2>08 / Обновление через update() и значение через setdefault()</h2>
+<div class="section-content">
+<p>Предположим, пользователь изменил несколько настроек профиля сразу. Метод <code>data.update(other)</code> переносит пары из другого словаря: новые ключи добавляет, для совпавших ключей берёт значения из <code>other</code>. Меняется исходный объект.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Применяем новые настройки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Применяем новые настройки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">settings = {"theme": "light", "language": "en"}
+changes = {"theme": "dark", "font_size": 18}
+result = settings.update(changes)
+print(settings)
+print(result)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Применяем новые настройки">{'theme': 'dark', 'language': 'en', 'font_size': 18}
+None</pre></div>
+</div>
+<p>Тема заменилась, язык остался прежним, размер шрифта добавился. Переменная <code>result</code> содержит <code>None</code>: метод сообщил результат своей работы изменением <code>settings</code>, а новый словарь не возвращал. Обычно достаточно отдельной строки <code>settings.update(changes)</code>.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="update-result-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="update-result-title">Не присваивайте результат update() обратно</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Логическая ошибка: потеря ссылки на словарь</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Логическая ошибка: потеря ссылки на словарь">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"theme": "light"}
+other = {"theme": "dark"}
+data = data.update(other)
+print(data)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Логическая ошибка: потеря ссылки на словарь">None</pre></div>
+</div>
+<p>Сам словарь был обновлён, но затем имя <code>data</code> получило возвращённый <code>None</code>. Уберите присваивание результата.</p>
+</div>
+</aside>
+<div class="code-example">
+<div class="code-example__header"><span>Правильный вызов update()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Правильный вызов update()">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"theme": "light"}
+other = {"theme": "dark"}
+data.update(other)
+print(data)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Правильный вызов update()">{'theme': 'dark'}</pre></div>
+</div>
+<p>Другая задача: добавить тему по умолчанию, сохранив выбор пользователя, если он уже есть. Метод <code>data.setdefault(key, default)</code> возвращает существующее значение без замены. Если ключа нет, метод добавляет его со значением default и возвращает это значение.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Добавляем недостающие настройки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Добавляем недостающие настройки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">settings = {"theme": "dark"}
+print(settings.setdefault("theme", "light"))
+print(settings.setdefault("language", "en"))
+print(settings.setdefault("city"))
+print(settings)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Добавляем недостающие настройки">dark
+en
+None
+{'theme': 'dark', 'language': 'en', 'city': None}</pre></div>
+</div>
+<p>Существующая тема <code>dark</code> сохранилась. Языка не было, поэтому появилась запись <code>language</code> со значением <code>en</code>. Если второй аргумент пропущен, используется <code>None</code>: последняя операция создала ключ <code>city</code>. Даже существующие <code>0</code>, <code>False</code>, пустая строка и <code>None</code> не заменяются методом <code>setdefault()</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Чтение, значение по умолчанию и запись">
+<table><caption>Чтение, значение по умолчанию и запись</caption>
+<thead><tr><th scope="col">Операция</th><th scope="col">Что возвращает</th><th scope="col">Добавит отсутствующий ключ?</th><th scope="col">Заменит существующее значение?</th></tr></thead>
+<tbody>
+<tr><td><code>data.get(key, default)</code></td><td>Найденное значение или <code>default</code></td><td>Нет</td><td>Нет</td></tr>
+<tr><td><code>data.setdefault(key, default)</code></td><td>Найденное или только что добавленное значение</td><td>Да</td><td>Нет</td></tr>
+<tr><td><code>data[key] = value</code></td><td>Это инструкция присваивания, возвращаемого значения нет</td><td>Да</td><td>Да</td></tr>
+</tbody></table>
+</div>
+<aside class="special-block special-block--correct" aria-labelledby="profile-settings-title">
+<div class="special-block__header"><span class="special-block__label">Верный подход</span></div>
+<h3 class="special-block__title" id="profile-settings-title">Разбор: сохранить выбор и применить изменение</h3>
+<div class="special-block__body">
+<p>При открытии профиля добавим недостающий язык <code>en</code>. Для показа города используем <code>Unknown</code> без изменения профиля. Затем пользователь явно выберет светлую тему: это уже намеренная замена.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Выбираем операцию по задаче</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выбираем операцию по задаче">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">settings = {"theme": "dark"}
+settings.setdefault("language", "en")
+print(settings.get("city", "Unknown"))
+settings["theme"] = "light"
+print(settings)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Выбираем операцию по задаче">Unknown
+{'theme': 'light', 'language': 'en'}</pre></div>
+</div>
+<p><code>setdefault()</code> подходит для сохранения отсутствующей настройки. <code>get()</code> только читает. Присваивание по ключу заменяет выбранную тему. Если пользователь изменит несколько настроек одновременно, удобно собрать их в отдельный словарь и применить <code>update()</code>.</p>
+</div>
+</aside>
+</div>
+</section>
+<section id="deletion">
+<h2>09 / Удаление записей</h2>
+<div class="section-content">
+<p>Если запись больше не нужна, команда <code>del data[key]</code> удаляет всю пару. После <code>del</code> указывают обращение по ключу.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Удаление без возврата и с возвратом значения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Удаление без возврата и с возвратом значения">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8, 103: 12}
+del scores[102]
+print(scores)
+removed_score = scores.pop(103)
+print(removed_score)
+print(scores)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Удаление без возврата и с возвратом значения">{101: 10, 103: 12}
+12
+{101: 10}</pre></div>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/26/DictDeleteKey.gif" alt="Команда del scores[102] удаляет пару 102: 8. В словаре остаются пары 101: 10 и 103: 12, длина уменьшается с 3 до 2." loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 4. Удаление пары по ключу с помощью del</figcaption>
+</figure>
+<aside class="special-block special-block--incorrect" aria-labelledby="del-missing-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="del-missing-title">del требует существующий ключ</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: удалить отсутствующую запись</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: удалить отсутствующую запись">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10}
+del scores[999]</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: удалить отсутствующую запись">KeyError: 999</pre></div>
+</div>
+<p>Ключа <code>999</code> нет. Перед <code>del</code> проверьте <code>if 999 in scores</code>, если отсутствие записи является нормальным случаем.</p>
+</div>
+</aside>
+<p>Если удалённое значение понадобится для сообщения или расчёта, используйте <code>data.pop(key)</code>: метод удалит пару и вернёт её значение.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Безопасное удаление необязательной записи</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Безопасное удаление необязательной записи">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8}
+print(scores.pop(999, None))
+key = 102
+if key in scores:
+    removed_score = scores.pop(key)
+    print("Removed:", removed_score)
+else:
+    print("Not found")
+print(scores)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Безопасное удаление необязательной записи">None
+Removed: 8
+{101: 10}</pre></div>
+</div>
+<p>Первый <code>pop</code> вернул запасной <code>None</code>. Во втором случае проверка <code>in</code> позволила отдельно выбрать действие для найденного ключа. Если хранимое значение само может быть <code>None</code>, один результат <code>pop</code> с <code>default=None</code> не позволяет различить случаи. Предварительная проверка решает эту задачу.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="pop-missing-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="pop-missing-title">pop() без запасного значения тоже может вызвать KeyError</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: pop отсутствующего ключа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: pop отсутствующего ключа">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10}
+scores.pop(999)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: pop отсутствующего ключа">KeyError: 999</pre></div>
+</div>
+<p>Когда отсутствие допустимо, передайте второй аргумент: <code>scores.pop(999, None)</code>. Он вернётся при отсутствии ключа, а новая запись при этом не появится.</p>
+</div>
+</aside>
+<p>Метод <code>popitem()</code> вызывают без аргументов, когда нужно забрать последнюю добавленную пару целиком. Он возвращает кортеж <code>(key, value)</code>, который можно сразу распаковать. Обновление старого ключа не делает его последним добавленным.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Забираем последнюю пару</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Забираем последнюю пару">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8}
+scores[101] = 12
+if scores:
+    student_id, score = scores.popitem()
+    print(student_id, score)
+print(scores)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Забираем последнюю пару">102 8
+{101: 12}</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="popitem-empty-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="popitem-empty-title">Из пустого словаря нечего извлекать</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: popitem на пустом словаре</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: popitem на пустом словаре">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {}
+scores.popitem()</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: popitem на пустом словаре">KeyError: 'popitem(): dictionary is empty'</pre></div>
+</div>
+<p>Проверка <code>if scores</code> из рабочего примера не позволяет вызвать <code>popitem()</code> для пустого словаря.</p>
+</div>
+</aside>
+<p>Метод <code>clear()</code> удаляет все пары из самого объекта и возвращает <code>None</code>. Это отличается от <code>data = {}</code>: присваивание связывает одну переменную с новым пустым словарём, а старый объект может остаться доступным через другие имена.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Очистка общего словаря</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Очистка общего словаря">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"pen": 4}
+alias = data
+data.clear()
+print(data)
+print(alias)
+print(data is alias)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Очистка общего словаря">{}
+{}
+True</pre></div>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>Переприсваивание одной переменной</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Переприсваивание одной переменной">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"pen": 4}
+alias = data
+data = {}
+print(data)
+print(alias)
+print(data is alias)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Переприсваивание одной переменной">{}
+{'pen': 4}
+False</pre></div>
+</div>
+<p>После <code>clear()</code> оба имени видят пустой общий словарь. После <code>data = {}</code> только <code>data</code> указывает на новый объект, а <code>alias</code> по-прежнему видит товар <code>pen</code>. Выбирайте очистку, если нужно изменить общий объект.</p>
+</div>
+</section>
+<section id="iteration">
+<h2>10 / Перебор keys(), values() и items()</h2>
+<div class="section-content">
+<p>Для печати всех ID достаточно обычного цикла <code>for student_id in scores</code>. Перебор самого словаря даёт ключи, по одному на каждом шаге. Форма <code>for student_id in scores.keys()</code> делает тот же выбор явным: метод <code>keys()</code> предоставляет представление ключей.</p>
+<div class="code-example">
+<div class="code-example__header"><span>ID студентов двумя способами</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: ID студентов двумя способами">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8, 103: 12}
+for student_id in scores:
+    print(student_id)
+print("Using keys:")
+for student_id in scores.keys():
+    print(student_id)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: ID студентов двумя способами">101
+102
+103
+Using keys:
+101
+102
+103</pre></div>
+</div>
+<p>Если ID не нужны, берите <code>scores.values()</code>. Например, для суммы оценок начните с нуля и прибавляйте каждое значение. Среднее равно сумме, делённой на число записей. Пустой словарь нужно обработать отдельно, иначе деление на <code>len(scores)</code> превратится в деление на ноль.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Сумма и средняя оценка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сумма и средняя оценка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8, 103: 12}
+total = 0
+for score in scores.values():
+    total += score
+print("Total:", total)
+if scores:
+    print("Average:", total / len(scores))
+else:
+    print("No scores")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Сумма и средняя оценка">Total: 30
+Average: 10.0</pre></div>
+</div>
+<p>Если заменить первую строку этого примера на <code>scores = {}</code>, цикл не выполнится ни разу. Получится <code>Total: 0</code>, затем <code>No scores</code>. Среднее вычисляться не будет.</p>
+<p>Для отчёта «ID и оценка» нужны обе части записи. Метод <code>items()</code> предоставляет пары в виде кортежей. На первом шаге цикла получаем <code>(101, 10)</code>, затем <code>(102, 8)</code> и <code>(103, 12)</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Сначала пара, затем распаковка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сначала пара, затем распаковка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8, 103: 12}
+for pair in scores.items():
+    student_id, score = pair
+    print(student_id, score)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Сначала пара, затем распаковка">101 10
+102 8
+103 12</pre></div>
+</div>
+<p>Распаковку можно перенести прямо в заголовок: <code>for student_id, score in scores.items()</code>. Справа получается очередная пара; слева первое имя получает её ключ, второе значение. Имена переменных выбираем по смыслу данных.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Короткий перебор пар</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Короткий перебор пар">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8, 103: 12}
+for student_id, score in scores.items():
+    print(student_id, score)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Короткий перебор пар">101 10
+102 8
+103 12</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Какой перебор выбрать">
+<table><caption>Какой перебор выбрать</caption>
+<thead><tr><th scope="col">Задача</th><th scope="col">Источник элементов</th><th scope="col">Что получает переменная цикла</th></tr></thead>
+<tbody>
+<tr><td>Вывести ID</td><td><code>scores</code> или <code>scores.keys()</code></td><td>Ключ</td></tr>
+<tr><td>Сложить оценки</td><td><code>scores.values()</code></td><td>Значение</td></tr>
+<tr><td>Вывести ID вместе с оценкой</td><td><code>scores.items()</code></td><td>Пару (ключ, значение), которую можно распаковать</td></tr>
+</tbody></table>
+</div>
+<p>Результат <code>keys()</code>, <code>values()</code> или <code>items()</code> не является готовым списком. Это представление текущих данных словаря. Если сохранить представление в переменную, а потом изменить словарь, при следующем просмотре оно отразит изменение.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Представление и отдельный список ключей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Представление и отдельный список ключей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {101: 10, 102: 8}
+keys_view = scores.keys()
+values_view = scores.values()
+items_view = scores.items()
+keys_snapshot = list(scores.keys())
+scores[103] = 12
+print(keys_view)
+print(values_view)
+print(items_view)
+print(keys_snapshot)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Представление и отдельный список ключей">dict_keys([101, 102, 103])
+dict_values([10, 8, 12])
+dict_items([(101, 10), (102, 8), (103, 12)])
+[101, 102]</pre></div>
+</div>
+<p>Все три представления показывают добавленную запись. Вызов <code>list(scores.keys())</code> собрал отдельный список ключей на момент вызова: он не пополняется автоматически. Это не глубокая копия словаря: в списке вообще нет его значений. Если нужен доступ к первому ключу по позиции, позиция принадлежит уже полученному списку, например <code>keys_snapshot[0]</code>.</p>
+</div>
+</section>
+<section id="order-comparison">
+<h2>11 / Порядок, сравнение и безопасный перебор</h2>
+<div class="section-content">
+<p>В журнале записи могут появляться в любом порядке ID. Обычный цикл сохранит порядок вставки. Для отчёта по возрастанию ID используйте <code>sorted(scores)</code>: функция собирает ключи в новый отсортированный список, а словарь не меняет.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Порядок вставки и сортировка ключей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Порядок вставки и сортировка ключей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {103: 12, 101: 10, 102: 8}
+print("Insertion order:")
+for student_id in scores:
+    print(student_id, scores[student_id])
+print("Sorted order:")
+for student_id in sorted(scores):
+    print(student_id, scores[student_id])
+print(list(scores))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Порядок вставки и сортировка ключей">Insertion order:
+103 12
+101 10
+102 8
+Sorted order:
+101 10
+102 8
+103 12
+[103, 101, 102]</pre></div>
+</div>
+<p>В примере все ключи являются числами. Для обычной сортировки выбирайте однородные сравнимые ключи: например, только целые числа или только строки. Смешанные ключи вроде <code>101</code> и <code>&quot;name&quot;</code> нельзя автоматически упорядочить таким же способом. Последняя строка подтверждает, что порядок самого словаря остался прежним.</p>
+<p>У словарей оператор <code>==</code> сравнивает соответствие ключей и значений независимо от порядка вставки. Оператор <code>is</code> отвечает на другой вопрос: являются ли две ссылки одним и тем же объектом.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Равные данные и общий объект</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Равные данные и общий объект">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {101: 10, 102: 8}
+second = {102: 8, 101: 10}
+alias = first
+print(first == second)
+print(first is second)
+print(first is alias)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Равные данные и общий объект">True
+False
+True</pre></div>
+</div>
+<p><code>first</code> и <code>second</code> содержат одинаковые пары, поэтому равны. Они созданы отдельно, поэтому не являются одним объектом. <code>alias</code> и <code>first</code> ссылаются на один словарь. Для сравнения содержимого используйте <code>==</code>.</p>
+<p>Решим задачу удаления товаров с нулевым остатком в два этапа. Сначала обойдём пары и соберём названия ненужных товаров в список. Затем пройдём по этому списку и удалим записи из словаря.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Безопасное удаление отдельным циклом</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Безопасное удаление отдельным циклом">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 0, "book": 3, "pencil": 0}
+to_remove = []
+for product, quantity in stock.items():
+    if quantity == 0:
+        to_remove.append(product)
+
+for product in to_remove:
+    del stock[product]
+print(stock)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Безопасное удаление отдельным циклом">{'book': 3}</pre></div>
+</div>
+<p>Первый цикл не меняет состав <code>stock</code>. Во втором источником перебора служит отдельный список <code>to_remove</code>, поэтому удаление из <code>stock</code> не нарушает этот обход. Менять значение уже существующего ключа при переборе допустимо: набор ключей при этом остаётся прежним. Но добавление и удаление записей выносите в отдельный этап.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="mutation-loop-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="mutation-loop-title">Не удаляйте ключи во время перебора этого словаря</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: размер словаря изменился</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: размер словаря изменился">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 0, "book": 3}
+for product in stock:
+    if stock[product] == 0:
+        del stock[product]</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: размер словаря изменился">RuntimeError: dictionary changed size during iteration</pre></div>
+</div>
+<p>Цикл начал обход одного набора ключей, но внутри него этот набор изменился. Добавление новых ключей создаёт ту же проблему. Не полагайтесь на конкретный момент появления ошибки: отделяйте отбор от изменения состава словаря.</p>
+</div>
+</aside>
+</div>
+</section>
+<section id="copying">
+<h2>12 / Копирование и первое знакомство с вложенными данными</h2>
+<div class="section-content">
+<p>Перед изменением профиля может понадобиться сохранить исходные данные. Присваивание <code>backup = student</code> создаёт только ещё одну ссылку. Методы <code>student.copy()</code> и вызов <code>dict(student)</code> создают новые словари, копируя пары на верхнем уровне.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Общая ссылка и две поверхностные копии</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Общая ссылка и две поверхностные копии">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "age": 18}
+alias = student
+backup = student.copy()
+another = dict(student)
+backup["age"] = 19
+backup["city"] = "Baku"
+print(student)
+print(backup)
+print(alias is student)
+print(backup is student)
+print(another == student)
+print(another is student)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Общая ссылка и две поверхностные копии">{'name': 'Alice', 'age': 18}
+{'name': 'Alice', 'age': 19, 'city': 'Baku'}
+True
+False
+True
+False</pre></div>
+</div>
+<p>Замена возраста и добавление города в <code>backup</code> не затронули <code>student</code>. У копии свой набор записей. <code>dict(student)</code> тоже создал равный по содержимому, но отдельный объект. Для плоского словаря со строками и числами такая копия часто решает задачу.</p>
+<p>Поверхностная копия не копирует вложенные объекты. Новый словарь получает ссылки на те же значения. Если значение является изменяемым списком, оба словаря пока ссылаются на один список. Новым стал только внешний контейнер.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Общий список оценок внутри двух словарей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Общий список оценок внутри двух словарей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "scores": [8, 10]}
+backup = student.copy()
+backup["scores"].append(12)
+print(student["scores"])
+print(backup["scores"])
+print(student is backup)
+print(student["scores"] is backup["scores"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Общий список оценок внутри двух словарей">[8, 10, 12]
+[8, 10, 12]
+False
+True</pre></div>
+</div>
+<p>Чтение <code>backup[&quot;scores&quot;]</code> вернуло список <code>[8, 10]</code>, а <code>.append(12)</code> изменил именно этот список. Поэтому результат виден через оба словаря. Теперь сравните с присваиванием нового списка по ключу.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Заменяем ссылку в копии</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Заменяем ссылку в копии">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "scores": [8, 10]}
+backup = student.copy()
+backup["scores"] = [12]
+print(student["scores"])
+print(backup["scores"])
+print(student["scores"] is backup["scores"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Заменяем ссылку в копии">[8, 10]
+[12]
+False</pre></div>
+</div>
+<p>Здесь <code>[12]</code> создал новый список. Присваивание изменило запись только в <code>backup</code>: теперь она ссылается на новый объект. Исходный <code>student</code> продолжает ссылаться на старый список. Отличайте изменение вложенного объекта от замены ссылки на него.</p>
+<p>В значении можно сохранить и другой словарь. Например, у студента есть вложенный <code>contact</code> с городом. В цепочке <code>student[&quot;contact&quot;][&quot;city&quot;]</code> сначала читается <code>contact</code> из внешнего словаря, затем <code>city</code> из полученного внутреннего.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Чтение вложенного словаря</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Чтение вложенного словаря">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice", "contact": {"city": "Baku"}}
+print(student["contact"]["city"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Чтение вложенного словаря">Baku</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="nested-get-title">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="nested-get-title">Внешний get() не защищает всю цепочку</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Ошибка: город отсутствует во внутреннем словаре</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Ошибка: город отсутствует во внутреннем словаре">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"contact": {}}
+print(student.get("contact", {})["city"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Ошибка (последняя строка)</div><pre tabindex="0" aria-label="Результат примера: Ошибка: город отсутствует во внутреннем словаре">KeyError: 'city'</pre></div>
+</div>
+<p>Внешний ключ <code>contact</code> найден, но внутри нет <code>city</code>. Даже при отсутствии <code>contact</code> получился бы пустой словарь, а чтение <code>[&quot;city&quot;]</code> всё равно вызвало бы <code>KeyError</code>. Каждый уровень требует собственных проверок.</p>
+</div>
+</aside>
+<p>Пока предполагаем, что <code>contact</code>, если он есть, содержит словарь. Тогда для ясного сообщения проверим оба ключа отдельно. Если структура данных приходит извне, нужно также знать и проверять ожидаемые типы.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Проверка каждого уровня</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Проверка каждого уровня">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"contact": {}}
+if "contact" in student:
+    contact = student["contact"]
+    if "city" in contact:
+        print(contact["city"])
+    else:
+        print("No city")
+else:
+    print("No contact")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Проверка каждого уровня">No city</pre></div>
+</div>
+<p>Если нужна независимая копия вложенных изменяемых данных, вспомните <code>deepcopy()</code> из урока про особенности списков. Для такого профиля он создаст и отдельный внешний словарь, и отдельный список оценок.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Знакомый deepcopy для вложенного списка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Знакомый deepcopy для вложенного списка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">from copy import deepcopy
+
+student = {"name": "Alice", "scores": [8, 10]}
+backup = deepcopy(student)
+backup["scores"].append(12)
+print(student["scores"])
+print(backup["scores"])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Знакомый deepcopy для вложенного списка">[8, 10]
+[8, 10, 12]</pre></div>
+</div>
+<p>Главная задача этого раздела: увидеть, где лежит ссылка на общий объект.</p>
+</div>
+</section>
+<section id="word-count">
+<h2>13 / Разбор программы подсчёта слов</h2>
+<div class="section-content">
+<p>Задача: посчитать, сколько раз встретилось каждое слово в строке <code>&quot;Red blue red green blue red&quot;</code>. Слова разделены пробелами, пунктуации нет. Регистр не должен создавать разные счётчики: <code>Red</code> и <code>red</code> считаем одним словом.</p>
+<p>Сначала <code>lower()</code> переводит буквы в нижний регистр. Затем <code>split()</code> без аргументов разделяет строку по пробельным символам и возвращает список слов. Пустая строка или строка из пробелов даст пустой список.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Подготовка слов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Подготовка слов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">text = "Red blue red green blue red"
+words = text.lower().split()
+print(words)
+print("".lower().split())</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Подготовка слов">['red', 'blue', 'red', 'green', 'blue', 'red']
+[]</pre></div>
+</div>
+<p>Ключом словаря <code>counts</code> будет слово, значением целое число его повторений. Начинаем с пустого словаря. Для первого появления слова создаём счётчик <code>1</code>. Для каждого следующего появления увеличиваем уже существующий счётчик на <code>1</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Полная программа с проверкой in</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Полная программа с проверкой in">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">text = "Red blue red green blue red"
+words = text.lower().split()
+counts = {}
+
+for word in words:
+    if word in counts:
+        counts[word] += 1
+    else:
+        counts[word] = 1
+
+if counts:
+    for word, count in counts.items():
+        print(word, count)
+else:
+    print("No words")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Полная программа с проверкой in">red 3
+blue 2
+green 1</pre></div>
+</div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Состояние counts после каждого слова">
+<table><caption>Состояние counts после каждого слова</caption>
+<thead><tr><th scope="col">Шаг</th><th scope="col">Слово</th><th scope="col">Действие</th><th scope="col">Словарь после шага</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>red</td><td>Ключа нет: записать 1</td><td><code>{&quot;red&quot;: 1}</code></td></tr>
+<tr><td>2</td><td>blue</td><td>Ключа нет: записать 1</td><td><code>{&quot;red&quot;: 1, &quot;blue&quot;: 1}</code></td></tr>
+<tr><td>3</td><td>red</td><td>Ключ есть: 1 + 1</td><td><code>{&quot;red&quot;: 2, &quot;blue&quot;: 1}</code></td></tr>
+<tr><td>4</td><td>green</td><td>Ключа нет: записать 1</td><td><code>{&quot;red&quot;: 2, &quot;blue&quot;: 1, &quot;green&quot;: 1}</code></td></tr>
+<tr><td>5</td><td>blue</td><td>Ключ есть: 1 + 1</td><td><code>{&quot;red&quot;: 2, &quot;blue&quot;: 2, &quot;green&quot;: 1}</code></td></tr>
+<tr><td>6</td><td>red</td><td>Ключ есть: 2 + 1</td><td><code>{&quot;red&quot;: 3, &quot;blue&quot;: 2, &quot;green&quot;: 1}</code></td></tr>
+</tbody></table>
+</div>
+<p>Вместо двух веток можно прочитать прежний счётчик через <code>get()</code> с нулём по умолчанию. Выражение <code>counts.get(word, 0) + 1</code> сначала берёт текущее количество или <code>0</code>, затем прибавляет <code>1</code>. Левая часть <code>counts[word] = ...</code> сохраняет результат. Сам <code>get()</code> по-прежнему ничего не добавляет.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Та же программа с get()</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Та же программа с get()">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">text = "Red blue red green blue red"
+words = text.lower().split()
+counts = {}
+
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+
+if counts:
+    for word, count in counts.items():
+        print(word, count)
+else:
+    print("No words")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Та же программа с get()">red 3
+blue 2
+green 1</pre></div>
+</div>
+<p>Оба решения выводят слова в порядке первого появления: <code>red</code>, <code>blue</code>, <code>green</code>. Частота не влияет на порядок ключей.</p>
+</div>
+</section>
+<section id="stock">
+<h2>14 / Разбор программы учёта товаров</h2>
+<div class="section-content">
+<p>Задача: хранить остатки товаров, добавлять новые позиции, пополнять количество и списывать товар при достаточном остатке. Используем плоский словарь stock: английское название товара служит ключом, неотрицательное целое количество значением. Например, <code>{&quot;pen&quot;: 5, &quot;book&quot;: 0}</code> означает пять ручек и известную позицию <code>book</code> с нулевым остатком.</p>
+<p>В примерах названия являются непустыми строками в нижнем регистре, а количество операции целым числом больше нуля.</p>
+<p>Первое действие: зарегистрировать новый товар с количеством <code>0</code>. Сначала проверим отсутствие ключа, чтобы случайно не обнулить уже существующий остаток. Затем можно сделать первую поставку.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Добавляем товар без потери старого остатка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Добавляем товар без потери старого остатка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 5}
+product = "pencil"
+if product not in stock:
+    stock[product] = 0
+print(stock)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Добавляем товар без потери старого остатка">{'pen': 5, 'pencil': 0}</pre></div>
+</div>
+<p>Для пополнения известного товара читаем его количество и прибавляем поставку. Проверка <code>in</code> устанавливает наличие записи, после неё <code>[]</code> безопасно читает старый остаток. Неизвестную позицию этот фрагмент не создаёт автоматически.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Пополняем количество</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пополняем количество">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 5}
+product = "pen"
+quantity = 3
+if quantity &lt;= 0:
+    print("Quantity must be positive")
+elif product in stock:
+    stock[product] += quantity
+    print(product, stock[product])
+else:
+    print("Unknown product")</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Пополняем количество">pen 8</pre></div>
+</div>
+<p>Для справочного вывода можно использовать <code>stock.get(product, 0)</code>: он покажет ноль, если товара нет. Но такой результат объединяет два разных случая. Для регистрации товара и продажи нужно различать отсутствие позиции и нулевой остаток, поэтому там выбираем <code>in</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Неизвестный товар и известный товар с нулевым остатком</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Неизвестный товар и известный товар с нулевым остатком">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 5, "book": 0}
+for product in ["book", "eraser"]:
+    print(product, product in stock, stock.get(product, 0))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Неизвестный товар и известный товар с нулевым остатком">book True 0
+eraser False 0</pre></div>
+</div>
+<p>Списание требует последовательных проверок. Сначала количество должно быть положительным, затем товар должен существовать. Только после этого читаем остаток. При нуле сообщаем об отсутствии на складе, при недостатке не меняем словарь, а при достаточном количестве вычитаем продажу.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Одна успешная продажа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одна успешная продажа">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 5}
+product = "pen"
+quantity = 2
+if quantity &lt;= 0:
+    print("Quantity must be positive")
+elif product not in stock:
+    print("Unknown product")
+elif stock[product] == 0:
+    print("Out of stock")
+elif quantity &gt; stock[product]:
+    print("Not enough stock")
+else:
+    stock[product] -= quantity
+    print("Sold:", product, quantity)
+print(stock)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Одна успешная продажа">Sold: pen 2
+{'pen': 3}</pre></div>
+</div>
+<p>Полная программа ниже объединяет регистрацию, пополнение и несколько заявок на продажу. Каждая заявка представлена знакомым кортежем <code>(product, quantity)</code>, а цикл распаковывает его. Все количества целые, проверка положительности остаётся частью обработки операции.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Полная программа учёта товаров</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Полная программа учёта товаров">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"pen": 5, "book": 0}
+
+new_product = "pencil"
+if new_product not in stock:
+    stock[new_product] = 0
+print("Added:", new_product, stock[new_product])
+
+delivery_product = "pen"
+delivery_quantity = 3
+if delivery_quantity &lt;= 0:
+    print("Quantity must be positive")
+elif delivery_product in stock:
+    stock[delivery_product] += delivery_quantity
+    print("Restocked:", delivery_product, stock[delivery_product])
+else:
+    print("Unknown product:", delivery_product)
+
+requests = [("eraser", 1), ("book", 1), ("pen", 9), ("pen", 2)]
+for product, quantity in requests:
+    if quantity &lt;= 0:
+        print("Quantity must be positive")
+    elif product not in stock:
+        print("Unknown product:", product)
+    elif stock[product] == 0:
+        print("Out of stock:", product)
+    elif quantity &gt; stock[product]:
+        print("Not enough stock:", product, stock[product])
+    else:
+        stock[product] -= quantity
+        print("Sold:", product, quantity)
+
+print("Final stock:")
+for product, quantity in stock.items():
+    print(product, quantity)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Полная программа учёта товаров">Added: pencil 0
+Restocked: pen 8
+Unknown product: eraser
+Out of stock: book
+Not enough stock: pen 8
+Sold: pen 2
+Final stock:
+pen 6
+book 0
+pencil 0</pre></div>
+</div>
+</div>
+</section>
+<section id="collections">
+<h2>15 / Сравнение коллекций</h2>
+<div class="section-content">
+<p>Коллекцию выбирают по тому, как программа будет использовать данные. Нужно ли сохранять порядок и повторы? Менять содержимое? Искать по позиции или по смысловому ключу? Ответы помогают выбрать подходящий тип.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Какая коллекция подходит задаче">
+<table><caption>Какая коллекция подходит задаче</caption>
+<thead><tr><th scope="col">Тип</th><th scope="col">Короткая задача</th><th scope="col">Почему подходит</th><th scope="col">Ограничение</th></tr></thead>
+<tbody>
+<tr><td><code>str</code></td><td>Хранить имя товара <code>&quot;pen&quot;</code></td><td>Текст, поиск подстрок и строковые методы.</td><td>Строка неизменяема, а изменение создаёт новую строку.</td></tr>
+<tr><td><code>list</code></td><td>Хранить последовательность заявок на продажу</td><td>Сохраняет порядок и повторы, позволяет добавлять и менять элементы.</td><td>Доступ по позиции, но поиск нужной записи может требовать перебора.</td></tr>
+<tr><td><code>tuple</code></td><td>Передать пару <code>(&quot;pen&quot;, 2)</code></td><td>Фиксированная структура, удобная распаковка.</td><td>Элементы самого кортежа заменить нельзя, но вложенный список может меняться.</td></tr>
+<tr><td><code>set</code></td><td>Собрать уникальные названия купленных товаров</td><td>Убирает повторы, даёт проверку принадлежности и операции множеств.</td><td>Нет индексов и гарантированного порядка вставки, а элементы хешируемы.</td></tr>
+<tr><td><code>frozenset</code></td><td>Зафиксировать набор прав для ключа словаря</td><td>Неизменяемое хешируемое множество.</td><td>Нельзя добавить или удалить элемент.</td></tr>
+<tr><td><code>dict</code></td><td>Хранить остаток по названию товара</td><td>Связывает уникальный ключ со значением и сохраняет порядок вставки.</td><td>Ключи должны быть хешируемыми, а повтор равного ключа заменяет значение.</td></tr>
+</tbody></table>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>Разные роли коллекций в одной программе</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разные роли коллекций в одной программе">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">product = "pen"
+requests = [("pen", 2), ("book", 1), ("pen", 2)]
+first_product, first_quantity = requests[0]
+unique_products = set()
+for name, quantity in requests:
+    unique_products.add(name)
+permissions = frozenset({"read", "sell"})
+stock = {"pen": 5, "book": 1}
+
+print(product.upper())
+print(len(requests))
+print(first_product, first_quantity)
+print(sorted(unique_products))
+print("sell" in permissions)
+print(stock[product])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Результат примера: Разные роли коллекций в одной программе">PEN
+3
+pen 2
+['book', 'pen']
+True
+5</pre></div>
+</div>
+<p>Список сохранил обе одинаковые заявки на ручки: это отдельные продажи. Множество сохранило только уникальные названия. Словарь связал каждое название с текущим остатком. Для вывода названий использован <code>sorted()</code>, чтобы результат множества был показан в определённом порядке.</p>
+<p>Не пытайтесь заменить все коллекции словарём. Тексту нужен <code>str</code>, очереди действий обычно подходит <code>list</code>, фиксированной паре <code>tuple</code>, уникальным элементам <code>set</code> или <code>frozenset</code>. <code>dict</code> выбирайте, когда задача формулируется как «получить значение по известному ключу».</p>
+</div>
+</section>
+<section id="self-check">
+<h2>16 / Самопроверка</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-keys-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-keys-title">Какие ключи допустимы?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-keys-title">
+<fieldset><legend>Выберите верные утверждения о <code>dict</code>. Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-keys-1"><input class="visually-hidden" type="checkbox" id="check-keys-1" name="answers" value="1" aria-describedby="check-keys-1-feedback" /><span>Ключом может быть кортеж из чисел.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-keys-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Числа хешируемы, и кортеж из них тоже хешируем.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-keys-2"><input class="visually-hidden" type="checkbox" id="check-keys-2" name="answers" value="2" aria-describedby="check-keys-2-feedback" /><span>Значением может быть список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-keys-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Хешируемость требуется от ключа, а не от значения.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-keys-3"><input class="visually-hidden" type="checkbox" id="check-keys-3" name="answers" value="3" aria-describedby="check-keys-3-feedback" /><span>Ключи <code>1</code>, <code>1.0</code> и <code>True</code> дают три независимые записи.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-keys-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Эти значения равны и считаются одним ключом.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-keys-4"><input class="visually-hidden" type="checkbox" id="check-keys-4" name="answers" value="4" aria-describedby="check-keys-4-feedback" /><span>Ключи <code>&quot;101&quot;</code> и <code>101</code> различаются.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-keys-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Строка не равна целому числу с таким же написанием.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-insertion-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-insertion-title">Сохраняется ли порядок при замене?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"book": 2, "pen": 5}
+stock["book"] = 7</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-insertion-title">
+<fieldset><legend>Что верно после выполнения кода? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-insertion-1"><input class="visually-hidden" type="checkbox" id="check-insertion-1" name="answers" value="1" aria-describedby="check-insertion-1-feedback" /><span>Список ключей равен <code>[&quot;book&quot;, &quot;pen&quot;]</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-insertion-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Замена значения не перемещает ключ book.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-insertion-2"><input class="visually-hidden" type="checkbox" id="check-insertion-2" name="answers" value="2" aria-describedby="check-insertion-2-feedback" /><span>Список ключей равен <code>[&quot;pen&quot;, &quot;book&quot;]</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-insertion-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>book не удаляли и не добавляли заново.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-insertion-3"><input class="visually-hidden" type="checkbox" id="check-insertion-3" name="answers" value="3" aria-describedby="check-insertion-3-feedback" /><span>Длина словаря равна 2.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-insertion-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Изменено значение существующего ключа, новой пары нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-insertion-4"><input class="visually-hidden" type="checkbox" id="check-insertion-4" name="answers" value="4" aria-describedby="check-insertion-4-feedback" /><span>Словарь автоматически сортирует ключи.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-insertion-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Порядок определяется вставкой, а не сортировкой.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-views-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-views-title">Что дают методы перебора?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-views-title">
+<fieldset><legend>Какие соответствия верны? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-views-1"><input class="visually-hidden" type="checkbox" id="check-views-1" name="answers" value="1" aria-describedby="check-views-1-feedback" /><span><code>keys()</code> предоставляет ключи.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-views-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Перебор data и data.keys() даёт ключи.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-views-2"><input class="visually-hidden" type="checkbox" id="check-views-2" name="answers" value="2" aria-describedby="check-views-2-feedback" /><span><code>values()</code> предоставляет значения.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-views-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для суммы оценок можно обходить scores.values().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-views-3"><input class="visually-hidden" type="checkbox" id="check-views-3" name="answers" value="3" aria-describedby="check-views-3-feedback" /><span><code>items()</code> предоставляет пары (ключ, значение).</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-views-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Каждую пару удобно распаковать в две переменные.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-views-4"><input class="visually-hidden" type="checkbox" id="check-views-4" name="answers" value="4" aria-describedby="check-views-4-feedback" /><span>Все три метода сразу создают независимые списки.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-views-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Они возвращают представления, связанные со словарём. Для списка нужен отдельный вызов list().</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-method-choice-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-method-choice-title">Чтение, настройка по умолчанию или замена?</h3>
+<div class="special-block__body">
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-method-choice-title">
+<fieldset><legend>Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-method-choice-1"><input class="visually-hidden" type="checkbox" id="check-method-choice-1" name="answers" value="1" aria-describedby="check-method-choice-1-feedback" /><span>Показать <code>Unknown</code> при отсутствии города, не меняя профиль: <code>profile.get(&quot;city&quot;, &quot;Unknown&quot;)</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-method-choice-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>get() читает значение или возвращает запасное без записи.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-method-choice-2"><input class="visually-hidden" type="checkbox" id="check-method-choice-2" name="answers" value="2" aria-describedby="check-method-choice-2-feedback" /><span>Записать язык <code>en</code>, только если поля ещё нет: <code>profile.setdefault(&quot;language&quot;, &quot;en&quot;)</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-method-choice-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>setdefault() сохраняет существующее значение и добавляет недостающее.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-method-choice-3"><input class="visually-hidden" type="checkbox" id="check-method-choice-3" name="answers" value="3" aria-describedby="check-method-choice-3-feedback" /><span>Заменить выбранную тему: <code>profile[&quot;theme&quot;] = &quot;dark&quot;</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-method-choice-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание по ключу намеренно заменяет значение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-method-choice-4"><input class="visually-hidden" type="checkbox" id="check-method-choice-4" name="answers" value="4" aria-describedby="check-method-choice-4-feedback" /><span>Принудительно заменить любую тему: <code>profile.setdefault(&quot;theme&quot;, &quot;dark&quot;)</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-method-choice-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Существующую тему этот метод не заменит.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-equality-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-equality-title">Одинаковые записи в разных объектах</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {101: 10, 102: 8}
+second = {102: 8, 101: 10}
+alias = first</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-equality-title">
+<fieldset><legend>Какие выражения дают <code>True</code>? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-equality-1"><input class="visually-hidden" type="checkbox" id="check-equality-1" name="answers" value="1" aria-describedby="check-equality-1-feedback" /><span><code>first == second</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Порядок вставки не влияет на равенство словарей.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-equality-2"><input class="visually-hidden" type="checkbox" id="check-equality-2" name="answers" value="2" aria-describedby="check-equality-2-feedback" /><span><code>first is second</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Литералы создали два отдельных объекта.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-equality-3"><input class="visually-hidden" type="checkbox" id="check-equality-3" name="answers" value="3" aria-describedby="check-equality-3-feedback" /><span><code>first is alias</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание alias = first копирует ссылку.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-equality-4"><input class="visually-hidden" type="checkbox" id="check-equality-4" name="answers" value="4" aria-describedby="check-equality-4-feedback" /><span><code>list(first) == list(second)</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-equality-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Списки ключей сохраняют разный порядок вставки.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-length-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-length-title">Длина после повторной записи</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"a": 1, "b": 2}
+data["a"] = 9
+print(len(data))</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="2" data-success="Верно: остались два ключа, a и b." data-hint="Посчитайте разные ключи. Замена значения не добавляет пару." autocomplete="off" aria-labelledby="check-length-title">
+<label for="check-length-answer">Введите одно целое число без пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="check-length-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-length-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-length-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-get-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-get-title">Запасное значение или сохранённый ноль?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"score": 0}
+print(data.get("score", 10))</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="0" data-success="Верно: ключ score существует, поэтому возвращается сохранённый 0." data-hint="Значение по умолчанию используется только при отсутствии ключа." autocomplete="off" aria-labelledby="check-get-title">
+<label for="check-get-answer">Введите одно целое число без пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="check-get-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-get-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-get-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-update-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-update-title">Что записал update()?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"score": 8}
+data.update({"score": 12, "level": 2})
+print(data["score"])</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="12" data-success="Верно: старую оценку 8 заменили на 12." data-hint="При совпадении ключа update() берёт значение из переданного словаря." autocomplete="off" aria-labelledby="check-update-title">
+<label for="check-update-answer">Введите одно целое число без пробелов.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="check-update-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-update-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-update-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-delete-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-delete-title">Какой словарь остался?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"a": 1, "b": 2}
+data.pop("a")
+print(data)</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="{&#x27;b&#x27;: 2}" data-success="Верно: осталась только пара с ключом b и значением 2." data-hint="Удаляется вся пара с ключом a. Для оставшейся пары используйте одинарные кавычки и пробел после двоеточия." autocomplete="off" aria-labelledby="check-delete-title">
+<label for="check-delete-answer">Введите словарь как в выводе Python: одинарные кавычки, один пробел после двоеточия, без пробелов по краям.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="check-delete-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-delete-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-delete-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-unpacking-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-unpacking-title">Распаковка извлечённой пары</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"pen": 3, "book": 2}
+product, quantity = data.popitem()
+print(product, quantity)</code></pre>
+</div>
+<form class="quiz" data-quiz="text" data-answer="book 2" data-success="Верно: product получил book, quantity получил 2." data-hint="popitem() извлекает последнюю добавленную пару. print разделит её части пробелом." autocomplete="off" aria-labelledby="check-unpacking-title">
+<label for="check-unpacking-answer">Введите слово и число через один пробел, без кавычек.</label>
+<div class="quiz__answer-row"><input class="quiz__input" id="check-unpacking-answer" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-unpacking-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-unpacking-feedback" aria-hidden="true"><div><p></p></div></div>
+<p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-missing-error-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-missing-error-title">Где ошибка чтения?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"name": "Alice"}
+print(student["city"])</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-missing-error-title">
+<fieldset><legend>Какие объяснения и исправления верны? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-missing-error-1"><input class="visually-hidden" type="checkbox" id="check-missing-error-1" name="answers" value="1" aria-describedby="check-missing-error-1-feedback" /><span>Код вызовет <code>KeyError</code>, потому что ключа <code>city</code> нет.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-missing-error-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Квадратные скобки требуют существующую запись.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-missing-error-2"><input class="visually-hidden" type="checkbox" id="check-missing-error-2" name="answers" value="2" aria-describedby="check-missing-error-2-feedback" /><span>Для необязательного города можно написать <code>student.get(&quot;city&quot;, &quot;Unknown&quot;)</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-missing-error-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это вернёт запасной текст при отсутствии ключа.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-missing-error-3"><input class="visually-hidden" type="checkbox" id="check-missing-error-3" name="answers" value="3" aria-describedby="check-missing-error-3-feedback" /><span>Python автоматически создаст <code>city</code> со значением <code>None</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-missing-error-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Чтение через [] не создаёт запись.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-missing-error-4"><input class="visually-hidden" type="checkbox" id="check-missing-error-4" name="answers" value="4" aria-describedby="check-missing-error-4-feedback" /><span><code>if student[&quot;city&quot;]</code> безопасно проверит наличие города.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-missing-error-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это сначала прочитает отсутствующий ключ и тоже вызовет KeyError.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-list-error-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-list-error-title">Список в роли ключа</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">positions = {[2, 3]: "desk"}</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-list-error-title">
+<fieldset><legend>Какие утверждения о фрагменте верны? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-list-error-1"><input class="visually-hidden" type="checkbox" id="check-list-error-1" name="answers" value="1" aria-describedby="check-list-error-1-feedback" /><span>Словарь не будет создан: список не хешируем.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-error-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возникнет TypeError: unhashable type: list.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-list-error-2"><input class="visually-hidden" type="checkbox" id="check-list-error-2" name="answers" value="2" aria-describedby="check-list-error-2-feedback" /><span>Для такой пары координат можно взять ключ <code>(2, 3)</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-error-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кортеж из двух чисел хешируем.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-list-error-3"><input class="visually-hidden" type="checkbox" id="check-list-error-3" name="answers" value="3" aria-describedby="check-list-error-3-feedback" /><span>Ошибка в строковом значении <code>&quot;desk&quot;</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-error-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Строка допустима в качестве значения.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-list-error-4"><input class="visually-hidden" type="checkbox" id="check-list-error-4" name="answers" value="4" aria-describedby="check-list-error-4-feedback" /><span>Подойдёт любой <code>tuple</code>, даже содержащий список.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-list-error-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кортеж со списком остаётся нехешируемым.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-truth-error-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-truth-error-title">Существующий товар с нулевым остатком</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">stock = {"book": 0}
+if stock["book"]:
+    print("Exists")
+else:
+    print("Missing")</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-truth-error-title">
+<fieldset><legend>Какие выводы верны? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-truth-error-1"><input class="visually-hidden" type="checkbox" id="check-truth-error-1" name="answers" value="1" aria-describedby="check-truth-error-1-feedback" /><span>Сообщение <code>Missing</code> будет выведено, хотя ключ существует.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-truth-error-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>stock[&quot;book&quot;] равно нулю, поэтому условие ложно.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-truth-error-2"><input class="visually-hidden" type="checkbox" id="check-truth-error-2" name="answers" value="2" aria-describedby="check-truth-error-2-feedback" /><span>Для проверки наличия записи нужно <code>&quot;book&quot; in stock</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-truth-error-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>in проверяет ключ и не зависит от его значения.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-truth-error-3"><input class="visually-hidden" type="checkbox" id="check-truth-error-3" name="answers" value="3" aria-describedby="check-truth-error-3-feedback" /><span>Замена условия на <code>stock.get(&quot;book&quot;)</code> решит проверку наличия.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-truth-error-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>get() тоже вернёт 0, который в условии ложен.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-truth-error-4"><input class="visually-hidden" type="checkbox" id="check-truth-error-4" name="answers" value="4" aria-describedby="check-truth-error-4-feedback" /><span>Ноль означает, что ключ уже удалён.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-truth-error-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нулевой остаток является обычным сохранённым значением.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-copy-error-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-copy-error-title">Независима ли вложенная копия?</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">student = {"scores": [8, 10]}
+backup = student.copy()
+backup["scores"].append(12)</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-copy-error-title">
+<fieldset><legend>Какие утверждения верны после запуска? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-copy-error-1"><input class="visually-hidden" type="checkbox" id="check-copy-error-1" name="answers" value="1" aria-describedby="check-copy-error-1-feedback" /><span><code>student[&quot;scores&quot;]</code> станет <code>[8, 10, 12]</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-error-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append() меняет общий вложенный список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-copy-error-2"><input class="visually-hidden" type="checkbox" id="check-copy-error-2" name="answers" value="2" aria-describedby="check-copy-error-2-feedback" /><span><code>backup</code> и <code>student</code> являются разными словарями.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-error-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>copy() создал новый внешний контейнер.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-copy-error-3"><input class="visually-hidden" type="checkbox" id="check-copy-error-3" name="answers" value="3" aria-describedby="check-copy-error-3-feedback" /><span><code>copy()</code> создал отдельный список оценок.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-error-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Поверхностная копия перенесла ссылку на прежний список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-copy-error-4"><input class="visually-hidden" type="checkbox" id="check-copy-error-4" name="answers" value="4" aria-describedby="check-copy-error-4-feedback" /><span>Для независимого списка в таком профиле можно использовать <code>deepcopy()</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-copy-error-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Глубокое копирование этой структуры создаст отдельный вложенный список.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-final-order-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-final-order-title">Изменение, удаление и повторное добавление</h3>
+<div class="special-block__body">
+<div class="code-example">
+<div class="code-example__header"><span>Код к вопросу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Код к вопросу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">data = {"a": 1, "b": 2, "c": 3}
+data["a"] = 9
+del data["b"]
+data["b"] = 4</code></pre>
+</div>
+<form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-final-order-title">
+<fieldset><legend>Какое состояние будет в конце? Выберите все подходящие варианты.</legend><div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-final-order-1"><input class="visually-hidden" type="checkbox" id="check-final-order-1" name="answers" value="1" aria-describedby="check-final-order-1-feedback" /><span>Порядок ключей: <code>[&quot;a&quot;, &quot;c&quot;, &quot;b&quot;]</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-final-order-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Обновление a оставило его на месте, а заново добавленный b попал в конец.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-final-order-2"><input class="visually-hidden" type="checkbox" id="check-final-order-2" name="answers" value="2" aria-describedby="check-final-order-2-feedback" /><span>Порядок ключей: <code>[&quot;b&quot;, &quot;c&quot;, &quot;a&quot;]</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-final-order-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Замена значения a не перемещает этот ключ.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-final-order-3"><input class="visually-hidden" type="checkbox" id="check-final-order-3" name="answers" value="3" aria-describedby="check-final-order-3-feedback" /><span><code>data[&quot;a&quot;]</code> равно <code>9</code>, <code>data[&quot;b&quot;]</code> равно <code>4</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-final-order-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это последние присвоенные значения для этих ключей.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-final-order-4"><input class="visually-hidden" type="checkbox" id="check-final-order-4" name="answers" value="4" aria-describedby="check-final-order-4-feedback" /><span>Длина <code>data</code> равна <code>4</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-final-order-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Одна пара удалена и одна добавлена. В конце снова три ключа.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form>
+</div>
+</aside>
+</div>
+</section>
+    </main>
+    <div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>

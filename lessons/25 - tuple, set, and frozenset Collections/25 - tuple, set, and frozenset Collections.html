@@ -1,0 +1,1847 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Кортежи, множества и frozenset в Python: подробный урок для самостоятельного изучения, распаковка, хешируемость, операции, примеры и самопроверка." />
+    <title>25 - tuple, set, and frozenset Collections</title>
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon" />
+    <script src="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.js"></script>
+    <link rel="stylesheet" href="https://zeyafix.github.io/pbv3-assets/runtime/lesson-v1.css" />
+  </head>
+  <body class="is-sidebar-open">
+    <a class="skip-link" href="#main-content">Перейти к материалу</a>
+    <header class="page-header">
+      <button
+        type="button"
+        class="sidebar-toggle"
+        aria-controls="contents-sidebar"
+        aria-expanded="true"
+        aria-label="Скрыть содержание"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+      </button>
+      <h1 class="page-header__title">25 - tuple, set, and frozenset Collections</h1>
+      <button type="button" class="theme-toggle" aria-label="Сменить тему">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--dark"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="theme-toggle__icon--light"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      </button>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+    <aside
+      class="sidebar"
+      id="contents-sidebar"
+      aria-label="Содержание материала"
+    >
+      <div class="sidebar__heading">Содержание</div>
+      <nav class="table-of-contents" aria-label="Разделы материала"></nav>
+      <div class="sidebar__footer">
+        <span class="sidebar__attribution"
+          ><strong>Zeyafix</strong> © 2026</span
+        >
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <main id="main-content" tabindex="-1">
+<section id="review">
+<h2>01 / Повторение пройденного</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="review-str-methods-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-str-methods-title">Методы строк</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-str-methods-title">
+<fieldset><legend>Какие методы есть у <code>str</code>? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-methods-1"><input class="visually-hidden" type="checkbox" id="review-str-methods-1" name="answers" value="1" aria-describedby="review-str-methods-1-feedback" /><span><code>upper()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает строку с буквами в верхнем регистре.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-methods-2"><input class="visually-hidden" type="checkbox" id="review-str-methods-2" name="answers" value="2" aria-describedby="review-str-methods-2-feedback" /><span><code>strip()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает строку без указанных крайних символов; по умолчанию убирает пробельные.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-methods-3"><input class="visually-hidden" type="checkbox" id="review-str-methods-3" name="answers" value="3" aria-describedby="review-str-methods-3-feedback" /><span><code>replace()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Возвращает строку с заменёнными фрагментами.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-methods-4"><input class="visually-hidden" type="checkbox" id="review-str-methods-4" name="answers" value="4" aria-describedby="review-str-methods-4-feedback" /><span><code>split()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разделяет строку и возвращает список строк.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-methods-5"><input class="visually-hidden" type="checkbox" id="review-str-methods-5" name="answers" value="5" aria-describedby="review-str-methods-5-feedback" /><span><code>append()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Добавляет элемент в список; у строки такого метода нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-methods-6"><input class="visually-hidden" type="checkbox" id="review-str-methods-6" name="answers" value="6" aria-describedby="review-str-methods-6-feedback" /><span><code>extend()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Расширяет список элементами другого итерируемого объекта.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-methods-7"><input class="visually-hidden" type="checkbox" id="review-str-methods-7" name="answers" value="7" aria-describedby="review-str-methods-7-feedback" /><span><code>insert()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вставляет элемент в список по позиции.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-methods-8"><input class="visually-hidden" type="checkbox" id="review-str-methods-8" name="answers" value="8" aria-describedby="review-str-methods-8-feedback" /><span><code>pop()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-methods-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У строки нет метода удаления элемента: строки неизменяемы.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-list-methods-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-list-methods-title">Методы списков</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-list-methods-title">
+<fieldset><legend>Какие методы есть у <code>list</code>? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-methods-1"><input class="visually-hidden" type="checkbox" id="review-list-methods-1" name="answers" value="1" aria-describedby="review-list-methods-1-feedback" /><span><code>sort()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сортирует сам список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-methods-2"><input class="visually-hidden" type="checkbox" id="review-list-methods-2" name="answers" value="2" aria-describedby="review-list-methods-2-feedback" /><span><code>reverse()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разворачивает порядок элементов списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-methods-3"><input class="visually-hidden" type="checkbox" id="review-list-methods-3" name="answers" value="3" aria-describedby="review-list-methods-3-feedback" /><span><code>remove()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Удаляет первое равное значение из списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-methods-4"><input class="visually-hidden" type="checkbox" id="review-list-methods-4" name="answers" value="4" aria-describedby="review-list-methods-4-feedback" /><span><code>copy()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Создаёт поверхностную копию списка.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-methods-5"><input class="visually-hidden" type="checkbox" id="review-list-methods-5" name="answers" value="5" aria-describedby="review-list-methods-5-feedback" /><span><code>lower()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Метод строки, переводящий буквы в нижний регистр.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-methods-6"><input class="visually-hidden" type="checkbox" id="review-list-methods-6" name="answers" value="6" aria-describedby="review-list-methods-6-feedback" /><span><code>startswith()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет начало строки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-methods-7"><input class="visually-hidden" type="checkbox" id="review-list-methods-7" name="answers" value="7" aria-describedby="review-list-methods-7-feedback" /><span><code>isdigit()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Проверяет символы строки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-methods-8"><input class="visually-hidden" type="checkbox" id="review-list-methods-8" name="answers" value="8" aria-describedby="review-list-methods-8-feedback" /><span><code>join()</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-methods-8-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Метод строки-разделителя, соединяющий строки из итерируемого объекта.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-str-properties-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-str-properties-title">Свойства строки</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-str-properties-title">
+<fieldset><legend>Какие утверждения о <code>str</code> верны? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-properties-1"><input class="visually-hidden" type="checkbox" id="review-str-properties-1" name="answers" value="1" aria-describedby="review-str-properties-1-feedback" /><span>Сохраняет порядок символов.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-properties-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У каждого символа есть позиция.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-properties-2"><input class="visually-hidden" type="checkbox" id="review-str-properties-2" name="answers" value="2" aria-describedby="review-str-properties-2-feedback" /><span>Поддерживает индексы и срезы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-properties-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, text[0] и text[:2].</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-properties-3"><input class="visually-hidden" type="checkbox" id="review-str-properties-3" name="answers" value="3" aria-describedby="review-str-properties-3-feedback" /><span>Не позволяет заменить символ присваиванием по индексу.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-properties-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для другого текста создают новую строку.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-properties-4"><input class="visually-hidden" type="checkbox" id="review-str-properties-4" name="answers" value="4" aria-describedby="review-str-properties-4-feedback" /><span>Можно вызвать <code>append()</code> и добавить символ в саму строку.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-properties-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Такого метода у строки нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-properties-5"><input class="visually-hidden" type="checkbox" id="review-str-properties-5" name="answers" value="5" aria-describedby="review-str-properties-5-feedback" /><span>Каждый символ встречается не больше одного раза.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-properties-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>В строке &quot;hello&quot; буква l повторяется.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-properties-6"><input class="visually-hidden" type="checkbox" id="review-str-properties-6" name="answers" value="6" aria-describedby="review-str-properties-6-feedback" /><span>Может хранить число и список как отдельные элементы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-properties-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Элемент строки при чтении по индексу является строкой из одного символа.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-list-properties-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-list-properties-title">Свойства списка</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-list-properties-title">
+<fieldset><legend>Какие утверждения о <code>list</code> верны? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-properties-1"><input class="visually-hidden" type="checkbox" id="review-list-properties-1" name="answers" value="1" aria-describedby="review-list-properties-1-feedback" /><span>Можно заменить элемент по индексу.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-properties-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список изменяемый.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-properties-2"><input class="visually-hidden" type="checkbox" id="review-list-properties-2" name="answers" value="2" aria-describedby="review-list-properties-2-feedback" /><span>Элементы сохраняют заданный порядок.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-properties-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Позиции меняются только при соответствующих действиях с самим списком.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-properties-3"><input class="visually-hidden" type="checkbox" id="review-list-properties-3" name="answers" value="3" aria-describedby="review-list-properties-3-feedback" /><span>В одном списке допустимы повторы и разные типы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-properties-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Например, [1, &quot;cat&quot;, 1].</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-properties-4"><input class="visually-hidden" type="checkbox" id="review-list-properties-4" name="answers" value="4" aria-describedby="review-list-properties-4-feedback" /><span>После создания длину изменить нельзя.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-properties-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Методы добавления и удаления меняют длину.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-properties-5"><input class="visually-hidden" type="checkbox" id="review-list-properties-5" name="answers" value="5" aria-describedby="review-list-properties-5-feedback" /><span>Элементы всегда автоматически сортируются.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-properties-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Сортировку нужно явно запросить.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-properties-6"><input class="visually-hidden" type="checkbox" id="review-list-properties-6" name="answers" value="6" aria-describedby="review-list-properties-6-feedback" /><span>Чтение по отрицательному индексу запрещено.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-properties-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Индекс -1 обозначает последний элемент непустого списка.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-str-tasks-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-str-tasks-title">Задачи для строк</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-str-tasks-title">
+<fieldset><legend>Что можно сделать строковыми операциями и методами? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-tasks-1"><input class="visually-hidden" type="checkbox" id="review-str-tasks-1" name="answers" value="1" aria-describedby="review-str-tasks-1-feedback" /><span>Убрать пробелы по краям введённого имени.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Подойдёт strip().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-tasks-2"><input class="visually-hidden" type="checkbox" id="review-str-tasks-2" name="answers" value="2" aria-describedby="review-str-tasks-2-feedback" /><span>Проверить, начинается ли адрес с <code>&quot;https://&quot;</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Подойдёт startswith().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-tasks-3"><input class="visually-hidden" type="checkbox" id="review-str-tasks-3" name="answers" value="3" aria-describedby="review-str-tasks-3-feedback" /><span>Заменить дефисы в тексте пробелами.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Подойдёт replace().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-str-tasks-4"><input class="visually-hidden" type="checkbox" id="review-str-tasks-4" name="answers" value="4" aria-describedby="review-str-tasks-4-feedback" /><span>Разбить строку <code>&quot;red,blue&quot;</code> по запятой.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Подойдёт split(&quot;,&quot;). Результат будет списком.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-tasks-5"><input class="visually-hidden" type="checkbox" id="review-str-tasks-5" name="answers" value="5" aria-describedby="review-str-tasks-5-feedback" /><span>Добавить число в конец самой строки методом <code>append()</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>append() у строки отсутствует.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-tasks-6"><input class="visually-hidden" type="checkbox" id="review-str-tasks-6" name="answers" value="6" aria-describedby="review-str-tasks-6-feedback" /><span>Отсортировать саму строку методом <code>sort()</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У str нет sort(); строку нельзя изменить на месте.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-str-tasks-7"><input class="visually-hidden" type="checkbox" id="review-str-tasks-7" name="answers" value="7" aria-describedby="review-str-tasks-7-feedback" /><span>Хранить оценки как отдельные числа внутри <code>str</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-str-tasks-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Текст &quot;8 10&quot; хранит символы, а не два числовых элемента.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="review-list-tasks-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="review-list-tasks-title">Задачи для списков</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="review-list-tasks-title">
+<fieldset><legend>Что удобно сделать с помощью списка? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-tasks-1"><input class="visually-hidden" type="checkbox" id="review-list-tasks-1" name="answers" value="1" aria-describedby="review-list-tasks-1-feedback" /><span>Хранить покупки по порядку, включая повторяющиеся.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список сохраняет и порядок, и повторы.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-tasks-2"><input class="visually-hidden" type="checkbox" id="review-list-tasks-2" name="answers" value="2" aria-describedby="review-list-tasks-2-feedback" /><span>Добавлять новые оценки по мере проверки работ.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Числовые оценки можно добавлять через append().</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-tasks-3"><input class="visually-hidden" type="checkbox" id="review-list-tasks-3" name="answers" value="3" aria-describedby="review-list-tasks-3-feedback" /><span>Заменить третью задачу в очереди.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Присваивание tasks[2] заменит элемент.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="review-list-tasks-4"><input class="visually-hidden" type="checkbox" id="review-list-tasks-4" name="answers" value="4" aria-describedby="review-list-tasks-4-feedback" /><span>Перебрать записи и посчитать подходящие условию.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список можно обойти циклом for.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-tasks-5"><input class="visually-hidden" type="checkbox" id="review-list-tasks-5" name="answers" value="5" aria-describedby="review-list-tasks-5-feedback" /><span>Автоматически запретить любое повторное значение.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список не проверяет уникальность за вас.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-tasks-6"><input class="visually-hidden" type="checkbox" id="review-list-tasks-6" name="answers" value="6" aria-describedby="review-list-tasks-6-feedback" /><span>Гарантировать, что никто не изменит сам объект списка.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-6-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список изменяемый.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="review-list-tasks-7"><input class="visually-hidden" type="checkbox" id="review-list-tasks-7" name="answers" value="7" aria-describedby="review-list-tasks-7-feedback" /><span>Применить <code>upper()</code> сразу ко всему списку имён.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="review-list-tasks-7-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У list нет upper(). Нужен перебор строк.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+</div>
+</section>
+<section id="why-tuple">
+<h2>02 / Зачем нужен кортеж</h2>
+<div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="block-7">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="block-7">Кортеж: значения с фиксированными позициями</h3>
+<div class="special-block__body"><p><code>tuple</code> (кортеж) является неизменяемой последовательностью. Порядок элементов сохраняется, индексы доступны, значения могут повторяться и иметь разные типы. После создания нельзя заменить, добавить или удалить элемент самого кортежа.</p></div>
+</aside>
+<p>Представьте точку на экране. У неё есть две связанные координаты: сначала <code>x</code>, затем <code>y</code>. Их удобно передавать и читать вместе. Если взять запись студента, то первая позиция может означать ID, а вторая имя. Кортеж хранит значения, но смысл позиций задаёте вы.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Координаты и запись студента</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Координаты и запись студента">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+student = (101, &quot;Alice&quot;)
+print(point)
+print(point[0], point[1])
+print(student[0], student[1])
+print((10, 10, &quot;start&quot;))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Координаты и запись студента">(10, 20)
+10 20
+101 Alice
+(10, 10, &#x27;start&#x27;)</pre></div>
+</div>
+<p>У <code>point[0]</code> значение <code>10</code>, у <code>point[1]</code> значение <code>20</code>. В <code>student</code> соседствуют число и строка. Повтор числа <code>10</code> в последнем кортеже допустим. Как и в списке, отсчёт индексов начинается с нуля.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/TupleCells.gif" alt="Кортеж point = (10, 20): координата x доступна по индексам 0 и -2, координата y по индексам 1 и -1" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 1. Положительные и отрицательные индексы кортежа.</figcaption>
+</figure>
+<p>Сравним две модели одной точки. Если программа передвигает точку и постоянно заменяет отдельные координаты, список позволяет менять их на месте. Если запись должна описывать выбранное положение целиком, кортеж подчёркивает фиксированную структуру: для другого положения создают другую запись.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Одна задача, две модели</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одна задача, две модели">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">moving_point = [10, 20]
+moving_point[0] = 15
+saved_point = (10, 20)
+new_point = (15, saved_point[1])
+print(moving_point)
+print(saved_point)
+print(new_point)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Одна задача, две модели">[15, 20]
+(10, 20)
+(15, 20)</pre></div>
+</div>
+<p>Выбирайте коллекцию по смыслу данных и нужным действиям. Кортеж не является «всегда более быстрым» или «лучшим» списком. Для постоянно изменяемого журнала удобен список. Для пары координат с неизменяемыми данными удобен кортеж.</p>
+</div>
+</section>
+<section id="create-tuple">
+<h2>03 / Создание кортежа</h2>
+<div class="section-content">
+<p>Чтобы собрать значения в кортеж, перечислите их через запятую. Скобки помогают увидеть границы записи. Пустой кортеж записывают как <code>()</code> или получают вызовом <code>tuple()</code> без аргументов.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Пустые и заполненные кортежи</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пустые и заполненные кортежи">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">empty = ()
+also_empty = tuple()
+colors = (&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;)
+print(empty)
+print(also_empty)
+print(colors)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Пустые и заполненные кортежи">()
+()
+(&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;)</pre></div>
+</div>
+<p>У <code>tuple(iterable)</code> один аргумент: объект, из которого нужно взять элементы. <strong>Итерируемым</strong> называют объект, элементы которого можно по очереди получать в цикле <code>for</code>. Вы уже знаете список и строку. Конструктор <code>tuple()</code> собирает их элементы в кортеж в порядке перебора.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Преобразование знакомых коллекций</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Преобразование знакомых коллекций">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = [8, 10, 8]
+saved_scores = tuple(scores)
+letters = tuple(&quot;cat&quot;)
+word = (&quot;cat&quot;,)
+print(saved_scores)
+print(letters)
+print(word)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Преобразование знакомых коллекций">(8, 10, 8)
+(&#x27;c&#x27;, &#x27;a&#x27;, &#x27;t&#x27;)
+(&#x27;cat&#x27;,)</pre></div>
+</div>
+<p>Строка при переборе отдаёт символы, поэтому <code>tuple(&quot;cat&quot;)</code> содержит три элемента. В <code>(&quot;cat&quot;,)</code> перечислен один готовый элемент: строка целиком. Преобразование списка не убирает повторяющиеся оценки.</p>
+<p>Скобки сами по себе могут только группировать выражение. Для непустого кортежа решающую роль играет запятая. Посмотрим на значение и тип трёх почти одинаковых записей.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Число или кортеж</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Число или кортеж">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">number = (5)
+single = (5,)
+without_brackets = 5,
+print(type(number), number)
+print(type(single), single)
+print(type(without_brackets), without_brackets)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Число или кортеж">&lt;class &#x27;int&#x27;&gt; 5
+&lt;class &#x27;tuple&#x27;&gt; (5,)
+&lt;class &#x27;tuple&#x27;&gt; (5,)</pre></div>
+</div>
+<p>В первом случае получился <code>int</code>. Во втором и третьем получился <code>tuple</code> длины один. Запись со скобками <code>(5,)</code> обычно легче заметить и прочитать. Если хотели один элемент, но написали <code>(5)</code>, добавьте запятую.</p>
+</div>
+</section>
+<section id="read-tuple">
+<h2>04 / Чтение и операции с кортежем</h2>
+<div class="section-content">
+<p>Пусть нужно прочитать сохранённые результаты. Индекс выбирает один элемент, срез <code>values[start:stop:step]</code> выбирает часть последовательности, не включая границу <code>stop</code>. Отрицательный индекс отсчитывается с конца, а пропущенные границы среза означают начало или конец.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Индексы, срезы и длина</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Индексы, срезы и длина">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = (8, 10, 8, 12)
+print(scores[0])
+print(scores[-1])
+print(scores[1:3])
+print(scores[::2])
+print(scores[::-1])
+print(len(scores))
+print(10 in scores)
+print(7 not in scores)
+for score in scores:
+    print(score)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Индексы, срезы и длина">8
+12
+(10, 8)
+(8, 8)
+(12, 8, 10, 8)
+4
+True
+True
+8
+10
+8
+12</pre></div>
+</div>
+<p>Срезы тоже возвращают кортежи. <code>scores[1:3]</code> берёт индексы 1 и 2, <code>scores[::2]</code> берёт каждый второй элемент с начала, а шаг <code>-1</code> читает с конца. <code>len()</code> возвращает длину, <code>in</code> и <code>not in</code> проверяют наличие значения. Цикл выводит элементы в их исходном порядке.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-9">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-9">Индекс за границей</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Индекс за границей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Индекс за границей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+print(point[2])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Индекс за границей">IndexError: tuple index out of range</pre></div>
+</div><p>У двух элементов есть индексы 0 и 1. Индекс 2 уже за границей.</p></div>
+</aside>
+<p>Срезы могут выходить за границы.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Срезы за границей</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Срезы за границей">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+print(point[:100])
+print(point[100:])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Срезы за границей">(10, 20)
+()</pre></div>
+</div>
+<p>Срез берёт только доступную часть. Если в выбранной области нет элементов, он возвращает пустой кортеж.</p>
+<p>Метод <code>count(value)</code> считает вхождения, а <code>index(value)</code> возвращает индекс первого совпадения. Это удобно, если нужно узнать, сколько раз встретилась оценка и где она встретилась впервые.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Количество и первая позиция</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Количество и первая позиция">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = (8, 10, 8, 12)
+print(scores.count(8))
+print(scores.count(7))
+print(scores.index(8))
+target = 7
+if target in scores:
+    print(scores.index(target))
+else:
+    print(&quot;Not found&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Количество и первая позиция">2
+0
+0
+Not found</pre></div>
+</div>
+<p>Ноль от <code>count()</code> означает отсутствие значения. Для <code>index()</code> отсутствие является ошибкой, поэтому проверка <code>in</code> должна стоять до вызова метода.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-8">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-8">Поиск отсутствующего значения</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Поиск отсутствующего значения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Поиск отсутствующего значения">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = (8, 10, 8, 12)
+print(scores.index(7))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Поиск отсутствующего значения">ValueError: tuple.index(x): x not in tuple</pre></div>
+</div><p>Метод существует, но подходящего значения нет. Используйте проверку <code>target in scores</code>, как в рабочем примере выше.</p></div>
+</aside>
+<p>Кортежи можно комбинировать и повторять.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Объединение, повторение и равенство</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Объединение, повторение и равенство">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = (10, 20)
+combined = first + (30,)
+repeated = first * 2
+print(combined)
+print(repeated)
+print(first)
+print((10, 20) == (20, 10))
+print((10, 20) == (10, 20))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Объединение, повторение и равенство">(10, 20, 30)
+(10, 20, 10, 20)
+(10, 20)
+False
+True</pre></div>
+</div>
+<p>Оператор <code>+</code> соединяет кортежи, а <code>*</code> с целым числом повторяет последовательность. Оба выражения формируют результат и оставляют <code>first</code> прежним. При равенстве сравниваются соответствующие позиции: одинакового набора значений в другом порядке недостаточно.</p>
+</div>
+</section>
+<section id="tuple-immutability">
+<h2>05 / Неизменяемость кортежа</h2>
+<div class="section-content">
+<aside class="special-block special-block--incorrect" aria-labelledby="block-10">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-10">Нельзя заменить ячейку кортежа</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Нельзя заменить ячейку кортежа</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нельзя заменить ячейку кортежа">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+point[0] = 15</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Нельзя заменить ячейку кортежа">TypeError: &#x27;tuple&#x27; object does not support item assignment</pre></div>
+</div><p>Этот тип не поддерживает присваивание по индексу. Вместо этого создайте <code>point = (15, point[1])</code> или используйте список, если нужны частые замены.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-11">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-11">Нельзя дописать элемент методом append</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Нельзя дописать элемент методом append</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нельзя дописать элемент методом append">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+point.append(30)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Нельзя дописать элемент методом append">AttributeError: &#x27;tuple&#x27; object has no attribute &#x27;append&#x27;</pre></div>
+</div><p>У <code>tuple</code> нет <code>append()</code>. Можно получить новый кортеж через <code>point + (30,)</code>.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-12">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-12">Нельзя удалить элемент методом remove</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Нельзя удалить элемент методом remove</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нельзя удалить элемент методом remove">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+point.remove(20)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Нельзя удалить элемент методом remove">AttributeError: &#x27;tuple&#x27; object has no attribute &#x27;remove&#x27;</pre></div>
+</div><p>У <code>tuple</code> нет <code>remove()</code>. Если требуется менять состав, преобразуйте кортеж в список и удалите элемент у списка.</p></div>
+</aside>
+<p>Если требуется изменить элемент кортежа, то можно конвертировать кортеж в список, затем проводить изменения.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Изменяемый рабочий список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Изменяемый рабочий список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = (10, 20)
+editable = list(values)
+editable.remove(20)
+editable.append(30)
+print(editable)
+print(values)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Изменяемый рабочий список">[10, 30]
+(10, 20)</pre></div>
+</div>
+<p>Имя переменной можно связать с другим объектом. Это не меняет прежний объект. Сохраним ссылку на старый кортеж, чтобы увидеть различие.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Переприсваивание имени</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Переприсваивание имени">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = (10, 20)
+old_point = point
+point = point + (30,)
+print(point)
+print(old_point)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Переприсваивание имени">(10, 20, 30)
+(10, 20)</pre></div>
+</div>
+<p>Сначала вычисляется правая часть: получается <code>(10, 20, 30)</code>. Затем <code>point</code> начинает обозначать этот результат. <code>old_point</code> продолжает обозначать прежний <code>(10, 20)</code>.</p>
+<p>Кортеж хранит ссылки на свои элементы. Если элемент сам является изменяемым объектом, его содержимое можно менять. Например, имя и список оценок составляют запись студента: позиции записи фиксированы, а список оценок растёт.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Меняется вложенный список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Меняется вложенный список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">record = (&quot;Alice&quot;, [8, 10])
+print(record)
+record[1].append(12)
+print(record)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Меняется вложенный список">(&#x27;Alice&#x27;, [8, 10])
+(&#x27;Alice&#x27;, [8, 10, 12])</pre></div>
+</div>
+<p>Выражение <code>record[1]</code> сначала получает список. Затем <code>append(12)</code> меняет именно его. Вторая позиция кортежа по-прежнему ссылается на тот же список, поэтому правило неизменяемости кортежа не нарушено.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-13">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-13">Замена вложенного объекта запрещена</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Замена вложенного объекта запрещена</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Замена вложенного объекта запрещена">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">record = (&quot;Alice&quot;, [8, 10])
+record[1] = [8, 10, 12]</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Замена вложенного объекта запрещена">TypeError: &#x27;tuple&#x27; object does not support item assignment</pre></div>
+</div><p>Здесь заменяется сама ссылка в позиции 1. Чтобы добавить оценку в существующий список, вызовите <code>record[1].append(12)</code>. Чтобы заменить запись целиком, создайте новый кортеж.</p></div>
+</aside>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/TupleNestedList.gif" alt="Кортеж record ссылается на строку Alice и список оценок. Вызов record[1].append(12) меняет список с [8, 10] на [8, 10, 12], сохраняя ссылки кортежа" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 2. Список внутри кортежа можно изменить: ссылка на него остаётся прежней.</figcaption>
+</figure>
+</div>
+</section>
+<section id="packing-unpacking">
+<h2>06 / Упаковка и распаковка</h2>
+<div class="section-content">
+<p>Упаковка собирает несколько значений в один кортеж. Распаковка распределяет элементы итерируемого объекта по отдельным переменным. Это позволяет читать координаты через понятные имена вместо повторяющихся индексов.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Из координат в отдельные переменные</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Из координат в отдельные переменные">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">point = 10, 20
+x, y = point
+print(point)
+print(x)
+print(y)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Из координат в отдельные переменные">(10, 20)
+10
+20</pre></div>
+</div>
+<p>Справа от первого <code>=</code> числа упаковываются в кортеж. Во второй строке первый элемент попадает в <code>x</code>, второй в <code>y</code>. В обычной распаковке каждому имени нужен ровно один элемент.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Распаковка списка и строки</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Распаковка списка и строки">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">width, height = [80, 25]
+first_letter, second_letter = &quot;OK&quot;
+print(width, height)
+print(first_letter, second_letter)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Распаковка списка и строки">80 25
+O K</pre></div>
+</div>
+<p>Распаковка не является отдельным методом кортежа: она работает и со знакомыми списками и строками. Слева перечисляют имена через запятую, справа помещают итерируемый объект.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-14">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-14">Значений слишком мало</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Значений слишком мало</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Значений слишком мало">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">x, y = (10,)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Значений слишком мало">ValueError: not enough values to unpack (expected 2, got 1)</pre></div>
+</div><p>Слева два имени, справа один элемент. Передайте два значения или оставьте одно имя со структурой <code>x, = (10,)</code>.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-15">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-15">Значений слишком много</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Значений слишком много</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Значений слишком много">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">x, y = (10, 20, 30)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Значений слишком много">ValueError: too many values to unpack (expected 2, got 3)</pre></div>
+</div><p>Для трёх элементов нужны три обычных имени, например <code>x</code>, <code>y</code>, <code>z</code>. Если часть значений нужно собрать вместе, используйте распаковку с остатком из следующего раздела.</p></div>
+</aside>
+<p>Используя распаковку и упаковку можно решать разные задачи, например, обмен значений. В <code>left, right = right, left</code> Python сначала вычисляет всю правую часть, используя прежние значения, и только затем присваивает результаты слева.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Поменять местами</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Поменять местами">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">left = &quot;red&quot;
+right = &quot;blue&quot;
+left, right = right, left
+print(left, right)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Поменять местами">blue red</pre></div>
+</div>
+<p>Правая часть содержит сначала <code>&quot;blue&quot;</code>, затем <code>&quot;red&quot;</code>. Поэтому <code>left</code> получает <code>&quot;blue&quot;</code>, а <code>right</code> получает <code>&quot;red&quot;</code>. Последовательные строки <code>left = right</code> и <code>right = left</code> дали бы другой результат: оба имени обозначали бы <code>&quot;blue&quot;</code>.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/TupleSwap.gif" alt="Обмен left, right = right, left: сначала вычисляется правая часть со значениями blue и red, затем left получает blue, а right получает red" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 3. При обмене значениями Python сначала вычисляет правую часть.</figcaption>
+</figure>
+<p>Если результаты хранятся в списке кортежей, каждую запись можно распаковать. Сначала прочитаем одну запись, затем применим ту же запись имён в заголовке цикла.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Одна запись и весь список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Одна запись и весь список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">results = [(&quot;Alice&quot;, 10), (&quot;Bob&quot;, 8)]
+name, score = results[0]
+print(name, score)
+for name, score in results:
+    print(f&quot;{name}: {score}&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Одна запись и весь список">Alice 10
+Alice: 10
+Bob: 8</pre></div>
+</div>
+<p>Каждая итерация получает очередной кортеж и распаковывает его в <code>name</code> и <code>score</code>. Все записи в этом примере содержат по два элемента. Первая <code>Alice</code> в выводе относится к отдельной распаковке. Следующие строки относятся к циклу.</p>
+</div>
+</section>
+<section id="starred-unpacking">
+<h2>07 / Распаковка с остатком</h2>
+<div class="section-content">
+<p>Иногда число элементов заранее неизвестно. Чтобы взять первый результат, а остальные сохранить вместе, поставьте <code>*</code> перед одним именем слева от <code>=</code>. В этом месте звёздочка означает сбор остатка, а не умножение.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Первый и остальные</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Первый и остальные">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = (10, 20, 30, 40)
+first, *rest = values
+print(first)
+print(rest)
+print(type(rest))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Первый и остальные">10
+[20, 30, 40]
+&lt;class &#x27;list&#x27;&gt;</pre></div>
+</div>
+<p><code>first</code> получает 10, а <code>rest</code> получает список <code>[20, 30, 40]</code>. Даже если справа кортеж, звёздочка собирает именно список.</p>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/UnpackFirstRest.gif" alt="Распаковка first, *rest = (10, 20, 30, 40): first получает 10, а rest получает список [20, 30, 40]" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 4. Первый элемент записывается в first, остальные собираются в список rest.</figcaption>
+</figure>
+<p>Чтобы отдельно получить последний элемент, перенесите звёздочку к первому имени. Обычные имена справа от неё забирают элементы с конца.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Начало и последний</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Начало и последний">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = (10, 20, 30, 40)
+*start, last = values
+print(start)
+print(last)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Начало и последний">[10, 20, 30]
+40</pre></div>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/UnpackStartLast.gif" alt="Распаковка *start, last = (10, 20, 30, 40): start получает список [10, 20, 30], а last получает 40" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 5. Последний элемент записывается в last, предшествующие собираются в список start.</figcaption>
+</figure>
+<p>Звёздочку можно поставить и между обычными именами. Например, отделить крайние измерения от промежуточных.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Края и середина</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Края и середина">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = (10, 20, 30, 40)
+first, *middle, last = values
+print(first)
+print(middle)
+print(last)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Края и середина">10
+[20, 30]
+40</pre></div>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/UnpackMiddle.gif" alt="Распаковка first, *middle, last = (10, 20, 30, 40): first получает 10, middle получает список [20, 30], last получает 40" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 6. Крайние элементы записываются в first и last, середина собирается в список middle.</figcaption>
+</figure>
+<p>Минимальное число элементов равно числу имён без звёздочки: каждому из них нужен свой элемент. Для <code>first, *rest</code> нужен хотя бы один; для <code>first, *middle, last</code> нужны хотя бы два. Сам остаток может быть пустым.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Минимум элементов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Минимум элементов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first, *rest = (10,)
+print(first, rest)
+*start, last = (40,)
+print(start, last)
+first, *middle, last = (10, 40)
+print(first, middle, last)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Минимум элементов">10 []
+[] 40
+10 [] 40</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-16">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-16">Не хватает значений для краёв</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Не хватает значений для краёв</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Не хватает значений для краёв">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first, *middle, last = (10,)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Не хватает значений для краёв">ValueError: not enough values to unpack (expected at least 2, got 1)</pre></div>
+</div><p>Звёздочка не создаёт недостающие значения. Здесь нужны минимум два элемента, например <code>(10, 40)</code>, либо нужно убрать одно обычное имя.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-17">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-17">Два остатка на одном уровне</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Два остатка на одном уровне</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Два остатка на одном уровне">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first, *middle, *rest = (10, 20, 30)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Два остатка на одном уровне">SyntaxError: multiple starred expressions in assignment (&lt;lesson&gt;, line 1)</pre></div>
+</div><p>На одном уровне допускается одна цель со звёздочкой. Иначе непонятно, как разделить остаток. Используйте <code>first, *rest = (10, 20, 30)</code>.</p></div>
+</aside>
+</div>
+</section>
+<section id="why-set">
+<h2>08 / Зачем нужно множество</h2>
+<div class="section-content">
+<p>В список участников иногда попадают повторные регистрации. Если нужно узнать уникальные имена, последовательность всех заявок уже не подходит: нам важен состав. Для этого есть множество <code>set</code>.</p>
+<aside class="special-block special-block--definition" aria-labelledby="block-18">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="block-18">Множество: уникальные элементы</h3>
+<div class="special-block__body"><p><code>set</code> хранит уникальные хешируемые элементы. Хешируемость разберём в следующем разделе. Множество можно изменять, но у него нет индексов и срезов, и оно не гарантирует сохранение порядка вставки.</p></div>
+</aside>
+<div class="code-example">
+<div class="code-example__header"><span>Уникальные имена</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Уникальные имена">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">names = [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Alice&quot;, &quot;Clara&quot;]
+participants = set(names)
+print(len(names))
+print(len(participants))
+print(sorted(participants))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Уникальные имена">4
+3
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Clara&#x27;]</pre></div>
+</div>
+<p>Четыре регистрации содержат три разных имени. <code>set(names)</code> оставляет уникальные значения. Здесь уникальность именно по имени: два разных человека с одинаковым именем тоже превратятся в один элемент. В законченной программе ниже будем использовать ID.</p>
+<p><code>sorted(participants)</code> возвращает новый отсортированный список, чтобы вывод был воспроизводимым. Само множество упорядоченным от этого не становится. Сортируйте значения, которые можно сравнивать между собой, например только имена или только целые числа. Смешанные числа и строки так сортировать нельзя.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Способы создания</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Способы создания">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">numbers = {1, 2, 3, 2}
+empty = set()
+letters = set(&quot;banana&quot;)
+print(sorted(numbers))
+print(empty)
+print(sorted(letters))
+print(type({}))
+print(type(set()))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Способы создания">[1, 2, 3]
+set()
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;n&#x27;]
+&lt;class &#x27;dict&#x27;&gt;
+&lt;class &#x27;set&#x27;&gt;</pre></div>
+</div>
+<p>Фигурные скобки с элементами через запятую создают множество. В строке <code>&quot;banana&quot;</code> повторяющиеся буквы тоже исчезают. Но пустые <code>{}</code> означают <code>dict</code>, пустой словарь (словари изучим в следующем уроке). Пустое множество всегда создавайте через <code>set()</code>.</p>
+<p>Ниже представлен пример чтения и перебора множества.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Кто зарегистрирован</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Кто зарегистрирован">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">participants = {&quot;Alice&quot;, &quot;Bob&quot;, &quot;Clara&quot;}
+print(len(participants))
+print(&quot;Alice&quot; in participants)
+print(&quot;Dan&quot; not in participants)
+for name in sorted(participants):
+    print(name)
+count = 0
+for name in participants:
+    count += 1
+print(count)
+print({1, 2, 3} == {3, 1, 2})</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Кто зарегистрирован">3
+True
+True
+Alice
+Bob
+Clara
+3
+True</pre></div>
+</div>
+<p><code>in</code> отвечает на вопрос о наличии элемента. Цикл <code>for name in participants</code> работает, но не обещает нужную последовательность посещения. В примере прямой перебор только считает элементы, а для упорядоченного вывода имён используется <code>sorted()</code>. Равенство множеств проверяет состав: порядок записи в фигурных скобках не влияет на результат.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-19">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-19">Нет первого элемента по индексу</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Нет первого элемента по индексу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Нет первого элемента по индексу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">participants = {&quot;Alice&quot;, &quot;Bob&quot;}
+print(participants[0])</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Нет первого элемента по индексу">TypeError: &#x27;set&#x27; object is not subscriptable</pre></div>
+</div><p>У множества нет позиций. Для проверки наличия используйте <code>in</code>, для обхода <code>for</code>. Если нужна первая строка по алфавиту, получите <code>sorted(participants)[0]</code> после проверки, что множество непустое. Срез <code>participants[:1]</code> тоже не поддерживается.</p></div>
+</aside>
+</div>
+</section>
+<section id="hashability">
+<h2>09 / Какие значения можно хранить во множестве</h2>
+<div class="section-content">
+<p>Множество должно быстро находить уже добавленные элементы. Для поиска Python использует хеш: целое число, связанное с объектом. Его можно получить через <code>hash(value)</code>, если объект поддерживает такую операцию. Само значение хеша не является ID человека или постоянным кодом для хранения в файле.</p>
+<aside class="special-block special-block--definition" aria-labelledby="block-20">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="block-20">Хешируемость</h3>
+<div class="special-block__body"><p>У хешируемого объекта хеш остаётся стабильным в течение его жизни. Равные объекты должны иметь равные хеши. Обратное не обязательно: совпадение хешей ещё не доказывает равенство. При поиске Python учитывает и равенство элементов.</p></div>
+</aside>
+<p>У знакомых встроенных типов числа и строки хешируемы. Кортеж тоже подходит, если каждый его элемент хешируем. Например, множество координат может хранить пары чисел.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Допустимые элементы</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Допустимые элементы">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = {10, 2.5, &quot;Alice&quot;, (1, 2)}
+print(len(values))
+print(&quot;Alice&quot; in values)
+print((1, 2) in values)
+point = (1, 2)
+print(hash(point) == hash((1, 2)))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Допустимые элементы">4
+True
+True
+True</pre></div>
+</div>
+<p>Здесь четыре различных элемента разных типов. Мы не сортируем их вместе. Хеши равных кортежей совпадают, поэтому последний вывод <code>True</code>. Численные хеши специально не запоминаем: например, хеш строки может отличаться между запусками Python.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-21">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-21">Список не подходит</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Список не подходит</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Список не подходит">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = {[1, 2]}</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Список не подходит">TypeError: cannot use &#x27;list&#x27; as a set element (unhashable type: &#x27;list&#x27;)</pre></div>
+</div><p>Список не хешируем.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-22">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-22">Обычное множество не подходит</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Обычное множество не подходит</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Обычное множество не подходит">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">groups = {{1, 2}}</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Обычное множество не подходит">TypeError: cannot use &#x27;set&#x27; as a set element (unhashable type: &#x27;set&#x27;)</pre></div>
+</div><p><code>set</code> не хешируем.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-23">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-23">Кортеж со списком тоже не подходит</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Кортеж со списком тоже не подходит</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Кортеж со списком тоже не подходит">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = {(1, [2])}</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Кортеж со списком тоже не подходит">TypeError: cannot use &#x27;tuple&#x27; as a set element (unhashable type: &#x27;list&#x27;)</pre></div>
+</div><p>Внешний кортеж неизменяем, но содержит нехешируемый список.</p></div>
+</aside>
+<p>Неизменяемость и хешируемость не являются синонимами. Мы только что увидели неизменяемый кортеж, который нельзя поместить во множество из-за его содержимого.</p>
+<p>Ниже пример того, как Python рассматривает объекты.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Равенство числовых значений</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Равенство числовых значений">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">print(1 == 1.0 == True)
+print(hash(1) == hash(1.0) == hash(True))
+values = {1, 1.0, True}
+print(len(values))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Равенство числовых значений">True
+True
+1</pre></div>
+</div>
+<p>Для Python эти значения равны и имеют равные хеши, поэтому множество считает их одним элементом. Проверяйте размер, а не конкретный вид оставшегося представителя. Уникальность определяется равенством значений, а не только названием их типа.</p>
+</div>
+</section>
+<section id="modify-set">
+<h2>10 / Изменение множества</h2>
+<div class="section-content">
+<p>Чтобы добавить целый тег, используйте <code>add(value)</code>. Чтобы взять все элементы другого итерируемого объекта, используйте <code>update(iterable)</code>. Разница особенно заметна на строке.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Строка целиком и строка по символам</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Строка целиком и строка по символам">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = set()
+tags.add(&quot;python&quot;)
+print(sorted(tags))
+letters = set()
+letters.update(&quot;python&quot;)
+print(sorted(letters))
+tags.update([&quot;git&quot;, &quot;python&quot;, &quot;web&quot;])
+print(sorted(tags))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Строка целиком и строка по символам">[&#x27;python&#x27;]
+[&#x27;h&#x27;, &#x27;n&#x27;, &#x27;o&#x27;, &#x27;p&#x27;, &#x27;t&#x27;, &#x27;y&#x27;]
+[&#x27;git&#x27;, &#x27;python&#x27;, &#x27;web&#x27;]</pre></div>
+</div>
+<p><code>add(&quot;python&quot;)</code> добавляет один элемент: строку целиком. <code>update(&quot;python&quot;)</code> перебирает строку и добавляет отдельные буквы. Для нескольких целых тегов передайте список строк. Повторный <code>&quot;python&quot;</code> не создаёт второй элемент.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Повторное добавление</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Повторное добавление">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = set()
+tags.add(&quot;python&quot;)
+print(len(tags))
+tags.add(&quot;git&quot;)
+print(len(tags))
+tags.add(&quot;python&quot;)
+print(len(tags))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Повторное добавление">1
+2
+2</pre></div>
+</div>
+<figure class="image-block">
+<div class="image-block__frame">
+<img src="https://zeyafix.github.io/pbv3-assets/img/lessons/25/SetAddUnique.gif" alt="В пустое множество добавляют теги python, git и снова python. Размер меняется с 0 на 1, затем на 2 и остаётся равным 2 при повторном добавлении" loading="lazy" decoding="async" />
+</div>
+<figcaption>Рис 7. Повторное добавление существующего элемента не увеличивает множество.</figcaption>
+</figure>
+<p><code>remove(value)</code> удаляет элемент и сообщает об ошибке, если такого элемента нет. <code>discard(value)</code> тоже удаляет элемент, но спокойно завершает работу, если он отсутствует. Выбор зависит от того, считаете ли вы отсутствие ошибкой.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Удаление существующих и отсутствующих тегов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Удаление существующих и отсутствующих тегов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = {&quot;python&quot;, &quot;git&quot;, &quot;web&quot;}
+tags.remove(&quot;git&quot;)
+tags.discard(&quot;web&quot;)
+tags.discard(&quot;missing&quot;)
+print(sorted(tags))
+target = &quot;missing&quot;
+if target in tags:
+    tags.remove(target)
+print(sorted(tags))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Удаление существующих и отсутствующих тегов">[&#x27;python&#x27;]
+[&#x27;python&#x27;]</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-24">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-24">remove ожидает существующий элемент</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>remove ожидает существующий элемент</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: remove ожидает существующий элемент">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = {&quot;python&quot;}
+tags.remove(&quot;git&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: remove ожидает существующий элемент">KeyError: &#x27;git&#x27;</pre></div>
+</div><p>Значения <code>&quot;git&quot;</code> нет. Если это допустимая ситуация, используйте <code>tags.discard(&quot;git&quot;)</code>. Если нужно отдельное действие при отсутствии, сначала проверьте <code>in</code>.</p></div>
+</aside>
+<p><code>pop()</code> без аргументов удаляет и возвращает произвольный элемент. Это не обещание случайного выбора и не способ взять «первый» или «последний» элемент. Программа не должна зависеть от того, какое именно значение вернулось.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Обработка одного из ожидающих участников</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Обработка одного из ожидающих участников">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">pending = {&quot;Alice&quot;, &quot;Bob&quot;, &quot;Clara&quot;}
+if pending:
+    selected = pending.pop()
+    print(selected in {&quot;Alice&quot;, &quot;Bob&quot;, &quot;Clara&quot;})
+    print(selected not in pending)
+    print(len(pending))
+pending.clear()
+print(len(pending))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Обработка одного из ожидающих участников">True
+True
+2
+0</pre></div>
+</div>
+<p>Проверка <code>if pending</code> отбрасывает пустой набор. Любой извлечённый участник был в исходном составе и больше не находится в <code>pending</code>, а осталось два элемента. <code>clear()</code> затем удаляет все элементы. Мы печатаем проверяемые свойства результата, поэтому вывод не зависит от выбора <code>pop()</code>.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-25">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-25">pop на пустом множестве</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>pop на пустом множестве</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: pop на пустом множестве">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">pending = set()
+pending.pop()</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: pop на пустом множестве">KeyError: &#x27;pop from an empty set&#x27;</pre></div>
+</div><p>Из пустого множества нечего извлекать. Сначала используйте <code>if pending</code>, как выше.</p></div>
+</aside>
+<p>Методы <code>add()</code>, <code>update()</code>, <code>remove()</code>, <code>discard()</code> и <code>clear()</code> меняют объект и возвращают <code>None</code>. Это обозначает отсутствие отдельного результата. <code>pop()</code> отличается: он возвращает извлечённый элемент.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Метод изменяет tags, а не возвращает его</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Метод изменяет tags, а не возвращает его">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = set()
+result = tags.add(&quot;python&quot;)
+print(result)
+print(sorted(tags))
+print(tags.update([&quot;git&quot;]))
+print(tags.remove(&quot;git&quot;))
+print(tags.discard(&quot;missing&quot;))
+print(tags.clear())
+print(len(tags))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Метод изменяет tags, а не возвращает его">None
+[&#x27;python&#x27;]
+None
+None
+None
+None
+0</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-26">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-26">Логическая ошибка: потеря ссылки</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Присваивание результата add</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Присваивание результата add">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = {&quot;git&quot;}
+tags = tags.add(&quot;python&quot;)
+print(tags)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Присваивание результата add">None</pre></div>
+</div><p>Эта строка сама по себе не вызывает исключение. Метод сначала меняет множество, затем имя <code>tags</code> получает <code>None</code>. Исправление: пишите <code>tags.add(&quot;python&quot;)</code> отдельной строкой без присваивания.</p></div>
+</aside>
+</div>
+</section>
+<section id="set-operations">
+<h2>11 / Операции над множествами</h2>
+<div class="section-content">
+<p>В кружок Python записались <code>Alice</code> и <code>Bob</code>, в кружок дизайна <code>Bob</code> и <code>Clara</code>. Нам нужно отвечать на разные вопросы о составах. Возьмём <code>first = {&quot;Alice&quot;, &quot;Bob&quot;}</code> и <code>second = {&quot;Bob&quot;, &quot;Clara&quot;}</code>. На схемах слева только <code>Alice</code>, в пересечении <code>Bob</code>, справа только <code>Clara</code>. Цветом отмечен результат операции.</p>
+<p>Для задачи объединения используйте оператор <code>|</code>: слева и справа от него стоят множества. Та же операция доступна как метод <code>union()</code>.</p>
+<figure class="image-block">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 390 215" role="img" aria-labelledby="union-diagram-title union-diagram-desc">
+<title id="union-diagram-title">Объединение: кто есть хотя бы в одном кружке</title><desc id="union-diagram-desc">Выделены оба круга целиком: Alice, Bob, Clara.</desc>
+<defs><clipPath id="union-overlap"><circle cx="245" cy="100" r="76" /></clipPath>
+<mask id="union-without-right"><rect width="390" height="215" fill="white" /><circle cx="245" cy="100" r="76" fill="black" /></mask>
+<mask id="union-without-left"><rect width="390" height="215" fill="white" /><circle cx="145" cy="100" r="76" fill="black" /></mask></defs>
+<rect width="390" height="215" rx="8" fill="#ffffff" /><circle cx="145" cy="100" r="76" fill="#93b8ff" mask="url(#union-without-right)" /><circle cx="245" cy="100" r="76" fill="#93b8ff" mask="url(#union-without-left)" /><circle cx="145" cy="100" r="76" fill="#93b8ff" clip-path="url(#union-overlap)" />
+<g fill="none" stroke="#18243a" stroke-width="2"><circle cx="145" cy="100" r="76" /><circle cx="245" cy="100" r="76" /></g>
+<g fill="#18243a" font-family="Segoe UI, Arial, sans-serif" font-size="16" text-anchor="middle"><text x="112" y="106">Alice</text><text x="195" y="106">Bob</text><text x="278" y="106">Clara</text><text x="120" y="199">first</text><text x="270" y="199">second</text></g>
+</svg><figcaption>Объединение: кто есть хотя бы в одном кружке. Выделены оба круга целиком: Alice, Bob, Clara.</figcaption></figure>
+<div class="code-example">
+<div class="code-example__header"><span>Объединение: кто есть хотя бы в одном кружке</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Объединение: кто есть хотя бы в одном кружке">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+result = first | second
+print(sorted(result))
+print(sorted(first.union(second)))
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Объединение: кто есть хотя бы в одном кружке">[&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Clara&#x27;]
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Clara&#x27;]
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;]</pre></div>
+</div>
+<p>Объединение берёт все элементы обоих множеств без повторов. <code>Bob</code> включён один раз. Последняя строка показывает, что исходное ,<code>first</code> осталось прежним: результат нужно сохранить отдельно, если он понадобится дальше.</p>
+<p>Для задачи пересечения используйте оператор <code>&amp;</code>: слева и справа от него стоят множества. Та же операция доступна как метод <code>intersection()</code>.</p>
+<figure class="image-block">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 390 215" role="img" aria-labelledby="intersection-diagram-title intersection-diagram-desc">
+<title id="intersection-diagram-title">Пересечение: кто посещает оба кружка</title><desc id="intersection-diagram-desc">Выделена общая часть кругов: Bob.</desc>
+<defs><clipPath id="intersection-overlap"><circle cx="245" cy="100" r="76" /></clipPath>
+<mask id="intersection-without-right"><rect width="390" height="215" fill="white" /><circle cx="245" cy="100" r="76" fill="black" /></mask>
+<mask id="intersection-without-left"><rect width="390" height="215" fill="white" /><circle cx="145" cy="100" r="76" fill="black" /></mask></defs>
+<rect width="390" height="215" rx="8" fill="#ffffff" /><circle cx="145" cy="100" r="76" fill="#93b8ff" clip-path="url(#intersection-overlap)" />
+<g fill="none" stroke="#18243a" stroke-width="2"><circle cx="145" cy="100" r="76" /><circle cx="245" cy="100" r="76" /></g>
+<g fill="#18243a" font-family="Segoe UI, Arial, sans-serif" font-size="16" text-anchor="middle"><text x="112" y="106">Alice</text><text x="195" y="106">Bob</text><text x="278" y="106">Clara</text><text x="120" y="199">first</text><text x="270" y="199">second</text></g>
+</svg><figcaption>Пересечение: кто посещает оба кружка. Выделена общая часть кругов: Bob.</figcaption></figure>
+<div class="code-example">
+<div class="code-example__header"><span>Пересечение: кто посещает оба кружка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Пересечение: кто посещает оба кружка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+result = first &amp; second
+print(sorted(result))
+print(sorted(first.intersection(second)))
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Пересечение: кто посещает оба кружка">[&#x27;Bob&#x27;]
+[&#x27;Bob&#x27;]
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;]</pre></div>
+</div>
+<p>Пересечение оставляет только элементы, которые есть одновременно слева и справа. Последняя строка показывает, что исходное <code>first</code> осталось прежним: результат нужно сохранить отдельно, если он понадобится дальше.</p>
+<p>Для задачи разности используйте оператор <code>-</code>: слева и справа от него стоят множества. Та же операция доступна как метод <code>difference()</code>.</p>
+<figure class="image-block">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 390 215" role="img" aria-labelledby="difference-diagram-title difference-diagram-desc">
+<title id="difference-diagram-title">Разность: кто есть только в первом кружке</title><desc id="difference-diagram-desc">Выделена часть первого круга вне второго: Alice.</desc>
+<defs><clipPath id="difference-overlap"><circle cx="245" cy="100" r="76" /></clipPath>
+<mask id="difference-without-right"><rect width="390" height="215" fill="white" /><circle cx="245" cy="100" r="76" fill="black" /></mask>
+<mask id="difference-without-left"><rect width="390" height="215" fill="white" /><circle cx="145" cy="100" r="76" fill="black" /></mask></defs>
+<rect width="390" height="215" rx="8" fill="#ffffff" /><circle cx="145" cy="100" r="76" fill="#93b8ff" mask="url(#difference-without-right)" />
+<g fill="none" stroke="#18243a" stroke-width="2"><circle cx="145" cy="100" r="76" /><circle cx="245" cy="100" r="76" /></g>
+<g fill="#18243a" font-family="Segoe UI, Arial, sans-serif" font-size="16" text-anchor="middle"><text x="112" y="106">Alice</text><text x="195" y="106">Bob</text><text x="278" y="106">Clara</text><text x="120" y="199">first</text><text x="270" y="199">second</text></g>
+</svg><figcaption>Разность: кто есть только в первом кружке. Выделена часть первого круга вне второго: Alice.</figcaption></figure>
+<div class="code-example">
+<div class="code-example__header"><span>Разность: кто есть только в первом кружке</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разность: кто есть только в первом кружке">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+result = first - second
+print(sorted(result))
+print(sorted(first.difference(second)))
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разность: кто есть только в первом кружке">[&#x27;Alice&#x27;]
+[&#x27;Alice&#x27;]
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;]</pre></div>
+</div>
+<p>Разность берёт элементы слева и исключает всё, что есть справа. Направление здесь важно. Последняя строка показывает, что исходное <code>first</code> осталось прежним: результат нужно сохранить отдельно, если он понадобится дальше.</p>
+<p>Для задачи симметрической разности используйте оператор <code>^</code>: слева и справа от него стоят множества. Та же операция доступна как метод <code>symmetric_difference()</code>.</p>
+<figure class="image-block">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 390 215" role="img" aria-labelledby="symmetric-difference-diagram-title symmetric-difference-diagram-desc">
+<title id="symmetric-difference-diagram-title">Симметрическая разность: кто посещает ровно один кружок</title><desc id="symmetric-difference-diagram-desc">Выделены внешние части обоих кругов: Alice и Clara.</desc>
+<defs><clipPath id="symmetric-difference-overlap"><circle cx="245" cy="100" r="76" /></clipPath>
+<mask id="symmetric-difference-without-right"><rect width="390" height="215" fill="white" /><circle cx="245" cy="100" r="76" fill="black" /></mask>
+<mask id="symmetric-difference-without-left"><rect width="390" height="215" fill="white" /><circle cx="145" cy="100" r="76" fill="black" /></mask></defs>
+<rect width="390" height="215" rx="8" fill="#ffffff" /><circle cx="145" cy="100" r="76" fill="#93b8ff" mask="url(#symmetric-difference-without-right)" /><circle cx="245" cy="100" r="76" fill="#93b8ff" mask="url(#symmetric-difference-without-left)" />
+<g fill="none" stroke="#18243a" stroke-width="2"><circle cx="145" cy="100" r="76" /><circle cx="245" cy="100" r="76" /></g>
+<g fill="#18243a" font-family="Segoe UI, Arial, sans-serif" font-size="16" text-anchor="middle"><text x="112" y="106">Alice</text><text x="195" y="106">Bob</text><text x="278" y="106">Clara</text><text x="120" y="199">first</text><text x="270" y="199">second</text></g>
+</svg><figcaption>Симметрическая разность: кто посещает ровно один кружок. Выделены внешние части обоих кругов: Alice и Clara.</figcaption></figure>
+<div class="code-example">
+<div class="code-example__header"><span>Симметрическая разность: кто посещает ровно один кружок</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Симметрическая разность: кто посещает ровно один кружок">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+result = first ^ second
+print(sorted(result))
+print(sorted(first.symmetric_difference(second)))
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Симметрическая разность: кто посещает ровно один кружок">[&#x27;Alice&#x27;, &#x27;Clara&#x27;]
+[&#x27;Alice&#x27;, &#x27;Clara&#x27;]
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;]</pre></div>
+</div>
+<p>Симметрическая разность исключает общих участников, но оставляет участников любой из двух сторон. Последняя строка показывает, что исходное <code>first</code> осталось прежним: результат нужно сохранить отдельно, если он понадобится дальше.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Разность в двух направлениях</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разность в двух направлениях">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+print(sorted(first - second))
+print(sorted(second - first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разность в двух направлениях">[&#x27;Alice&#x27;]
+[&#x27;Clara&#x27;]</pre></div>
+</div>
+<p><code>first - second</code> даёт <code>Alice</code>, а <code>second - first</code> даёт <code>Clara</code>. Для объединения, пересечения и симметрической разности перестановка этих двух наборов не меняет состав результата.</p>
+<p>Операторы <code>|</code>, <code>&amp;</code>, <code>-</code>, <code>^</code> требуют множества: <code>set</code> или <code>frozenset</code>. Соответствующие методы могут принимать и другие итерируемые объекты, например список. Это удобно, если новые регистрации ещё хранятся в списке.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Методы принимают список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Методы принимают список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+new_names = [&quot;Bob&quot;, &quot;Clara&quot;]
+print(sorted(first.union(new_names)))
+print(sorted(first.intersection(new_names)))
+print(sorted(first.difference(new_names)))
+print(sorted(first.symmetric_difference(new_names)))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Методы принимают список">[&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Clara&#x27;]
+[&#x27;Bob&#x27;]
+[&#x27;Alice&#x27;]
+[&#x27;Alice&#x27;, &#x27;Clara&#x27;]</pre></div>
+</div>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-27">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-27">Оператор не принимает список</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Оператор не принимает список</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Оператор не принимает список">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+result = first | [&quot;Clara&quot;]</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Оператор не принимает список">TypeError: unsupported operand type(s) for |: &#x27;set&#x27; and &#x27;list&#x27;</pre></div>
+</div></div>
+</aside>
+<p>Когда нужно обновить сам набор, используйте методы с изменением на месте. <code>update()</code> добавляет все элементы второго набора, <code>intersection_update()</code> оставляет общие, <code>difference_update()</code> удаляет элементы второго, <code>symmetric_difference_update()</code> оставляет встречающиеся только с одной стороны. Эти методы возвращают <code>None</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Новый результат и изменение set">
+<table><caption>Новый результат и изменение set</caption><thead><tr><th scope="col">Новый результат</th><th scope="col">Изменить first</th><th scope="col">Короткая форма</th></tr></thead><tbody><tr><td><code>first | second</code></td><td><code>first.update(second)</code></td><td><code>first |= second</code></td></tr><tr><td><code>first &amp; second</code></td><td><code>first.intersection_update(second)</code></td><td><code>first &amp;= second</code></td></tr><tr><td><code>first - second</code></td><td><code>first.difference_update(second)</code></td><td><code>first -= second</code></td></tr><tr><td><code>first ^ second</code></td><td><code>first.symmetric_difference_update(second)</code></td><td><code>first ^= second</code></td></tr></tbody></table>
+</div>
+<p>В следующем примере перед каждой операцией создаётся свежий исходный набор. Это позволяет сравнить результаты независимо. Короткие формы для <code>set</code> тоже изменяют сам объект и, как операторы выше, требуют множество справа.</p>
+<div class="code-example">
+<div class="code-example__header"><span>update и |=</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: update и |=">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+first.update(second)
+print(sorted(first))
+first = {&quot;Alice&quot;, &quot;Bob&quot;}
+first |= second
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: update и |=">[&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Clara&#x27;]
+[&#x27;Alice&#x27;, &#x27;Bob&#x27;, &#x27;Clara&#x27;]</pre></div>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>intersection_update и &amp;=</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: intersection_update и &amp;=">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+first.intersection_update(second)
+print(sorted(first))
+first = {&quot;Alice&quot;, &quot;Bob&quot;}
+first &amp;= second
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: intersection_update и &amp;=">[&#x27;Bob&#x27;]
+[&#x27;Bob&#x27;]</pre></div>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>difference_update и -=</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: difference_update и -=">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+first.difference_update(second)
+print(sorted(first))
+first = {&quot;Alice&quot;, &quot;Bob&quot;}
+first -= second
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: difference_update и -=">[&#x27;Alice&#x27;]
+[&#x27;Alice&#x27;]</pre></div>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>symmetric_difference_update и ^=</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: symmetric_difference_update и ^=">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = {&quot;Alice&quot;, &quot;Bob&quot;}
+second = {&quot;Bob&quot;, &quot;Clara&quot;}
+first.symmetric_difference_update(second)
+print(sorted(first))
+first = {&quot;Alice&quot;, &quot;Bob&quot;}
+first ^= second
+print(sorted(first))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: symmetric_difference_update и ^=">[&#x27;Alice&#x27;, &#x27;Clara&#x27;]
+[&#x27;Alice&#x27;, &#x27;Clara&#x27;]</pre></div>
+</div>
+</div>
+</section>
+<section id="set-comparison-copy">
+<h2>12 / Сравнение множеств, ссылки и безопасный перебор</h2>
+<div class="section-content">
+<p>Допустим, для задания нужны <code>Python</code> и <code>Git</code>. Множество <code>required</code> является подмножеством <code>available</code>, если каждый требуемый навык есть в имеющемся наборе. Это проверка включения, а не сравнение размеров.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Подмножество и надмножество</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Подмножество и надмножество">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">required = {&quot;python&quot;, &quot;git&quot;}
+available = {&quot;python&quot;, &quot;git&quot;, &quot;sql&quot;}
+print(required &lt;= available)
+print(required &lt; available)
+print(available &gt;= required)
+print(available &gt; required)
+print(required &lt;= required)
+print(required &lt; required)
+print({&quot;java&quot;} &lt;= available)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Подмножество и надмножество">True
+True
+True
+True
+True
+False
+False</pre></div>
+</div>
+<p><code>&lt;=</code> допускает равенство составов. <code>&lt;</code> требует строгое включение: все элементы слева есть справа, и справа есть ещё хотя бы один. <code>&gt;=</code> и <code>&gt;</code> смотрят в обратном направлении и проверяют надмножество. Набор из одного <code>&quot;java&quot;</code> меньше по длине, но не является подмножеством available.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Те же проверки методами</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Те же проверки методами">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">required = {&quot;python&quot;, &quot;git&quot;}
+available = {&quot;python&quot;, &quot;git&quot;, &quot;sql&quot;}
+print(required.issubset(available))
+print(available.issuperset(required))
+print(required.isdisjoint({&quot;design&quot;, &quot;music&quot;}))
+print(required.isdisjoint({&quot;git&quot;, &quot;design&quot;}))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Те же проверки методами">True
+True
+True
+False</pre></div>
+</div>
+<p><code>issubset()</code> соответствует <code>&lt;=</code>, <code>issuperset()</code> соответствует <code>&gt;=</code>. <code>isdisjoint()</code> отвечает, нет ли ни одного общего элемента: для дизайна и музыки вернётся <code>True</code>, при общем <code>Git</code> вернётся <code>False</code>.</p>
+<p>Напомним, что присваивание <code>backup = tags</code> не создаёт копию. Оба имени ссылаются на одно множество. Если нужна отдельная версия состава, вызовите <code>tags.copy()</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Общая ссылка</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Общая ссылка">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = {&quot;python&quot;}
+backup = tags
+tags.add(&quot;git&quot;)
+print(sorted(tags))
+print(sorted(backup))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Общая ссылка">[&#x27;git&#x27;, &#x27;python&#x27;]
+[&#x27;git&#x27;, &#x27;python&#x27;]</pre></div>
+</div>
+<div class="code-example">
+<div class="code-example__header"><span>Отдельное множество</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Отдельное множество">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">tags = {&quot;python&quot;}
+backup = tags.copy()
+tags.add(&quot;git&quot;)
+print(sorted(tags))
+print(sorted(backup))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Отдельное множество">[&#x27;git&#x27;, &#x27;python&#x27;]
+[&#x27;python&#x27;]</pre></div>
+</div>
+<p>В первом случае добавленный <code>Git</code> виден через оба имени. Во втором меняется только <code>tags</code>. Метод <code>copy()</code> создаёт новое внешнее множество. Это поверхностная копия, без создания новых копий каждого элемента.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-28">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-28">Удаление из перебираемого множества</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Удаление из перебираемого множества</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Удаление из перебираемого множества">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {8, 10, 12}
+for score in scores:
+    if score &lt; 10:
+        scores.remove(score)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Удаление из перебираемого множества">RuntimeError: Set changed size during iteration</pre></div>
+</div><p>Изменение размера множества во время перебора нарушает обход. Добавление или удаление элементов в том же множестве не используйте как способ фильтрации. Соберите подходящие элементы в отдельное множество.</p></div>
+</aside>
+<p>Пусть нужно оставить оценки не ниже <code>10</code>. Цикл читает исходный набор, а <code>add()</code> меняет отдельный результат. После завершения обхода можно связать исходное имя с новым набором.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Безопасная фильтрация</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Безопасная фильтрация">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">scores = {8, 10, 12}
+passed = set()
+for score in scores:
+    if score &gt;= 10:
+        passed.add(score)
+print(sorted(scores))
+scores = passed
+print(sorted(scores))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Безопасная фильтрация">[8, 10, 12]
+[10, 12]</pre></div>
+</div>
+<p>До переприсваивания <code>scores</code> содержит все три оценки. После него имя обозначает результат из двух оценок. Исходный объект не менялся в процессе перебора.</p>
+</div>
+</section>
+<section id="frozenset">
+<h2>13 / Неизменяемое множество frozenset</h2>
+<div class="section-content">
+<aside class="special-block special-block--definition" aria-labelledby="block-29">
+<div class="special-block__header"><span class="special-block__label">Определение</span></div>
+<h3 class="special-block__title" id="block-29">Фиксированный состав</h3>
+<div class="special-block__body"><p><code>frozenset</code> является неизменяемым множеством уникальных хешируемых элементов. Оно поддерживает чтение и операции над множествами, но не добавление и удаление элементов на месте. У него нет индексов и гарантированного порядка вставки.</p></div>
+</aside>
+<p>Например, набор разрешённых команд фиксируется при запуске программы. Для пустого набора вызовите <code>frozenset()</code>, для набора из готовых значений передайте итерируемый объект в <code>frozenset(iterable)</code>. Отдельного литерала с фигурными скобками у этого типа нет.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Разрешённые команды</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Разрешённые команды">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">empty = frozenset()
+allowed_commands = frozenset([&quot;help&quot;, &quot;start&quot;, &quot;stop&quot;, &quot;help&quot;])
+print(len(empty))
+print(len(allowed_commands))
+command = &quot;start&quot;
+if command in allowed_commands:
+    print(&quot;Allowed&quot;)
+print(&quot;delete&quot; not in allowed_commands)
+for command in sorted(allowed_commands):
+    print(command)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Разрешённые команды">0
+3
+Allowed
+True
+help
+start
+stop</pre></div>
+</div>
+<p>Повторный <code>help</code> не добавляет элемент. Как и у <code>set</code>, принадлежность проверяет <code>in</code>, а длину возвращает <code>len()</code>. Прямой <code>for command in allowed_commands</code> тоже допустим, но для определённого порядка вывода нужен <code>sorted()</code>.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Сравнения и операции чтения</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сравнения и операции чтения">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">first = frozenset([&quot;git&quot;, &quot;python&quot;])
+second = frozenset([&quot;python&quot;, &quot;sql&quot;])
+print(first == frozenset([&quot;python&quot;, &quot;git&quot;]))
+print(frozenset([&quot;git&quot;]) &lt;= first)
+print(first.issuperset([&quot;git&quot;]))
+print(first.isdisjoint(second))
+print(sorted(first | second))
+print(sorted(first &amp; second))
+print(sorted(first - second))
+print(sorted(first ^ second))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Сравнения и операции чтения">True
+True
+True
+False
+[&#x27;git&#x27;, &#x27;python&#x27;, &#x27;sql&#x27;]
+[&#x27;python&#x27;]
+[&#x27;git&#x27;]
+[&#x27;git&#x27;, &#x27;sql&#x27;]</pre></div>
+</div>
+<p>Проверки включения и методы <code>issubset()</code>, <code>issuperset()</code>, <code>isdisjoint()</code> имеют тот же смысл. Для получения результата доступны <code>union()</code>, <code>intersection()</code>, <code>difference()</code> и <code>symmetric_difference()</code>. При операциях над этими двумя объектами результат тоже <code>frozenset</code>.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-30">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-30">У frozenset нет add</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>У frozenset нет add</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: У frozenset нет add">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">allowed = frozenset([&quot;help&quot;, &quot;start&quot;])
+allowed.add(&quot;stop&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: У frozenset нет add">AttributeError: &#x27;frozenset&#x27; object has no attribute &#x27;add&#x27;</pre></div>
+</div><p>Состав объекта зафиксирован. Создайте новый результат объединением либо выберите <code>set</code>, если набор должен изменяться.</p></div>
+</aside>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-31">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-31">У frozenset нет remove</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>У frozenset нет remove</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: У frozenset нет remove">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">allowed = frozenset([&quot;help&quot;, &quot;start&quot;])
+allowed.remove(&quot;start&quot;)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: У frozenset нет remove">AttributeError: &#x27;frozenset&#x27; object has no attribute &#x27;remove&#x27;</pre></div>
+</div><p>Для другого состава создайте результат разности: <code>allowed - frozenset([&quot;start&quot;])</code>. Старый объект останется прежним.</p></div>
+</aside>
+<div class="code-example">
+<div class="code-example__header"><span>Новый состав и прежняя версия</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Новый состав и прежняя версия">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">allowed = frozenset([&quot;help&quot;, &quot;start&quot;])
+saved = allowed
+extra = frozenset([&quot;stop&quot;])
+allowed = allowed | extra
+print(sorted(allowed))
+print(type(allowed))
+print(sorted(saved))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Новый состав и прежняя версия">[&#x27;help&#x27;, &#x27;start&#x27;, &#x27;stop&#x27;]
+&lt;class &#x27;frozenset&#x27;&gt;
+[&#x27;help&#x27;, &#x27;start&#x27;]</pre></div>
+</div>
+<p>Здесь <code>allowed</code> переприсваивается новому результату. Ссылка <code>saved</code> позволяет увидеть, что прежний объект всё ещё содержит только <code>help</code> и <code>start</code>. Неизменяемость объекта не запрещает переприсваивание имени.</p>
+<p><code>frozenset</code> хешируем, поэтому его можно поместить во множество. Это полезно для подсчёта разных наборов выбранных тегов: порядок выбора внутри набора нам не нужен, зато разные составы нужно отличать.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Уникальные наборы тегов</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Уникальные наборы тегов">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">selections = {
+    frozenset([&quot;python&quot;, &quot;git&quot;]),
+    frozenset([&quot;git&quot;, &quot;python&quot;]),
+    frozenset([&quot;web&quot;]),
+}
+print(len(selections))
+print(frozenset([&quot;git&quot;, &quot;python&quot;]) in selections)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Уникальные наборы тегов">2
+True</pre></div>
+</div>
+<p>Первые два набора равны, поэтому во внешнем множестве осталось два элемента. Внутренние элементы <code>frozenset</code> также должны быть хешируемыми: список внутри него по-прежнему не подойдёт.</p>
+<aside class="special-block special-block--incorrect" aria-labelledby="block-32">
+<div class="special-block__header"><span class="special-block__label">Ошибка</span></div>
+<h3 class="special-block__title" id="block-32">Вложенный set не заменяет frozenset</h3>
+<div class="special-block__body"><div class="code-example">
+<div class="code-example__header"><span>Вложенный set не заменяет frozenset</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Вложенный set не заменяет frozenset">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">selections = set()
+selections.add({&quot;python&quot;, &quot;git&quot;})</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Последняя строка сообщения об ошибке</div><pre tabindex="0" aria-label="Вывод примера: Вложенный set не заменяет frozenset">TypeError: cannot use &#x27;set&#x27; as a set element (unhashable type: &#x27;set&#x27;)</pre></div>
+</div><p>Обычный <code>set</code> не хешируем. Исправьте добавление на <code>selections.add(frozenset([&quot;python&quot;, &quot;git&quot;]))</code>.</p></div>
+</aside>
+<p>Обычного <code>set</code> достаточно, когда список разрешённых команд должен расширяться во время работы и достаточно проверки принадлежности. <code>frozenset</code> полезен, когда состав должен оставаться фиксированным или целый набор должен стать элементом другого множества. Это выбор модели данных, а не дополнительная защита от переприсваивания переменной.</p>
+</div>
+</section>
+<section id="complete-program">
+<h2>14 / Разбор законченной программы</h2>
+<div class="section-content">
+<p>Сравним участников кружков Python и дизайна. Запись <code>(student_id, name)</code> содержит ID и имя. В наших исходных данных одному ID соответствует одно имя. Разные люди могут иметь одинаковые имена, поэтому уникальность определяем по ID. Повтор одной записи не должен увеличивать число участников.</p>
+<p>На первом этапе требуется получить ID из записей. Списки сохраняют записи и их порядок, кортеж объединяет поля записи, а множество собирает уникальные ID. При каждой итерации распаковываем запись и добавляем только её числовой идентификатор.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Один кружок</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Один кружок">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">python_club = [(101, &quot;Alice&quot;), (102, &quot;Bob&quot;), (101, &quot;Alice&quot;)]
+python_ids = set()
+for student_id, name in python_club:
+    python_ids.add(student_id)
+print(sorted(python_ids))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Один кружок">[101, 102]</pre></div>
+</div>
+<p>Имя <code>name</code> получает второе поле, но для сравнения составов оно не нужно. Повтор ID <code>101</code> не увеличил множество. Код предполагает согласованные записи; проверка противоречащих друг другу имён одного ID была бы отдельной задачей.</p>
+<p>На втором этапе требуется ответить на вопросы о составах.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Общие, только первые, все</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Общие, только первые, все">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">python_ids = {101, 102, 103}
+design_ids = {102, 104}
+common_ids = python_ids &amp; design_ids
+only_python = python_ids - design_ids
+all_ids = python_ids | design_ids
+final_members = frozenset(all_ids)
+print(sorted(common_ids))
+print(sorted(only_python))
+print(sorted(final_members))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Общие, только первые, все">[102]
+[101, 103]
+[101, 102, 103, 104]</pre></div>
+</div>
+<p>ID 102 встречается в обоих кружках. ID <code>101</code> и <code>103</code> есть только в Python. Всего четыре уникальных ID. <code>frozenset(all_ids)</code> фиксирует состав отчёта: изменение рабочих множеств не изменит этот объект.</p>
+<p>Следующий блок можно скопировать в пустой файл и запустить целиком. В нём есть все исходные данные и оба цикла. Обратите внимание на <code>Alice</code> с ID <code>101</code> и <code>Alice</code> с ID <code>104</code>: одинаковое имя не делает их одним человеком.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Сравнение двух кружков</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Сравнение двух кружков">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">python_club = [
+    (101, &quot;Alice&quot;),
+    (102, &quot;Bob&quot;),
+    (103, &quot;Clara&quot;),
+    (101, &quot;Alice&quot;),
+]
+design_club = [
+    (102, &quot;Bob&quot;),
+    (104, &quot;Alice&quot;),
+]
+
+python_ids = set()
+for student_id, name in python_club:
+    python_ids.add(student_id)
+
+design_ids = set()
+for student_id, name in design_club:
+    design_ids.add(student_id)
+
+common_ids = python_ids &amp; design_ids
+only_python = python_ids - design_ids
+all_ids = python_ids | design_ids
+final_members = frozenset(all_ids)
+
+print(&quot;Common:&quot;, sorted(common_ids))
+print(&quot;Only Python:&quot;, sorted(only_python))
+print(&quot;All:&quot;, sorted(final_members))
+print(&quot;Total:&quot;, len(final_members))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Сравнение двух кружков">Common: [102]
+Only Python: [101, 103]
+All: [101, 102, 103, 104]
+Total: 4</pre></div>
+</div>
+<p>Чтобы проверить программу, заменяйте только два исходных списка; циклы и операции оставляйте прежними. Для таблицы ниже короткая запись <code>(101, &quot;Alice&quot;)</code> обозначает ту же структуру записи, что в полной программе. Каждый ожидаемый состав приведён после <code>sorted()</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Граничные случаи программы">
+<table><caption>Граничные случаи программы</caption><thead><tr><th scope="col">Данные</th><th scope="col">Общие ID</th><th scope="col">Только Python</th><th scope="col">Все ID / количество</th></tr></thead><tbody><tr><td>Python: <code>[(101, &quot;Alice&quot;), (101, &quot;Alice&quot;)]</code>; design: <code>[(102, &quot;Bob&quot;)]</code></td><td>[]</td><td>[101]</td><td>[101, 102] / 2</td></tr><tr><td>Python: <code>[]</code>; design: <code>[(102, &quot;Bob&quot;)]</code></td><td>[]</td><td>[]</td><td>[102] / 1</td></tr><tr><td>Python: <code>[(101, &quot;Alice&quot;)]</code>; design: <code>[]</code></td><td>[]</td><td>[101]</td><td>[101] / 1</td></tr><tr><td>Оба списка: <code>[(101, &quot;Alice&quot;), (102, &quot;Bob&quot;)]</code></td><td>[101, 102]</td><td>[]</td><td>[101, 102] / 2</td></tr><tr><td>Оба списка пустые</td><td>[]</td><td>[]</td><td>[] / 0</td></tr></tbody></table>
+</div>
+<p>Пустой список не выполняет ни одной итерации цикла, поэтому соответствующее множество остаётся пустым. При равных составах пересечение равно всему составу, а разность пуста. Повторная запись не влияет ни на одну из этих операций.</p>
+</div>
+</section>
+<section id="choose-collection">
+<h2>15 / Как выбрать коллекцию</h2>
+<div class="section-content">
+<p>Сначала сформулируйте, что важно сохранить: позиции, повторения или только состав. Затем решите, должен ли сам объект меняться. У этих коллекций разные задачи, поэтому универсального победителя нет.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Сравнение коллекций">
+<table><caption>Сравнение коллекций</caption><thead><tr><th scope="col">Тип</th><th scope="col">Порядок</th><th scope="col">Индексы</th><th scope="col">Повторы</th><th scope="col">Изменяемость</th><th scope="col">Элементы</th><th scope="col">Пример задачи</th></tr></thead><tbody><tr><td><code>list</code></td><td>Сохраняется</td><td>Есть</td><td>Допустимы</td><td>Да</td><td>Любые объекты</td><td>Пополняемые покупки, в том числе повторные</td></tr><tr><td><code>tuple</code></td><td>Сохраняется</td><td>Есть</td><td>Допустимы</td><td>Нет; вложенные объекты могут меняться</td><td>Любые объекты</td><td>Координаты точки с фиксированными позициями</td></tr><tr><td><code>set</code></td><td>Нет гарантии порядка вставки</td><td>Нет</td><td>Равные значения объединяются</td><td>Да</td><td>Только хешируемые</td><td>Уникальные ID посетителей за день</td></tr><tr><td><code>frozenset</code></td><td>Нет гарантии порядка вставки</td><td>Нет</td><td>Равные значения объединяются</td><td>Нет</td><td>Только хешируемые</td><td>Фиксированные разрешённые значения</td></tr></tbody></table>
+</div>
+<p>Конструкторы <code>list()</code>, <code>tuple()</code>, <code>set()</code> и <code>frozenset()</code> берут элементы из переданного итерируемого объекта. Требования целевого типа продолжают действовать: превращение списка списков в множество не сделает внутренние списки хешируемыми.</p>
+<div class="code-example">
+<div class="code-example__header"><span>От последовательности к составу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: От последовательности к составу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">values = [30, 10, 30, 20]
+saved = tuple(values)
+unique = set(saved)
+fixed = frozenset(unique)
+editable = set(fixed)
+ordered = sorted(editable)
+restored = list(saved)
+print(saved)
+print(ordered)
+print(tuple(ordered))
+print(restored)
+print(len(list(fixed)))</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: От последовательности к составу">(30, 10, 30, 20)
+[10, 20, 30]
+(10, 20, 30)
+[30, 10, 30, 20]
+3</pre></div>
+</div>
+<p>Переход <code>list → tuple → list</code> сохранил порядок и повторы исходных элементов. После перехода к <code>set</code> повтор 30 потерян, а исходный порядок больше не гарантируется. <code>list(fixed)</code> и <code>tuple(unique)</code> возможны, но берут порядок перебора множества, а прежнюю последовательность они не восстанавливают. <code>sorted()</code> создаёт новый порядок по возрастанию, а не возвращает старый.</p>
+<p>Ниже четыре ситуации.</p>
+<div class="code-example">
+<div class="code-example__header"><span>Выбор по смыслу</span><button type="button" class="code-example__copy-button" aria-label="Скопировать пример: Выбор по смыслу">Копировать</button></div>
+<pre tabindex="0"><code class="language-python">shopping = [&quot;milk&quot;, &quot;bread&quot;, &quot;milk&quot;]
+point = (10, 20)
+visitors = {101, 102, 101}
+allowed_sizes = frozenset([&quot;S&quot;, &quot;M&quot;, &quot;L&quot;])
+shopping.append(&quot;tea&quot;)
+visitors.add(103)
+print(shopping)
+print(point)
+print(sorted(visitors))
+print(&quot;M&quot; in allowed_sizes)</code></pre>
+<div class="code-example__output"><div class="code-example__output-title">Консоль</div><pre tabindex="0" aria-label="Вывод примера: Выбор по смыслу">[&#x27;milk&#x27;, &#x27;bread&#x27;, &#x27;milk&#x27;, &#x27;tea&#x27;]
+(10, 20)
+[101, 102, 103]
+True</pre></div>
+</div>
+<p>Покупки допускают повтор и дописываются. Координаты сохраняют роли <code>x</code> и <code>y</code>. Посетитель с тем же ID не увеличивает множество. Набор размеров используется для проверки допустимого значения и не изменяется на месте.</p>
+</div>
+</section>
+<section id="self-check">
+<h2>16 / Самопроверка</h2>
+<div class="section-content">
+<aside class="special-block special-block--question" aria-labelledby="check-properties-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-properties-title">Что сохраняют коллекции?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-properties-title">
+<fieldset><legend>Выберите верные утверждения. Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-properties-1"><input class="visually-hidden" type="checkbox" id="check-properties-1" name="answers" value="1" aria-describedby="check-properties-1-feedback" /><span>Кортеж сохраняет позиции и допускает повторяющиеся элементы.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-properties-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это последовательность, как список, но без изменения её собственных элементов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-properties-2"><input class="visually-hidden" type="checkbox" id="check-properties-2" name="answers" value="2" aria-describedby="check-properties-2-feedback" /><span><code>set</code> гарантирует порядок добавления элементов.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-properties-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У set нет гарантированного порядка вставки.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-properties-3"><input class="visually-hidden" type="checkbox" id="check-properties-3" name="answers" value="3" aria-describedby="check-properties-3-feedback" /><span><code>frozenset</code> поддерживает проверку <code>in</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-properties-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Неизменяемость запрещает изменение состава, но не чтение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-properties-4"><input class="visually-hidden" type="checkbox" id="check-properties-4" name="answers" value="4" aria-describedby="check-properties-4-feedback" /><span>Любой объект внутри <code>tuple</code> тоже становится неизменяемым.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-properties-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список внутри кортежа можно изменять.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-hashable-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-hashable-title">Что может стать элементом множества?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-hashable-title">
+<fieldset><legend>Какие значения хешируемы? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-hashable-1"><input class="visually-hidden" type="checkbox" id="check-hashable-1" name="answers" value="1" aria-describedby="check-hashable-1-feedback" /><span><code>(1, 2)</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-hashable-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кортеж содержит хешируемые числа.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-hashable-2"><input class="visually-hidden" type="checkbox" id="check-hashable-2" name="answers" value="2" aria-describedby="check-hashable-2-feedback" /><span><code>(1, [2])</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-hashable-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Вложенный список делает кортеж нехешируемым.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-hashable-3"><input class="visually-hidden" type="checkbox" id="check-hashable-3" name="answers" value="3" aria-describedby="check-hashable-3-feedback" /><span><code>frozenset([1, 2])</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-hashable-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>frozenset хешируем и может быть элементом set.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-hashable-4"><input class="visually-hidden" type="checkbox" id="check-hashable-4" name="answers" value="4" aria-describedby="check-hashable-4-feedback" /><span><code>{1, 2}</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-hashable-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Обычный set не хешируем.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-hashable-5"><input class="visually-hidden" type="checkbox" id="check-hashable-5" name="answers" value="5" aria-describedby="check-hashable-5-feedback" /><span><code>&quot;python&quot;</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-hashable-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Строки хешируемы.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-operation-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-operation-title">Участники ровно одного кружка</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-operation-title">
+<fieldset><legend>Как получить участников, которые есть только в одном из множеств <code>first</code> и <code>second</code>? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-operation-1"><input class="visually-hidden" type="checkbox" id="check-operation-1" name="answers" value="1" aria-describedby="check-operation-1-feedback" /><span><code>first ^ second</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-operation-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Симметрическая разность исключает общую часть.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-operation-2"><input class="visually-hidden" type="checkbox" id="check-operation-2" name="answers" value="2" aria-describedby="check-operation-2-feedback" /><span><code>first.symmetric_difference(second)</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-operation-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Метод возвращает тот же состав, что оператор ^.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-operation-3"><input class="visually-hidden" type="checkbox" id="check-operation-3" name="answers" value="3" aria-describedby="check-operation-3-feedback" /><span><code>first | second</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-operation-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Объединение включает также общих участников.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-operation-4"><input class="visually-hidden" type="checkbox" id="check-operation-4" name="answers" value="4" aria-describedby="check-operation-4-feedback" /><span><code>first &amp; second</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-operation-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Пересечение оставляет как раз общих участников.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-operation-5"><input class="visually-hidden" type="checkbox" id="check-operation-5" name="answers" value="5" aria-describedby="check-operation-5-feedback" /><span><code>first - second</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-operation-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Разность не включает участников только второго кружка.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-reassignment-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-reassignment-title">Меняется объект или имя?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-reassignment-title">
+<fieldset><legend>Какие утверждения верны? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-reassignment-1"><input class="visually-hidden" type="checkbox" id="check-reassignment-1" name="answers" value="1" aria-describedby="check-reassignment-1-feedback" /><span>После <code>tags = {&quot;git&quot;}; backup = tags; tags.add(&quot;python&quot;)</code> объект <code>backup</code> содержит <code>python</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-reassignment-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Оба имени обозначают одно изменяемое множество.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-reassignment-2"><input class="visually-hidden" type="checkbox" id="check-reassignment-2" name="answers" value="2" aria-describedby="check-reassignment-2-feedback" /><span>После <code>point = (10, 20); saved = point; point = point + (30,)</code> объект <code>saved</code> имеет три элемента.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-reassignment-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>saved по-прежнему ссылается на прежний кортеж из двух элементов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-reassignment-3"><input class="visually-hidden" type="checkbox" id="check-reassignment-3" name="answers" value="3" aria-describedby="check-reassignment-3-feedback" /><span>После <code>fixed = frozenset([1]); saved = fixed; fixed = fixed | frozenset([2])</code> объект <code>saved</code> содержит только 1.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-reassignment-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Переприсваивание fixed не меняет прежний объект.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-reassignment-4"><input class="visually-hidden" type="checkbox" id="check-reassignment-4" name="answers" value="4" aria-describedby="check-reassignment-4-feedback" /><span><code>tags = tags.add(&quot;python&quot;)</code> сохраняет расширенное множество в <code>tags</code>.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-reassignment-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Имя tags получит None, который вернул add().</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-tuple-type-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-tuple-type-title">Тип одного элемента</h3>
+<div class="special-block__body"><p>Какой тип имеет значение <code>(7,)</code>? Введите только имя типа строчными английскими буквами, без кавычек и скобок.</p><form class="quiz" data-quiz="text" data-answer="tuple" data-hint="Посмотрите на запятую после 7: она создаёт кортеж. Требуется английское имя типа." data-success="Верно: запятая создаёт tuple из одного элемента." autocomplete="off" aria-labelledby="check-tuple-type-title">
+<label for="check-tuple-type-input">Ответ с указанными пробелами и регистром, без пробелов по краям:</label><div class="quiz__answer-row"><input class="quiz__input" id="check-tuple-type-input" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-tuple-type-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-tuple-type-feedback" aria-hidden="true"><div><p></p></div></div><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-unpack-values-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-unpack-values-title">Результат распаковки</h3>
+<div class="special-block__body"><p>После <code>first, *middle, last = (2, 4, 6, 8)</code> выполняется <code>print(first, middle, last)</code>. Введите строку вывода. Между напечатанными объектами один пробел, после запятой внутри списка тоже один пробел.</p><form class="quiz" data-quiz="text" data-answer="2 [4, 6] 8" data-hint="Первое и последнее числа получают обычные имена, а два внутренних числа собираются в список." data-success="Верно: first равен 2, middle содержит [4, 6], last равен 8." autocomplete="off" aria-labelledby="check-unpack-values-title">
+<label for="check-unpack-values-input">Ответ с указанными пробелами и регистром, без пробелов по краям:</label><div class="quiz__answer-row"><input class="quiz__input" id="check-unpack-values-input" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-unpack-values-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-unpack-values-feedback" aria-hidden="true"><div><p></p></div></div><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-set-size-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-set-size-title">Сколько уникальных значений?</h3>
+<div class="special-block__body"><p>Что выведет <code>print(len({2, 2, 3, 3, 3, 4}))</code>? Введите только целое число.</p><form class="quiz" data-quiz="text" data-answer="3" data-hint="Посчитайте разные значения: 2, 3 и 4. Повторы не создают новые элементы." data-success="Верно: множество содержит три уникальных значения." autocomplete="off" aria-labelledby="check-set-size-title">
+<label for="check-set-size-input">Ответ с указанными пробелами и регистром, без пробелов по краям:</label><div class="quiz__answer-row"><input class="quiz__input" id="check-set-size-input" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-set-size-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-set-size-feedback" aria-hidden="true"><div><p></p></div></div><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-intersection-output-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-intersection-output-title">Состав пересечения</h3>
+<div class="special-block__body"><p>Что выведет <code>print(sorted({4, 2, 6} &amp; {6, 4, 8}))</code>? Введите список в квадратных скобках, с одним пробелом после запятой.</p><form class="quiz" data-quiz="text" data-answer="[4, 6]" data-hint="Оставьте общие числа и расположите их по возрастанию. sorted() возвращает список." data-success="Верно: общие значения 4 и 6; sorted() задаёт их порядок." autocomplete="off" aria-labelledby="check-intersection-output-title">
+<label for="check-intersection-output-input">Ответ с указанными пробелами и регистром, без пробелов по краям:</label><div class="quiz__answer-row"><input class="quiz__input" id="check-intersection-output-input" name="answer" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="check-intersection-output-feedback" /><button class="quiz__submit-button" type="submit">Ответить</button></div>
+<div class="quiz__feedback" id="check-intersection-output-feedback" aria-hidden="true"><div><p></p></div></div><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p></form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-errors-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-errors-title">Найдите ошибки</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-errors-title">
+<fieldset><legend>Какие фрагменты не выполняют указанное намерение или вызывают ошибку? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-errors-1"><input class="visually-hidden" type="checkbox" id="check-errors-1" name="answers" value="1" aria-describedby="check-errors-1-feedback" /><span><code>single = (7)</code> для создания кортежа из одного числа.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-errors-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это int. Нужна запятая: (7,).</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-errors-2"><input class="visually-hidden" type="checkbox" id="check-errors-2" name="answers" value="2" aria-describedby="check-errors-2-feedback" /><span><code>values = set(); values.add([1, 2])</code> для добавления пары.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-errors-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Список нехешируем. Фиксированную пару можно записать как (1, 2).</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-errors-3"><input class="visually-hidden" type="checkbox" id="check-errors-3" name="answers" value="3" aria-describedby="check-errors-3-feedback" /><span><code>fixed = frozenset([1, 2]); fixed.remove(1)</code> для удаления элемента на месте.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-errors-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У frozenset нет remove(). Можно создать результат разности.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-errors-4"><input class="visually-hidden" type="checkbox" id="check-errors-4" name="answers" value="4" aria-describedby="check-errors-4-feedback" /><span><code>single = (7,)</code> для создания кортежа из одного числа.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-errors-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это правильная запись, ошибки нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-errors-5"><input class="visually-hidden" type="checkbox" id="check-errors-5" name="answers" value="5" aria-describedby="check-errors-5-feedback" /><span><code>values = set(); values.add((1, 2))</code> для добавления пары.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-errors-5-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Кортеж чисел хешируем и подходит.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-pack-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-pack-title">Как упаковать координаты?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-pack-title">
+<fieldset><legend>Какие записи создают в <code>point</code> кортеж из чисел <code>10</code> и <code>20</code>? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-pack-1"><input class="visually-hidden" type="checkbox" id="check-pack-1" name="answers" value="1" aria-describedby="check-pack-1-feedback" /><span><code>point = 10, 20</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-pack-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Запятая упаковывает значения в кортеж.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-pack-2"><input class="visually-hidden" type="checkbox" id="check-pack-2" name="answers" value="2" aria-describedby="check-pack-2-feedback" /><span><code>point = (10, 20)</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-pack-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Скобки явно показывают границы кортежа.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-pack-3"><input class="visually-hidden" type="checkbox" id="check-pack-3" name="answers" value="3" aria-describedby="check-pack-3-feedback" /><span><code>point = [10, 20]</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-pack-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Это список.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-pack-4"><input class="visually-hidden" type="checkbox" id="check-pack-4" name="answers" value="4" aria-describedby="check-pack-4-feedback" /><span><code>point = tuple(10, 20)</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-pack-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>tuple() ожидает не более одного аргумента: итерируемый объект.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-unpack-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-unpack-title">Как распаковать запись?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-unpack-title">
+<fieldset><legend>Дано <code>student = (101, &quot;Alice&quot;)</code>. Как получить ID в <code>student_id</code> и имя в <code>name</code>? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-unpack-1"><input class="visually-hidden" type="checkbox" id="check-unpack-1" name="answers" value="1" aria-describedby="check-unpack-1-feedback" /><span><code>student_id, name = student</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-unpack-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Два элемента распределяются слева направо.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-unpack-2"><input class="visually-hidden" type="checkbox" id="check-unpack-2" name="answers" value="2" aria-describedby="check-unpack-2-feedback" /><span><code>(student_id, name) = student</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-unpack-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Скобки вокруг имён допустимы и не меняют порядок.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-unpack-3"><input class="visually-hidden" type="checkbox" id="check-unpack-3" name="answers" value="3" aria-describedby="check-unpack-3-feedback" /><span><code>name, student_id = student</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-unpack-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Запись допустима, но имя name получит число, а student_id строку.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-unpack-4"><input class="visually-hidden" type="checkbox" id="check-unpack-4" name="answers" value="4" aria-describedby="check-unpack-4-feedback" /><span><code>student_id, name, score = student</code></span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-unpack-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Значений недостаточно для трёх имён.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-choose-tuple-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-choose-tuple-title">Когда подходит tuple?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-choose-tuple-title">
+<fieldset><legend>В каких ситуациях кортеж соответствует смыслу данных? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-choose-tuple-1"><input class="visually-hidden" type="checkbox" id="check-choose-tuple-1" name="answers" value="1" aria-describedby="check-choose-tuple-1-feedback" /><span>Сохранить пару координат (x, y) с фиксированными позициями.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-tuple-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Важны порядок и роли двух элементов.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-choose-tuple-2"><input class="visually-hidden" type="checkbox" id="check-choose-tuple-2" name="answers" value="2" aria-describedby="check-choose-tuple-2-feedback" /><span>Сохранить запись (ID, name) без замены её полей на месте.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-tuple-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Позиции имеют заранее определённый смысл.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-choose-tuple-3"><input class="visually-hidden" type="checkbox" id="check-choose-tuple-3" name="answers" value="3" aria-describedby="check-choose-tuple-3-feedback" /><span>Автоматически убирать повторы регистраций.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-tuple-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>tuple сохраняет повторения; для уникального состава нужен set.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-choose-tuple-4"><input class="visually-hidden" type="checkbox" id="check-choose-tuple-4" name="answers" value="4" aria-describedby="check-choose-tuple-4-feedback" /><span>Каждую минуту добавлять новый результат в тот же объект.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-tuple-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для дополняемого объекта удобен list.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-choose-set-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-choose-set-title">Когда подходит set?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-choose-set-title">
+<fieldset><legend>Где удобно обычное изменяемое множество? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-choose-set-1"><input class="visually-hidden" type="checkbox" id="check-choose-set-1" name="answers" value="1" aria-describedby="check-choose-set-1-feedback" /><span>Добавлять ID посетителей и считать уникальные.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-set-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Повтор ID не увеличивает размер.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-choose-set-2"><input class="visually-hidden" type="checkbox" id="check-choose-set-2" name="answers" value="2" aria-describedby="check-choose-set-2-feedback" /><span>Находить общих участников двух групп.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-set-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Для этого есть пересечение.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-choose-set-3"><input class="visually-hidden" type="checkbox" id="check-choose-set-3" name="answers" value="3" aria-describedby="check-choose-set-3-feedback" /><span>Хранить покупки с повторами в порядке добавления.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-set-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Множество потеряет повторы и не гарантирует порядок.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-choose-set-4"><input class="visually-hidden" type="checkbox" id="check-choose-set-4" name="answers" value="4" aria-describedby="check-choose-set-4-feedback" /><span>Хранить списки оценок как элементы без преобразования.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-set-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Списки нехешируемы.</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+<aside class="special-block special-block--question" aria-labelledby="check-choose-frozenset-title">
+<div class="special-block__header"><span class="special-block__label">Вопрос</span></div>
+<h3 class="special-block__title" id="check-choose-frozenset-title">Когда полезен frozenset?</h3>
+<div class="special-block__body"><form class="quiz" data-quiz="multiple" autocomplete="off" aria-labelledby="check-choose-frozenset-title">
+<fieldset><legend>Где полезен неизменяемый состав? Выберите все подходящие варианты.</legend>
+<div class="quiz__options">
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-choose-frozenset-1"><input class="visually-hidden" type="checkbox" id="check-choose-frozenset-1" name="answers" value="1" aria-describedby="check-choose-frozenset-1-feedback" /><span>Хранить фиксированный набор разрешённых команд.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-frozenset-1-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Чтение разрешено, методов изменения состава нет.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="true">
+<label class="quiz-option__label" for="check-choose-frozenset-2"><input class="visually-hidden" type="checkbox" id="check-choose-frozenset-2" name="answers" value="2" aria-describedby="check-choose-frozenset-2-feedback" /><span>Помещать уникальные наборы тегов во внешнее множество.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-frozenset-2-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>frozenset хешируем.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-choose-frozenset-3"><input class="visually-hidden" type="checkbox" id="check-choose-frozenset-3" name="answers" value="3" aria-describedby="check-choose-frozenset-3-feedback" /><span>По порядку сохранять историю последних команд с повторами.</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-frozenset-3-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>Нужна последовательность, а не множество.</p></div></div>
+</div>
+<div class="quiz-option" data-correct="false">
+<label class="quiz-option__label" for="check-choose-frozenset-4"><input class="visually-hidden" type="checkbox" id="check-choose-frozenset-4" name="answers" value="4" aria-describedby="check-choose-frozenset-4-feedback" /><span>Добавлять элементы в тот же объект методом add().</span><span class="quiz-option__icon" aria-hidden="true"></span></label>
+<div class="quiz__feedback" id="check-choose-frozenset-4-feedback" aria-hidden="true"><div><p><span class="quiz-option__state-label visually-hidden"></span>У frozenset нет add().</p></div></div>
+</div>
+</div></fieldset><button class="quiz__submit-button" type="submit">Ответить</button><p class="quiz__summary visually-hidden" role="status" aria-live="polite"></p>
+</form></div>
+</aside>
+</div>
+</section>
+</main>
+<div id="copy-status" class="visually-hidden" role="status" aria-live="polite"></div>
+</body>
+</html>

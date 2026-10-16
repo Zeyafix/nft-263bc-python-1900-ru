@@ -1,6 +1,7 @@
 ## Next to cover
 
-- [23-24 - Assessment 1](lessons/23-24%20-%20Assessment%201/)
+- [25 - tuple, set, and frozenset Collections](lessons/25%20-%20tuple,%20set,%20and%20frozenset%20Collections/)
+- [26 - dict Collection](lessons/26%20-%20dict%20Collection/)
 
 ## What we've already covered
 
@@ -25,6 +26,7 @@
 - [19 - list Collection](lessons/19%20-%20list%20Collection/)
 - [20 - list Features](lessons/20%20-%20list%20Features/)
 - [21-22 - Project 1 - First Console Application](lessons/21-22%20-%20Project%201%20-%20First%20Console%20Application/)
+- [23-24 - Assessment 1](lessons/23-24%20-%20Assessment%201/)
 
 ## License
 
